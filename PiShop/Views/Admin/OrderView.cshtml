@@ -1,0 +1,82 @@
+﻿@using PiShop.Models 
+@model OrderEditViewModal
+@{
+    ViewData["Title"] = "EditOrder";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>EditOrder</h2>
+<head>
+    <link rel="stylesheet" href="~/css/shopping-cart.css" />
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
+    <link rel="stylesheet" href="~/css/Catalog.css" />
+    <script src="~/lib/bootstrap/dist/js/index.js"></script>
+    <link rel="stylesheet" type="text/css" href="~/lib/slick-1.8.1/slick-1.8.1/slick/slick.css" />
+    <link rel="stylesheet" type="text/css" href="~/lib/slick-1.8.1/slick-1.8.1/slick/slick-theme.css" />
+    <script type="text/javascript" src="~/lib/slick-1.8.1/slick-1.8.1/slick/slick.min.js"></script>
+    <link rel="stylesheet" href="~/css/ModalWindow.css">
+
+</head>
+<body>
+    <div class="shopping-cart">
+        <div class="title">
+            <div class="column">
+                <div class="textColumn textColumnName">
+                    Наименование
+                </div>
+                <div class="textColumn textColumnQuantity">
+                    Количество
+                </div>
+                <div class="textColumn textColumnPrice">
+                    Цена
+                </div>
+                <div class="textColumn textColumnAmount">
+                    Сумма
+                </div>
+            </div>
+        </div>
+
+
+
+        @*@foreach (CartLine cartLine in Model.Cart.Lines)*@
+        @foreach (var cartLine in Model.XmlCartLineList.ToList())
+        {
+            <!-- Товар #1 -->
+            <div class="item">
+
+                <div class="image">
+                    <img src="~/images/Каталог товаров/@cartLine.PictureAddress" class="imageShoping-cart" width="100" height="110" alt="" />
+                </div>
+
+
+
+                <div class="quantity">
+                    <a class="minus-btn buttonStyleCart btn button" href="/Cart/RemoveOneProductToCart/@cartLine.Id"><img src="~/images/minus.svg" /></a>
+                    <input type="text" name="name" value="@cartLine.Quantity">
+                    <a class="plus-btn buttonStyleCart btn button" href="/Cart/AddToCart/@cartLine.Id"><img src="~/images/plus.svg" /></a>
+                </div>
+                <div>
+                    <div class="PriceW">Цена</div>
+                    <div class="price"> @cartLine.Price руб</div>
+                </div>
+
+                <div>
+                    <div class="total-priceW">Итого</div>
+                    <div class="total-price">@(cartLine.Price * cartLine.Quantity) руб</div>
+                </div>
+            </div>
+        }
+        <div class="Total">
+            <div class="box">
+                <div class="ContainerTotal-total-price">
+                    Итого к оплате:
+                    <a class="total-total-price">@Model.order.Amount руб</a>
+                </div>
+
+            </div>
+
+        </div>
+        }
+    </div>
+
+</body>

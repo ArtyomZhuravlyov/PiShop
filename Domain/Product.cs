@@ -1,0 +1,63 @@
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Text;
+
+namespace Domain
+{
+   public class Product
+    {
+
+        [HiddenInput(DisplayValue = false)]
+        public int Id { get; set; }
+
+        [Display(Name = "Хиты")]
+        public bool Favourite { get; set; }
+
+        [Display(Name = "Название")]
+        public string Name { get; set; }
+
+
+
+        [Display(Name = "Описание")]
+        [DataType(DataType.MultilineText)]
+        public string Description { get; set; }
+
+
+        [Display(Name = "Категория1")]
+        public string Category { get; set; }
+
+     
+
+
+        /// <summary>
+        /// Цена
+        /// </summary>
+        [Display(Name = "Цена")]
+        // public string Company { get; set; }
+        public int Price { get; set; }
+
+
+        /// <summary>
+        /// Цена без Скидки
+        /// </summary>
+        [Display(Name = "Цена без Скидки")]
+        public int PriceWithoutSales { get; set; }
+
+        [Display(Name = "Адрес картинки")]
+        /// <summary>
+        /// Адрес картинки (формируется по ID)
+        /// </summary>
+        public string Address { get; set; }
+
+        ///// <summary>
+        ///// Отображается ли в ТОП
+        ///// </summary>
+        //public bool Favourite { get; set; }
+        public byte[] ImageData { get; set; }
+        public string ImageMimeType { get; set; }
+
+        public string Size { get; set; }
+    }
+}

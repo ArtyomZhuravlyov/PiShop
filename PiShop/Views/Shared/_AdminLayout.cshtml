@@ -1,0 +1,27 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap-theme.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/" />
+    <link rel="stylesheet" href="~/css/ErrorStyles.css" />
+    <script src="~/Scripts/jquery-1.9.1.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+    <title></title>
+</head>
+<body>
+    <div>
+        @if (TempData["message"] != null)
+        {
+        <div class="alert alert-success">@TempData["message"]</div>
+        }
+        @RenderBody()
+    </div>
+</body>
+</html>

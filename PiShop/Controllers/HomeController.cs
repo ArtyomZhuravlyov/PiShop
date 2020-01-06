@@ -10,6 +10,13 @@ namespace PiShop.Controllers
 {
     public class HomeController : Controller
     {
+
+        ProductContext db;
+        public HomeController(ProductContext context)
+        {
+            db = context;
+        }
+
         public IActionResult Index()
         {
             return View();
