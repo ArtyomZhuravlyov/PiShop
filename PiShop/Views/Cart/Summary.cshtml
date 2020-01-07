@@ -1,0 +1,361 @@
+﻿@using Domain
+@model PiShop.Models.CartIndexViewModel
+@*@{
+        ViewBag.Title = "GameStore: ваша корзина";
+    }*@
+<head>
+    <link rel="stylesheet" href="~/css/shopping-cart.css" />
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
+    <link rel="stylesheet" href="~/css/Catalog.css" />
+    <script src="~/lib/bootstrap/dist/js/index.js"></script>
+    <link rel="stylesheet" type="text/css" href="~/lib/slick-1.8.1/slick-1.8.1/slick/slick.css" />
+    <link rel="stylesheet" type="text/css" href="~/lib/slick-1.8.1/slick-1.8.1/slick/slick-theme.css" />
+    <script type="text/javascript" src="~/lib/slick-1.8.1/slick-1.8.1/slick/slick.min.js"></script>
+    <link rel="stylesheet" href="~/css/ModalWindow.css">
+
+</head>
+<body>
+    <div class="shopping-cart">
+        @if (Model.Cart.Lines.Count() != 0)
+        {<!-- Title -->
+            <div class="title">
+                <p>Ваша корзина</p>
+                <div class="column">
+                    <div class="textColumn textColumnName">
+                        Наименование
+                    </div>
+                    <div class="textColumn textColumnQuantity">
+                        Количество
+                    </div>
+                    <div class="textColumn textColumnPrice">
+                        Цена
+                    </div>
+                    <div class="textColumn textColumnAmount">
+                        Сумма
+                    </div>
+                </div>
+            </div>
+
+
+
+            @foreach (CartLine cartLine in Model.Cart.Lines)
+            {
+                <!-- Товар #1 -->
+                <div class="item">
+                    <div class="buttonsCart">
+                        @Html.ActionLink("", "RemoveLine", "Cart",
+      new { id = cartLine.productCart.Id, returnUrl = Model.ReturnUrl }, new { @class = "delete-btn" } )
+                        @*<a class="" href="/Cart/RemoveLine/@cartLine.productCart.Id?=@Model.ReturnUrl"></a>*@ @*href="/Home/RemoveLine/@cartLine.productCart.Id"*@
+                        <span class="like-btn"></span>
+                    </div>
+
+                    <div class="image">
+                        <img src="~/images/Каталог товаров/@cartLine.productCart.Address" class="imageShoping-cart" width="100" height="110" alt="" />
+                    </div>
+
+                    <div class="description">
+                        <span>
+                            @Html.ActionLink(cartLine.productCart.Name, "Details", "Cart",
+                            new { id = cartLine.productCart.Id, returnUrl = "" }, new { @class = "compItem ColourChangeModal colorGrey" } )
+                        </span>
+                        @*<span>Bball High</span>
+                            <span>White</span>*@
+                    </div>
+
+                    <div class="quantity">
+                        <a class="minus-btn buttonStyleCart btn button" href="/Cart/RemoveOneProductToCart/@cartLine.productCart.Id"><img src="~/images/minus.svg" /></a>
+                        <input type="text" name="name" value="@cartLine.Quantity">
+                        <a class="plus-btn buttonStyleCart btn button" href="/Cart/AddToCart/@cartLine.productCart.Id"><img src="~/images/plus.svg" /></a>
+                    </div>
+                    <div>
+                        <div class="PriceW">Цена</div>
+                        <div class="price"> @cartLine.productCart.Price руб</div>
+                    </div>
+
+                    <div>
+                        <div class="total-priceW">Итого</div>
+                        <div class="total-price">@(cartLine.productCart.Price * cartLine.Quantity) руб</div>
+                    </div>
+                </div>
+            }
+            <div class="Total">
+                <div class="box">
+                    <div class="ContainerTotal-total-price">
+                        Доставка:
+                        @if (Model.Cart.DeliveryPrice == 0)
+                        {
+                            <a class="delivery-price">БЕСПЛАТНО</a>
+                        }
+                        else
+                        {<a class="delivery-price">@Model.Cart.DeliveryPrice руб</a>}
+
+                    </div>
+                    <div class="ContainerTotal-total-price">
+                        Итого к оплате:
+                        <a class="total-total-price">@Model.Cart.ComputeTotalValueWithDelivery() руб</a>
+                    </div>
+                    <div class="bottons">
+                        <a class="btn ContinueOrder btn-return" href="@Model.ReturnUrl">Продолжить покупки</a>
+                        @Html.ActionLink("Оформить заказ", "Checkout", "Cart", null, new { @class = "btn buttonOrder OrderID" })
+
+                    </div>
+
+                </div>
+                <div class="cond">
+                    <div class="cond_title">
+                        УСЛОВИЯ
+                    </div>
+                    <div class="cond_text">
+                        При покупке свыше 3000 руб доставка бесплатно!
+                    </div>
+                    <div class="cond_text">
+                        <div id="Limit" class="deliveryСontraction">
+                            Покупка осуществляется от 500 руб
+                        </div>
+                    </div>
+                    <div class="cond_text">
+                        <div class="deliveryСontraction">
+                            Оплата осуществляется банковской картой @*<img height="27" width="49" src="~/images/mastercard.png">*@
+                        </div>
+                    </div>
+                    <div class="cond_text">
+                        <div class="deliveryСontraction">
+                            <img height="27" width="200" src="~/images/pay_logos2.png">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="title">
+                Ваша корзина пуста
+            </div>
+        }
+    </div>
+    <section class="section" style="margin-top: 100px  !important">
+        <div class="section_header">
+            @if (Model.Cart.Lines.Count() != 0)
+            {
+                <h2 class="section_title">Возможно, вас заинтересуют</h2>
+            }
+            else
+            {
+                <h2 class="section_title">Хиты продаж</h2>
+            }
+        </div>
+        <div class="parent">
+            <div class="autoplaySlick">
+                @foreach (var product in Model.Products)
+                {
+                    <div>
+                        <div class="border borderSlider">
+                            <div class="wrap">
+                                <div class="product-wrap">
+                                    <a><img src="~/images/Каталог товаров/@product.Address" class="imgCatalog"></a>
+                                </div>
+                                <div class="loop-action">
+                                    @Html.ActionLink("Просмотр", "Details","Cart",
+                                        new { id = product.Id }, new { @class = "compItem btn" } )
+                                    @Html.ActionLink("Добавить в корзину", "AddToCart","Cart",
+        new { id = product.Id }, new { @class = "compItem2  btn" } )
+                                    @*<div class="DisplayHide goToCart">
+                                                      <div>Товар добавлен в корзину</div>
+                                                      @Html.ActionLink("Перейти в корзину", "Summary", "Cart", new {returnUrl = ($"{Context.Request.Scheme}://{Context.Request.Host}{Context.Request.Path}{Context.Request.QueryString}") },
+                                        new { @class = "btn btnOrange"} )
+                                                  </div>*@
+
+                                </div>
+                            </div>
+
+                            <div class="product-info">
+                                @Html.ActionLink(product.Name, "ViewProduct", "Home",
+                                        new { id = product.Id, returnUrl = "" }, new { @class = "product-title ColourChangeModal" } )
+                                @*<h3 class="product-title">@product.Name</h3>*@
+                                @*<div class="price">&#8381; @product.Price </div>*@
+                            </div>
+
+                        </div>
+                    </div>
+                }
+
+            </div>
+
+        </div>
+    </section>
+    <script type="text/javascript">
+        if (innerWidth > 768) {
+            $(".autoplaySlick").slick(
+                {
+                    slidesToShow: 3,
+                    slidesToScroll: 1,
+                    autoplay: true,
+                    autoplaySpeed: 2500,
+                    variableHeight: true,
+                });
+        }
+        else {
+            $(".autoplaySlick").slick(
+                {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    autoplay: true,
+                    autoplaySpeed: 2500,
+                    variableHeight: true,
+                });
+        }
+    </script>
+
+    <div id="modDialog" class="modal fade">
+        <div id="dialogContent" class="modal-dialog"></div>
+    </div>
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
+
+    <script src="~/lib/bootstrap/dist/js/index.js"></script>
+
+    @*для модального окна*@
+    <script type="text/javascript">
+        $(function () {
+            $.ajaxSetup({ cache: false });
+            $(".compItem").click(function (e) {
+
+                e.preventDefault();
+                $.get(this.href, function (data) {
+                    $('#dialogContent').html(data);
+                    $('#modDialog').modal('show');
+                });
+            });
+        })
+    </script>
+    @*<script type="text/javascript">
+            $(function () {
+                $.ajaxSetup({ cache: false });
+                $(".compItem2").click(function (e) {
+                    e.preventDefault();
+                    //$(this).closest().find(".DisplayHide").addClass("DisplayShow");
+                    $(this).addClass("DisplayHide");
+                    //.addClass("DisplayHide");//скрываем кнопку добавить в корзину
+                    $(this).next().addClass("DisplayShow");//показываем кнопку перейти в корзину
+                    $.get(this.href, function (data) {//увеличиваем число товаров
+                        $.get("/Cart/GetQuantity", function (data) {//пишем на корзине число товаров
+                            $('.countDigit').text(data);
+                        })
+                    });
+                });
+            })
+        </script>*@
+
+
+    <script type="text/javascript">
+        $('.like-btn').on('click', function () {
+            $(this).toggleClass('is-active');
+        });
+    </script>
+
+    <script type="text/javascript">
+                    $('.minus-btn').on('click', function (e) {
+                        e.preventDefault();
+                        var $this = $(this);
+                        var $input = $this.closest('div').find('input');
+                        var value = parseInt($input.val());
+                        if (value > 0) {
+                            value = value - 1;
+                            $.get(this.href, function (data) {
+                              //  $('#Cart').html(data);
+                                $.get("/Cart/GetQuantity", function (data) {
+                                    $('.countDigit').text(data);
+                                })
+                            });
+
+                        }
+                        else {
+                            value = 0;
+                        }
+
+                            $input.val(value);
+                            value = parseInt(($this.closest('div').next().children('.price')).text()) * value;
+                            ($this.closest('div').next().next().children('.total-price')).text(value + " руб"); //общий счёт для одного товара
+
+
+                            //value =
+                            value = 0;
+                            $(".total-price").each(function () {
+
+                                value += parseInt($(this).text());
+                                console.log(value);
+                        });
+                        if (value > @Cart.SUMM_FOR_SALE) {
+                            $('.total-total-price').text(value + " руб");
+                            $('.delivery-price').text("БЕСПЛАТНО");
+                        }
+                        else {
+                            $('.total-total-price').text(value + @Cart.DELIVERY_PRICE + " руб");
+                            $('.delivery-price').text(@Cart.DELIVERY_PRICE + " руб");
+                        }
+
+                    });
+    </script>
+
+    <script type="text/javascript">
+                    $('.plus-btn').on('click', function (e) {
+                        e.preventDefault();
+                        var $this = $(this);
+                        var $input = $this.closest('div').find('input');
+                        var value = parseInt($input.val());
+                        if (value < 100) {
+                            value = value + 1;
+                            $.get(this.href, function (data) {
+                                //  $('#Cart').html(data);
+                                $.get("/Cart/GetQuantity/", function (data) {
+                                    console.log("cart");
+                                    $('.countDigit').text(data);
+                                })
+                            });
+                        }
+                        else {
+                            value = 100;
+                        }
+                        $input.val(value);
+                        value = parseInt(($this.closest('div').next().children('.price')).text()) * value;
+                        ($this.closest('div').next().next().children('.total-price')).text(value + " руб"); //общий счёт для одного товара
+
+
+                        //value =
+                        value = 0;
+                        $(".total-price").each(function () {
+
+                            value += parseInt($(this).text());
+                            console.log(value);
+                        });
+
+                        if (value > @Cart.SUMM_FOR_SALE) {
+                            $('.total-total-price').text(value + " руб");
+                            $('.delivery-price').text("БЕСПЛАТНО");
+                        }
+                        else {
+                            $('.total-total-price').text(value + @Cart.DELIVERY_PRICE + " руб");
+                            $('.delivery-price').text(@Cart.DELIVERY_PRICE + " руб");
+                        }
+                    });
+    </script>
+
+
+    @*лбработка клика оформления и проверка на сумму от 500 рублей*@
+    <script type="text/javascript">
+        $(function () {
+            $.ajaxSetup({ cache: false });
+            $(".OrderID").click(function (e) {
+                if (parseInt($('.total-total-price').text()) < 300) {
+                    e.preventDefault();
+                    $.get("/Cart/ModalText/", function (data) {
+                        $('#dialogContent').html(data);
+                        $('#modDialog').modal('show');
+                    });
+                  //  $("#Limit").addClass("OrangeColorText");
+                }
+            });
+        })
+    </script>
+</body>
+

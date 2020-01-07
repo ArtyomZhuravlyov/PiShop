@@ -1,0 +1,56 @@
+﻿@model Domain.ShippingDetails
+
+@{
+    ViewBag.Title = "Форма заказа";
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/FormContactDate.css" />
+    <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
+    <link href="~/css/ErrorStyles.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/css/shopping-cart.css" />
+</head>
+
+@using (Html.BeginForm())
+{
+    <div class="containerFormContactDate">
+        @Html.ValidationSummary()
+        <h3>Пожалуйста, введите ваши контактные данные</h3>
+        @foreach (var property in ViewData.ModelMetadata.Properties)
+        {
+
+            <div class="form-group">
+                @switch (property.DisplayName)
+                {
+                    case "Комментарий к заказу":
+                        <label>@(property.DisplayName ?? property.PropertyName)</label>
+                        @Html.TextArea(property.PropertyName, null, new { @class = "form-control MyForm-control", rows = 2 })
+                        break;
+                    case "Доставка":
+                    case "UserAccess":
+                        continue;
+                    case "TypePay":
+                        continue;
+                    default:
+                        <label><span style="color:red">*</span> @(property.DisplayName ?? property.PropertyName)</label>
+                        @Html.TextBox(property.PropertyName, null, new { @class = "form-control MyForm-control" })
+                        break;
+                }
+            </div>
+
+        }
+        <div class="form-group">
+            <div class="checkbox">
+                <label>
+                    @Html.EditorFor(x => x.UserAccess)
+                    <a class="OrangeColorText" target="_blank" href="~/images/Соглашение.pdf">Подтверждаю согласие на обработку своих персональных данных</a>  @*<embed src="ссылка файла pdf" width="ширина в пикселях" height="высота в пикселях" />*@
+                </label>
+            </div>
+
+        </div>
+
+        <div class="text-center">
+            <input class="btn buttonOrder outline" type="submit" value="Обработать заказ" />
+        </div>
+    </div>
+}

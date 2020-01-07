@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Domain;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PiShop.Models;
 
@@ -14,31 +16,35 @@ namespace PiShop.Controllers
         ProductContext db;
         public HomeController(ProductContext context)
         {
+
             db = context;
         }
 
         public IActionResult Index()
         {
+            return View(db.Products);
+        }
+
+        public ActionResult Details(int id, string returnUrl = null)
+        {
+            Product product = db.Products.FirstOrDefault(x => x.Id == id);
+
+            return PartialView(product);
+        }
+
+
+        /// <summary>
+        /// Дублирование страницы и вызов Успешной оплаты
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult SuccessOrder()
+        {
             return View();
         }
 
-        public IActionResult About()
+        public ActionResult SuccessDetail()
         {
-            ViewData["Message"] = "Your application description page.";
-
-            return View();
-        }
-
-        public IActionResult Contact()
-        {
-            ViewData["Message"] = "Your contact page.";
-
-            return View();
-        }
-
-        public IActionResult Privacy()
-        {
-            return View();
+            return PartialView();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

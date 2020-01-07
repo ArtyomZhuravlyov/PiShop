@@ -44,8 +44,25 @@ namespace Domain
         [HiddenInput(DisplayValue = false)]
         public string Delivery { get; set; }
 
+        //пока без enum
+        [Required(ErrorMessage = "Выберите вид оплаты")]
+        [Display(Name = "Вид оплаты")]
+        public string TypePay { get; set; }
+
         [Required(ErrorMessage = "Примите пользовательское соглашение")]
         public bool UserAccess { get; set; } = true;
 
+    }
+
+    public enum TypePay
+    {
+        /// <summary>
+        /// картой
+        /// </summary>
+        Card,
+        /// <summary>
+        /// При получении
+        /// </summary>
+        Arm
     }
 }
