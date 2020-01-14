@@ -42,29 +42,35 @@
         @foreach (var cartLine in Model.XmlCartLineList.ToList())
         {
             <!-- Товар #1 -->
-            <div class="item">
+        <div class="item">
 
-                <div class="image">
-                    <img src="~/images/Каталог товаров/@cartLine.PictureAddress" class="imageShoping-cart" width="100" height="110" alt="" />
-                </div>
-
-
-
-                <div class="quantity">
-                    <a class="minus-btn buttonStyleCart btn button" href="/Cart/RemoveOneProductToCart/@cartLine.Id"><img src="~/images/minus.svg" /></a>
-                    <input type="text" name="name" value="@cartLine.Quantity">
-                    <a class="plus-btn buttonStyleCart btn button" href="/Cart/AddToCart/@cartLine.Id"><img src="~/images/plus.svg" /></a>
-                </div>
-                <div>
-                    <div class="PriceW">Цена</div>
-                    <div class="price"> @cartLine.Price руб</div>
-                </div>
-
-                <div>
-                    <div class="total-priceW">Итого</div>
-                    <div class="total-price">@(cartLine.Price * cartLine.Quantity) руб</div>
-                </div>
+            <div class="image">
+                <img src="~/images/Каталог товаров/@cartLine.PictureAddress" class="imageShoping-cart" width="100" height="110" alt="" />
             </div>
+
+            <div class="description">
+                <span>
+                    @cartLine.ProductName
+                </span>
+                @*<span>Bball High</span>
+            <span>White</span>*@
+            </div>
+
+            <div class="quantity">
+                <a class="minus-btn buttonStyleCart btn button"><img src="~/images/minus.svg" /></a>
+                <input type="text" name="name" value="@cartLine.Quantity">
+                <a class="plus-btn buttonStyleCart btn button"><img src="~/images/plus.svg" /></a>
+            </div>
+            <div>
+                <div class="PriceW">Цена</div>
+                <div class="price"> @cartLine.Price руб</div>
+            </div>
+
+            <div>
+                <div class="total-priceW">Итого</div>
+                <div class="total-price">@(cartLine.Price * cartLine.Quantity) руб</div>
+            </div>
+        </div>
         }
         <div class="Total">
             <div class="box">

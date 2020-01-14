@@ -74,5 +74,19 @@ namespace PiShop.Models
             }
             return dbEntry;
         }
+
+        public int FindNextId(int Id)
+        {
+            
+                int LastId = this.Products.Last().Id;
+                for (int i = Id + 1; i <= LastId; i++)
+                {
+                    if (Products.Find(i) != null)
+                        return i;
+                }
+                return 0;
+            
+           
+        }
     }   
 }
