@@ -27,7 +27,7 @@ namespace PiShop.Controllers
 
         public IActionResult IndexProduct()
         {
-            return View(db.Orders);
+            return View(db.Products);
         }
 
         public ActionResult OrderView(int Id)
@@ -90,7 +90,7 @@ namespace PiShop.Controllers
                 TempData["message"] = string.Format("Изменения \"{0}\" были сохранены", product.Name);
                 if (action == "SaveAndNextProduct")
                     return RedirectToAction("Edit", new { id = db.FindNextId(product.Id) });
-                return RedirectToAction("Index");
+                return RedirectToAction("IndexProduct");
             }
             else
             {

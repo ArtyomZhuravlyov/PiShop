@@ -22,7 +22,13 @@ namespace PiShop.Controllers
 
         public IActionResult Index()
         {
-            return View(db.Products);
+            List<Product> Hits = db.GetFavoutiteProducts();
+            IndexViewModal indexViewModal = new IndexViewModal()
+            {
+                Products = db.Products,
+                HitsProducts = Hits
+            };
+            return View(indexViewModal);
         }
 
         public ActionResult Details(int id, string returnUrl = null)
@@ -45,6 +51,12 @@ namespace PiShop.Controllers
         public ActionResult SuccessDetail()
         {
             return PartialView();
+        }
+
+        public PartialViewResult popupFade(int Id)
+        {
+            Product product = db.Products.FirstOrDefault(x => x.Id == Id);
+            return PartialView(product);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

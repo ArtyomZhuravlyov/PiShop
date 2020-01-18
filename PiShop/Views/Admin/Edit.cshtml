@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Edit Админ панель: редактирование товара   ";
+            Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 <head>
     <link rel="stylesheet" href="~/css/Admin.css" />
@@ -13,7 +14,7 @@
     </div>
 
     <div class="ImageEditAdmin"> <img class="ImageEditAdmin" src="~/images/Каталог товаров/@Model.Address" /> </div>
-    @Html.ActionLink("Отменить изменения и вернуться к списку", "Index", null, new
+    @Html.ActionLink("Отменить изменения и вернуться к списку", "IndexProduct", null, new
          {
              @class = "btn btn-default"
          })
@@ -83,7 +84,7 @@ FormMethod.Post, new { enctype = "multipart/form-data" }))
             <input type="submit" value="Сохранить" class="btn btn-primary" />
             <button type="submit" name="action" value="SaveAndNextProduct" class="btn btn-primary">Сохранить и продолжить следующий элемент</button>
 
-            @Html.ActionLink("Отменить изменения и вернуться к списку", "Index", null, new
+            @Html.ActionLink("Отменить изменения и вернуться к списку", "IndexProduct", null, new
             {
                 @class = "btn btn-default"
             })

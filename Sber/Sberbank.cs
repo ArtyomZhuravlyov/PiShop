@@ -118,7 +118,7 @@ namespace Sber
             {
                 CartLine cartLine = _cart.GetCartLine(i - 1);
                 soap.Append($"<items positionId=\"{(i /*+ 1*/).ToString()}\">\n");
-                soap.Append($"<name>{cartLine.productCart.Name}</name>\n");
+                soap.Append($"<name>{cartLine.productCart.Name + cartLine.productCart.Size}</name>\n");
                 soap.Append($"<quantity measure=\"штук\">{cartLine.Quantity}</quantity>\n");
                 soap.Append($"<itemAmount>{cartLine.LineAmount}00</itemAmount>\n");
                 soap.Append($"<itemCode>{cartLine.productCart.Id.ToString()}</itemCode>\n");

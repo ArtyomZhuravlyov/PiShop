@@ -31,23 +31,40 @@ namespace PiShop.Controllers
             return GetCart().Lines.Sum(x => x.Quantity);
         }
 
-        public RedirectToActionResult/*ActionResult*/ AddToCart(int id, int l = 50)
+        public void/*ActionResult*/ AddToCart(int id , string size )
         {
             // Product product = (Product)db.Products.FirstOrDefault(x => x.Id == id);
             //if (id > 0)
             //{
             Product product = db.Products
              .FirstOrDefault(g => g.Id == id);
-
+       //     product.Size = size;
             Cart cart = GetCart();
             cart.AddItem(product, 1);
             HttpContext.Session.SetString("Cart", JsonConvert.SerializeObject(cart));
             //cart = GetCart();
 
 
-            return RedirectToAction("Summary", "Cart");
+            //return RedirectToAction("Summary", "Cart");
 
         }
+
+        //[HttpPost]
+        //public void/*ActionResult*/ AddToCart(int id = 1, string size = "sl")
+        //{
+        //    // Product product = (Product)db.Products.FirstOrDefault(x => x.Id == id);
+        //    //if (id > 0)
+        //    //{
+        //    Product product = db.Products
+        //     .FirstOrDefault(g => g.Id == id);
+        //    product.Size = size;
+        //    Cart cart = GetCart();
+        //    cart.AddItem(product, 1);
+        //    HttpContext.Session.SetString("Cart", JsonConvert.SerializeObject(cart));
+        //    //cart = GetCart();
+
+
+        //}
 
 
         /// <summary>
@@ -185,6 +202,18 @@ namespace PiShop.Controllers
 
         }
 
+        public PartialViewResult/*PartialViewResult*/ Cart()
+        {
+
+            string value = HttpContext.Session.GetString("Cart");
+            if (!string.IsNullOrEmpty(value))
+            {
+                Cart cart = JsonConvert.DeserializeObject<Cart>(value);
+                return PartialView(new CartIndexViewModel { Cart = cart });
+
+            }
+            else return PartialView(null);
+        }
 
         public ViewResult/*PartialViewResult*/ Summary(string returnUrl = "")
         {

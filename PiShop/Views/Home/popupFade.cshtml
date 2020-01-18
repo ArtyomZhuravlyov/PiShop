@@ -1,0 +1,147 @@
+﻿@model Domain.Product
+
+<header>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="~/css/style.css">
+    <meta name="viewport" content="width=device-width" , initial-scale=1>
+    <script src="https://yandex.st/jquery/2.1.1/jquery.min.js"></script>
+    @*<link href="https://fonts.googleapis.com/css?family=Merienda|Neucha|Roboto&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" type="text/css" href="~/js/slick-1.8.1/slick/slick.css" />
+        <link rel="stylesheet" type="text/css" href="~/js/slick-1.8.1/slick/slick-theme.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>*@
+</header>
+<body>
+    <div class="popup-fade">
+        <form asp-controller="Cart" asp-action="AddToCart" id="popupFadeForm" method="post">
+
+            <div class="popup">
+                <a class="popup-close" href="#"> <img src="~/images/krestik.jpg" alt=""></a>
+                <div class="item_pizham">
+                    <div class="theFirstBlock">
+                        <div class="picture"><img class="block" src="~/images/Каталог/@Model.Address" alt=""></div>
+                        <div class="price">2000₽</div>
+                        <div class="animate">
+                            <button class="btn btn-add addToCart" type="submit">ДОБАВИТЬ В КОРЗИНУ</button>
+                            @*<a class="btn btn-add addToCart" type="submit">ДОБАВИТЬ В КОРЗИНУ</a>*@
+                            <div class="paket"><img src="~/images/Корзина/paket.png" alt=""></div>
+                        </div>
+                    </div>
+                    <div class="info">
+                        <div class="info_title">@Model.Name</div>
+                        <div class="info-text">
+                            <div class="info_text_item">
+                                <img class="pointer" src="~/images/point.png" alt="">
+                                <div class="info_text_text">Материал: 40% шелк, 58% полиэстер, 2% лайкра </div>
+                            </div>
+                            <div class="info_text_item">
+                                <img class="pointer" src="~/images/point.png" alt="">
+                                <div class="info_text_text">Размерная сетка </div>
+                            </div>
+                            <div class="info_table"><img src="~/images/pazmer.PNG" alt=""></div>
+                            <input type="number" name="Id" value="@Model.Id" style="display:none">
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="size" value="s-sx"> <span>S-SX</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="size" value="m-l"><span>M-L</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="size" value="xl"><span>XL</span>
+                                </label>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+  
+    <script>
+        $(document).ready(function ($) {
+            $('.popup-close').click(function () {
+                $(this).parents('.popup-fade').fadeOut();
+                return false;
+            });
+            $(document).keydown(function (e) {
+                if (e.keyCode === 27) {
+                    e.stopPropagation();
+                    $('.popup-fade').fadeOut();
+                }
+            });
+            $('.popup-fade').click(function (e) {
+                if ($(e.target).closest('.popup').length == 0) {
+                    $(this).fadeOut();
+                }
+            });
+        });
+    </script>
+    <script>
+        //$('.btn-add').on('click', function (e) {
+        $("#popupFadeForm").submit(function (e) {
+            e.preventDefault();
+            var url = "/Cart/AddToCart/";
+            
+                $.ajax({
+                    type: "GET",
+                    url: url,
+                    data: $("#popupFadeForm").serialize(),
+                });
+
+            //    e.preventDefault();
+            //});
+            // $(this).next().addClass("DisplayShow");//показываем кнопку перейти в корзину
+            //$.get(this.href, function () {//увеличиваем число товаров
+            //    console.log(document.querySelector('.radio').value);
+            //    console.log(this.href + "?size=" + "s");
+            //    $.get((this.href + "?size=" + "s"), function () {
+            //    })
+            //});
+
+            //var that = $(".btn-add").closest('.animate').find('img');
+            //var bascket = $(".korzina");
+            //var w = that.width();
+            //that.clone().css({
+            //    'width': w
+            //    , 'position': 'absolute'
+            //    , 'z-index': '9999'
+            //    , top: that.offset().top
+            //    , left: that.offset().left
+            //}).appendTo("body").animate({
+            //    opacity: 0.1
+            //    , left: bascket.offset()['left']
+            //    , top: bascket.offset()['top']
+            //    , width: 20
+            //}, 1500, function () {
+            //    $(".btn-add").remove();
+            //});
+            var that = $(".btn-add").closest('.animate').find('img');
+            var bascket = $(".korzina");
+            var w = that.width();
+            that.clone().css({
+                'width': w
+                , 'position': 'absolute'
+                , 'z-index': '9999'
+                , top: that.offset().top
+                , left: that.offset().left
+            }).appendTo("body").animate({
+                opacity: 0.1
+                , left: bascket.offset()['left']
+                , top: bascket.offset()['top']
+                , width: 20
+            }, 1500, function () {
+                $(this).remove();
+            });
+
+        });
+    </script>
+    @*<script>
+        document.querySelector('.radio').onclick = function (e) {
+            console.log(e.target.value);
+            alert(e.target.value);
+        }
+    </script>*@
+
+</body>

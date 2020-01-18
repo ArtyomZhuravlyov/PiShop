@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Merienda|Neucha|Roboto&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width" , initial-scale=1>
+    <link rel="stylesheet" type="text/css" href="slick-1.8.1/slick/slick.css" />
+    <link rel="stylesheet" type="text/css" href="slick-1.8.1/slick/slick-theme.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <title>Пижама</title>
+</head>
+
+<body>
+    <header class="header" id="header">
+        <div class="container">
+            <div class="header_inner">
+                <div class="header_logo">FOX</div>
+                <nav class="nav" id="nav"> <a class="nav_link" href="#" data-scroll="#hits">ХИТЫ</a> <a class="nav_link" href="#" data-scroll="#feauters">ПРЕИМУЩЕСТВА</a> <a class="nav_link" href="#" data-scroll="#catalog">НАШИ ТОВАРЫ</a> <a class="nav_link" href="#" data-scroll="#delivery">ДОСТАВКА</a> <a class="nav_link" href="#" data-scroll="#contacts">КОНТАКТЫ</a> </nav>
+                <button class="burger" type="button" id="navToggle"> <span class="burger_item">menu</span> </button>
+                <a class="" href="#"><img class="korzina" src="korzina.jpg" alt=""></a>
+                <div class="popup-fade">
+                    <div class="popup">
+                        <a class="popup-close" href="#"> <img src="krestik.jpg" alt=""></a>
+                        <div class="item_pizham">
+                            <div class="theFirstBlock">
+                                <div class="picture"><img class="block" src="marvel.png" alt=""></div>
+                                <div class="price">2000₽</div>
+                                <div class="animate"> <a class="btn btn-add" href="#">ДОБАВИТЬ В КОРЗИНУ</a>
+                                    <div class="paket"><img src="paket.png" alt=""></div>
+                                </div>
+                            </div>
+                            <div class="info">
+                                <div class="info_title">Пижама MARVEL</div>
+                                <div class="info-text">
+                                    <div class="info_text_item"><img class="pointer" src="point.png" alt="">
+                                        <div class="info_text_text">Материал: 40% шелк, 58% полиэстер, 2% лайкра </div>
+                                    </div>
+                                    <div class="info_text_item"><img class="pointer" src="point.png" alt="">
+                                        <div class="info_text_text">Размерная сетка </div>
+                                    </div>
+                                    <div class="info_table"><img src="pazmer.PNG" alt=""></div>
+                                    <div class="radio">
+                                        <label>
+                                            <input type="radio" name="size" value="s-sx"> <span>S-SX</span></label>
+                                        <label>
+                                            <input type="radio" name="size" value="m-l"><span>M-L</span></label>
+                                        <label>
+                                            <input type="radio" name="size" value="xl"><span>XL</span></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="popup-buy">
+                    <div class="buy">
+                        <a class="popup-buy-close" href="#"> <img src="krestik.jpg" alt=""></a>
+                        <div class="item_pizham_buy">
+                            <div class="info_buy">
+                                <div class="info_title">Пижама MARVEL</div>
+                                <div class="info-text">
+                                    <div class="info_text_item">
+                                        <div class="info_text_text">Выберите размер </div>
+                                    </div>
+                                    <div class="info_table"><img src="pazmer.PNG" alt=""></div>
+                                    <div class="radio">
+                                        <label>
+                                            <input type="radio" name="size" value="s-sx"> <span>S-SX</span></label>
+                                        <label>
+                                            <input type="radio" name="size" value="m-l"><span>M-L</span></label>
+                                        <label>
+                                            <input type="radio" name="size" value="xl"><span>XL</span></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="price">2000₽</div>
+                            <div class="animate"> <a class="btn btn-add btn-add-buy" href="#">ДОБАВИТЬ В КОРЗИНУ</a>
+                                <div class="paket"><img src="paket.png" alt=""></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+    </header>
+    <div class="intro" id="intro">
+        <div class="container">
+            <div class="intro_inner">
+                <h1 class="intro_title">ПИЖАМА</h1>
+                <div class="intro_suptitle">Залог отличного настроения и продуктивного дня зависит от первых эмоций после пробуждения. Мы хотим, чтобы на твоём лице с самого утра блистала улыбка - а что как не идеальное отражение в зеркале сможет тебя так порадовать?</div>
+                <div class="intro_suptitle">Наша пижама сделает твоё утро чудесным, а хоум - лук безумно комфортным и женственным. </div> <a class="btn" href="#" data-scroll="#catalog">Посмотреть каталог</a> </div>
+        </div>
+    </div>
+    <div class="hits" id="hits">
+        <div class="container">
+            <div class="hits_inner addSl">
+                <div class="hits_MainTitle">ХИТЫ</div>
+                <div class="hits_items autoplaySl">
+                    <div class="hits_item">
+                        <div class="hits_pic"> <img class="hits_img" src="fox.png" alt="">
+                            <div class="buttons"> <a class="btn btn-hit " href="#">УЗНАТЬ ПОДРОБНЕЕ</a> <a class="btn btn-hit " href="#">КУПИТЬ</a> </div>
+                            <div class="hit_word">ХИТ</div>
+                        </div>
+                        <div class="hits_title">Пижама ЛИСИЧКИ</div>
+                    </div>
+                    <div class="hits_item">
+                        <div class="hits_pic"> <img class="hits_img" src="betman.png" alt="">
+                            <div class="buttons"> <a class="btn btn-hit" href="#">УЗНАТЬ ПОДРОБНЕЕ</a> <a class="btn btn-hit" href="#">КУПИТЬ</a> </div>
+                            <div class="hit_word">ХИТ</div>
+                        </div>
+                        <div class="hits_title">Пижама БЭТМЕН</div>
+                    </div>
+                    <div class="hits_item">
+                        <div class="hits_pic"> <img class="hits_img" src="avocado.png" alt="">
+                            <div class="buttons"> <a class="btn btn-hit" href="#">УЗНАТЬ ПОДРОБНЕЕ</a> <a class="btn btn-hit" href="#">КУПИТЬ</a> </div>
+                            <div class="hit_word">ХИТ</div>
+                        </div>
+                        <div class="hits_title">Пижама АВОКАДО</div>
+                    </div>
+                    <div class="hits_item">
+                        <div class="hits_pic"> <img class="hits_img" src="fox.png" alt="">
+                            <div class="buttons"> <a class="btn btn-hit" href="#">УЗНАТЬ ПОДРОБНЕЕ</a> <a class="btn btn-hit" href="#">КУПИТЬ</a> </div>
+                            <div class="hit_word">ХИТ</div>
+                        </div>
+                        <div class="hits_title">Пижама ЛИСИЧКИ</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="feauters" id="feauters">
+        <div class="container">
+            <div class="feauters_inner">
+                <div class="feauters_title">ПОЧЕМУ МЫ ЛУЧШИЕ</div>
+                <div class="feauters_subtitle">В чем преимущества наших пижам?</div>
+                <div class="feauter_items">
+                    <div class="feauter_item">
+                        <div class="feauter_pic"> <img class="pic" src="kach.jpg" alt=""> </div>
+                        <div class="feauter_item_title"> КАЧЕСТВЕННЫЕ МАТЕРИАЛЫ </div>
+                    </div>
+                    <div class="feauter_item">
+                        <div class="feauter_pic"> <img class="pic" src="ned.jpg" alt=""> </div>
+                        <div class="feauter_item_title"> НИЗКИЕ ЦЕНЫ </div>
+                    </div>
+                    <div class="feauter_item">
+                        <div class="feauter_pic"> <img class="pic" src="komf.jpg" alt=""> </div>
+                        <div class="feauter_item_title"> КОМФОРТ И ЭСТЕТИКА </div>
+                    </div>
+                    <div class="feauter_item">
+                        <div class="feauter_pic"> <img class="pic" src="dost.jpg" alt=""> </div>
+                        <div class="feauter_item_title"><span style="font-weight: 700; color: #1da77f">БЕСПЛАТНАЯ</span> ДОСТАВКА ПО ВСЕЙ РОССИИ </div>
+                    </div>
+                    <div class="feauter_item">
+                        <div class="feauter_pic"> <img class="pic" src="kons.jpg" alt=""> </div>
+                        <div class="feauter_item_title"> БЕСПЛАТНЫЕ КОНСУЛЬТАЦИИ </div>
+                        
+                       
+                    </div>
+                    <div class="feauter_item">
+                        <div class="feauter_pic"> <img class="pic" src="imgonline-com-ua-Replace-color-uBjDNN85XAm95T9.jpg" alt=""> </div>
+                        <div class="feauter_item_title"> БЕЗОПАСНЫЕ ПЛАТЕЖИ </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="hits" id="catalog">
+        <div class="container">
+            <div class="hits_inner">
+                <div class="hits_MainTitle">КАТАЛОГ</div>
+                <div class="hits_items">
+                    <div class="hits_item">
+                        <div class="hits_pic"> <img class="hits_img" src="marvel.png" alt="">
+                            <div class="buttons"> <a class="btn btn-hit popup-open" href="#">УЗНАТЬ ПОДРОБНЕЕ</a> <a class="btn btn-hit popup-buy-open" href="#">КУПИТЬ</a> </div>
+                        </div>
+                        <div class="hits_title">Пижама MARVEL</div>
+                    </div>
+                    <div class="hits_item">
+                        <div class="hits_pic"> <img class="hits_img" src="dog.png" alt="">
+                            <div class="buttons"> <a class="btn btn-hit" href="#">УЗНАТЬ ПОДРОБНЕЕ</a> <a class="btn btn-hit" href="#">КУПИТЬ</a> </div>
+                        </div>
+                        <div class="hits_title">Пижама МОПС</div>
+                    </div>
+                    <div class="hits_item">
+                        <div class="hits_pic"> <img class="hits_img" src="foxSerd.png" alt="">
+                            <div class="buttons"> <a class="btn btn-hit" href="#">УЗНАТЬ ПОДРОБНЕЕ</a> <a class="btn btn-hit" href="#">КУПИТЬ</a> </div>
+                        </div>
+                        <div class="hits_title">Пижама ЛИСИЧКА С СЕРДЕЧКОМ</div>
+                    </div>
+                    <div class="hits_item">
+                        <div class="hits_pic"> <img class="hits_img" src="edinorog.png" alt="">
+                            <div class="buttons"> <a class="btn btn-hit" href="#">УЗНАТЬ ПОДРОБНЕЕ</a> <a class="btn btn-hit" href="#">КУПИТЬ</a> </div>
+                        </div>
+                        <div class="hits_title">Пижама ЕДИНОРОГ</div>
+                    </div>
+                    <div class="hits_item">
+                        <div class="hits_pic"> <img class="hits_img" src="koshka.jpg" alt="">
+                            <div class="buttons"> <a class="btn btn-hit" href="#">УЗНАТЬ ПОДРОБНЕЕ</a> <a class="btn btn-hit" href="#">КУПИТЬ</a> </div>
+                        </div>
+                        <div class="hits_title">Пижама ЖЕНЩИНА-КОШКА</div>
+                    </div>
+                    <div class="hits_item">
+                        <div class="hits_pic"> <img class="hits_img" src="panda.png" alt="">
+                            <div class="buttons"> <a class="btn btn-hit" href="#">УЗНАТЬ ПОДРОБНЕЕ</a> <a class="btn btn-hit" href="#">КУПИТЬ</a> </div>
+                        </div>
+                        <div class="hits_title">Пижама ПАНДА</div>
+                    </div>
+                    <div class="hits_item">
+                        <div class="hits_pic"> <img class="hits_img" src="enot.png" alt="">
+                            <div class="buttons"> <a class="btn btn-hit" href="#">УЗНАТЬ ПОДРОБНЕЕ</a> <a class="btn btn-hit" href="#">КУПИТЬ</a> </div>
+                        </div>
+                        <div class="hits_title">Пижама ЕНОТИК</div>
+                    </div>
+                    <div class="hits_item">
+                        <div class="hits_pic"> <img class="hits_img" src="barashek.png" alt="">
+                            <div class="buttons"> <a class="btn btn-hit" href="#">УЗНАТЬ ПОДРОБНЕЕ</a> <a class="btn btn-hit" href="#">КУПИТЬ</a> </div>
+                        </div>
+                        <div class="hits_title">Пижама БАРАШЕК</div>
+                    </div>
+                    <div class="hits_item">
+                        <div class="hits_pic"> <img class="hits_img" src="doctor.jpeg" alt="">
+                            <div class="buttons"> <a class="btn btn-hit" href="#">УЗНАТЬ ПОДРОБНЕЕ</a> <a class="btn btn-hit" href="#">КУПИТЬ</a> </div>
+                        </div>
+                        <div class="hits_title">Пижама СКОРАЯ ПОМОЩЬ</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="delivery" id="delivery">
+        <div class="container">
+            <div class="delivery_inner">
+                <div class="delivery_title">ДОСТАВКА</div>
+                <div class="delivery_items">
+                    <div class="delivery_item">
+                        <div class="delivery_img"><img src="point.png" alt=""></div>
+                        <div class="delivery_text">Доставка осуществляется курьерской службой СДЭК</div>
+                    </div>
+                    <div class="delivery_item">
+                        <div class="delivery_img "><img src="point.png" alt=""></div>
+                        <div class="delivery_text ">Самовывоз БЕСПЛАТНО</div>
+                    </div>
+                    <div class="delivery_item">
+                        <div class="delivery_img"><img src="point.png" alt=""></div>
+                        <div class="delivery_text">Срок доставки: 3-7 дней</div>
+                    </div>
+                    <div class="delivery_item">
+                        <div class="delivery_img "><img src="point.png" alt=""></div>
+                        <div class="delivery_text ">Срок хранения посылки: 3 дня</div>
+                    </div>
+                    <div class="delivery_item">
+                        <div class="delivery_img"><img src="point.png" alt=""></div>
+                        <div class="delivery_text">Доставка курьером 350 руб</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="contacts" id="contacts">
+        <div class="container">
+            <div class="contacts_inner">
+                <div class="contacts_title">НАШИ КОНТАКТЫ</div>
+                <div class="contacts_items">
+                    <div class="contacts_item">
+                        <div class="contacts_pic"> <img src="contacts/adress.jpg" alt=""></div>
+                        <div class="contacts_info">
+                            <div class="contacts_info_title"> АДРЕС </div>
+                            <div class="contacts_info_info"> 4801 South University Drive Suite 237, Ft. Lauderdale, FL 33328, United States </div>
+                        </div>
+                    </div>
+                    <div class="contacts_item">
+                        <div class="contacts_pic"> <img src="contacts/phone.jpg" alt=""></div>
+                        <div class="contacts_info">
+                            <div class="contacts_info_title"> ТЕЛЕФОН </div>
+                            <div class="contacts_info_info"> (123) 456-7890 </div>
+                            <div class="contacts_info_info">(123) 456-7891 </div>
+                        </div>
+                    </div>
+                    <div class="contacts_item">
+                        <div class="contacts_pic"> <img src="contacts/email.jpg" alt=""></div>
+                        <div class="contacts_info">
+                            <div class="contacts_info_title"> ПОЧТА </div>
+                            <div class="contacts_info_info"> contacts@motocms.com </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="slick-1.8.1/slick/slick.min.js"></script>
+    <script src="app.js"></script>
+    <script type="text/javascript">
+        if (innerWidth > 508) {
+            $(".autoplaySl").slick({
+                slidesToShow: 3
+                , slidesToScroll: 1
+                , autoplay: true
+                , autoplaySpeed: 2500
+                , variableHeight: true
+            , });
+        }
+        else {
+            $(".autoplaySl").slick({
+                slidesToShow: 1
+                , slidesToScroll: 1
+                , autoplay: true
+                , autoplaySpeed: 2500
+                , variableHeight: true
+            , });
+        }
+    </script>
+    <script src="https://yandex.st/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function ($) {
+            $('.popup-open').click(function () {
+                //             
+                $('.popup-fade').fadeIn();
+                return false;
+            });
+            $('.popup-close').click(function () {
+                $(this).parents('.popup-fade').fadeOut();
+                return false;
+            });
+            $(document).keydown(function (e) {
+                if (e.keyCode === 27) {
+                    e.stopPropagation();
+                    $('.popup-fade').fadeOut();
+                }
+            });
+            $('.popup-fade').click(function (e) {
+                if ($(e.target).closest('.popup').length == 0) {
+                    $(this).fadeOut();
+                }
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function ($) {
+            $('.popup-buy-open').click(function () {
+                //             
+                $('.popup-buy').fadeIn();
+                return false;
+            });
+            $('.popup-buy-close').click(function () {
+                $(this).parents('.popup-buy').fadeOut();
+                return false;
+            });
+            $(document).keydown(function (e) {
+                if (e.keyCode === 27) {
+                    e.stopPropagation();
+                    $('.popup-buy').fadeOut();
+                }
+            });
+            $('.popup-buy').click(function (e) {
+                if ($(e.target).closest('.buy').length == 0) {
+                    $(this).fadeOut();
+                }
+            });
+        });
+    </script>
+    <script>
+        $('.btn-add').on('click', function () {
+            var that = $(this).closest('.animate').find('img');
+            var bascket = $(".korzina");
+            var w = that.width();
+            that.clone().css({
+                'width': w
+                , 'position': 'absolute'
+                , 'z-index': '9999'
+                , top: that.offset().top
+                , left: that.offset().left
+            }).appendTo("body").animate({
+                opacity: 0.1
+                , left: bascket.offset()['left']
+                , top: bascket.offset()['top']
+                , width: 20
+            }, 1500, function () {
+                $(this).remove();
+            });
+        });
+    </script>
+</body>
+
+</html>

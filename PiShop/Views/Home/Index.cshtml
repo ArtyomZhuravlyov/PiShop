@@ -1,102 +1,330 @@
-﻿@model IEnumerable<Domain.Product>
-@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@using Domain
+@using Microsoft.AspNetCore.Http;
+@using Microsoft.AspNetCore.Http.Features;
+@model IndexViewModal
+
+<!DOCTYPE html>
+<html lang="ru">
+
 <head>
-    <title>My Now Amazing Webpage</title>
-    @*<link rel="stylesheet" type="text/css" href="slick/slick.css" />
-    <link rel="stylesheet" type="text/css" href="slick/slick-theme.css" />*@
-    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
-
-
-
-
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="~/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Merienda|Neucha|Roboto&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width" , initial-scale=1>
+    <link rel="stylesheet" type="text/css" href="~/js/slick-1.8.1/slick/slick.css" />
+    <link rel="stylesheet" type="text/css" href="~/js/slick-1.8.1/slick/slick-theme.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <title>Пижама</title>
 </head>
 
-<div class="autoplaySlick">
-
-    <div class="item">
-        <img src="~/images/banner1.svg" alt="ASP.NET" class="img-responsive" />
-        <div class="carousel-caption" role="option">
+<body>
+    <header class="header" id="header">
+        <div class="container">
+            <div class="header_inner">
+                <div class="header_logo">FOX</div>
+                <nav class="nav" id="nav"> <a class="nav_link" href="#" data-scroll="#hits">ХИТЫ</a> <a class="nav_link" href="#" data-scroll="#feauters">ПРЕИМУЩЕСТВА</a> <a class="nav_link" href="#" data-scroll="#catalog">НАШИ ТОВАРЫ</a> <a class="nav_link" href="#" data-scroll="#delivery">ДОСТАВКА</a> <a class="nav_link" href="#" data-scroll="#contacts">КОНТАКТЫ</a> </nav>
+                <button class="burger" type="button" id="navToggle"> <span class="burger_item">menu</span> </button>
+                <a class="" href="#"><img class="korzina" src="~/images/Корзина/korzina.jpg" alt=""></a>
+                <div id="dialogContentpopupFade" class="modal-dialog"></div>
+                @*<div class="popup-fade">
+                        <div class="popup">
+                            <a class="popup-close" href="#"> <img src="~/images/krestik.jpg" alt=""></a>
+                            <div class="item_pizham">
+                                <div class="theFirstBlock">
+                                    <div class="picture"><img class="block" src="~/images/Каталог/marvel.png" alt=""></div>
+                                    <div class="price">2000₽</div>
+                                    <div class="animate">
+                                        <a class="btn btn-add" href="#">ДОБАВИТЬ В КОРЗИНУ</a>
+                                        <div class="paket"><img src="~/images/Корзина/paket.png" alt=""></div>
+                                    </div>
+                                </div>
+                                <div class="info">
+                                    <div class="info_title">Пижама MARVEL</div>
+                                    <div class="info-text">
+                                        <div class="info_text_item">
+                                            <img class="pointer" src="~/images/point.png" alt="">
+                                            <div class="info_text_text">Материал: 40% шелк, 58% полиэстер, 2% лайкра </div>
+                                        </div>
+                                        <div class="info_text_item">
+                                            <img class="pointer" src="~/images/point.png" alt="">
+                                            <div class="info_text_text">Размерная сетка </div>
+                                        </div>
+                                        <div class="info_table"><img src="~/images/pazmer.PNG" alt=""></div>
+                                        <div class="radio">
+                                            <label>
+                                                <input type="radio" name="size" value="s-sx"> <span>S-SX</span>
+                                            </label>
+                                            <label>
+                                                <input type="radio" name="size" value="m-l"><span>M-L</span>
+                                            </label>
+                                            <label>
+                                                <input type="radio" name="size" value="xl"><span>XL</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>*@
+                @*<div class="popup-buy">
+                        <div class="buy">
+                            <a class="popup-buy-close" href="#"> <img src="~/images/krestik.jpg" alt=""></a>
+                            <div class="item_pizham_buy">
+                                <div class="info_buy">
+                                    <div class="info_title">Пижама MARVEL</div>
+                                    <div class="info-text">
+                                        <div class="info_text_item">
+                                            <div class="info_text_text">Выберите размер </div>
+                                        </div>
+                                        <div class="info_table"><img src="~/images/pazmer.PNG" alt=""></div>
+                                        <div class="radio">
+                                            <label>
+                                                <input type="radio" name="size" value="s-sx"> <span>S-SX</span>
+                                            </label>
+                                            <label>
+                                                <input type="radio" name="size" value="m-l"><span>M-L</span>
+                                            </label>
+                                            <label>
+                                                <input type="radio" name="size" value="xl"><span>XL</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="price">2000₽</div>
+                                <div class="animate">
+                                    <a class="btn btn-add btn-add-buy" href="#">ДОБАВИТЬ В КОРЗИНУ</a>
+                                    <div class="paket"><img src="~/images/Корзина/paket.png" alt=""></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>*@
+            </div>
+        </div>
+    </header>
+    <div class="intro" id="intro">
+        <div class="container">
+            <div class="intro_inner">
+                <h1 class="intro_title">ПИЖАМА</h1>
+                <div class="intro_suptitle">Залог отличного настроения и продуктивного дня зависит от первых эмоций после пробуждения. Мы хотим, чтобы на твоём лице с самого утра блистала улыбка - а что как не идеальное отражение в зеркале сможет тебя так порадовать?</div>
+                <div class="intro_suptitle">Наша пижама сделает твоё утро чудесным, а хоум - лук безумно комфортным и женственным. </div> <a class="btn" href="#" data-scroll="#catalog">Посмотреть каталог</a>
+            </div>
         </div>
     </div>
-    <div class="item">
-        <img src="~/images/banner2.svg" alt="Visual Studio" class="img-responsive" />
-        <div class="carousel-caption" role="option">
-
+    <div class="hits" id="hits">
+        <div class="container">
+            <div class="hits_inner addSl">
+                <div class="hits_MainTitle">ХИТЫ</div>
+                <div class="hits_items autoplaySl">
+                    @foreach (var product in Model.HitsProducts)
+                    {
+                        <div class="hits_item">
+                            <div class="hits_pic">
+                                <img class="hits_img" src="~/images/Каталог/@product.Address" alt="">
+                                <div class="buttons"> <a class="btn btn-hit popup-open" href="/Home/popupFade/@product.Id">УЗНАТЬ ПОДРОБНЕЕ</a> <a class="btn btn-hit popup-buy-open" href="#">КУПИТЬ</a> </div>
+                                <div class="hit_word">ХИТ</div>
+                            </div>
+                            <div class="hits_title">@product.Name</div>
+                        </div>
+                    }
+                </div>
+            </div>
         </div>
     </div>
-    <div class="item">
-        <img src="~/images/banner3.svg" alt="Microsoft Azure" class="img-responsive" />
-        <div class="carousel-caption" role="option">
+    <div class="feauters" id="feauters">
+        <div class="container">
+            <div class="feauters_inner">
+                <div class="feauters_title">ПОЧЕМУ МЫ ЛУЧШИЕ</div>
+                <div class="feauters_subtitle">В чем преимущества наших пижам?</div>
+                <div class="feauter_items">
+                    <div class="feauter_item">
+                        <div class="feauter_pic"> <img class="pic" src="~/images/Преимущества/kach.jpg" alt=""> </div>
+                        <div class="feauter_item_title"> КАЧЕСТВЕННЫЕ МАТЕРИАЛЫ </div>
+                    </div>
+                    <div class="feauter_item">
+                        <div class="feauter_pic"> <img class="pic" src="~/images/Преимущества/ned.jpg" alt=""> </div>
+                        <div class="feauter_item_title"> НИЗКИЕ ЦЕНЫ </div>
+                    </div>
+                    <div class="feauter_item">
+                        <div class="feauter_pic"> <img class="pic" src="~/images/Преимущества/komf.jpg" alt=""> </div>
+                        <div class="feauter_item_title"> КОМФОРТ И ЭСТЕТИКА </div>
+                    </div>
+                    <div class="feauter_item">
+                        <div class="feauter_pic"> <img class="pic" src="~/images/Преимущества/dost.jpg" alt=""> </div>
+                        <div class="feauter_item_title"><span style="font-weight: 700; color: #1da77f">БЕСПЛАТНАЯ</span> ДОСТАВКА ПО ВСЕЙ РОССИИ </div>
+                    </div>
+                    <div class="feauter_item">
+                        <div class="feauter_pic"> <img class="pic" src="~/images/Преимущества/kons.jpg" alt=""> </div>
+                        <div class="feauter_item_title"> БЕСПЛАТНЫЕ КОНСУЛЬТАЦИИ </div>
+
+
+                    </div>
+                    <div class="feauter_item">
+                        <div class="feauter_pic"> <img class="pic" src="~/images/Преимущества/imgonline-com-ua-Replace-color-uBjDNN85XAm95T9.jpg" alt=""> </div>
+                        <div class="feauter_item_title"> БЕЗОПАСНЫЕ ПЛАТЕЖИ </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-</div>
-
-<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-@*<script type="text/javascript" src="slick/slick.min.js"></script>*@
-<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-
-<script type="text/javascript">
-    if (innerWidth > 768) {
-        $(".autoplaySlick").slick(
-            {
-                slidesToShow: 2,
-                slidesToScroll: 1,
-                autoplay: true,
-                autoplaySpeed: 2500,
-                variableHeight: true,
+    <div class="hits" id="catalog">
+        <div class="container">
+            <div class="hits_inner">
+                <div class="hits_MainTitle">КАТАЛОГ</div>
+                <div class="hits_items">
+                    @foreach (var product in Model.Products)
+                    {
+                        <div class="hits_item">
+                            <div class="hits_pic">
+                                <img class="hits_img" src="~/images/Каталог/@product.Address" alt="">
+                                <div class="buttons"> <a class="btn btn-hit popup-open" href="/Home/popupFade/@product.Id">УЗНАТЬ ПОДРОБНЕЕ</a> <a class="btn btn-hit popup-buy-open" href="#">КУПИТЬ</a> </div>
+                                @if (product.Favourite)
+                                {<div class="hit_word">ХИТ</div>}
+                            </div>
+                            <div class="hits_title">@product.Name</div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="delivery" id="delivery">
+        <div class="container">
+            <div class="delivery_inner">
+                <div class="delivery_title">ДОСТАВКА</div>
+                <div class="delivery_items">
+                    <div class="delivery_item">
+                        <div class="delivery_img"><img src="~/images/point.png" alt=""></div>
+                        <div class="delivery_text">Доставка осуществляется курьерской службой СДЭК</div>
+                    </div>
+                    <div class="delivery_item">
+                        <div class="delivery_img "><img src="~/images/point.png" alt=""></div>
+                        <div class="delivery_text ">Самовывоз БЕСПЛАТНО</div>
+                    </div>
+                    <div class="delivery_item">
+                        <div class="delivery_img"><img src="~/images/point.png" alt=""></div>
+                        <div class="delivery_text">Срок доставки: 3-7 дней</div>
+                    </div>
+                    <div class="delivery_item">
+                        <div class="delivery_img "><img src="~/images/point.png" alt=""></div>
+                        <div class="delivery_text ">Срок хранения посылки: 3 дня</div>
+                    </div>
+                    <div class="delivery_item">
+                        <div class="delivery_img"><img src="~/images/point.png" alt=""></div>
+                        <div class="delivery_text">Доставка курьером 350 руб</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="contacts" id="contacts">
+        <div class="container">
+            <div class="contacts_inner">
+                <div class="contacts_title">НАШИ КОНТАКТЫ</div>
+                <div class="contacts_items">
+                    <div class="contacts_item">
+                        <div class="contacts_pic"> <img src="~/images/contacts/adress.jpg" alt=""></div>
+                        <div class="contacts_info">
+                            <div class="contacts_info_title"> АДРЕС </div>
+                            <div class="contacts_info_info"> 4801 South University Drive Suite 237, Ft. Lauderdale, FL 33328, United States </div>
+                        </div>
+                    </div>
+                    <div class="contacts_item">
+                        <div class="contacts_pic"> <img src="~/images/contacts/phone.jpg" alt=""></div>
+                        <div class="contacts_info">
+                            <div class="contacts_info_title"> ТЕЛЕФОН </div>
+                            <div class="contacts_info_info"> (123) 456-7890 </div>
+                            <div class="contacts_info_info">(123) 456-7891 </div>
+                        </div>
+                    </div>
+                    <div class="contacts_item">
+                        <div class="contacts_pic"> <img src="~/images/contacts/email.jpg" alt=""></div>
+                        <div class="contacts_info">
+                            <div class="contacts_info_title"> ПОЧТА </div>
+                            <div class="contacts_info_info"> contacts@motocms.com </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="~/js/slick-1.8.1/slick/slick.min.js"></script>
+    <script src="~/js/app.js"></script>
+    <script type="text/javascript">
+        if (innerWidth > 508) {
+            $(".autoplaySl").slick({
+                slidesToShow: 3
+                , slidesToScroll: 1
+                , autoplay: true
+                , autoplaySpeed: 2500
+                , variableHeight: true
+                ,
             });
-    }
-    else {
-        $(".autoplaySlick").slick(
-            {
-                slidesToShow: 1,
-                slidesToScroll: 1,
-                autoplay: true,
-                autoplaySpeed: 2500,
-                variableHeight: true,
+        }
+        else {
+            $(".autoplaySl").slick({
+                slidesToShow: 1
+                , slidesToScroll: 1
+                , autoplay: true
+                , autoplaySpeed: 2500
+                , variableHeight: true
+                ,
             });
-    }
-</script>
+        }
+    </script>
+    <script src="https://yandex.st/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function ($) {
+            $('.popup-open').click(function (e) {
+                e.preventDefault();
+                $.get(this.href, function (data) {
+                    $('#dialogContentpopupFade').html(data);
+                    $('.popup-fade').fadeIn();
+                });
 
-<div class="row">
-    <div class="col-md-3">
-        <h2>Application uses</h2>
-        <ul>
-            <li>Sample pages using ASP.NET Core MVC</li>
-            <li>Theming using <a href="https://go.microsoft.com/fwlink/?LinkID=398939">Bootstrap</a></li>
-        </ul>
-    </div>
-    <div class="col-md-3">
-        <h2>How to</h2>
-        <ul>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkID=398600">Add a Controller and View</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkId=699315">Manage User Secrets using Secret Manager.</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkId=699316">Use logging to log a message.</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkId=699317">Add packages using NuGet.</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkId=699319">Target development, staging or production environment.</a></li>
-        </ul>
-    </div>
-    <div class="col-md-3">
-        <h2>Overview</h2>
-        <ul>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkId=518008">Conceptual overview of what is ASP.NET Core</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkId=699320">Fundamentals of ASP.NET Core such as Startup and middleware.</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkId=398602">Working with Data</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkId=398603">Security</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkID=699321">Client side development</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkID=699322">Develop on different platforms</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkID=699323">Read more on the documentation site</a></li>
-        </ul>
-    </div>
-    <div class="col-md-3">
-        <h2>Run &amp; Deploy</h2>
-        <ul>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkID=517851">Run your app</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkID=517853">Run tools such as EF migrations and more</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkID=398609">Publish to Microsoft Azure Web Apps</a></li>
-        </ul>
-    </div>
-</div>
+                return false;
+            });
+            $('.popup-close').click(function () {
+                $(this).parents('.popup-fade').fadeOut();
+                return false;
+            });
+            $(document).keydown(function (e) {
+                if (e.keyCode === 27) {
+                    e.stopPropagation();
+                    $('.popup-fade').fadeOut();
+                }
+            });
+            $('.popup-fade').click(function (e) {
+                if ($(e.target).closest('.popup').length == 0) {
+                    $(this).fadeOut();
+                }
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function ($) {
+            $('.popup-buy-open').click(function () {
+                //
+                $('.popup-buy').fadeIn();
+                return false;
+            });
+            $('.popup-buy-close').click(function () {
+                $(this).parents('.popup-buy').fadeOut();
+                return false;
+            });
+            $(document).keydown(function (e) {
+                if (e.keyCode === 27) {
+                    e.stopPropagation();
+                    $('.popup-buy').fadeOut();
+                }
+            });
+            $('.popup-buy').click(function (e) {
+                if ($(e.target).closest('.buy').length == 0) {
+                    $(this).fadeOut();
+                }
+            });
+        });
+    </script>
+  
+</body>
+
+</html>

@@ -1,0 +1,9 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /Account/
+Disallow: /Home/IndexSearch/
+Disallow: /Home/OrderSuccess/
+Disallow: /Home/Details/
+Disallow: /Cart/
+
+Host: https://kladovayaltay.ru
