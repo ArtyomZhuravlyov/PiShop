@@ -341,17 +341,18 @@
         $(document).ready(function ($) {
             $('.popup-cart-open').click(function (e) {
                 e.preventDefault();
-                console.log(1);
                 $.get(this.href, function (data) {
-                    console.log(2);
                     $('#dialogContentpopupCart').html(data);
                     $('.popup-cart').fadeIn();
                 });
+                document.body.style.overflow = "hidden";
+                
 
                 return false;
             });
             $('.popup-cart-close').click(function () {
                 $(this).parents('.popup-cart').fadeOut();
+                document.body.style.overflow = "auto";
                 return false;
             });
             $(document).keydown(function (e) {

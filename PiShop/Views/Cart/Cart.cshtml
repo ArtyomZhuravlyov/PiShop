@@ -14,74 +14,76 @@
         @*<form asp-controller="Cart" asp-action="ToCheck" id="popupCartForm" method="get">*@
         @if (Model?.Cart != null && Model.Cart?.Lines?.Count() != 0)
         {<!-- Title -->
-            <div class="cart">
-                <a class="popup-cart-close" href="#"> <img src="~/images/krestik.jpg" alt=""></a>
-                <div class="shopping-cart">
+            <div class="overflow2">
+                <div class="cart">
+                    <a class="popup-cart-close" href="#"> <img src="~/images/krestik.jpg" alt=""></a>
+                    <div class="shopping-cart">
 
-                    <div class="cart_title">Ваша корзина</div>
-                    <div class="title">
-                        <div class="column">
-                            <div class="textColumn textColumnName"> Наименование </div>
-                            <div class="textColumn textColumnQuantity"> Количество </div>
-                            <div class="textColumn textColumnPrice"> Цена </div>
-                            <div class="textColumn textColumnAmount"> Сумма </div>
-                        </div>
-                    </div>
-                    @foreach (CartLine cartLine in Model.Cart.Lines)
-                    {
-                        <div class="item">
-                            <div class="buttonsCart">
-                                <a class="delete-btn"></a>
-                                <!--        <span class="like-btn"></span>-->
-                            </div>
-                            <div class="image"> <img src="~/images/Каталог/@cartLine.productCart.Address" class="imageShoping-cart" width="100" height="110" alt="" /> </div>
-                            <div class="description">
-                                <span>
-                                    <a class="compItem ColourChangeModal colorGrey">Пижама FOX</a>
-                                </span>
-                            </div>
-                            <div class="quantity">
-                                <a class="minus-btn buttonStyleCart  button" href="/Cart/RemoveOneProductToCart/@cartLine.productCart.Id"><img src="~/images/Корзина/minus.svg" /></a>
-                                <input type="text" name="name" value="@cartLine.Quantity">
-                                <a class="plus-btn buttonStyleCart  button" href="/Cart/AddToCart/@cartLine.productCart.Id"><img src="~/images/Корзина/plus.svg" /></a>
-                            </div>
-                            <div class="size">
-                                <div class="PriceW">Цена</div>
-                                <div class="priceCart">@cartLine.productCart.Price руб</div>
-                            </div>
-                            <div class="size">
-                                <div class="total-priceW">Итого</div>
-                                <div class="total-price">@(cartLine.productCart.Price * cartLine.Quantity)  руб</div>
+                        <div class="cart_title">Ваша корзина</div>
+                        <div class="title">
+                            <div class="column">
+                                <div class="textColumn textColumnName"> Наименование </div>
+                                <div class="textColumn textColumnQuantity"> Количество </div>
+                                <div class="textColumn textColumnPrice"> Цена </div>
+                                <div class="textColumn textColumnAmount"> Сумма </div>
                             </div>
                         </div>
-                    }
-                    <div class="Total">
-                        <div class="box">
-
-                            <div class="ContainerTotal-total-price"> Итого к оплате: <a class="total-total-price">@Model.Cart.ComputeTotalValueWithDelivery() руб</a> </div>
-                            <div class="bottons">  <a class="btn buttonOrder OrderID" href="#">Оформить заказ</a> </div>
-                        </div>
-                        <div class="cond">
-                            <div class="cond_title"> ВОЗМОЖНЫЕ ВАРИАНТЫ ОПЛАТЫ </div>
-
-                            <div class="cond_text">
-
-
-                                <div class="deliveryСontraction"> Оплата банковской картой </div>
-
-
-                            </div>
-
-
-                            <div class="cond_text">
-                                <div class="deliveryСontraction">
-                                    <img height="27" width="200" src="~/images/Корзина/cards.jpg">
+                        @foreach (CartLine cartLine in Model.Cart.Lines)
+                        {
+                            <div class="item">
+                                <div class="buttonsCart">
+                                    <a class="delete-btn"></a>
+                                    <!--        <span class="like-btn"></span>-->
+                                </div>
+                                <div class="image"> <img src="~/images/Каталог/@cartLine.productCart.Address" class="imageShoping-cart" width="100" height="110" alt="" /> </div>
+                                <div class="description">
+                                    <span>
+                                        <a class="compItem ColourChangeModal colorGrey">@cartLine.productCart.Name   @cartLine.productCart.Size</a>
+                                    </span>
+                                </div>
+                                <div class="quantity">
+                                    <a class="minus-btn buttonStyleCart  button" href="/Cart/RemoveOneProductToCart/@cartLine.productCart.Id"><img src="~/images/Корзина/minus.svg" /></a>
+                                    <input type="text" name="name" value="@cartLine.Quantity">
+                                    <a class="plus-btn buttonStyleCart  button" href="/Cart/AddToCart/@cartLine.productCart.Id"><img src="~/images/Корзина/plus.svg" /></a>
+                                </div>
+                                <div class="size">
+                                    <div class="PriceW">Цена</div>
+                                    <div class="priceCart">@cartLine.productCart.Price руб</div>
+                                </div>
+                                <div class="size">
+                                    <div class="total-priceW">Итого</div>
+                                    <div class="total-price">@(cartLine.productCart.Price * cartLine.Quantity)  руб</div>
                                 </div>
                             </div>
-                            <div class="cond_text">
+                        }
+                        <div class="Total">
+                            <div class="box">
+
+                                <div class="ContainerTotal-total-price"> Итого к оплате: <a class="total-total-price">@Model.Cart.ComputeTotalValueWithDelivery() руб</a> </div>
+                                <div class="bottons">  <a class="btn buttonOrder OrderID" href="#">Оформить заказ</a> </div>
+                            </div>
+                            <div class="cond">
+                                <div class="cond_title"> ВОЗМОЖНЫЕ ВАРИАНТЫ ОПЛАТЫ </div>
+
+                                <div class="cond_text">
 
 
-                                <div class="deliveryСontraction"> Оплата при получении </div>
+                                    <div class="deliveryСontraction"> Оплата банковской картой </div>
+
+
+                                </div>
+
+
+                                <div class="cond_text">
+                                    <div class="deliveryСontraction">
+                                        <img height="27" width="200" src="~/images/Корзина/cards.jpg">
+                                    </div>
+                                </div>
+                                <div class="cond_text">
+
+
+                                    <div class="deliveryСontraction"> Оплата при получении </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -90,106 +92,111 @@
         }
         else
         {
-            <div class="cart">
-                <a class="popup-cart-close" href="#"> <img src="~/images/krestik.jpg" alt=""></a>
-                <div class="shopping-cart">
+            <div class="overflow2">
+                <div class="cart">
+                    <a class="popup-cart-close" href="#"> <img src="~/images/krestik.jpg" alt=""></a>
+                    <div class="shopping-cart">
 
-                    <div class="titleEmptyCart">
-                        Ваша корзина пуста
+                        <div class="titleEmptyCart">
+                            Ваша корзина пуста
+                        </div>
+
                     </div>
-
                 </div>
             </div>
         }
     </div>
-    <script>
-        $(document).ready(function ($) {
-            $('.popup-cart-close').click(function () {
-                $(this).parents('.popup-cart').fadeOut();
-                return false;
-            });
-            $(document).keydown(function (e) {
-                if (e.keyCode === 27) {
-                    e.stopPropagation();
-                    $('.popup-cart').fadeOut();
-                }
-            });
-            $('.popup-cart').click(function (e) {
-                if ($(e.target).closest('.cart').length == 0) {
-                    $(this).fadeOut();
-                }
-            });
-        });
-    </script>
-    <script type="text/javascript">
-                    $('.minus-btn').on('click', function (e) {
-                        e.preventDefault();
-                        var $this = $(this);
-                        var $input = $this.closest('div').find('input');
-                        var value = parseInt($input.val());
-                        if (value > 0) {
-                            value = value - 1;
-                            $.get(this.href, function (data) {
-                              //  $('#Cart').html(data);
-                                $.get("/Cart/GetQuantity", function (data) {
-                                    $('.countDigit').text(data);
-                                })
-                            });
-
-                        }
-                        else {
-                            value = 0;
-                        }
-
-                            $input.val(value);
-                            value = parseInt(($this.closest('div').next().children('.price')).text()) * value;
-                            ($this.closest('div').next().next().children('.total-price')).text(value + " руб"); //общий счёт для одного товара
-
-
-                            //value =
-                            value = 0;
-                            $(".total-price").each(function () {
-
-                                value += parseInt($(this).text());
-                                console.log(value);
-                        });
-                        $('.total-total-price').text(value + " руб");
+            <script>
+                $(document).ready(function ($) {
+                    $('.popup-cart-close').click(function () {
+                        $(this).parents('.popup-cart').fadeOut();
+                        document.body.style.overflow = "auto";
+                        return false;
                     });
-    </script>
-
-    <script type="text/javascript">
-                    $('.plus-btn').on('click', function (e) {
-                        e.preventDefault();
-                        var $this = $(this);
-                        var $input = $this.closest('div').find('input');
-                        var value = parseInt($input.val());
-                        if (value < 100) {
-                            value = value + 1;
-                            $.get(this.href, function (data) {
-                                //  $('#Cart').html(data);
-                                $.get("/Cart/GetQuantity/", function (data) {
-                                    console.log("cart");
-                                    $('.countDigit').text(data);
-                                })
-                            });
+                    $(document).keydown(function (e) {
+                        if (e.keyCode === 27) {
+                            e.stopPropagation();
+                            $('.popup-cart').fadeOut();
                         }
-                        else {
-                            value = 100;
+                    });
+                    $('.popup-cart').click(function (e) {
+                        if ($(e.target).closest('.cart').length == 0) {
+                            $(this).fadeOut();
                         }
-                        $input.val(value);
-                        value = parseInt(($this.closest('div').next().children('.price')).text()) * value;
-                        ($this.closest('div').next().next().children('.total-price')).text(value + " руб"); //общий счёт для одного товара
+  
+                    });
 
+                });
+            </script>
+            <script type="text/javascript">
+                $('.minus-btn').on('click', function (e) {
+                    e.preventDefault();
+                    var $this = $(this);
+                    var $input = $this.closest('div').find('input');
+                    var value = parseInt($input.val());
+                    if (value > 0) {
+                        value = value - 1;
+                        $.get(this.href, function (data) {
+                            //  $('#Cart').html(data);
+                            $.get("/Cart/GetQuantity", function (data) {
+                                $('.countDigit').text(data);
+                            })
+                        });
 
-                        //value =
+                    }
+                    else {
                         value = 0;
-                        $(".total-price").each(function () {
+                    }
 
-                            value += parseInt($(this).text());
-                            console.log(value);
-                        });
+                    $input.val(value);
+                    value = parseInt(($this.closest('div').next().children('.price')).text()) * value;
+                    ($this.closest('div').next().next().children('.total-price')).text(value + " руб"); //общий счёт для одного товара
 
-                            $('.total-total-price').text(value + " руб");
+
+                    //value =
+                    value = 0;
+                    $(".total-price").each(function () {
+
+                        value += parseInt($(this).text());
+                        console.log(value);
                     });
-    </script>
+                    $('.total-total-price').text(value + " руб");
+                });
+            </script>
+
+            <script type="text/javascript">
+                $('.plus-btn').on('click', function (e) {
+                    e.preventDefault();
+                    var $this = $(this);
+                    var $input = $this.closest('div').find('input');
+                    var value = parseInt($input.val());
+                    if (value < 100) {
+                        value = value + 1;
+                        $.get(this.href, function (data) {
+                            //  $('#Cart').html(data);
+                            $.get("/Cart/GetQuantity/", function (data) {
+                                console.log("cart");
+                                $('.countDigit').text(data);
+                            })
+                        });
+                    }
+                    else {
+                        value = 100;
+                    }
+                    $input.val(value);
+                    value = parseInt(($this.closest('div').next().children('.price')).text()) * value;
+                    ($this.closest('div').next().next().children('.total-price')).text(value + " руб"); //общий счёт для одного товара
+
+
+                    //value =
+                    value = 0;
+                    $(".total-price").each(function () {
+
+                        value += parseInt($(this).text());
+                        console.log(value);
+                    });
+
+                    $('.total-total-price').text(value + " руб");
+                });
+            </script>
 </body>

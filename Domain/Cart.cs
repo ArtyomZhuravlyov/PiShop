@@ -50,7 +50,7 @@ namespace Domain
         public void AddItem(Product product, int quantity)
         {
             CartLine line = lineCollection
-                .Where(g => g.productCart.Id == product.Id)
+                .Where(g => g.productCart.Id == product.Id && g.productCart.Size == product.Size) //исключительно для магзинов с размерами
                 .FirstOrDefault();
 
             if (line == null)
@@ -141,7 +141,8 @@ namespace Domain
                     Quantity = Line.Quantity,
                     Price = Line.productCart.Price,
                     Id = Line.productCart.Id,
-                    PictureAddress = Line.productCart.Address
+                    PictureAddress = Line.productCart.Address,
+                    Size = Line.productCart.Size
                 });
             }
             // передаем в конструктор тип класса
@@ -208,6 +209,8 @@ namespace Domain
         public int PriceTotal { get { return Quantity * Price; } }
 
         public string PictureAddress { get; set; }
+
+        public string Size { get; set; }
 
     }
 }
