@@ -59,6 +59,13 @@ namespace PiShop.Controllers
             return PartialView(product);
         }
 
+        public PartialViewResult popupBuy(int Id)
+        {
+            Product product = db.Products.FirstOrDefault(x => x.Id == Id);
+            return PartialView(product);
+        }
+        
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

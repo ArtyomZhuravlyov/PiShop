@@ -3,79 +3,193 @@
 
 <head>
     <meta name="viewport" content="width=device-width" , initial-scale=1>
-    <link rel="stylesheet" href="shopping-cart.css" />
-    <script src='https://cdnjs.cloudflare.com//ajax/libs/jquery/3.1.0/jquery.min.js'></script>
-    <link rel="stylesheet" href="Catalog.css" />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="~/css/shopping-cart.css" />
+    @*<script src='https://cdnjs.cloudflare.com//ajax/libs/jquery/3.1.0/jquery.min.js'></script>*@
+    <link rel="stylesheet" href="~/css/style.css" />
+    <meta charset="UTF-8">
+    <script src="https://yandex.st/jquery/2.1.1/jquery.min.js"></script>
 </head>
+<body >
+    <div class="popup-cart">
+        @*<form asp-controller="Cart" asp-action="ToCheck" id="popupCartForm" method="get">*@
+        @if (Model?.Cart != null && Model.Cart?.Lines?.Count() != 0)
+        {<!-- Title -->
+            <div class="cart">
+                <a class="popup-cart-close" href="#"> <img src="~/images/krestik.jpg" alt=""></a>
+                <div class="shopping-cart">
 
-<div class="shopping-cart">
+                    <div class="cart_title">Ваша корзина</div>
+                    <div class="title">
+                        <div class="column">
+                            <div class="textColumn textColumnName"> Наименование </div>
+                            <div class="textColumn textColumnQuantity"> Количество </div>
+                            <div class="textColumn textColumnPrice"> Цена </div>
+                            <div class="textColumn textColumnAmount"> Сумма </div>
+                        </div>
+                    </div>
+                    @foreach (CartLine cartLine in Model.Cart.Lines)
+                    {
+                        <div class="item">
+                            <div class="buttonsCart">
+                                <a class="delete-btn"></a>
+                                <!--        <span class="like-btn"></span>-->
+                            </div>
+                            <div class="image"> <img src="~/images/Каталог/@cartLine.productCart.Address" class="imageShoping-cart" width="100" height="110" alt="" /> </div>
+                            <div class="description">
+                                <span>
+                                    <a class="compItem ColourChangeModal colorGrey">Пижама FOX</a>
+                                </span>
+                            </div>
+                            <div class="quantity">
+                                <a class="minus-btn buttonStyleCart  button" href="/Cart/RemoveOneProductToCart/@cartLine.productCart.Id"><img src="~/images/Корзина/minus.svg" /></a>
+                                <input type="text" name="name" value="@cartLine.Quantity">
+                                <a class="plus-btn buttonStyleCart  button" href="/Cart/AddToCart/@cartLine.productCart.Id"><img src="~/images/Корзина/plus.svg" /></a>
+                            </div>
+                            <div class="size">
+                                <div class="PriceW">Цена</div>
+                                <div class="priceCart">@cartLine.productCart.Price руб</div>
+                            </div>
+                            <div class="size">
+                                <div class="total-priceW">Итого</div>
+                                <div class="total-price">@(cartLine.productCart.Price * cartLine.Quantity)  руб</div>
+                            </div>
+                        </div>
+                    }
+                    <div class="Total">
+                        <div class="box">
 
-    <div class="cart_title">Ваша корзина</div>
-    <div class="title">
-        <div class="column">
-            <div class="textColumn textColumnName"> Наименование </div>
-            <div class="textColumn textColumnQuantity"> Количество </div>
-            <div class="textColumn textColumnPrice"> Цена </div>
-            <div class="textColumn textColumnAmount"> Сумма </div>
-        </div>
-    </div>
-    @foreach (CartLine cartLine in Model.Cart.Lines)
-    {
-        <div class="item">
-            <div class="buttonsCart">
-                <a class="delete-btn"></a>
-                <!--        <span class="like-btn"></span>-->
-            </div>
-            <div class="image"> <img src="fox.png" class="imageShoping-cart" width="100" height="110" alt="" /> </div>
-            <div class="description">
-                <span>
-                    <a class="compItem ColourChangeModal colorGrey">Пижама FOX</a>
-                </span>
-            </div>
-            <div class="quantity">
-                <a class="minus-btn buttonStyleCart  button" href="/Cart/RemoveOneProductToCart/@cartLine.productCart.Id"><img src="minus.svg" /></a>
-                <input type="text" name="name" value="@cartLine.Quantity">
-                <a class="plus-btn buttonStyleCart  button" href="/Cart/AddToCart/@cartLine.productCart.Id"><img src="plus.svg" /></a>
-            </div>
-            <div>
-                <div class="PriceW">Цена</div>
-                <div class="price">20 руб</div>
-            </div>
-            <div>
-                <div class="total-priceW">Итого</div>
-                <div class="total-price">500 руб</div>
-            </div>
-        </div>
-    }
-        <div class="Total">
-            <div class="box">
+                            <div class="ContainerTotal-total-price"> Итого к оплате: <a class="total-total-price">@Model.Cart.ComputeTotalValueWithDelivery() руб</a> </div>
+                            <div class="bottons">  <a class="btn buttonOrder OrderID" href="#">Оформить заказ</a> </div>
+                        </div>
+                        <div class="cond">
+                            <div class="cond_title"> ВОЗМОЖНЫЕ ВАРИАНТЫ ОПЛАТЫ </div>
 
-                <div class="ContainerTotal-total-price"> Итого к оплате: <a class="total-total-price">10 руб</a> </div>
-                <div class="bottons">  <a class="btn buttonOrder OrderID" href="#">Оформить заказ</a> </div>
-            </div>
-            <div class="cond">
-                <div class="cond_title"> ВОЗМОЖНЫЕ ВАРИАНТЫ ОПЛАТЫ </div>
-
-                <div class="cond_text">
+                            <div class="cond_text">
 
 
-                    <div class="deliveryСontraction"> Оплата банковской картой </div>
+                                <div class="deliveryСontraction"> Оплата банковской картой </div>
 
 
-                </div>
+                            </div>
 
 
-                <div class="cond_text">
-                    <div class="deliveryСontraction">
-                        <img height="27" width="200" src="cards.jpg">
+                            <div class="cond_text">
+                                <div class="deliveryСontraction">
+                                    <img height="27" width="200" src="~/images/Корзина/cards.jpg">
+                                </div>
+                            </div>
+                            <div class="cond_text">
+
+
+                                <div class="deliveryСontraction"> Оплата при получении </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="cond_text">
+            </div>
+        }
+        else
+        {
+            <div class="cart">
+                <a class="popup-cart-close" href="#"> <img src="~/images/krestik.jpg" alt=""></a>
+                <div class="shopping-cart">
 
+                    <div class="titleEmptyCart">
+                        Ваша корзина пуста
+                    </div>
 
-                    <div class="deliveryСontraction"> Оплата при получении </div>
                 </div>
             </div>
-        </div>
+        }
     </div>
+    <script>
+        $(document).ready(function ($) {
+            $('.popup-cart-close').click(function () {
+                $(this).parents('.popup-cart').fadeOut();
+                return false;
+            });
+            $(document).keydown(function (e) {
+                if (e.keyCode === 27) {
+                    e.stopPropagation();
+                    $('.popup-cart').fadeOut();
+                }
+            });
+            $('.popup-cart').click(function (e) {
+                if ($(e.target).closest('.cart').length == 0) {
+                    $(this).fadeOut();
+                }
+            });
+        });
+    </script>
+    <script type="text/javascript">
+                    $('.minus-btn').on('click', function (e) {
+                        e.preventDefault();
+                        var $this = $(this);
+                        var $input = $this.closest('div').find('input');
+                        var value = parseInt($input.val());
+                        if (value > 0) {
+                            value = value - 1;
+                            $.get(this.href, function (data) {
+                              //  $('#Cart').html(data);
+                                $.get("/Cart/GetQuantity", function (data) {
+                                    $('.countDigit').text(data);
+                                })
+                            });
+
+                        }
+                        else {
+                            value = 0;
+                        }
+
+                            $input.val(value);
+                            value = parseInt(($this.closest('div').next().children('.price')).text()) * value;
+                            ($this.closest('div').next().next().children('.total-price')).text(value + " руб"); //общий счёт для одного товара
+
+
+                            //value =
+                            value = 0;
+                            $(".total-price").each(function () {
+
+                                value += parseInt($(this).text());
+                                console.log(value);
+                        });
+                        $('.total-total-price').text(value + " руб");
+                    });
+    </script>
+
+    <script type="text/javascript">
+                    $('.plus-btn').on('click', function (e) {
+                        e.preventDefault();
+                        var $this = $(this);
+                        var $input = $this.closest('div').find('input');
+                        var value = parseInt($input.val());
+                        if (value < 100) {
+                            value = value + 1;
+                            $.get(this.href, function (data) {
+                                //  $('#Cart').html(data);
+                                $.get("/Cart/GetQuantity/", function (data) {
+                                    console.log("cart");
+                                    $('.countDigit').text(data);
+                                })
+                            });
+                        }
+                        else {
+                            value = 100;
+                        }
+                        $input.val(value);
+                        value = parseInt(($this.closest('div').next().children('.price')).text()) * value;
+                        ($this.closest('div').next().next().children('.total-price')).text(value + " руб"); //общий счёт для одного товара
+
+
+                        //value =
+                        value = 0;
+                        $(".total-price").each(function () {
+
+                            value += parseInt($(this).text());
+                            console.log(value);
+                        });
+
+                            $('.total-total-price').text(value + " руб");
+                    });
+    </script>
+</body>

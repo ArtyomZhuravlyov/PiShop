@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Domain;
 using Microsoft.AspNetCore.Http;
@@ -38,7 +40,7 @@ namespace PiShop.Controllers
             //{
             Product product = db.Products
              .FirstOrDefault(g => g.Id == id);
-       //     product.Size = size;
+            product.Size = size;
             Cart cart = GetCart();
             cart.AddItem(product, 1);
             HttpContext.Session.SetString("Cart", JsonConvert.SerializeObject(cart));
@@ -73,7 +75,7 @@ namespace PiShop.Controllers
         /// <param name="id"></param>
         /// <param name="l"></param>
         /// <returns></returns>
-        public RedirectToActionResult RemoveOneProductToCart(int id, int l = 50)
+        public void RemoveOneProductToCart(int id, int l = 50)
         {
             // Product product = (Product)db.Products.FirstOrDefault(x => x.Id == id);
             //if (id > 0)
@@ -85,14 +87,6 @@ namespace PiShop.Controllers
             cart.RemoveItem(product, 1);
             HttpContext.Session.SetString("Cart", JsonConvert.SerializeObject(cart));
             cart = GetCart();
-
-            return RedirectToAction("Summary", "Cart");
-            //}
-            //else //если отрицательное значение (-1), то нужно просто получить Корзину
-            //{
-            //    Cart cart = GetCart();
-            //    return Redirect("/Home/AddToCart/-1");
-            //}
         }
 
         /// <summary>
@@ -174,23 +168,25 @@ namespace PiShop.Controllers
         [HttpPost]
         public ActionResult Checkout(ShippingDetails shippingDetails)
         {
-            if (ModelState.IsValid && shippingDetails.UserAccess)
+            if (!IsValidEmail(shippingDetails.Mail))
+                ModelState.AddModelError("Mail", "почта указана некорректно "); ;
+
+            if (ModelState.IsValid && shippingDetails.UserAccess && CheckPhone(shippingDetails.Phone))
             {
 
                 string value = HttpContext.Session.GetString("Cart");
                 Cart cart = JsonConvert.DeserializeObject<Cart>(value);
-                try
-                {
                     var order = CreateAndFillOrder(shippingDetails, cart); //добавляем в базу заказ
                     Sberbank sberbank = new Sberbank((order.Id).ToString() + "test", cart, shippingDetails);
                     string url = sberbank.GetResponseSoap();
-                    return Redirect(url);
-                }
-                catch (Exception ex)
-                {
-                    //to do
-                    return Redirect("");
-                }
+                    if (!string.IsNullOrEmpty(url))
+                        return Redirect(url);
+                    else
+                    {
+                        ModelState.AddModelError("Mail", "Проверьте правильность введённых данных");
+                        return View(shippingDetails);
+                    }
+
             }
             else
             {
@@ -202,7 +198,77 @@ namespace PiShop.Controllers
 
         }
 
+        private bool CheckPhone(string Phone)
+        {
+            if (Phone.Length != 11 || !long.TryParse(Phone, out long empty))
+            {
+                ModelState.AddModelError("Phone", "Неверный формат номера телефона");
+                return false;
+            }
+            return true;
+
+        }
+
+        public static bool IsValidEmail(string email)
+        {
+            if (string.IsNullOrWhiteSpace(email))
+                return false;
+
+            try
+            {
+                // Normalize the domain
+                email = Regex.Replace(email, @"(@)(.+)$", DomainMapper,
+                                      RegexOptions.None, TimeSpan.FromMilliseconds(200));
+
+                // Examines the domain part of the email and normalizes it.
+                string DomainMapper(Match match)
+                {
+                    // Use IdnMapping class to convert Unicode domain names.
+                    var idn = new IdnMapping();
+
+                    // Pull out and process domain name (throws ArgumentException on invalid)
+                    var domainName = idn.GetAscii(match.Groups[2].Value);
+
+                    return match.Groups[1].Value + domainName;
+                }
+            }
+            catch (RegexMatchTimeoutException e)
+            {
+                return false;
+            }
+            catch (ArgumentException e)
+            {
+                return false;
+            }
+
+            try
+            {
+                return Regex.IsMatch(email,
+                    @"^(?("")("".+?(?<!\\)""@)|(([0-9a-z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-z])@))" +
+                    @"(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-z][-0-9a-z]*[0-9a-z]*\.)+[a-z0-9][\-a-z0-9]{0,22}[a-z0-9]))$",
+                    RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250));
+            }
+            catch (RegexMatchTimeoutException)
+            {
+                return false;
+            }
+        }
+
         public PartialViewResult/*PartialViewResult*/ Cart()
+        {
+
+            string value = HttpContext.Session.GetString("Cart");
+            if (!string.IsNullOrEmpty(value))
+            {
+                Cart cart = JsonConvert.DeserializeObject<Cart>(value);
+                if(cart?.Lines?.Count()>0)
+                    return PartialView(new CartIndexViewModel { Cart = cart });
+                else return PartialView(null);
+            }
+            else return PartialView(null);
+        }
+
+        public PartialViewResult Summary()
         {
 
             string value = HttpContext.Session.GetString("Cart");
@@ -213,20 +279,6 @@ namespace PiShop.Controllers
 
             }
             else return PartialView(null);
-        }
-
-        public ViewResult/*PartialViewResult*/ Summary(string returnUrl = "")
-        {
-
-            string value = HttpContext.Session.GetString("Cart");
-            if (!string.IsNullOrEmpty(value))
-            {
-                Cart cart = JsonConvert.DeserializeObject<Cart>(value);
-                returnUrl = HttpContext.Session.GetString("ReturnUrl");
-                 return View(new CartIndexViewModel { Cart = cart, ReturnUrl = returnUrl, });
-                
-            }
-            else return View(null);
         }
 
         public Order CreateAndFillOrder(ShippingDetails shippingDetails, Cart cart)

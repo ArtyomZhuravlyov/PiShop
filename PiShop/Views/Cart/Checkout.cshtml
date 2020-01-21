@@ -30,6 +30,10 @@
                     case "UserAccess":
                     case null:
                         continue;
+                        case "Телефон":
+                <label><span style="color:red">*</span> @(property.DisplayName ?? property.PropertyName)</label>
+                <input placeholder="89504445566" class="form-control MyForm-control"  type="text" data-val="true" data-val-required="Укажите телефон"  id="Phone" name="Phone">
+                break;
                     case "TypePay":
                         continue;
                     default:

@@ -13,14 +13,14 @@
 </header>
 <body>
     <div class="popup-fade">
-        <form asp-controller="Cart" asp-action="AddToCart" id="popupFadeForm" method="post">
+        <form asp-controller="Cart" asp-action="AddToCart" id="popupFadeForm" method="get">
 
             <div class="popup">
                 <a class="popup-close" href="#"> <img src="~/images/krestik.jpg" alt=""></a>
                 <div class="item_pizham">
                     <div class="theFirstBlock">
                         <div class="picture"><img class="block" src="~/images/Каталог/@Model.Address" alt=""></div>
-                        <div class="price">2000₽</div>
+                        <div class="price" style="width:initial;">2000₽</div>
                         <div class="animate">
                             <button class="btn btn-add addToCart" type="submit">ДОБАВИТЬ В КОРЗИНУ</button>
                             @*<a class="btn btn-add addToCart" type="submit">ДОБАВИТЬ В КОРЗИНУ</a>*@
@@ -39,16 +39,17 @@
                                 <div class="info_text_text">Размерная сетка </div>
                             </div>
                             <div class="info_table"><img src="~/images/pazmer.PNG" alt=""></div>
+                            <div class="chooseSize">Выберите размер</div>
                             <input type="number" name="Id" value="@Model.Id" style="display:none">
                             <div class="radio">
                                 <label>
-                                    <input type="radio" name="size" value="s-sx"> <span>S-SX</span>
+                                    <input class="radioFade" type="radio" name="size" value="s-sx"> <span>S-SX</span>
                                 </label>
                                 <label>
-                                    <input type="radio" name="size" value="m-l"><span>M-L</span>
+                                    <input class="radioFade" type="radio" name="size" value="m-l"><span>M-L</span>
                                 </label>
                                 <label>
-                                    <input type="radio" name="size" value="xl"><span>XL</span>
+                                    <input class="radioFade" type="radio" name="size" value="xl"><span>XL</span>
                                 </label>
                             </div>
 
@@ -58,7 +59,7 @@
             </div>
         </form>
     </div>
-  
+
     <script>
         $(document).ready(function ($) {
             $('.popup-close').click(function () {
@@ -79,69 +80,46 @@
         });
     </script>
     <script>
-        //$('.btn-add').on('click', function (e) {
         $("#popupFadeForm").submit(function (e) {
             e.preventDefault();
-            var url = "/Cart/AddToCart/";
-            
+
+            flag = 0;
+            $('input[type=radio]').each(function () {
+                if ($(this).prop('checked') && $(this).hasClass("radioFade")) {
+                    flag = 1;
+                }
+            });
+            if (flag == 1) {
+                var url = "/Cart/AddToCart/";
+
                 $.ajax({
                     type: "GET",
                     url: url,
                     data: $("#popupFadeForm").serialize(),
                 });
 
-            //    e.preventDefault();
-            //});
-            // $(this).next().addClass("DisplayShow");//показываем кнопку перейти в корзину
-            //$.get(this.href, function () {//увеличиваем число товаров
-            //    console.log(document.querySelector('.radio').value);
-            //    console.log(this.href + "?size=" + "s");
-            //    $.get((this.href + "?size=" + "s"), function () {
-            //    })
-            //});
-
-            //var that = $(".btn-add").closest('.animate').find('img');
-            //var bascket = $(".korzina");
-            //var w = that.width();
-            //that.clone().css({
-            //    'width': w
-            //    , 'position': 'absolute'
-            //    , 'z-index': '9999'
-            //    , top: that.offset().top
-            //    , left: that.offset().left
-            //}).appendTo("body").animate({
-            //    opacity: 0.1
-            //    , left: bascket.offset()['left']
-            //    , top: bascket.offset()['top']
-            //    , width: 20
-            //}, 1500, function () {
-            //    $(".btn-add").remove();
-            //});
-            var that = $(".btn-add").closest('.animate').find('img');
-            var bascket = $(".korzina");
-            var w = that.width();
-            that.clone().css({
-                'width': w
-                , 'position': 'absolute'
-                , 'z-index': '9999'
-                , top: that.offset().top
-                , left: that.offset().left
-            }).appendTo("body").animate({
-                opacity: 0.1
-                , left: bascket.offset()['left']
-                , top: bascket.offset()['top']
-                , width: 20
-            }, 1500, function () {
-                $(this).remove();
-            });
-
+                var that = $(".btn-add").closest('.animate').find('img');
+                var bascket = $(".korzina");
+                var w = that.width();
+                that.clone().css({
+                    'width': w
+                    , 'position': 'absolute'
+                    , 'z-index': '9999'
+                    , top: that.offset().top
+                    , left: that.offset().left
+                }).appendTo("body").animate({
+                    opacity: 0.1
+                    , left: bascket.offset()['left']
+                    , top: bascket.offset()['top']
+                    , width: 20
+                }, 1500, function () {
+                    $(this).remove();
+                });
+            }//if
+            else {
+                $(".chooseSize").addClass("textRed");
+            }
         });
-    </script>
-    @*<script>
-        document.querySelector('.radio').onclick = function (e) {
-            console.log(e.target.value);
-            alert(e.target.value);
-        }
-    </script>*@
 
+    </script>
 </body>
