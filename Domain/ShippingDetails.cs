@@ -45,9 +45,9 @@ namespace Domain
         public string Delivery { get; set; }
 
         //пока без enum
-        [Required(ErrorMessage = "Выберите вид оплаты")]
-        [Display(Name = "Вид оплаты")]
-        public string TypePay { get; set; }
+       // [Required(ErrorMessage = "Выберите вид оплаты")]
+       // [Display(Name = "Вид оплаты")]
+        public bool TypePay { get; set; } = false;
 
         [Required(ErrorMessage = "Примите пользовательское соглашение")]
         public bool UserAccess { get; set; } = true;

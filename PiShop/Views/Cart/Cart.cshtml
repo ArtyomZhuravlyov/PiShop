@@ -60,7 +60,7 @@
                             <div class="box">
 
                                 <div class="ContainerTotal-total-price"> Итого к оплате: <a class="total-total-price">@Model.Cart.ComputeTotalValueWithDelivery() руб</a> </div>
-                                <div class="bottons">  <a class="btn buttonOrder OrderID" href="#">Оформить заказ</a> </div>
+                                <div class="bottons">  <a class="btn buttonOrder OrderID" href="/Cart/Checkout/">Оформить заказ</a> </div>
                             </div>
                             <div class="cond">
                                 <div class="cond_title"> ВОЗМОЖНЫЕ ВАРИАНТЫ ОПЛАТЫ </div>
@@ -149,7 +149,7 @@
                     }
 
                     $input.val(value);
-                    value = parseInt(($this.closest('div').next().children('.price')).text()) * value;
+                    value = parseInt(($this.closest('div').next().children('.priceCart')).text()) * value;
                     ($this.closest('div').next().next().children('.total-price')).text(value + " руб"); //общий счёт для одного товара
 
 
@@ -184,7 +184,7 @@
                         value = 100;
                     }
                     $input.val(value);
-                    value = parseInt(($this.closest('div').next().children('.price')).text()) * value;
+                    value = parseInt(($this.closest('div').next().children('.priceCart')).text()) * value;
                     ($this.closest('div').next().next().children('.total-price')).text(value + " руб"); //общий счёт для одного товара
 
 

@@ -39,6 +39,7 @@
                     <div class="price" style="width:initial;">2000₽</div>
                     <div class="animate">
                         <button class="btn btn-add btn-add-buy addToCart btn-add2" type="submit">ДОБАВИТЬ В КОРЗИНУ</button>
+                        <a class="btn btn-add btn-add-buy goToCart popup-cart-open" href="/Cart/Cart">ПЕРЕЙТИ В КОРЗИНУ</a>
                         <div class="paket"><img src="~/images/Корзина/paket.png" alt=""></div>
                     </div>
                 </div>
@@ -105,6 +106,36 @@
                 }
             });
 
+        </script>
+        <script>
+            $(document).ready(function ($) {
+                $('.popup-cart-open').click(function (e) {
+                    e.preventDefault();
+                    $.get(this.href, function (data) {
+                        $('#dialogContentpopupCart').html(data);
+                        $('.popup-cart').fadeIn();
+                        $('.popup-buy').fadeOut();
+                    });
+                    //document.body.style.overflow = "hidden";
+                    return false;
+                });
+                $('.popup-cart-close').click(function () {
+                    $(this).parents('.popup-cart').fadeOut();
+                    document.body.style.overflow = "auto";
+                    return false;
+                });
+                $(document).keydown(function (e) {
+                    if (e.keyCode === 27) {
+                        e.stopPropagation();
+                        $('.popup-cart').fadeOut();
+                    }
+                });
+                $('.popup-cart').click(function (e) {
+                    if ($(e.target).closest('.cart').length == 0) {
+                        $(this).fadeOut();
+                    }
+                });
+            });
         </script>
     </div>
 </body>

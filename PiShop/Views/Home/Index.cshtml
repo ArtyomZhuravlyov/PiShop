@@ -18,93 +18,8 @@
 </head>
 
 <body>
-    <header class="header" id="header">
-        <div class="container">
-            <div class="header_inner">
-                <div class="header_logo">FOX</div>
-                <nav class="nav" id="nav"> <a class="nav_link" href="#" data-scroll="#hits">ХИТЫ</a> <a class="nav_link" href="#" data-scroll="#feauters">ПРЕИМУЩЕСТВА</a> <a class="nav_link" href="#" data-scroll="#catalog">НАШИ ТОВАРЫ</a> <a class="nav_link" href="#" data-scroll="#delivery">ДОСТАВКА</a> <a class="nav_link" href="#" data-scroll="#contacts">КОНТАКТЫ</a> </nav>
-                <button class="burger" type="button" id="navToggle"> <span class="burger_item">menu</span> </button>
-                <a class="popup-cart-open" href="/Cart/Cart" ><img class="korzina"  src="~/images/Корзина/korzina.jpg" alt=""></a>
+    
 
-                @*модальные окна*@
-                <div id="dialogContentpopupFade" class="modal-dialog"></div>
-                <div id="dialogContentpopupBuy" class="modal-dialog"></div>
-                <div id="dialogContentpopupCart" class="modal-dialog"></div>
-                @*<div class="popup-fade">
-            <div class="popup">
-                <a class="popup-close" href="#"> <img src="~/images/krestik.jpg" alt=""></a>
-                <div class="item_pizham">
-                    <div class="theFirstBlock">
-                        <div class="picture"><img class="block" src="~/images/Каталог/marvel.png" alt=""></div>
-                        <div class="price">2000₽</div>
-                        <div class="animate">
-                            <a class="btn btn-add" href="#">ДОБАВИТЬ В КОРЗИНУ</a>
-                            <div class="paket"><img src="~/images/Корзина/paket.png" alt=""></div>
-                        </div>
-                    </div>
-                    <div class="info">
-                        <div class="info_title">Пижама MARVEL</div>
-                        <div class="info-text">
-                            <div class="info_text_item">
-                                <img class="pointer" src="~/images/point.png" alt="">
-                                <div class="info_text_text">Материал: 40% шелк, 58% полиэстер, 2% лайкра </div>
-                            </div>
-                            <div class="info_text_item">
-                                <img class="pointer" src="~/images/point.png" alt="">
-                                <div class="info_text_text">Размерная сетка </div>
-                            </div>
-                            <div class="info_table"><img src="~/images/pazmer.PNG" alt=""></div>
-                            <div class="radio">
-                                <label>
-                                    <input type="radio" name="size" value="s-sx"> <span>S-SX</span>
-                                </label>
-                                <label>
-                                    <input type="radio" name="size" value="m-l"><span>M-L</span>
-                                </label>
-                                <label>
-                                    <input type="radio" name="size" value="xl"><span>XL</span>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>*@
-                @*<div class="popup-buy">
-            <div class="buy">
-                <a class="popup-buy-close" href="#"> <img src="~/images/krestik.jpg" alt=""></a>
-                <div class="item_pizham_buy">
-                    <div class="info_buy">
-                        <div class="info_title">Пижама MARVEL</div>
-                        <div class="info-text">
-                            <div class="info_text_item">
-                                <div class="info_text_text">Выберите размер </div>
-                            </div>
-                            <div class="info_table"><img src="~/images/pazmer.PNG" alt=""></div>
-                            <div class="radio">
-                                <label>
-                                    <input type="radio" name="size" value="s-sx"> <span>S-SX</span>
-                                </label>
-                                <label>
-                                    <input type="radio" name="size" value="m-l"><span>M-L</span>
-                                </label>
-                                <label>
-                                    <input type="radio" name="size" value="xl"><span>XL</span>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="price">2000₽</div>
-                    <div class="animate">
-                        <a class="btn btn-add btn-add-buy" href="#">ДОБАВИТЬ В КОРЗИНУ</a>
-                        <div class="paket"><img src="~/images/Корзина/paket.png" alt=""></div>
-                    </div>
-                </div>
-            </div>
-        </div>*@
-            </div>
-        </div>
-    </header>
     <div class="intro" id="intro">
         <div class="container">
             <div class="intro_inner">
@@ -345,8 +260,8 @@
                     $('#dialogContentpopupCart').html(data);
                     $('.popup-cart').fadeIn();
                 });
-                document.body.style.overflow = "hidden";
-                
+                //document.body.style.overflow = "hidden";
+
 
                 return false;
             });

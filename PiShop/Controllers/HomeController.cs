@@ -25,7 +25,7 @@ namespace PiShop.Controllers
             List<Product> Hits = db.GetFavoutiteProducts();
             IndexViewModal indexViewModal = new IndexViewModal()
             {
-                Products = db.Products,
+                Products = db.Products.Take(9),
                 HitsProducts = Hits
             };
             return View(indexViewModal);

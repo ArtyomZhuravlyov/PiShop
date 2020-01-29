@@ -57,7 +57,7 @@ h6 {
     color: #fff;
     font-size: 30px;
     font-weight: 700;
-    width: 35%;
+   
 }
 
 .korzina{
@@ -200,6 +200,8 @@ h6 {
 /*НАВИГАЦИЯ*/
 
 .nav {
+    margin-right: 0;
+    margin-left: auto;
     font-size: 14px;
     text-transform: uppercase;
 }
@@ -474,12 +476,13 @@ h6 {
     font-size: 19px;
     font-weight: 700;
 }
-.btn-add{
+.btn-add {
     padding: 8px 25px;
-   text-align: center;
+    text-align: center;
     background-color: #5b2d5e;
     margin: 0;
     width: 100%;
+    border-color: #5b2d5e;
 }
 
     .btn-add:focus {
@@ -491,7 +494,22 @@ h6 {
     margin: 0 20%;
 }
 
-.animate{
+.goToCart {
+    background-color: #a282a4;
+    color: white;
+    border: 3px solid #a282a4;
+    margin-top: 7px;
+    line-height:1;
+}
+
+    .goToCart:hover {
+        background-color: white;
+        color: #5b2d5e;
+        border: 3px solid #5b2d5e !important;
+        margin-top: 7px;
+    }
+
+.animate {
     position: relative;
 }
 .paket{
@@ -507,8 +525,9 @@ h6 {
     width: 50px;
     height: auto;
 }
-.btn-add:hover{
+.btn-add:hover {
     border: 3px solid #5b2d5e;
+    color: #5b2d5e;
 }
 .info{
     width: 70%;
@@ -663,7 +682,7 @@ color:red;
     
 
 .delivery_text{
-    text-align: center;
+    
     padding-left: 15px;
     padding-top: 15px;
     
@@ -812,6 +831,8 @@ color:red;
         margin-bottom: 20px;
     }
     .burger {
+        margin-right: 0;
+        margin-left: auto;
         display: block;
     }
     .nav {

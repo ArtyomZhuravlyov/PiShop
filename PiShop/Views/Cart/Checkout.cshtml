@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Форма заказа";
+    Layout = "~/Views/Shared/_CheckLayout.cshtml";
 }
 
 <head>
@@ -9,6 +10,7 @@
     <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
     <link href="~/css/ErrorStyles.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/css/shopping-cart.css" />
+    <link rel="stylesheet" href="~/css/FormContactDate.css" />
 </head>
 
 @using (Html.BeginForm())
@@ -28,14 +30,14 @@
                         break;
                     case "Доставка":
                     case "UserAccess":
+                    case "TypePay":
                     case null:
                         continue;
-                        case "Телефон":
+                    case "Телефон":
                 <label><span style="color:red">*</span> @(property.DisplayName ?? property.PropertyName)</label>
                 <input placeholder="89504445566" class="form-control MyForm-control"  type="text" data-val="true" data-val-required="Укажите телефон"  id="Phone" name="Phone">
                 break;
-                    case "TypePay":
-                        continue;
+                    
                     default:
                         <label><span style="color:red">*</span> @(property.DisplayName ?? property.PropertyName)</label>
                         @Html.TextBox(property.PropertyName, null, new { @class = "form-control MyForm-control" })
@@ -44,15 +46,21 @@
             </div>
 
         }
-        <div class="form-group">
-            <div class="checkbox">
-                <label>
-                    @Html.EditorFor(x => x.UserAccess)
-                    <a class="OrangeColorText" target="_blank" href="~/images/Соглашение.pdf">Подтверждаю согласие на обработку своих персональных данных</a>  @*<embed src="ссылка файла pdf" width="ширина в пикселях" height="высота в пикселях" />*@
-                </label>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        @Html.EditorFor(x => x.UserAccess)
+                        <a class="OrangeColorText" target="_blank" href="~/images/Соглашение.pdf">Подтверждаю согласие на обработку своих персональных данных</a>  @*<embed src="ссылка файла pdf" width="ширина в пикселях" height="высота в пикселях" />*@
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        @Html.EditorFor(x => x.TypePay)
+                        <a class="OrangeColorText">Доставка курьером по Москве или Питеру +350 руб</a>  @*<embed src="ссылка файла pdf" width="ширина в пикселях" height="высота в пикселях" />*@
+                    </label>
+                </div>
+                
             </div>
-
-        </div>
 
         <div class="text-center">
             <input class="btn buttonOrder outline" type="submit" value="Обработать заказ" />
