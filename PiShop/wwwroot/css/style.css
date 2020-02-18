@@ -225,7 +225,7 @@ h6 {
     justify-content: center;
     width: 100%;
     height: 100vh;
-    background: url("../images/Pizhamy.png") center no-repeat;
+    background: #582b5c url("../images/Pizhamy.png") center no-repeat;
     background-size: cover;
     -webkit-background-size: cover;
 }
@@ -793,6 +793,10 @@ color:red;
     bottom: -8px;
 }
 
+.displayNone{
+    display:none;
+}
+
 @media (max-width: 990px) {
     .nav {
         font-size: 12px;
@@ -809,7 +813,7 @@ color:red;
 @media (max-width: 770px) {
 
     .intro {
-        background: url("../images/back.png") center no-repeat;
+        background: #582b5c url("../images/back.png") center no-repeat;
         background-size: cover;
         position: relative;
     }

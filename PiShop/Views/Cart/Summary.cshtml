@@ -44,7 +44,7 @@
                 <div class="item">
                     <div class="buttonsCart">
                         @Html.ActionLink("", "RemoveLine", "Cart",
-      new { id = cartLine.productCart.Id, returnUrl = Model.ReturnUrl }, new { @class = "delete-btn" } )
+      new { id = cartLine.productCart.Id, returnUrl = cartLine.productCart.Size }, new { @class = "delete-btn" } )
                         @*<a class="" href="/Cart/RemoveLine/@cartLine.productCart.Id?=@Model.ReturnUrl"></a>*@ @*href="/Home/RemoveLine/@cartLine.productCart.Id"*@
                         <span class="like-btn"></span>
                     </div>
@@ -63,9 +63,9 @@
                     </div>
 
                     <div class="quantity">
-                        <a class="minus-btn buttonStyleCart btn button" href="/Cart/RemoveOneProductToCart/@cartLine.productCart.Id"><img src="~/images/minus.svg" /></a>
+                        <a class="minus-btn buttonStyleCart btn button" href="/Cart/RemoveOneProductToCart?id=@cartLine.productCart.Id&size=@cartLine.productCart.Size "><img src="~/images/minus.svg" /></a>
                         <input type="text" name="name" value="@cartLine.Quantity">
-                        <a class="plus-btn buttonStyleCart btn button" href="/Cart/AddToCart/@cartLine.productCart.Id"><img src="~/images/plus.svg" /></a>
+                        <a class="plus-btn buttonStyleCart btn button" href="/Cart/AddToCart?id=@cartLine.productCart.Id&size=@cartLine.productCart.Size"><img src="~/images/plus.svg" /></a>
                     </div>
                     <div>
                         <div class="PriceW">Цена</div>

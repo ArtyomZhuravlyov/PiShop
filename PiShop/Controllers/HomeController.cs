@@ -31,6 +31,12 @@ namespace PiShop.Controllers
             return View(indexViewModal);
         }
 
+        public ActionResult CatalogMore()
+        {
+            var Products = db.Products.Skip(9);
+            return View(Products);
+        }
+
         public ActionResult Details(int id, string returnUrl = null)
         {
             Product product = db.Products.FirstOrDefault(x => x.Id == id);

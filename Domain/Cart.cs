@@ -75,7 +75,7 @@ namespace Domain
         public void RemoveItem(Product product, int quantity)
         {
             CartLine line = lineCollection
-                .Where(g => g.productCart.Id == product.Id)
+                .Where(g => g.productCart.Id == product.Id && g.productCart.Size == product.Size)
                 .FirstOrDefault();
 
             if (line != null)
@@ -95,7 +95,7 @@ namespace Domain
         /// <param name="product"></param>
         public void RemoveLine(Product product)
         {
-            lineCollection.RemoveAll(l => l.productCart.Id == product.Id);
+            lineCollection.RemoveAll(l => l.productCart.Id == product.Id && l.productCart.Size == product.Size);
         }
 
         public decimal ComputeTotalValue()

@@ -1,0 +1,80 @@
+﻿@model IEnumerable<Domain.Product>
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <script src="https://yandex.st/jquery/2.1.1/jquery.min.js"></script>
+</head>
+<body>
+    <div class="hits_items">
+        @foreach (var product in Model)
+        {
+            <div class="hits_item">
+                <div class="hits_pic">
+                    <img class="hits_img" src="~/images/Каталог/@product.Address" alt="">
+                    <div class="buttons"> <a class="btn btn-hit popup-open" href="/Home/popupFade/@product.Id">УЗНАТЬ ПОДРОБНЕЕ</a> <a class="btn btn-hit popup-buy-open" href="/Home/popupBuy/@product.Id">КУПИТЬ</a> </div>
+                    @if (product.Favourite)
+                    {<div class="hit_word">ХИТ</div>}
+                </div>
+                <div class="hits_title">
+                    <a class=" popup-open" style="text-decoration:none; color: black;" href="/Home/popupFade/@product.Id">@product.Name</a>
+                </div>
+            </div>
+        }
+    </div>
+    <script>
+        $(document).ready(function ($) {
+            $('.popup-open').click(function (e) {
+                e.preventDefault();
+                $.get(this.href, function (data) {
+                    $('#dialogContentpopupFade').html(data);
+                    $('.popup-fade').fadeIn();
+                });
+
+                return false;
+            });
+            $('.popup-close').click(function () {
+                $(this).parents('.popup-fade').fadeOut();
+                return false;
+            });
+            $(document).keydown(function (e) {
+                if (e.keyCode === 27) {
+                    e.stopPropagation();
+                    $('.popup-fade').fadeOut();
+                }
+            });
+            $('.popup-fade').click(function (e) {
+                if ($(e.target).closest('.popup').length == 0) {
+                    $(this).fadeOut();
+                }
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function ($) {
+            $('.popup-buy-open').click(function (e) {
+                e.preventDefault();
+                $.get(this.href, function (data) {
+                    $('#dialogContentpopupBuy').html(data);
+                    $('.popup-buy').fadeIn();
+                });
+
+                return false;
+            });
+            $('.popup-buy-close').click(function () {
+                $(this).parents('.popup-buy').fadeOut();
+                return false;
+            });
+            $(document).keydown(function (e) {
+                if (e.keyCode === 27) {
+                    e.stopPropagation();
+                    $('.popup-buy').fadeOut();
+                }
+            });
+            $('.popup-buy').click(function (e) {
+                if ($(e.target).closest('.buy').length == 0) {
+                    $(this).fadeOut();
+                }
+            });
+        });
+    </script>
+</body>

@@ -15,10 +15,11 @@
     <link rel="stylesheet" type="text/css" href="~/js/slick-1.8.1/slick/slick-theme.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <title>Пижама</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 </head>
 
 <body>
-    
+
 
     <div class="intro" id="intro">
         <div class="container">
@@ -108,9 +109,27 @@
                         </div>
                     }
                 </div>
+                <div id="ContentShow_more"></div>
             </div>
-        </div>
+            </div>
     </div>
+    <div>
+        <div id="contentMore"></div>
+         <div style="width: 210px; margin: 0 auto; margin-top: 60px;">
+        <input id="show_more" count_show="5" count_add="3" class="btn btn-add " style="width: 210px; margin: 0 auto;" type="button" value="Показать еще" />
+         </div>
+    </div>
+    <script>
+        $(document).ready(function ($) {
+            $('#show_more').click(function () {
+                    $(this).addClass('displayNone');
+                    $.get("/Home/CatalogMore/", function (data) {
+                        $('#ContentShow_more').append(data);
+                });
+            });
+        });
+    </script>
+  
     <div class="delivery" id="delivery">
         <div class="container">
             <div class="delivery_inner">

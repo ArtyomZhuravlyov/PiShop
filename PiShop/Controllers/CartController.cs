@@ -75,14 +75,14 @@ namespace PiShop.Controllers
         /// <param name="id"></param>
         /// <param name="l"></param>
         /// <returns></returns>
-        public void RemoveOneProductToCart(int id, int l = 50)
+        public void RemoveOneProductToCart(int id, string size, int l = 50)
         {
             // Product product = (Product)db.Products.FirstOrDefault(x => x.Id == id);
             //if (id > 0)
             //{
             Product product = db.Products
              .FirstOrDefault(g => g.Id == id);
-
+            product.Size = size;
             Cart cart = GetCart();
             cart.RemoveItem(product, 1);
             HttpContext.Session.SetString("Cart", JsonConvert.SerializeObject(cart));
@@ -95,19 +95,19 @@ namespace PiShop.Controllers
         /// <param name="id"></param>
         /// <param name="returnUrl"></param>
         /// <returns></returns>
-        public RedirectToActionResult RemoveLine(int id, string returnUrl = "")
+        public RedirectToActionResult RemoveLine(int id,  string size)
         {
 
             Product product = db.Products
                 .FirstOrDefault(g => g.Id == id);
-
+            product.Size = size;
             Cart cart = GetCart();
             cart.RemoveLine(product);
             HttpContext.Session.SetString("Cart", JsonConvert.SerializeObject(cart));
             cart = GetCart();
 
             //  return Redirect($"/Cart/Summary/{returnUrl}/");
-            return RedirectToAction("Summary", "Cart", new { returnUrl });
+            return RedirectToAction("Summary", "Cart");
         }
 
         public RedirectToActionResult RemoveFromCart(int productId, string returnUrl)
