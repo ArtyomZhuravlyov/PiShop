@@ -199,7 +199,24 @@
             var $this = $(this);
             var $item = $this.closest('div').closest('.item').addClass("displayNone");
             $.get(this.href);
+
+
+            var value = parseInt(($this.closest('div').next().next().next().next().next().children('.total-price').text())); //5
+            var MainPrice = parseInt($('.total-total-price').text());
+            var nextMainPrice = MainPrice - value;
+            $('.total-total-price').text(nextMainPrice + " руб");
         });
     </script>
+
+    <script type="text/javascript">
+        $('.buttonOrder').on('click', function (e) {
+            var MainPrice = parseInt($('.total-total-price').text());
+            if (MainPrice == 0) {
+                e.preventDefault();
+            }
+        });
+    </script>
+
     
+
 </body>

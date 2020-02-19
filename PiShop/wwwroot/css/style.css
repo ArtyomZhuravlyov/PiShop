@@ -799,14 +799,18 @@ color:red;
 
 @media (max-width: 990px) {
     .nav {
-        font-size: 12px;
-        ;
+        font-size: 15px;
+        /*font-size: 12px;*/
     }
     .intro_inner {
         max-width: 470px;
     }
     .intro_suptitle {
         font-size: 15px;
+    }
+
+    .nav_link {
+        margin:4px 15px;
     }
 }
 
@@ -896,6 +900,42 @@ color:red;
 
 
 @media (max-width: 420px) {
+
+    .theFirstBlock {
+        width: 100%;
+    }
+
+    .item_pizham {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .popup {
+         top: 0; 
+        padding: 10px;
+        width: 100%;
+    }
+
+    .popup-close {
+        position: absolute;
+        top: 0px;
+        right: 2px;
+    }
+
+    .info {
+         width: 100%; 
+         padding-left: 0px; 
+    }
+
+    .info_text_item {
+        position: relative;
+        padding: 0 30px;
+    }
+
+    .paket {
+        top: -300px;
+    }
+
     .hits_item{
         width: 70%;
         margin: 15px auto;
@@ -906,23 +946,4 @@ color:red;
         width: 90%;
         margin: 0 auto;
     }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
