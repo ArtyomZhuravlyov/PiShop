@@ -81,7 +81,7 @@
                                 <img class="pointer" src="~/images/point.png" alt="">
                                 <div class="info_text_text">Размерная сетка </div>
                             </div>
-                            <div class="info_table"><img src="~/images/pazmer.PNG" alt=""></div>
+                            <div class="info_table"><img src="~/images/pazmerPhone.PNG" alt=""></div>
                         </div>
                     </div>
                 </div>
@@ -183,6 +183,7 @@
         });
     </script>
 
+    @*изменить структуру для телефона*@
     <script type="text/javascript">
         if (innerWidth < 420) {
             $(".Display").toggleClass("displayNone"); //addClass("displayNone"); // .toggleClass("displayNone");
@@ -191,10 +192,6 @@
 
             $(".popup").toggleClass("overflow2"); // <div class="overflow2">
             $(".info-text").css('margin-top', '20px');
-        }
-        else {
-           // $(".AdaptiveDisplay").addClass("displayNone"); // .toggleClass("displayNone");
-           // $(".Display").remove("displayNone");
         }
     </script>
 </body>

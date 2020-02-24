@@ -5,6 +5,11 @@
     flex-direction: column;
 }
 
+.CartMobile {
+    width: 80%;
+    display: flex;
+}
+
 .column{
     display:flex;
     justify-content: space-around;
@@ -17,11 +22,19 @@
 }
 
 .size {
-    width: 20%;
+    width: 25%;
     text-align: center;
-    line-height: 110px;
-    height: 110px;
+    display: flex;
+    align-items: center;
+    /*line-height: 110px;*/
+    /*height: 110px;*/
 }
+
+.delivery—ontraction {
+    font-size: 18px;
+    color: gray;
+}
+
 
 .title {
     /*    height: 30px;*/
@@ -75,7 +88,7 @@
     width: 100%;
     height: 17px;
     background: url("https://designmodo.com/demo/shopping-cart/delete-icn.svg") no-repeat center;
-    margin-top: 20px;
+    /*margin-top: 20px;*/
 }
 
 
@@ -93,21 +106,24 @@
 }
 
 .description {
-    width: 20%;
+    width: 25%;
     text-align: center;
+    display: flex;
+    align-items: center;
     /*margin-right: 50px;*/
     /*width: 155px;
     margin-left: 50px;*/
-    line-height: 110px;
+    /*line-height: 110px;*/
     height: 110px;
 }
 
-.description span {
-    display: block;
-    font-size: 16px;
-    color: #43484D;
-    font-weight: 400;
-}
+    .description span {
+        width: 100%;
+        display: block;
+        font-size: 16px;
+        color: #43484D;
+        font-weight: 400;
+    }
 
     
 
@@ -135,7 +151,7 @@
 .quantity {
     line-height: 110px;
     height: 110px;
-    width: 20%;
+    width: 25%;
     text-align: center;
     /*width: 170px;
     padding-top: 44px;
@@ -201,21 +217,11 @@ input:focus {
     font-size: 22px;
 }
 
-.overflow2 {
-    position: fixed;
-    opacity: 1;
-    z-index: 10000;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    overflow-y: auto;
-    right:17px;
-    /*padding-right: 17px;*/
-}
+
 
 .total-price {
     font-size: 16px;
+    width: 100%;
     /*width: 100px;
     padding-top: 48px;
     text-align: center;
@@ -299,9 +305,10 @@ input:focus {
     width: 50%;
 }
 
-    .priceCart {
-  font-size: 16px;  
-  /*width: 100px;
+.priceCart {
+    font-size: 16px;
+    width: 100%;
+    /*width: 100px;
     padding-top: 48px;
     text-align: center;
     
@@ -342,7 +349,6 @@ input:focus {
     }
 
     .Containerdelivery-price {
-      
         float: initial;
         margin-right: initial;
         margin-top: initial;
@@ -351,19 +357,23 @@ input:focus {
         width: 100%;
         margin-left: auto;
     }
+
     .PriceW {
-    display:block;
+        display: block;
     }
-    .total-priceW{
-        display:block;
+
+    .total-priceW {
+        display: block;
     }
+
     .column {
         display: none;
     }
 
     .imageShoping-cart {
-         margin-left:  initial; 
+        margin-left: initial;
     }
+
     .Total {
         display: contents;
         margin: 0 auto;
@@ -373,15 +383,14 @@ input:focus {
         display: none;
     }
 
-        .buttonOrder{
+    .buttonOrder {
         margin: auto;
         /*width: 100px;*/
         float: initial;
-        
     }
 
     .quantity {
-    padding-top: initial;
+        padding-top: initial;
     }
 
     .ContainerTotal-total-price {
@@ -390,12 +399,13 @@ input:focus {
         margin-top: initial;
         text-align: center;
         margin-bottom: 10px;
-        width:100%;
+        width: 100%;
     }
 
     .total-price {
         padding-top: 20px;
         margin-bottom: 16px;
+         width: initial; 
     }
 
     .priceCart {
@@ -403,8 +413,16 @@ input:focus {
     }
 
     .buttonsCart {
-        padding-bottom: 18px;
+        display: flex;
+        align-items: center;
+        /* margin-right: 60px; */
+        width: 15%;
+        text-align: center;
+        /* line-height: 120px; */
+        /* height: 110px; */
+        /* padding-right: 20px; */
     }
+
     .item {
         height: auto;
         flex-wrap: wrap;
@@ -412,21 +430,23 @@ input:focus {
     }
 
     .image img {
-        width: 50%;
+        width: 100%;
         height: auto;
     }
 
     .image,
     .quantity,
     .description {
-        width: 100%;
+        /*width: 100%;*/
         text-align: center;
         margin: 6px 0;
     }
-    .description{
+
+    .description {
         line-height: initial;
-    height: initial;
+        height: initial;
     }
+
     .buttons {
         margin-right: 20px;
         display: initial;
@@ -440,5 +460,59 @@ input:focus {
         width: 100%;
         border-top: 1px solid #E1E8EE;
         border-right: initial;
+    }
+
+    .CartMobile {
+        width: 50%;
+        display:block;
+    }
+
+    .size {
+        display: flex;
+        width: 100%;
+        justify-content: space-around;
+        text-align: center;
+        /* line-height: 110px; */
+        /* height: 110px; */
+    }
+
+    .image {
+        width: 30%;
+    }
+
+    .quantity {
+        line-height: initial;
+        height: initial;
+        width: initial;
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .description {
+        width: 100%;
+    }
+
+    .size {
+        /*width: 20%;*/
+        width: initial;
+        text-align: center;
+        /* line-height: 110px; */
+        height: initial;
+    }
+
+    .AdaptiveMobile {
+        line-height: initial;
+        height: 0px;
+        font-size: 0px;
+        opacity: 1;
+    }
+
+    .description span {
+        width: 100%;
+    }
+
+    .total-priceW {
+        margin-left: initial;
+        
     }
 }

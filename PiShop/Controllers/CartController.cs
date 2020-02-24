@@ -95,7 +95,7 @@ namespace PiShop.Controllers
         /// <param name="id"></param>
         /// <param name="returnUrl"></param>
         /// <returns></returns>
-        public RedirectToActionResult RemoveLine(int id,  string size)
+        public void/*RedirectToActionResult*/ RemoveLine(int id,  string size)
         {
 
             Product product = db.Products
@@ -107,7 +107,7 @@ namespace PiShop.Controllers
             cart = GetCart();
 
             //  return Redirect($"/Cart/Summary/{returnUrl}/");
-            return RedirectToAction("Summary", "Cart");
+           // return RedirectToAction("Summary", "Cart");
         }
 
         public RedirectToActionResult RemoveFromCart(int productId, string returnUrl)
@@ -169,23 +169,27 @@ namespace PiShop.Controllers
         public ActionResult Checkout(ShippingDetails shippingDetails)
         {
             if (!IsValidEmail(shippingDetails.Mail))
-                ModelState.AddModelError("Mail", "почта указана некорректно "); ;
+                ModelState.AddModelError("Mail", "почта указана некорректно ");
 
-            if (ModelState.IsValid && shippingDetails.UserAccess && CheckPhone(shippingDetails.Phone))
+            if (CheckPhone(shippingDetails.Phone, out string Phone))
+                shippingDetails.Phone = Phone;
+
+            if (ModelState.IsValid && shippingDetails.UserAccess /*&& CheckPhone(shippingDetails.Phone)*/)
             {
 
                 string value = HttpContext.Session.GetString("Cart");
                 Cart cart = JsonConvert.DeserializeObject<Cart>(value);
                     var order = CreateAndFillOrder(shippingDetails, cart); //добавляем в базу заказ
-                    Sberbank sberbank = new Sberbank((order.Id).ToString() + "test", cart, shippingDetails);
-                    string url = sberbank.GetResponseSoap();
-                    if (!string.IsNullOrEmpty(url))
-                        return Redirect(url);
-                    else
-                    {
-                        ModelState.AddModelError("Mail", "Проверьте правильность введённых данных");
-                        return View(shippingDetails);
-                    }
+                    //Sberbank sberbank = new Sberbank((order.Id).ToString() + "test", cart, shippingDetails);
+                    //string url = sberbank.GetResponseSoap();
+                    //if (!string.IsNullOrEmpty(url))
+                    //    return Redirect(url);
+                    //else
+                    //{
+                    //    ModelState.AddModelError("Mail", "Проверьте правильность введённых данных");
+                    //    return View(shippingDetails);
+                    //}
+                     return View(shippingDetails);
 
             }
             else
@@ -198,13 +202,16 @@ namespace PiShop.Controllers
 
         }
 
-        private bool CheckPhone(string Phone)
+        private bool CheckPhone(string Phone, out string phone)
         {
-            if (Phone.Length != 11 || !long.TryParse(Phone, out long empty))
+            phone = Phone;
+            //if(Phone.Length!=11 || !long.TryParse(Phone, out long empty))
+            if (!Regex.IsMatch(phone, @"^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$"))
             {
                 ModelState.AddModelError("Phone", "Неверный формат номера телефона");
                 return false;
             }
+            phone = phone.Replace(" ", "").Replace("(", "").Replace(")", "");
             return true;
 
         }
@@ -298,7 +305,8 @@ namespace PiShop.Controllers
                 Phone = shippingDetails.Phone,
                 Comment = shippingDetails.Comment,
                 OrdersAndQuantity = cart.GetXmlLineCollection(),
-                Amount = cart.ComputeTotalValueWithDelivery()
+                Amount = cart.ComputeTotalValueWithDelivery(),
+                TypePay = "При получении"
                 //to do
             };
             db.Orders.Add(order);

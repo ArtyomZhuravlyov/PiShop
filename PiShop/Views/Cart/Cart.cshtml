@@ -30,12 +30,14 @@
                         </div>
                         @foreach (CartLine cartLine in Model.Cart.Lines)
                         {
-                            <div class="item">
-                                <div class="buttonsCart">
-                                    @Html.ActionLink("", "RemoveLine", "Cart",
-   new { id = cartLine.productCart.Id, size = cartLine.productCart.Size }, new { @class = "delete-btn" } )
-                                </div>
-                                <div class="image"> <img src="~/images/Каталог/@cartLine.productCart.Address" class="imageShoping-cart" width="100" height="110" alt="" /> </div>
+                        <div class="item">
+                            <div class="buttonsCart">
+                                @Html.ActionLink("", "RemoveLine", "Cart",
+new { id = cartLine.productCart.Id, size = cartLine.productCart.Size }, new { @class = "delete-btn" } )
+                            </div>
+                            <div class="image"> <img src="~/images/Каталог/@cartLine.productCart.Address" class="imageShoping-cart" height="110" alt="" /> </div>
+
+                            <div class="CartMobile">
                                 <div class="description">
                                     <span>
                                         <a class="compItem ColourChangeModal colorGrey">@cartLine.productCart.Name   @cartLine.productCart.Size</a>
@@ -46,15 +48,17 @@
                                     <input type="text" name="name" value="@cartLine.Quantity">
                                     <a class="plus-btn buttonStyleCart  button" href="/Cart/AddToCart?id=@cartLine.productCart.Id&size=@cartLine.productCart.Size"><img src="~/images/Корзина/plus.svg" /></a>
                                 </div>
-                                <div class="size">
-                                    <div class="PriceW">Цена</div>
-                                    <div class="priceCart">@cartLine.productCart.Price руб</div>
+                                <div class="size AdaptiveMobile">
+                                    <div class="PriceW AdaptiveMobile">Цена</div>
+                                    <div class="priceCart AdaptiveMobile">@cartLine.productCart.Price руб</div>
                                 </div>
                                 <div class="size">
                                     <div class="total-priceW">Итого</div>
                                     <div class="total-price">@(cartLine.productCart.Price * cartLine.Quantity)  руб</div>
                                 </div>
                             </div>
+                          
+                        </div>
                         }
                         <div class="Total">
                             <div class="box">
@@ -63,7 +67,7 @@
                                 <div class="bottons">  <a class="btn buttonOrder OrderID" href="/Cart/Checkout/">Оформить заказ</a> </div>
                             </div>
                             <div class="cond">
-                                <div class="cond_title"> ВОЗМОЖНЫЕ ВАРИАНТЫ ОПЛАТЫ </div>
+                                @*<div class="cond_title"> ВОЗМОЖНЫЕ ВАРИАНТЫ ОПЛАТЫ </div>
                                 <div class="cond_text">
                                     <div class="deliveryСontraction"> Оплата банковской картой </div>
                                 </div>
@@ -71,10 +75,8 @@
                                     <div class="deliveryСontraction">
                                         <img height="27" width="200" src="~/images/Корзина/cards.jpg">
                                     </div>
-                                </div>
+                                </div>*@
                                 <div class="cond_text">
-
-
                                     <div class="deliveryСontraction"> Оплата при получении </div>
                                 </div>
                             </div>
@@ -200,8 +202,8 @@
             var $item = $this.closest('div').closest('.item').addClass("displayNone");
             $.get(this.href);
 
-
-            var value = parseInt(($this.closest('div').next().next().next().next().next().children('.total-price').text())); //5
+            //$this.closest('div').next().next(). - это карт мобаил   //children('.size').next(). - это сайз суммы
+            var value = parseInt(($this.closest('div').next().next().children('.size').next().children('.total-price').text())); //5
             var MainPrice = parseInt($('.total-total-price').text());
             var nextMainPrice = MainPrice - value;
             $('.total-total-price').text(nextMainPrice + " руб");

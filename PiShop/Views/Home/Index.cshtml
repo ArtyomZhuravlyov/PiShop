@@ -40,7 +40,7 @@
                         <div class="hits_item">
                             <div class="hits_pic">
                                 <img class="hits_img" src="~/images/Каталог/@product.Address" alt="">
-                                <div class="buttons"> <a class="btn btn-hit popup-open" href="/Home/popupFade/@product.Id">УЗНАТЬ ПОДРОБНЕЕ</a> <a class="btn btn-hit popup-buy-open" href="/Home/popupBuy/@product.Id">КУПИТЬ</a> </div>
+                                <div class="buttons AdaptiveDisplayCatalog"> <a class="btn btn-hit popup-open" href="/Home/popupFade/@product.Id">УЗНАТЬ ПОДРОБНЕЕ</a> <a class="btn btn-hit popup-buy-open" href="/Home/popupBuy/@product.Id">КУПИТЬ</a> </div>
                                 <div class="hit_word">ХИТ</div>
                             </div>
                             <div class="hits_title">
@@ -99,7 +99,7 @@
                         <div class="hits_item">
                             <div class="hits_pic">
                                 <img class="hits_img" src="~/images/Каталог/@product.Address" alt="">
-                                <div class="buttons"> <a class="btn btn-hit popup-open" href="/Home/popupFade/@product.Id">УЗНАТЬ ПОДРОБНЕЕ</a> <a class="btn btn-hit popup-buy-open" href="/Home/popupBuy/@product.Id">КУПИТЬ</a> </div>
+                                <div class="buttons AdaptiveDisplayCatalog"> <a class="btn btn-hit popup-open" href="/Home/popupFade/@product.Id">УЗНАТЬ ПОДРОБНЕЕ</a> <a class="btn btn-hit popup-buy-open" href="/Home/popupBuy/@product.Id">КУПИТЬ</a> </div>
                                 @if (product.Favourite)
                                 {<div class="hit_word">ХИТ</div>}
                             </div>
@@ -111,25 +111,25 @@
                 </div>
                 <div id="ContentShow_more"></div>
             </div>
-            </div>
+        </div>
     </div>
     <div>
         <div id="contentMore"></div>
-         <div style="width: 210px; margin: 0 auto; margin-top: 60px;">
-        <input id="show_more" count_show="5" count_add="3" class="btn btn-add " style="width: 210px; margin: 0 auto;" type="button" value="Показать еще" />
-         </div>
+        <div style="width: 210px; margin: 0 auto; margin-top: 60px;">
+            <input id="show_more" count_show="5" count_add="3" class="btn btn-add " style="width: 210px; margin: 0 auto;" type="button" value="Показать еще" />
+        </div>
     </div>
     <script>
         $(document).ready(function ($) {
             $('#show_more').click(function () {
-                    $(this).addClass('displayNone');
-                    $.get("/Home/CatalogMore/", function (data) {
-                        $('#ContentShow_more').append(data);
+                $(this).addClass('displayNone');
+                $.get("/Home/CatalogMore/", function (data) {
+                    $('#ContentShow_more').append(data);
                 });
             });
         });
     </script>
-  
+
     <div class="delivery" id="delivery">
         <div class="container">
             <div class="delivery_inner">
@@ -188,6 +188,12 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="container">
+            Пижамка-Фокс - шёлковые пижамы с принтами для вас
         </div>
     </div>
     <script type="text/javascript" src="~/js/slick-1.8.1/slick/slick.min.js"></script>
@@ -280,8 +286,6 @@
                     $('.popup-cart').fadeIn();
                 });
                 //document.body.style.overflow = "hidden";
-
-
                 return false;
             });
             $('.popup-cart-close').click(function () {
@@ -301,6 +305,13 @@
                 }
             });
         });
+    </script>
+
+    @*убрать кнопки при наведении на телефоне*@
+    <script type="text/javascript">
+        if (innerWidth < 420) {
+            $(".AdaptiveDisplayCatalog").addClass("displayNone"); //.remove("displayNone"); //.toggleClass("displayNone");
+        }
     </script>
 
 </body>

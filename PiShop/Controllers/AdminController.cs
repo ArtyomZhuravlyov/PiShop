@@ -98,5 +98,43 @@ namespace PiShop.Controllers
                 return View(product);
             }
         }
+
+        public IActionResult PriceAdmin()
+        {
+            //return View(db.Products);
+            return View(db.Products.ToList());
+        }
+
+        [HttpPost]
+        public/* PartialViewResult*/IActionResult PriceAdmin(List<Product> products) /*Так и не удалось передать product2*/
+        {
+            foreach (var product in products)
+            {
+                Product productNew = db.Products.Where(x => x.Id == product.Id).FirstOrDefault();
+                productNew.Price = product.Price;
+                // db.SaveProduct(productNew);
+            }
+            db.SaveChanges();
+            //Product product = db.Products.Where(x => x.Id == id).FirstOrDefault();
+            //product.Price = Price;
+            //product.Weight = Weight;
+            //db.SaveProduct(product);
+            TempData["message"] = string.Format("Изменения  были сохранены");
+            return View(db.Products.ToList());
+            // return PartialView("Message", $" {product.Name} Изменён");
+
+        }
+
+        [HttpPost]
+        public IActionResult ChangeGeneralPrice(int generalPrice)
+        {
+            foreach (var product in db.Products)
+            {
+                product.Price = generalPrice;
+            }
+            db.SaveChanges();
+            TempData["message"] = string.Format("Изменения  были сохранены");
+            return Redirect("PriceAdmin"); 
+        }
     }
 }

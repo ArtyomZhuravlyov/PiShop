@@ -11,7 +11,7 @@
             <div class="hits_item">
                 <div class="hits_pic">
                     <img class="hits_img" src="~/images/Каталог/@product.Address" alt="">
-                    <div class="buttons"> <a class="btn btn-hit popup-open" href="/Home/popupFade/@product.Id">УЗНАТЬ ПОДРОБНЕЕ</a> <a class="btn btn-hit popup-buy-open" href="/Home/popupBuy/@product.Id">КУПИТЬ</a> </div>
+                    <div class="buttons AdaptiveDisplayCatalog"> <a class="btn btn-hit popup-open" href="/Home/popupFade/@product.Id">УЗНАТЬ ПОДРОБНЕЕ</a> <a class="btn btn-hit popup-buy-open" href="/Home/popupBuy/@product.Id">КУПИТЬ</a> </div>
                     @if (product.Favourite)
                     {<div class="hit_word">ХИТ</div>}
                 </div>
@@ -76,5 +76,12 @@
                 }
             });
         });
+    </script>
+
+    @*убрать кнопки при наведении на телефоне*@
+    <script type="text/javascript">
+        if (innerWidth < 420) {
+            $(".AdaptiveDisplayCatalog").addClass("displayNone"); //.remove("displayNone"); //.toggleClass("displayNone");
+        }
     </script>
 </body>
