@@ -36,7 +36,11 @@
                             </div>
                         </div>
                     </div>
-                    <div class="price" style="width:initial;">2000₽</div>
+                    @*<div class="price" style="width:initial;">2000₽</div>*@
+                    <div class="priceMain PriceMainDetail">
+                        <div class="newPrice">@Model.Price₽</div>
+                        <div class="oldPrice">2500₽</div>
+                    </div>
                     <div class="animate">
                         <button class="btn btn-add btn-add-buy addToCart btn-add2" type="submit">ДОБАВИТЬ В КОРЗИНУ</button>
                         <a class="btn btn-add btn-add-buy goToCart popup-cart-open" href="/Cart/Cart">ПЕРЕЙТИ В КОРЗИНУ</a>

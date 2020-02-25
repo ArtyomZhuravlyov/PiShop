@@ -59,5 +59,12 @@ namespace Domain
         public string ImageMimeType { get; set; }
 
         public string Size { get; set; }
+
+        [Display(Name = "Адрес второй картинки")]
+        /// <summary>
+        /// Адрес картинки (формируется по ID)
+        /// </summary>
+        public string Image2Address { get; set; }
+        
     }
 }

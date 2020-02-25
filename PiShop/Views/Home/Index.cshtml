@@ -13,9 +13,9 @@
     <meta name="viewport" content="width=device-width" , initial-scale=1>
     <link rel="stylesheet" type="text/css" href="~/js/slick-1.8.1/slick/slick.css" />
     <link rel="stylesheet" type="text/css" href="~/js/slick-1.8.1/slick/slick-theme.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
     <title>Пижама</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+
 </head>
 
 <body>
@@ -42,9 +42,14 @@
                                 <img class="hits_img" src="~/images/Каталог/@product.Address" alt="">
                                 <div class="buttons AdaptiveDisplayCatalog"> <a class="btn btn-hit popup-open" href="/Home/popupFade/@product.Id">УЗНАТЬ ПОДРОБНЕЕ</a> <a class="btn btn-hit popup-buy-open" href="/Home/popupBuy/@product.Id">КУПИТЬ</a> </div>
                                 <div class="hit_word">ХИТ</div>
+                                <div class="sale">-20%</div>
                             </div>
                             <div class="hits_title">
                                 <a class=" popup-open" style="text-decoration:none; color: black;" href="/Home/popupFade/@product.Id">@product.Name</a>
+                            </div>
+                            <div class="priceMain">
+                                <div class="newPrice">@product.Price₽</div>
+                                <div class="oldPrice">2500₽</div>
                             </div>
 
                         </div>
@@ -102,9 +107,14 @@
                                 <div class="buttons AdaptiveDisplayCatalog"> <a class="btn btn-hit popup-open" href="/Home/popupFade/@product.Id">УЗНАТЬ ПОДРОБНЕЕ</a> <a class="btn btn-hit popup-buy-open" href="/Home/popupBuy/@product.Id">КУПИТЬ</a> </div>
                                 @if (product.Favourite)
                                 {<div class="hit_word">ХИТ</div>}
+                                <div class="sale">-20%</div>
                             </div>
                             <div class="hits_title">
                                 <a class=" popup-open" style="text-decoration:none; color: black;" href="/Home/popupFade/@product.Id">@product.Name</a>
+                            </div>
+                            <div class="priceMain">
+                                <div class="newPrice">@product.Price₽</div>
+                                <div class="oldPrice">2500₽</div>
                             </div>
                         </div>
                     }
@@ -113,6 +123,8 @@
             </div>
         </div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
     <div>
         <div id="contentMore"></div>
         <div style="width: 210px; margin: 0 auto; margin-top: 60px;">
@@ -145,7 +157,8 @@
                     </div>
                     <div class="delivery_item">
                         <div class="delivery_img"><img src="~/images/point.png" alt=""></div>
-                        <div class="delivery_text">Срок доставки: 3-7 дней</div>
+                        <div class="delivery_text">Срок доставки: 2-5 дней</div>
+                        @*<div class="delivery_text">Срок доставки: 3-7 дней</div>*@
                     </div>
                     <div class="delivery_item">
                         <div class="delivery_img "><img src="~/images/point.png" alt=""></div>
@@ -168,14 +181,14 @@
                         <div class="contacts_pic"> <img src="~/images/contacts/adress.jpg" alt=""></div>
                         <div class="contacts_info">
                             <div class="contacts_info_title"> АДРЕС </div>
-                            <div class="contacts_info_info"> 4801 South University Drive Suite 237, Ft. Lauderdale, FL 33328, United States </div>
+                            <div class="contacts_info_info">Санкт-Петербург, Дунайский проспект 5 </div>
                         </div>
                     </div>
                     <div class="contacts_item">
                         <div class="contacts_pic"> <img src="~/images/contacts/phone.jpg" alt=""></div>
                         <div class="contacts_info">
                             <div class="contacts_info_title"> ТЕЛЕФОН </div>
-                            <div class="contacts_info_info"> (123) 456-7890 </div>
+                            <div class="contacts_info_info"> 8(950)425-69-08</div>
                             <div class="contacts_info_info">(123) 456-7891 </div>
                         </div>
                     </div>
@@ -198,6 +211,7 @@
     </div>
     <script type="text/javascript" src="~/js/slick-1.8.1/slick/slick.min.js"></script>
     <script src="~/js/app.js"></script>
+
     <script type="text/javascript">
         if (innerWidth > 508) {
             $(".autoplaySl").slick({
@@ -313,6 +327,36 @@
             $(".AdaptiveDisplayCatalog").addClass("displayNone"); //.remove("displayNone"); //.toggleClass("displayNone");
         }
     </script>
+
+    @*модальное окно успешной оплаты*@
+    @if (Model.SuccessOrder)
+    {
+        <script type="text/javascript">
+            $(document).ready(function ($) {
+
+                $.get("/Home/SuccessDetail", function (data) {
+                    $('#dialogContentSuccessOrder').html(data);
+                    $('.SuccessOrder').fadeIn();
+                });
+                $('.SuccessOrder-close').click(function () {
+                    $(this).parents('.SuccessOrder').fadeOut();
+                    document.body.style.overflow = "auto";
+                    return false;
+                });
+                $(document).keydown(function (e) {
+                    if (e.keyCode === 27) {
+                        e.stopPropagation();
+                        $('.SuccessOrder').fadeOut();
+                    }
+                });
+                $('.SuccessOrder').click(function (e) {
+                    if ($(e.target).closest('.Success').length == 0) {
+                        $(this).fadeOut();
+                    }
+                });
+            });
+        </script>
+    }
 
 </body>
 

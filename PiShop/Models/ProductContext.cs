@@ -56,6 +56,7 @@ namespace PiShop.Models
                     dbEntry.Address = product.Address;
                     dbEntry.ImageData = product.ImageData;
                     dbEntry.ImageMimeType = product.ImageMimeType;
+                    dbEntry.Image2Address = product.Image2Address;
                 }
                 #endregion
 

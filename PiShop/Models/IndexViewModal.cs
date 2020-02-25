@@ -11,5 +11,10 @@ namespace PiShop.Models
        public IEnumerable<Product> Products;
 
         public List<Product> HitsProducts;
+
+        /// <summary>
+        /// Флаг для окна об успешной оплате
+        /// </summary>
+        public bool SuccessOrder;
     }
 }

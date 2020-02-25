@@ -1,23 +1,46 @@
 ﻿<head>
-    <link rel="stylesheet" href="~/css/Catalog.css" />
-    <link rel="stylesheet" href="~/css/Pages2.css" />
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="~/css/style.css">
+    <meta name="viewport" content="width=device-width" , initial-scale=1>
+    <script src="https://yandex.st/jquery/2.1.1/jquery.min.js"></script>
 
-    <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,400i,700" rel="stylesheet">
 
-    <script src="~/lib/jquery/dist/jquery.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+    @*<link href="https://fonts.googleapis.com/css?family=Nunito:300,400,400i,700" rel="stylesheet">
+
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>*@
 
 </head>
-<div style="margin-top:90px;"></div>
-<div class="modal-content MyTop minWidthModal modalSuccess">
-    <div class="modal-header textHeadModal">
-        <button class="close buttonModal" data-dismiss="modal" area-hidden="true">X</button>
-    </div>
-    <div class="Thanks">
-        <img class="PictureSuccess" src="/images/SuccessOrder.jpg">
-        <div class="TextThanks">
-            <div class="WordThanks">Спасибо!</div><div class="SmallText">Ваш заказ успешно оплачен и передан в работу.</div>
+<div class="SuccessOrder">
+    <div class="Success">
+        <a class="SuccessOrder-close" href="#"> <img src="~/images/krestik.jpg" alt=""></a>
+        @*<div class="modal-content MyTop minWidthModal modalSuccess">*@
+            <div class="Thanks">
+                <img class="PictureSuccess" src="/images/SuccessOrder2.jpg">
+                <div class="TextThanks">
+                    @*<div class="WordThanks">Спасибо!</div>*@<div class="SmallText">Ваш заказ передан в работу.</div>
 
-        </div>
+                </div>
+            </div>
+        @*</div>*@
     </div>
-</div>
+    </div>
+    <script>
+        $(document).ready(function ($) {
+            $('.SuccessOrder-close').click(function () {
+                $(this).parents('.SuccessOrder').fadeOut();
+                return false;
+            });
+            $(document).keydown(function (e) {
+                if (e.keyCode === 27) {
+                    e.stopPropagation();
+                    $('.SuccessOrder').fadeOut();
+                }
+            });
+            $('.SuccessOrder').click(function (e) {
+                if ($(e.target).closest('.Success').length == 0) {
+                    $(this).fadeOut();
+                }
+            });
+        });
+    </script>

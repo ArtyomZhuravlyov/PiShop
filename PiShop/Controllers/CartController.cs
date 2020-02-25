@@ -189,7 +189,7 @@ namespace PiShop.Controllers
                     //    ModelState.AddModelError("Mail", "Проверьте правильность введённых данных");
                     //    return View(shippingDetails);
                     //}
-                     return View(shippingDetails);
+                     return RedirectToAction("Index", "Home", new { successOrder = true });
 
             }
             else

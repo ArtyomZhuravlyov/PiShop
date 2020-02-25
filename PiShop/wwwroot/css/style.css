@@ -29,6 +29,22 @@ h6 {
 
 /*HEADER*/
 
+.nav_link:after {
+    display: block;
+    position: absolute;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: white;
+    content: "";
+    transition: width 0.3s ease-out;
+}
+
+
+.nav_link:hover:after {
+    width: 100%;
+}
+
 .header {
     padding-top: 30px;
     position: absolute;
@@ -47,6 +63,7 @@ h6 {
 }
 
 .footer {
+    margin-top: 15px;
     font-size: 20px;
     font-family: 'Neucha', cursive;
     padding: 10px 0;
@@ -195,19 +212,72 @@ h6 {
 	right: 10px;
 }
 
-.popup-buy-close img{
-    display: block;
-     width: 30px;
-    height: auto;
-}
+    .popup-buy-close img {
+        display: block;
+        width: 30px;
+        height: auto;
+    }
 
-
-.info_buy{
+.info_buy {
     width: 100%;
 }
 
-/*НАВИГАЦИЯ*/
+/*окно успешной покупки*/
+.Success {
+    position: fixed;
+    top: 20%;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    width: 60%;
+    height: auto;
+    margin: 0 auto;
+    background: #fff;
+    border: 1px solid #333333;
+    border-radius: 4px;
+    z-index: 99999;
+    opacity: 1;
+    display: block;
+}
 
+.SuccessOrder-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.SuccessOrder-close img {
+        display: block;
+        width: 30px;
+        height: auto;
+    }
+
+.PictureSuccess {
+    width: 100%;
+}
+
+.Thanks {
+    margin-top: 20px;
+}
+
+.SmallText {
+    text-align: center;
+    color: #575757;
+    font-size: 22px;
+}
+
+.SuccessOrder:before {
+    content: '';
+    background: #000;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.7;
+    z-index: 9999;
+}
+/*НАВИГАЦИЯ*/
 .nav {
     margin-right: 0;
     margin-left: auto;
@@ -356,6 +426,45 @@ h6 {
 }
 
 /*ХИТЫ И КАТАЛОГ*/
+
+.sale {
+    font-family: 'Roboto',Arial,sans-serif;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: #1da77f;
+    border-radius: 50%;
+    color: white;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+}
+
+.priceMain {
+    display: flex;
+    justify-content: center;
+  
+}
+
+.PriceMainDetail {
+    font-size: 17px;
+    margin-top: 4px;
+    margin-bottom: 9px;
+}
+
+.newPrice {
+    margin-right: 10px;
+    color: #5b2d5e;
+    font-weight: 700;
+}
+
+.oldPrice {
+    color: #bdbdbd;
+    text-decoration: line-through;
+}
 
 .hits {
     margin-top: 60px;
@@ -820,7 +929,12 @@ color:red;
 }
 
 @media (max-width: 990px) {
-    .nav {
+
+    .Success {
+        width:100%;
+    }
+
+        .nav {
         font-size: 15px;
         /*font-size: 12px;*/
     }
@@ -845,7 +959,10 @@ color:red;
     }
     
      .intro_inner {
-       position: absolute;
+     left:0;
+     right:0;
+     margin:auto;
+     position: absolute;
     float: none;
     width: 100%;
     max-width: 620px;

@@ -20,13 +20,14 @@ namespace PiShop.Controllers
             db = context;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(bool successOrder=false)
         {
             List<Product> Hits = db.GetFavoutiteProducts();
             IndexViewModal indexViewModal = new IndexViewModal()
             {
                 Products = db.Products.Take(9),
-                HitsProducts = Hits
+                HitsProducts = Hits,
+                SuccessOrder = successOrder
             };
             return View(indexViewModal);
         }

@@ -403,9 +403,11 @@ input:focus {
     }
 
     .total-price {
-        padding-top: 20px;
-        margin-bottom: 16px;
-         width: initial; 
+        padding-top: initial !important;
+        margin-bottom: initial !important;
+        color: #5E6977 !important;
+        font-size: 18px !important;
+        width: initial;
     }
 
     .priceCart {

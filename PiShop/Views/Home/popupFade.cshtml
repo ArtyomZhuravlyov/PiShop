@@ -22,7 +22,11 @@
 
                     <div class="theFirstBlock">
                         <div class="picture"><img class="block" src="~/images/Каталог/@Model.Address" alt=""></div>
-                        <div class="price" style="width:initial;">2000₽</div>
+                        @*<div class="price" style="width:initial;">2000₽</div>*@
+                        <div class="priceMain PriceMainDetail" style="margin-top: 9px !important;">
+                            <div class="newPrice">@Model.Price₽</div>
+                            <div class="oldPrice">2500₽</div>
+                        </div>
                         <div class="chooseSize AdaptiveDisplay displayNone">Выберите размер</div>
                         <input type="number" name="Id" value="@Model.Id" style="display:none">
                         <div class="radio AdaptiveDisplay displayNone">
