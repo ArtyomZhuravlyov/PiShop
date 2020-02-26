@@ -304,7 +304,7 @@ h6 {
     justify-content: center;
     width: 100%;
     height: 100vh;
-    background: #582b5c url("../images/Pizhamy.png") center no-repeat;
+    background: #582b5c url("../images/Pizhamy3.png") center no-repeat;
     background-size: cover;
     -webkit-background-size: cover;
 }
@@ -953,7 +953,7 @@ color:red;
 @media (max-width: 770px) {
 
     .intro {
-        background: #582b5c url("../images/back2.png") center no-repeat;
+        background: #582b5c url("../images/back2.jpg") center no-repeat;
         background-size: cover;
         position: relative;
     }
