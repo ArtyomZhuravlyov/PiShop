@@ -8,24 +8,26 @@
     <div class="hits_items">
         @foreach (var product in Model)
         {
-        <div class="hits_item">
-            <div class="hits_pic">
-                <img class="hits_img" src="~/images/Каталог/@product.Address" alt="">
-                <div class="buttons AdaptiveDisplayCatalog"> <a class="btn btn-hit popup-open" href="/Home/popupFade/@product.Id">УЗНАТЬ ПОДРОБНЕЕ</a> <a class="btn btn-hit popup-buy-open" href="/Home/popupBuy/@product.Id">КУПИТЬ</a> </div>
-                @if (product.Favourite)
-                {<div class="hit_word">ХИТ</div>}
-                <div class="sale">-20%</div>
+            <div class="hits_item">
+                <div class="hits_pic">
+                    <img class="hits_img" src="~/images/Каталог/@product.Address" alt="">
+                    <div class="buttons AdaptiveDisplayCatalog"> <a class="btn btn-hit popup-open" href="/Home/popupFade/@product.Id">УЗНАТЬ ПОДРОБНЕЕ</a> <a class="btn btn-hit popup-buy-open" href="/Home/popupBuy/@product.Id">КУПИТЬ</a> </div>
+                    @if (product.Favourite)
+                    {<div class="hit_word">ХИТ</div>}
+                    <div class="sale">-40%</div>
+                </div>
+                <div class="hits_title">
+                    <a class=" popup-open" style="text-decoration:none; color: black;" href="/Home/popupFade/@product.Id">@product.Name</a>
+                </div>
+                <div class="priceMain">
+                    <div class="newPrice">@product.Price₽</div>
+                    <div class="oldPrice">2500₽</div>
+                </div>
             </div>
-            <div class="hits_title">
-                <a class=" popup-open" style="text-decoration:none; color: black;" href="/Home/popupFade/@product.Id">@product.Name</a>
-            </div>
-            <div class="priceMain">
-                <div class="newPrice">@product.Price₽</div>
-                <div class="oldPrice">2500₽</div>
-            </div>
-        </div>
         }
     </div>
+    <script src="~/js/app.js"></script>
+
     <script>
         $(document).ready(function ($) {
             $('.popup-open').click(function (e) {

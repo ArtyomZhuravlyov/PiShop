@@ -66,6 +66,18 @@ namespace PiShop.Controllers
             return PartialView(product);
         }
 
+        public PartialViewResult ModalText()
+        {
+            return PartialView();
+        }
+
+        public PartialViewResult GetPicturesSlick(int Id)
+        {
+            Product product = db.Products.FirstOrDefault(x => x.Id == Id);
+            return PartialView(product);
+        }
+        
+
         public PartialViewResult popupBuy(int Id)
         {
             Product product = db.Products.FirstOrDefault(x => x.Id == Id);

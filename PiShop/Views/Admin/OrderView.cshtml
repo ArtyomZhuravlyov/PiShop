@@ -21,6 +21,7 @@
     <div class="shopping-cart">
         <div class="title">
             <div class="column">
+
                 <div class="textColumn textColumnName">
                     Наименование
                 </div>
@@ -42,35 +43,35 @@
         @foreach (var cartLine in Model.XmlCartLineList.ToList())
         {
             <!-- Товар #1 -->
-        <div class="item">
+            <div class="item">
 
-            <div class="image">
-                <img src="~/images/Каталог товаров/@cartLine.PictureAddress" class="imageShoping-cart" width="100" height="110" alt="" />
-            </div>
+                <div class="image">
+                    <img src="~/images/Каталог/@cartLine.PictureAddress" class="imageShoping-cart" width="100" height="110" alt="" />
+                </div>
 
-            <div class="description">
-                <span>
-                    @cartLine.ProductName @cartLine.Size
-                </span>
-                @*<span>Bball High</span>
-            <span>White</span>*@
-            </div>
+                <div class="description">
+                    <span>
+                        @cartLine.ProductName @cartLine.Size
+                    </span>
+                    @*<span>Bball High</span>
+                        <span>White</span>*@
+                </div>
 
-            <div class="quantity">
-                <a class="minus-btn buttonStyleCart btn button"><img src="~/images/minus.svg" /></a>
-                <input type="text" name="name" value="@cartLine.Quantity">
-                <a class="plus-btn buttonStyleCart btn button"><img src="~/images/plus.svg" /></a>
-            </div>
-            <div>
-                <div class="PriceW">Цена</div>
-                <div class="price"> @cartLine.Price руб</div>
-            </div>
+                <div class="quantity">
+                    <a class="minus-btn buttonStyleCart btn button"><img src="~/images/minus.svg" /></a>
+                    <input type="text" name="name" value="@cartLine.Quantity">
+                    <a class="plus-btn buttonStyleCart btn button"><img src="~/images/plus.svg" /></a>
+                </div>
+                <div>
+                    <div class="PriceW">Цена</div>
+                    <div class="price"> @cartLine.Price руб</div>
+                </div>
 
-            <div>
-                <div class="total-priceW">Итого</div>
-                <div class="total-price">@(cartLine.Price * cartLine.Quantity) руб</div>
+                <div>
+                    <div class="total-priceW">Итого</div>
+                    <div class="total-price">@(cartLine.Price * cartLine.Quantity) руб</div>
+                </div>
             </div>
-        </div>
         }
         <div class="Total">
             <div class="box">
@@ -83,6 +84,44 @@
 
         </div>
         }
+    </div>
+
+    <div class="panel-body">
+        <table class="table table-striped table-condensed table-bordered">
+            <tr>
+                <th class="text-right">ID</th>
+                <th class="text-center">Дата</th>
+                <th>Имя</th>
+                <th>Фамилия</th>
+                <th>Отчество</th>
+                <th class="text-right">Город</th>
+                <th class="text-center">Телефон</th>
+                <th class="text-right">Адрес</th>
+                <th class="text-center">Сумма</th>
+                <th class="text-center">Коментарий</th>
+            </tr>
+            @try
+            {
+                @*@foreach (var item in Model)*@
+
+            <tr>
+                <td class="text-right">@Model.order.Id</td>
+                <td class="text-right">@Model.order.TimeOrder.ToString()</td>
+                <td>@Html.ActionLink(Model.order.Name, "EditOrder", new { Model.order.Id })</td>
+                <td class="text-right">@Model.order.Surname</td>
+                <td class="text-right">@Model.order.MiddleName</td>
+                <td class="text-right">@Model.order.City</td>
+                <td class="text-right">@Model.order.Phone</td>
+                <td class="text-right">@Model.order.Adress</td>
+                <td class="text-center">@Model.order.Amount.ToString("# руб") </td>
+                <td class="text-center">@Model.order.Comment </td>
+            </tr>
+
+            }
+            catch (Exception ex)
+            {
+            }
+        </table>
     </div>
 
 </body>

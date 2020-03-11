@@ -21,29 +21,32 @@
         @foreach (var property in ViewData.ModelMetadata.Properties)
         {
 
-            <div class="form-group">
-                @switch (property.DisplayName)
-                {
-                    case "Комментарий к заказу":
-                        <label>@(property.DisplayName ?? property.PropertyName)</label>
-                        @Html.TextArea(property.PropertyName, null, new { @class = "form-control MyForm-control", rows = 2 })
-                        break;
-                    case "Доставка":
-                    case "UserAccess":
-                    case "TypePay":
-                    case null:
-                        continue;
-                    case "Телефон":
-                <label><span style="color:red">*</span> @(property.DisplayName ?? property.PropertyName)</label>
-                <input placeholder="89504445566" class="form-control MyForm-control"  type="text" data-val="true" data-val-required="Укажите телефон"  id="Phone" name="Phone">
-                break;
-                    
-                    default:
-                        <label><span style="color:red">*</span> @(property.DisplayName ?? property.PropertyName)</label>
-                        @Html.TextBox(property.PropertyName, null, new { @class = "form-control MyForm-control" })
-                        break;
-                }
-            </div>
+        <div class="form-group">
+            @switch (property.DisplayName)
+            {
+                case "Комментарий к заказу":
+                    <label>@(property.DisplayName ?? property.PropertyName)</label>
+                    @Html.TextArea(property.PropertyName, null, new { @class = "form-control MyForm-control", rows = 2 })
+                    break;
+                case "Доставка":
+                case "UserAccess":
+                case "TypePay":
+                case null:
+                    continue;
+                case "Телефон":
+                    <label><span style="color:red">*</span> @(property.DisplayName ?? property.PropertyName)</label>
+                    <input class="form-control MyForm-control" type="text" data-val="true" data-val-required="Укажите телефон" id="Phone" name="Phone">
+                    break;
+                case "Электронная почта":
+                    <label>@(property.DisplayName ?? property.PropertyName)</label>
+                    @Html.TextBox(property.PropertyName, null, new { @class = "form-control MyForm-control" })
+                    break;
+                default:
+                    <label><span style="color:red">*</span> @(property.DisplayName ?? property.PropertyName)</label>
+                    @Html.TextBox(property.PropertyName, null, new { @class = "form-control MyForm-control" })
+                    break;
+            }
+        </div>
 
         }
             <div class="form-group">

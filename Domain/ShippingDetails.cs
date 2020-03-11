@@ -33,7 +33,7 @@ namespace Domain
         [Display(Name = "Телефон")]
         public string Phone { get; set; }
 
-        [Required(ErrorMessage = "Укажите электронную почту")]
+
         [Display(Name = "Электронная почта")]
         public string Mail { get; set; }
 

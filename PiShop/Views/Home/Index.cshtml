@@ -12,12 +12,11 @@
     <link rel="stylesheet" href="~/css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Merienda|Neucha|Roboto&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width" , initial-scale=1>
+    @*<link rel="icon" href="https://pizhamka-fox.ru/favicon.ico" type="image/x-icon">*@
     <link rel="stylesheet" type="text/css" href="~/js/slick-1.8.1/slick/slick.css" />
     <link rel="stylesheet" type="text/css" href="~/js/slick-1.8.1/slick/slick-theme.css" />
     <meta name="yandex-verification" content="e37eaf24dedcbc1b" />
-    <title>Пижамка-Фокс - шёлковые пижамы с принтами для вас</title>
-    <meta name="description" content="Пижамка-Фокс - шёлковые пижамы с принтами для девушек. Хиты нашего магазина пижамы с Авокадо, Единорогом, Marvel, БЭТМЕН, ЖЕНЩИНА-КОШКА, PORN HUB, ЛИСИЧКА, ЛИС ПАППИ . В комплект входит маичка и шорты." />
-
+    
 </head>
 
 <body>
@@ -44,7 +43,7 @@
                                 <img class="hits_img" src="~/images/Каталог/@product.Address" alt="">
                                 <div class="buttons AdaptiveDisplayCatalog"> <a class="btn btn-hit popup-open" href="/Home/popupFade/@product.Id">УЗНАТЬ ПОДРОБНЕЕ</a> <a class="btn btn-hit popup-buy-open" href="/Home/popupBuy/@product.Id">КУПИТЬ</a> </div>
                                 <div class="hit_word">ХИТ</div>
-                                <div class="sale">-20%</div>
+                                <div class="sale">-40%</div>
                             </div>
                             <div class="hits_title">
                                 <a class=" popup-open" style="text-decoration:none; color: black;" href="/Home/popupFade/@product.Id">@product.Name</a>
@@ -109,7 +108,7 @@
                                 <div class="buttons AdaptiveDisplayCatalog"> <a class="btn btn-hit popup-open" href="/Home/popupFade/@product.Id">УЗНАТЬ ПОДРОБНЕЕ</a> <a class="btn btn-hit popup-buy-open" href="/Home/popupBuy/@product.Id">КУПИТЬ</a> </div>
                                 @if (product.Favourite)
                                 {<div class="hit_word">ХИТ</div>}
-                                <div class="sale">-20%</div>
+                                <div class="sale">-40%</div>
                             </div>
                             <div class="hits_title">
                                 <a class=" popup-open" style="text-decoration:none; color: black;" href="/Home/popupFade/@product.Id">@product.Name</a>
@@ -151,11 +150,11 @@
                 <div class="delivery_items">
                     <div class="delivery_item">
                         <div class="delivery_img"><img src="~/images/point.png" alt=""></div>
-                        <div class="delivery_text">Доставка осуществляется курьерской службой СДЭК</div>
+                        <div class="delivery_text"style="color:#1da77f; font-weight: 700;" >БЕСПЛАТНО</div>
                     </div>
                     <div class="delivery_item">
                         <div class="delivery_img "><img src="~/images/point.png" alt=""></div>
-                        <div class="delivery_text ">Самовывоз БЕСПЛАТНО</div>
+                        <div class="delivery_text ">Доставка осуществляется курьерской службой СДЭК или почтой России</div>
                     </div>
                     <div class="delivery_item">
                         <div class="delivery_img"><img src="~/images/point.png" alt=""></div>
@@ -166,9 +165,38 @@
                         <div class="delivery_img "><img src="~/images/point.png" alt=""></div>
                         <div class="delivery_text ">Срок хранения посылки: 3 дня</div>
                     </div>
-                    <div class="delivery_item">
-                        <div class="delivery_img"><img src="~/images/point.png" alt=""></div>
-                        <div class="delivery_text">Доставка курьером 350 руб</div>
+                    @*<div class="delivery_item">
+                            <div class="delivery_img"><img src="~/images/point.png" alt=""></div>
+                            <div class="delivery_text">Доставка курьером 350 руб</div>
+                        </div>*@
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="reviews" id="reviews">
+        <div class="container">
+            <div class="reviews_inner">
+                <div class="reviews_title">ОТЗЫВЫ</div>
+                <div class="reviews_items autoplaySl">
+                    <div class="reviews_item">
+                        <div class="reviews_pic"><img src="~/images/Отзывы/отзыв1.jpg" alt=""></div> @*<span style="font-size:50px; font-weight:700; color:#5b2d5e;">“</span>*@
+                        <div class="reviews_text">“ Спасибо! Я в восторге от вашей пижамы! Она настолько приятная телу, материал супер, и абсолютно не жарко в ней. Ну и дизайн, естесственно превосходный!!! ”</div>
+                    </div>
+                    <div class="reviews_item">
+                        <div class="reviews_pic"><img src="~/images/Отзывы/отзыв2.jpg" alt=""></div>
+                        <div class="reviews_text">“ Пижамка подошла идеально) Качество очень приятное к телу, в шортиках можно ходить на пляж) Ближе к отпуску прикуплю ещё парочку ) Спасибо большое, осталась довольна) ”</div>
+                    </div>
+                    <div class="reviews_item">
+                        <div class="reviews_pic"><img src="~/images/Отзывы/отзыв3.jpg" alt=""></div>
+                        <div class="reviews_text"> “ Добрый день! Пижамка отличная, на ощупь очень приятная. Спасибо за такую красоту! ”</div>
+                    </div>
+                    <div class="reviews_item">
+                        <div class="reviews_pic"><img src="~/images/Отзывы/отзыв4.jpg" alt=""></div>
+                        <div class="reviews_text">“ Сегодня пришла ваша шёлковая пижама с енотами, очень классное качество, мне очень понравилась, всем советую, спасибо большое! ”</div>
+                    </div>
+                    <div class="reviews_item">
+                        <div class="reviews_pic"><img src="~/images/Отзывы/отзыв5.jpg" alt=""></div>
+                        <div class="reviews_text">“Добрый день, пижамы очень классные! Удобные, комфортные и стильные. Спасибо большое! ”</div>
                     </div>
                 </div>
             </div>
@@ -183,7 +211,7 @@
                         <div class="contacts_pic"> <img src="~/images/contacts/adress.jpg" alt=""></div>
                         <div class="contacts_info">
                             <div class="contacts_info_title"> АДРЕС </div>
-                            <div class="contacts_info_info">Санкт-Петербург, Дунайский проспект 5 </div>
+                            <div class="contacts_info_info">Санкт-Петербург, Дунайский проспект 5 (доставляем по всей России) </div>
                         </div>
                     </div>
                     <div class="contacts_item">
@@ -191,14 +219,13 @@
                         <div class="contacts_info">
                             <div class="contacts_info_title"> ТЕЛЕФОН </div>
                             <div class="contacts_info_info"> 8(950)425-69-08</div>
-                            <div class="contacts_info_info">(123) 456-7891 </div>
                         </div>
                     </div>
                     <div class="contacts_item">
                         <div class="contacts_pic"> <img src="~/images/contacts/email.jpg" alt=""></div>
                         <div class="contacts_info">
                             <div class="contacts_info_title"> ПОЧТА </div>
-                            <div class="contacts_info_info"> contacts@motocms.com </div>
+                            <div class="contacts_info_info"> Pizhamka_fox@mail.ru </div>
                         </div>
                     </div>
                 </div>
@@ -210,6 +237,9 @@
         <div class="container">
             Пижамка-Фокс - шёлковые пижамы с принтами для вас
         </div>
+        @*<div class="container">
+                https://pizhamka-fox.ru шёлковые пижамки с шортами авокадо, пандами,
+            </div>*@
     </div>
     <script type="text/javascript" src="~/js/slick-1.8.1/slick/slick.min.js"></script>
     <script src="~/js/app.js"></script>

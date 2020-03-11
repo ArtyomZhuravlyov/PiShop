@@ -1,0 +1,44 @@
+﻿<header>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="~/css/style.css">
+    <meta name="viewport" content="width=device-width" , initial-scale=1>
+    <script src="https://yandex.st/jquery/2.1.1/jquery.min.js"></script>
+    @*<link href="https://fonts.googleapis.com/css?family=Merienda|Neucha|Roboto&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" type="text/css" href="~/js/slick-1.8.1/slick/slick.css" />
+        <link rel="stylesheet" type="text/css" href="~/js/slick-1.8.1/slick/slick-theme.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>*@
+</header>
+<body>
+    <div class="popup-ModalText">
+            <div class="ModalText">
+                <a class="ModalText-close" href="#"> <img src="~/images/krestik.jpg" alt=""></a>
+                <div>
+                   Выберите размер
+                </div>
+            </div>
+    </div>
+
+    <script>
+        $(document).ready(function ($) {
+
+            $('.ModalText-close').click(function () {
+                $(this).parents('.popup-ModalText').fadeOut();
+                return false;
+            });
+            $(document).keydown(function (e) {
+                if (e.keyCode === 27) {
+                    e.stopPropagation();
+                    $('.popup-ModalText').fadeOut();
+                }
+            });
+            $('.popup-ModalText').click(function (e) {
+                if ($(e.target).closest('.ModalText').length == 0) {
+                    $(this).fadeOut();
+                }
+            });
+        });
+    </script>
+  
+
+</body>

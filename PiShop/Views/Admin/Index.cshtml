@@ -17,6 +17,7 @@
     <table class="table table-striped table-condensed table-bordered">
         <tr>
             <th class="text-right">ID</th>
+            <th class="text-right">ДАТА</th>
             <th>Имя</th>
             <th>Фамилия</th>
             <th class="text-right">Город</th>
@@ -29,15 +30,16 @@
             @*@foreach (var item in Model)*@
             @for (int i = Model.Count-1; i > 0; i--)
             {
-                <tr>
-                    <td class="text-right">@Model[i].Id</td>
-                    <td>@Html.ActionLink(Model[i].Name, "Edit", new { Model[i].Id })</td>
-                    <td class="text-right">@Model[i].Surname</td>
-                    <td class="text-right">@Model[i].City</td>
-                    <td class="text-right">@Model[i].Phone</td>
-                    <td class="text-right">@Model[i].Adress</td>
-                    <td class="text-center">@Model[i].Amount.ToString("# руб") </td>
-                </tr>
+        <tr>
+            <td class="text-right">@Model[i].Id</td>
+            <td class="text-right">@Model[i].TimeOrder</td>
+            <td>@Html.ActionLink(Model[i].Name, "OrderView", new { Model[i].Id })</td>
+            <td class="text-right">@Model[i].Surname</td>
+            <td class="text-right">@Model[i].City</td>
+            <td class="text-right">@Model[i].Phone</td>
+            <td class="text-right">@Model[i].Adress</td>
+            <td class="text-center">@Model[i].Amount.ToString("# руб") </td>
+        </tr>
             }
         }
         catch (Exception ex)

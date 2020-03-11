@@ -1,27 +1,63 @@
 ﻿@model Domain.Product
 
-<header>
+<head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="~/css/style.css">
     <meta name="viewport" content="width=device-width" , initial-scale=1>
     <script src="https://yandex.st/jquery/2.1.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="~/js/slick-1.8.1/slick/slick.css" />
+    <link rel="stylesheet" type="text/css" href="~/js/slick-1.8.1/slick/slick-theme.css" />
+
     @*<link href="https://fonts.googleapis.com/css?family=Merienda|Neucha|Roboto&display=swap" rel="stylesheet">
+
+
 
         <link rel="stylesheet" type="text/css" href="~/js/slick-1.8.1/slick/slick.css" />
         <link rel="stylesheet" type="text/css" href="~/js/slick-1.8.1/slick/slick-theme.css" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>*@
-</header>
+
+</head>
 <body>
+
     <div class="popup-fade">
+
         <form asp-controller="Cart" asp-action="AddToCart" id="popupFadeForm" method="get">
 
             <div class="popup">
+
                 <a class="popup-close" href="#"> <img src="~/images/krestik.jpg" alt=""></a>
+
                 <div class="item_pizham">
+
                     <div class="info_title AdaptiveDisplay displayNone">@Model.Name</div>
 
                     <div class="theFirstBlock">
-                        <div class="picture"><img class="block" src="~/images/Каталог/@Model.Address" alt=""></div>
+                        @*@if (string.IsNullOrEmpty(Model.Image2Address)){*@
+                        <div class="First">
+                            <div class="picture First Show"><img class="block" src="~/images/Каталог/@Model.Address" alt=""></div>@*большая*@
+                            <div class="pictureSecond Show"><img class="blockSecond" src="~/images/Каталог/@Model.Image2Address" alt=""></div>
+                        </div>
+
+                        <div class="Second displayNone">
+                            <div class="picture NotShow "><img class="block" src="~/images/Каталог/@Model.Image2Address" alt=""></div> @*большая*@
+                            <div class="pictureSecond   NotShow"><img class="blockSecond" src="~/images/Каталог/@Model.Address" alt=""></div>
+                        </div>
+
+
+
+
+
+                        @*}
+                            else
+                            {
+                                <div class="picture PictureSlickDisplay" style="padding-right: 20px;padding-left: 20px;"><img class="block" src="~/images/Каталог/@Model.Address" alt=""></div>
+                                <div id="SlickInModal">
+
+                                </div>
+                            }*@
+
+
                         @*<div class="price" style="width:initial;">2000₽</div>*@
                         <div class="priceMain PriceMainDetail" style="margin-top: 9px !important;">
                             <div class="newPrice">@Model.Price₽</div>
@@ -46,6 +82,11 @@
                             @*<a class="btn btn-add addToCart" type="submit">ДОБАВИТЬ В КОРЗИНУ</a>*@
                             <div class="paket"><img src="~/images/Корзина/paket.png" alt=""></div>
                         </div>
+
+                        <header>
+                            <div id="dialogContentpopupModalText" class="modal-dialog"></div>
+                        </header>
+
                     </div>
                     <div class="info Display">
                         <div class="info_title ">@Model.Name</div>
@@ -92,7 +133,7 @@
             </div>
         </form>
     </div>
-
+    @*<script type="text/javascript" src="~/js/slick-1.8.1/slick/slick.min.js"></script>*@
     <script>
         $(document).ready(function ($) {
 
@@ -151,7 +192,11 @@
                 });
             }//if
             else {
-                $(".chooseSize").addClass("textRed");
+                //$(".chooseSize").addClass("textRed");
+                $.get("/home/modaltext/", function (data) {
+                    $('#dialogContentpopupModalText').html(data);
+                    $('.popup-ModalText').fadeIn();
+                });
             }
         });
 
@@ -198,4 +243,68 @@
             $(".info-text").css('margin-top', '20px');
         }
     </script>
+
+    @*модальное окно выберите размер (закрыть)*@
+    <script>
+
+        $(document).ready(function ($) {
+
+            $('.ModalText-close').click(function () {
+                $(this).parents('.popup-ModalText').fadeOut();
+                return false;
+            });
+            $(document).keydown(function (e) {
+                if (e.keyCode === 27) {
+                    e.stopPropagation();
+                    $('.popup-ModalText').fadeOut();
+                }
+            });
+            $('.popup-ModalText').click(function (e) {
+                if ($(e.target).closest('.ModalText').length == 0) {
+                    $(this).fadeOut();
+                }
+            });
+        });
+    </script>
+
+    @*@if (!string.IsNullOrEmpty(Model.Image2Address))
+        {
+            <script>
+                //document.addEventListener("DOMContentLoaded", function (event) {
+                $(document).ready(function ($) {
+
+                    $.get("/home/GetPicturesSlick/@Model.Id", function (data) {
+                        $('.PictureSlickDisplay').addClass('displayNone');
+                        $('#SlickInModal').html(data);
+                    });
+                });
+            </script>
+        }*@
+
+    @*открытие второй картинки*@
+
+    <script>
+        $(document).ready(function ($) {
+            $('.pictureSecond').click(function (e) {
+                // $(this).closest('div').toggleClass('displayNone')
+                $('.First').toggleClass('displayNone');
+                $('.Second').toggleClass('displayNone');
+            });
+        });
+    </script>
+
+
+    @*увеличение и уменьшение картинки*@
+    <script>
+        $(document).ready(function ($) {
+            if (innerWidth > 420) {
+                $('.picture').click(function (e) {
+                    $(this).toggleClass('Zoom-out');
+                    //$('.First').toggleClass('displayNone');
+                    //$('.Second').toggleClass('displayNone');
+                });
+            }
+        });
+    </script>
+
 </body>

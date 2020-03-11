@@ -167,8 +167,8 @@ namespace Domain
         {
             // передаем в конструктор тип класса
             XmlSerializer formatter = new XmlSerializer(typeof(List<XmlCartLine>));
-
-            using (MemoryStream sw = new MemoryStream())
+            byte[] s = System.Text.Encoding.Unicode.GetBytes(xmlCartLines);
+            using (MemoryStream sw = new MemoryStream(s))
             {
                 List<XmlCartLine> XmlCartLines = (List<XmlCartLine>)formatter.Deserialize(sw);
                 return XmlCartLines;// xml = sw.ToString();

@@ -13,7 +13,7 @@
         <h3>Редактирование товара «@Model.Name»</h3>
     </div>
 
-    <div class="ImageEditAdmin"> <img class="ImageEditAdmin" src="~/images/Каталог товаров/@Model.Address" /> </div>
+    <div class="ImageEditAdmin"> <img class="ImageEditAdmin" style="max-height:200px; max-width:200px;" src="~/images/Каталог/@Model.Address" /> </div>
     @Html.ActionLink("Отменить изменения и вернуться к списку", "IndexProduct", null, new
          {
              @class = "btn btn-default"

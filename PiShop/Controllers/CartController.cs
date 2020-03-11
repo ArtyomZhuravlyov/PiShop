@@ -168,11 +168,11 @@ namespace PiShop.Controllers
         [HttpPost]
         public ActionResult Checkout(ShippingDetails shippingDetails)
         {
-            if (!IsValidEmail(shippingDetails.Mail))
-                ModelState.AddModelError("Mail", "почта указана некорректно ");
+            //if (!IsValidEmail(shippingDetails.Mail))
+            //    ModelState.AddModelError("Mail", "почта указана некорректно ");
 
-            if (CheckPhone(shippingDetails.Phone, out string Phone))
-                shippingDetails.Phone = Phone;
+            //if (CheckPhone(shippingDetails.Phone, out string Phone))
+            //    shippingDetails.Phone = Phone;
 
             if (ModelState.IsValid && shippingDetails.UserAccess /*&& CheckPhone(shippingDetails.Phone)*/)
             {
