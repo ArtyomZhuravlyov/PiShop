@@ -23,86 +23,50 @@
     <div class="popup-fade">
 
         <form asp-controller="Cart" asp-action="AddToCart" id="popupFadeForm" method="get">
+            @*<div class="overflow2">*@
+                <div class="popup">
 
-            <div class="popup">
+                    <a class="popup-close" href="#"> <img src="~/images/krestik.jpg" alt=""></a>
 
-                <a class="popup-close" href="#"> <img src="~/images/krestik.jpg" alt=""></a>
+                    <div class="item_pizham">
 
-                <div class="item_pizham">
+                        <div class="info_title AdaptiveDisplay displayNone">@Model.Name</div>
 
-                    <div class="info_title AdaptiveDisplay displayNone">@Model.Name</div>
-
-                    <div class="theFirstBlock">
-                        @*@if (string.IsNullOrEmpty(Model.Image2Address)){*@
-                        <div class="First">
-                            <div class="picture First Show"><img class="block" src="~/images/Каталог/@Model.Address" alt=""></div>@*большая*@
-                            <div class="pictureSecond Show"><img class="blockSecond" src="~/images/Каталог/@Model.Image2Address" alt=""></div>
-                        </div>
-
-                        <div class="Second displayNone">
-                            <div class="picture NotShow "><img class="block" src="~/images/Каталог/@Model.Image2Address" alt=""></div> @*большая*@
-                            <div class="pictureSecond   NotShow"><img class="blockSecond" src="~/images/Каталог/@Model.Address" alt=""></div>
-                        </div>
-
-
-
-
-
-                        @*}
+                        <div class="theFirstBlock">
+                            @if (!string.IsNullOrEmpty(Model.Image2Address))
+                            {
+                            @*<div class="First">
+                                <div class="picture Show"><img class="block" src="~/images/Каталог/@Model.Address" alt=""></div>
+                                <div class="pictureSecond Show"><img class="blockSecond" src="~/images/Каталог/@Model.Image2Address" alt=""></div>
+                            </div>
+                            <div class="Second displayNone">
+                                <div class="picture NotShow "><img class="block" src="~/images/Каталог/@Model.Image2Address" alt=""></div>
+                                <div class="pictureSecond   NotShow"><img class="blockSecond" src="~/images/Каталог/@Model.Address" alt=""></div>
+                            </div>*@
+                                <div class="First">
+                                    <div class="picture NotShow "><img class="block" src="~/images/Каталог/@Model.Image2Address" alt=""></div> 
+                                    <div class="pictureSecond   NotShow"><img class="blockSecond" src="~/images/Каталог/@Model.Address" alt=""></div>
+                                </div>
+                                <div class="Second displayNone">
+                                    <div class="picture Show"><img class="block" src="~/images/Каталог/@Model.Address" alt=""></div>
+                                    <div class="pictureSecond Show"><img class="blockSecond" src="~/images/Каталог/@Model.Image2Address" alt=""></div>
+                                </div>
+                            }
                             else
                             {
-                                <div class="picture PictureSlickDisplay" style="padding-right: 20px;padding-left: 20px;"><img class="block" src="~/images/Каталог/@Model.Address" alt=""></div>
-                                <div id="SlickInModal">
-
-                                </div>
-                            }*@
+                                <div class="picture First Show"><img class="block" src="~/images/Каталог/@Model.Address" style="max-height:initial !important;" alt=""></div>@*большая*@
+                            }
 
 
-                        @*<div class="price" style="width:initial;">2000₽</div>*@
-                        <div class="priceMain PriceMainDetail" style="margin-top: 9px !important;">
-                            <div class="newPrice">@Model.Price₽</div>
-                            <div class="oldPrice">2500₽</div>
-                        </div>
-                        <div class="chooseSize AdaptiveDisplay displayNone">Выберите размер</div>
-                        <input type="number" name="Id" value="@Model.Id" style="display:none">
-                        <div class="radio AdaptiveDisplay displayNone">
-                            <label>
-                                <input class="radioFade" type="radio" name="size" value="S-SX"> <span>S-SX</span>
-                            </label>
-                            <label>
-                                <input class="radioFade" type="radio" name="size" value="M-L"><span>M-L</span>
-                            </label>
-                            <label>
-                                <input class="radioFade" type="radio" name="size" value="XL"><span>XL</span>
-                            </label>
-                        </div>
-                        <div class="animate">
-                            <button class="btn btn-add addToCart" type="submit">ДОБАВИТЬ В КОРЗИНУ</button>
-                            <a class="btn btn-add goToCart popup-cart-open" href="/Cart/Cart">ПЕРЕЙТИ В КОРЗИНУ</a>
-                            @*<a class="btn btn-add addToCart" type="submit">ДОБАВИТЬ В КОРЗИНУ</a>*@
-                            <div class="paket"><img src="~/images/Корзина/paket.png" alt=""></div>
-                        </div>
 
-                        <header>
-                            <div id="dialogContentpopupModalText" class="modal-dialog"></div>
-                        </header>
-
-                    </div>
-                    <div class="info Display">
-                        <div class="info_title ">@Model.Name</div>
-                        <div class="info-text">
-                            <div class="info_text_item">
-                                <img class="pointer" src="~/images/point.png" alt="">
-                                <div class="info_text_text">Материал: 40% шелк, 58% полиэстер, 2% лайкра </div>
+                            @*<div class="price" style="width:initial;">2000₽</div>*@
+                            <div class="priceMain PriceMainDetail" style="margin-top: 9px !important;">
+                                <div class="newPrice">@Model.Price₽</div>
+                                <div class="oldPrice">2500₽</div>
                             </div>
-                            <div class="info_text_item">
-                                <img class="pointer" src="~/images/point.png" alt="">
-                                <div class="info_text_text">Размерная сетка </div>
-                            </div>
-                            <div class="info_table"><img src="~/images/pazmer.PNG" alt=""></div>
-                            <div class="chooseSize">Выберите размер</div>
+                            <div class="chooseSize AdaptiveDisplay displayNone">Выберите размер</div>
                             <input type="number" name="Id" value="@Model.Id" style="display:none">
-                            <div class="radio">
+                            <div class="radio AdaptiveDisplay displayNone">
                                 <label>
                                     <input class="radioFade" type="radio" name="size" value="S-SX"> <span>S-SX</span>
                                 </label>
@@ -113,24 +77,62 @@
                                     <input class="radioFade" type="radio" name="size" value="XL"><span>XL</span>
                                 </label>
                             </div>
+                            <div class="animate">
+                                <button class="btn btn-add addToCart" type="submit">ДОБАВИТЬ В КОРЗИНУ</button>
+                                <a class="btn btn-add goToCart popup-cart-open" href="/Cart/Cart">ПЕРЕЙТИ В КОРЗИНУ</a>
+                                @*<a class="btn btn-add addToCart" type="submit">ДОБАВИТЬ В КОРЗИНУ</a>*@
+                                <div class="paket"><img src="~/images/Корзина/paket.png" alt=""></div>
+                            </div>
+
+                            <header>
+                                <div id="dialogContentpopupModalText" class="modal-dialog"></div>
+                            </header>
 
                         </div>
-                    </div>
-                    <div class="info AdaptiveDisplay displayNone">
-                        <div class="info-text">
-                            <div class="info_text_item">
-                                <img class="pointer" src="~/images/point.png" alt="">
-                                <div class="info_text_text">Материал: 40% шелк, 58% полиэстер, 2% лайкра </div>
+                        <div class="info Display">
+                            <div class="info_title ">@Model.Name</div>
+                            <div class="info-text">
+                                <div class="info_text_item">
+                                    <img class="pointer" src="~/images/point.png" alt="">
+                                    <div class="info_text_text">Материал: 40% шелк, 58% полиэстер, 2% лайкра </div>
+                                </div>
+                                <div class="info_text_item">
+                                    <img class="pointer" src="~/images/point.png" alt="">
+                                    <div class="info_text_text">Размерная сетка </div>
+                                </div>
+                                <div class="info_table"><img src="~/images/pazmer.PNG" alt=""></div>
+                                <div class="chooseSize">Выберите размер</div>
+                                <input type="number" name="Id" value="@Model.Id" style="display:none">
+                                <div class="radio">
+                                    <label>
+                                        <input class="radioFade" type="radio" name="size" value="S-SX"> <span>S-SX</span>
+                                    </label>
+                                    <label>
+                                        <input class="radioFade" type="radio" name="size" value="M-L"><span>M-L</span>
+                                    </label>
+                                    <label>
+                                        <input class="radioFade" type="radio" name="size" value="XL"><span>XL</span>
+                                    </label>
+                                </div>
+
                             </div>
-                            <div class="info_text_item">
-                                <img class="pointer" src="~/images/point.png" alt="">
-                                <div class="info_text_text">Размерная сетка </div>
+                        </div>
+                        <div class="info AdaptiveDisplay displayNone">
+                            <div class="info-text">
+                                <div class="info_text_item">
+                                    <img class="pointer" src="~/images/point.png" alt="">
+                                    <div class="info_text_text">Материал: 40% шелк, 58% полиэстер, 2% лайкра </div>
+                                </div>
+                                <div class="info_text_item">
+                                    <img class="pointer" src="~/images/point.png" alt="">
+                                    <div class="info_text_text">Размерная сетка </div>
+                                </div>
+                                <div class="info_table"><img src="~/images/pazmerPhone.PNG" alt=""></div>
                             </div>
-                            <div class="info_table"><img src="~/images/pazmerPhone.PNG" alt=""></div>
                         </div>
                     </div>
                 </div>
-            </div>
+            @*</div>*@
         </form>
     </div>
     @*<script type="text/javascript" src="~/js/slick-1.8.1/slick/slick.min.js"></script>*@
@@ -239,7 +241,8 @@
             console.log(4);
             $(".AdaptiveDisplay").toggleClass("displayNone"); //.remove("displayNone"); //.toggleClass("displayNone");
 
-            $(".popup").toggleClass("overflow2"); // <div class="overflow2">
+            // $(".popup").toggleClass("overflow2"); 
+            $(".popup").addClass("overflow2"); 
             $(".info-text").css('margin-top', '20px');
         }
     </script>

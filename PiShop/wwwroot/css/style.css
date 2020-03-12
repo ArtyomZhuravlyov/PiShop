@@ -729,6 +729,7 @@ h6 {
 
 
 .pictureSecond {
+    height: 68px;
     width: 15%;
     margin-top: 5px;
 }
@@ -1185,6 +1186,10 @@ color:red;
 
 
 @media (max-width: 420px) {
+
+    .picture img{
+        max-height:initial;
+    }
 
     .ModalText {
         width:90%;
