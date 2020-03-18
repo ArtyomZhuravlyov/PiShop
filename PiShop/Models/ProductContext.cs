@@ -52,6 +52,7 @@ namespace PiShop.Models
                     dbEntry.Description = product.Description;
                     dbEntry.Price = product.Price;
                     dbEntry.PriceWithoutSales = product.PriceWithoutSales;
+                    dbEntry.Sale = product.Sale;
                     dbEntry.Category = product.Category;
                     dbEntry.Address = product.Address;
                     dbEntry.ImageData = product.ImageData;

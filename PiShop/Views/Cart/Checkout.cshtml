@@ -12,43 +12,44 @@
     <link rel="stylesheet" href="~/css/shopping-cart.css" />
     <link rel="stylesheet" href="~/css/FormContactDate.css" />
 </head>
+<body>
 
-@using (Html.BeginForm())
-{
-    <div class="containerFormContactDate">
-        @Html.ValidationSummary()
-        <h3>Пожалуйста, введите ваши контактные данные</h3>
-        @foreach (var property in ViewData.ModelMetadata.Properties)
-        {
-
-        <div class="form-group">
-            @switch (property.DisplayName)
+    @using (Html.BeginForm())
+    {
+        <div class="containerFormContactDate">
+            @Html.ValidationSummary()
+            <h3>Пожалуйста, введите ваши контактные данные</h3>
+            @foreach (var property in ViewData.ModelMetadata.Properties)
             {
-                case "Комментарий к заказу":
-                    <label>@(property.DisplayName ?? property.PropertyName)</label>
-                    @Html.TextArea(property.PropertyName, null, new { @class = "form-control MyForm-control", rows = 2 })
-                    break;
-                case "Доставка":
-                case "UserAccess":
-                case "TypePay":
-                case null:
-                    continue;
-                case "Телефон":
-                    <label><span style="color:red">*</span> @(property.DisplayName ?? property.PropertyName)</label>
-                    <input class="form-control MyForm-control" type="text" data-val="true" data-val-required="Укажите телефон" id="Phone" name="Phone">
-                    break;
-                case "Электронная почта":
-                    <label>@(property.DisplayName ?? property.PropertyName)</label>
-                    @Html.TextBox(property.PropertyName, null, new { @class = "form-control MyForm-control" })
-                    break;
-                default:
-                    <label><span style="color:red">*</span> @(property.DisplayName ?? property.PropertyName)</label>
-                    @Html.TextBox(property.PropertyName, null, new { @class = "form-control MyForm-control" })
-                    break;
-            }
-        </div>
 
-        }
+                <div class="form-group">
+                    @switch (property.DisplayName)
+                    {
+                        case "Комментарий к заказу":
+                            <label>@(property.DisplayName ?? property.PropertyName)</label>
+                            @Html.TextArea(property.PropertyName, null, new { @class = "form-control MyForm-control", rows = 2 })
+                            break;
+                        case "Доставка":
+                        case "UserAccess":
+                        case "TypePay":
+                        case null:
+                            continue;
+                        case "Телефон":
+                            <label><span style="color:red">*</span> @(property.DisplayName ?? property.PropertyName)</label>
+                            <input class="form-control MyForm-control" type="text" data-val="true" data-val-required="Укажите телефон" id="Phone" name="Phone">
+                            break;
+                        case "Электронная почта":
+                            <label>@(property.DisplayName ?? property.PropertyName)</label>
+                            @Html.TextBox(property.PropertyName, null, new { @class = "form-control MyForm-control" })
+                            break;
+                        default:
+                            <label><span style="color:red">*</span> @(property.DisplayName ?? property.PropertyName)</label>
+                            @Html.TextBox(property.PropertyName, null, new { @class = "form-control MyForm-control" })
+                            break;
+                    }
+                </div>
+
+            }
             <div class="form-group">
                 <div class="checkbox">
                     <label>
@@ -57,16 +58,35 @@
                     </label>
                 </div>
                 @*<div class="checkbox">
-                    <label>
-                        @Html.EditorFor(x => x.TypePay)
-                        <a class="OrangeColorText">Доставка курьером по Москве или СПБ +350 руб</a>
-                    </label>
-                </div>*@
-                
+                        <label>
+                            @Html.EditorFor(x => x.TypePay)
+                            <a class="OrangeColorText">Доставка курьером по Москве или СПБ +350 руб</a>
+                        </label>
+                    </div>*@
+
             </div>
 
-        <div class="text-center">
-            <input class="btn buttonOrder outline" type="submit" value="Обработать заказ" />
+            <div class="text-center">
+                <input class="btn buttonOrder outline" type="submit" value="Обработать заказ" />
+            </div>
+
         </div>
-    </div>
-}
+    }
+ <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function (m, e, t, r, i, k, a) {
+            m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments) };
+            m[i].l = 1 * new Date(); k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+        })
+            (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+        ym(57702916, "init", {
+            clickmap: true,
+            trackLinks: true,
+            accurateTrackBounce: true,
+            webvisor: true
+        });
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/57702916" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+</body>

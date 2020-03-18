@@ -25,16 +25,23 @@ namespace PiShop.Controllers
             List<Product> Hits = db.GetFavoutiteProducts();
             IndexViewModal indexViewModal = new IndexViewModal()
             {
-                Products = db.Products.Take(9),
+                SimpleTop = db.Products.Where(x=>x.Category=="Обычный топ").Take(6),
                 HitsProducts = Hits,
+                ShortTop = db.Products.Where(x => x.Category == "Короткий топ").Take(6),
+                Phlis = db.Products.Where(x => x.Category == "Флис").Take(3),
+                Pants = db.Products.Where(x => x.Category == "Брюки").Take(3),
                 SuccessOrder = successOrder
             };
             return View(indexViewModal);
         }
 
-        public ActionResult CatalogMore()
+        public ActionResult CatalogMore(string Category)
         {
-            var Products = db.Products.Skip(9);
+            IQueryable Products;
+            if (Category == "брюки" || Category=="флис")
+                Products = db.Products.Where(x => x.Category == Category).Skip(3);
+            else
+                Products = db.Products.Where(x => x.Category == Category).Skip(6);
             return View(Products);
         }
 

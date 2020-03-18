@@ -65,6 +65,8 @@ namespace Domain
         /// Адрес картинки (формируется по ID)
         /// </summary>
         public string Image2Address { get; set; }
-        
+
+        public int Sale { get; set; }
+
     }
 }

@@ -10,18 +10,33 @@
         {
             <div class="hits_item">
                 <div class="hits_pic">
-                    <img class="hits_img" src="~/images/Каталог/@product.Address" alt="">
+                    @if (product.Category == "флис")
+                    {
+                        <img class="hits_img" style="max-height:initial !important" src="~/images/Каталог/@product.Address" alt="">
+                    }
+                    else
+                    {
+                        <img class="hits_img" src="~/images/Каталог/@product.Address" alt="">
+                    }
+
                     <div class="buttons AdaptiveDisplayCatalog"> <a class="btn btn-hit popup-open" href="/Home/popupFade/@product.Id">УЗНАТЬ ПОДРОБНЕЕ</a> <a class="btn btn-hit popup-buy-open" href="/Home/popupBuy/@product.Id">КУПИТЬ</a> </div>
                     @if (product.Favourite)
                     {<div class="hit_word">ХИТ</div>}
-                    <div class="sale">-40%</div>
+                    @if (product.Sale > 0)
+                    {
+                        <div class="sale">-@product.Sale%</div>
+                    }
+
                 </div>
                 <div class="hits_title">
                     <a class=" popup-open" style="text-decoration:none; color: black;" href="/Home/popupFade/@product.Id">@product.Name</a>
                 </div>
                 <div class="priceMain">
                     <div class="newPrice">@product.Price₽</div>
-                    <div class="oldPrice">2500₽</div>
+                    @if (product.Price < product.PriceWithoutSales)
+                    {
+                        <div class="oldPrice">@product.PriceWithoutSales₽</div>
+                    }
                 </div>
             </div>
         }

@@ -8,9 +8,17 @@ namespace PiShop.Models
 {
     public class IndexViewModal
     {
-       public IEnumerable<Product> Products;
+       //public IEnumerable<Product> Products;
 
         public List<Product> HitsProducts;
+
+        public IEnumerable<Product> SimpleTop;
+
+        public IEnumerable<Product> ShortTop;
+
+        public IEnumerable<Product> Phlis;
+
+        public IEnumerable<Product> Pants;
 
         /// <summary>
         /// Флаг для окна об успешной оплате
