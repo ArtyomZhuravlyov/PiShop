@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width" , initial-scale=1>
     <script src="https://yandex.st/jquery/2.1.1/jquery.min.js"></script>
     @*<link href="https://fonts.googleapis.com/css?family=Merienda|Neucha|Roboto&display=swap" rel="stylesheet">
-
         <link rel="stylesheet" type="text/css" href="~/js/slick-1.8.1/slick/slick.css" />
         <link rel="stylesheet" type="text/css" href="~/js/slick-1.8.1/slick/slick-theme.css" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>*@
@@ -20,7 +19,14 @@
                     <div class="info_buy">
                         <div class="info_title">@Model.Name</div>
                         <div class="info-text">
-                            <div class="info_table"><img src="~/images/pazmer.PNG" alt=""></div>
+                            @if (Model.Category != "флис")
+                            {
+                                <div class="info_table"><img src="~/images/pazmer.PNG" alt=""></div>
+                            }
+                            else
+                            {
+                                <div class="info_table"><img src="~/images/PhlisPazmer2.PNG" alt=""></div>
+                            }
                             <div class="chooseSize">Выберите размер</div>
                             <input type="number" name="Id" value="@Model.Id" style="display:none">
                             <div class="radio">
@@ -36,10 +42,13 @@
                             </div>
                         </div>
                     </div>
-                    @*<div class="price" style="width:initial;">2000₽</div>*@
+                    @*<div class="price" style="width:initial;">2000Р</div>*@
                     <div class="priceMain PriceMainDetail">
-                        <div class="newPrice">@Model.Price₽</div>
-                        <div class="oldPrice">2500₽</div>
+                        <div class="newPrice"> @Model.Price&#1056</div>
+                        @if (Model.Price < Model.PriceWithoutSales)
+                        {
+                            <div class="oldPrice">@Model.PriceWithoutSales&#1056</div>
+                        }
                     </div>
                     <div class="animate">
                         <button class="btn btn-add btn-add-buy addToCart btn-add2" type="submit">ДОБАВИТЬ В КОРЗИНУ</button>

@@ -12,11 +12,11 @@
                 <div class="hits_pic">
                     @if (product.Category == "флис")
                     {
-                        <img class="hits_img" style="max-height:initial !important" src="~/images/Каталог/@product.Address" alt="">
+                        <img class="hits_img" style="max-height:initial !important" src="~/images/Каталог/Маленькие изображения/@product.Address" alt="">
                     }
                     else
                     {
-                        <img class="hits_img" src="~/images/Каталог/@product.Address" alt="">
+                        <img class="hits_img" src="~/images/Каталог/Маленькие изображения/@product.Address" alt="">
                     }
 
                     <div class="buttons AdaptiveDisplayCatalog"> <a class="btn btn-hit popup-open" href="/Home/popupFade/@product.Id">УЗНАТЬ ПОДРОБНЕЕ</a> <a class="btn btn-hit popup-buy-open" href="/Home/popupBuy/@product.Id">КУПИТЬ</a> </div>
@@ -32,10 +32,10 @@
                     <a class=" popup-open" style="text-decoration:none; color: black;" href="/Home/popupFade/@product.Id">@product.Name</a>
                 </div>
                 <div class="priceMain">
-                    <div class="newPrice">@product.Price₽</div>
+                    <div class="newPrice">@product.Price&#1056</div>
                     @if (product.Price < product.PriceWithoutSales)
                     {
-                        <div class="oldPrice">@product.PriceWithoutSales₽</div>
+                        <div class="oldPrice">@product.PriceWithoutSales&#1056</div>
                     }
                 </div>
             </div>

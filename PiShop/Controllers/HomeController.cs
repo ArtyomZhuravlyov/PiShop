@@ -30,6 +30,7 @@ namespace PiShop.Controllers
                 ShortTop = db.Products.Where(x => x.Category == "Короткий топ").Take(6),
                 Phlis = db.Products.Where(x => x.Category == "Флис").Take(3),
                 Pants = db.Products.Where(x => x.Category == "Брюки").Take(3),
+                Complex = db.Products.Where(x => x.Category == "Комплекты").Take(6),
                 SuccessOrder = successOrder
             };
             return View(indexViewModal);

@@ -3,8 +3,8 @@ Disallow: /admin/
 Disallow: /Account/
 Disallow: /Home/IndexSearch/
 Disallow: /Home/OrderSuccess/
-Disallow: /Home/popupfade/
-Disallow: /Home/popupbuy/
+Disallow: /Home/popupFade/
+Disallow: /Home/popupBuy/
 Disallow: /Cart/
 
 Host: https://pizhamka-fox.ru/

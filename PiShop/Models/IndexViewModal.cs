@@ -18,6 +18,14 @@ namespace PiShop.Models
 
         public IEnumerable<Product> Phlis;
 
+        /// <summary>
+        /// Комплект
+        /// </summary>
+        public IEnumerable<Product> Complex;
+
+        /// <summary>
+        /// Шорты
+        /// </summary>
         public IEnumerable<Product> Pants;
 
         /// <summary>

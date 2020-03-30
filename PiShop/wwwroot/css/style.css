@@ -190,6 +190,32 @@ h6 {
     margin-left:20px;
 }
 
+/*Иконки соц сетей*/
+
+.social {
+    width: 100%;
+}
+
+.social_inner {
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    margin: 30px auto;
+}
+
+.social_item {
+    width: 10%;
+    margin: 0 5px;
+    min-width: 40px;
+}
+
+    .social_item img {
+        display: block;
+        width: 100%;
+        height: auto;
+        margin: 0 auto;
+    }
+
 /*УЗНАТЬ ПОДРОБНЕЕ-МОДАЛЬНОЕ ОКНО*/
 
 .popup-fade {
@@ -207,19 +233,20 @@ h6 {
 	z-index: 9999;
 }
 .popup {
-	position: fixed;
-	/*top: 20%;*/
-	left: 0;
-    right: 0;
-	padding: 20px;
-	width: 80%;
+    /*position: fixed;*/
+    position: relative;
+    top: 20px;
+    /*left: 0;
+    right: 0;*/
+    padding: 20px;
+    width: 80%;
     height: auto;
-	margin: 0 auto;	
-	background: #fff;
-	border: 1px solid #333333;
-	border-radius: 4px; 
-	z-index: 99999;
-	opacity: 1;	
+    margin: 0 auto;
+    background: #fff;
+    border: 1px solid #333333;
+    border-radius: 4px;
+    z-index: 99999;
+    opacity: 1;
 }
 .popup-close {
    
@@ -556,6 +583,7 @@ h6 {
 
 .hits_items {
     margin-top: 20px;
+    margin: 20px 10px 0;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -1087,6 +1115,9 @@ color:red;
 
 @media (max-width: 990px) {
 
+    /*.popup {
+        top: 5px;
+    }*/
 
     .picture:hover {
         position: initial;
@@ -1199,10 +1230,8 @@ color:red;
    
 }
 
-
-@media (max-width: 420px) {
-
-    .picture {
+    @media (max-width: 440px) {
+        .picture {
         /*width: 100%;*/
         /*cursor: zoom-in;*/
         position: initial;
@@ -1267,7 +1296,7 @@ color:red;
     }
 
     .hits_item{
-        width: 70%;
+        width: 50%;
         margin: 15px auto;
     }
 
@@ -1290,6 +1319,9 @@ color:red;
     }
 }
 
+/*@media (max-width: 1367px) {
+    top: 5px;
+}*/
 
 @media (min-width: 1500px) {
 
