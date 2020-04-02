@@ -1,109 +1,111 @@
-﻿@model IEnumerable<Domain.Product>
-<head>
-    @*<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-    <script src="https://yandex.st/jquery/2.1.1/jquery.min.js"></script>*@
-</head>
-<body>
-    <div class="hits_items">
-        @foreach (var product in Model)
-        {
-            <div class="hits_item">
-                <div class="hits_pic">
-                    @if (product.Category == "флис")
-                    {
-                        <img class="hits_img" style="max-height:initial !important" src="~/images/Каталог/Маленькие изображения/@product.Address" alt="">
-                    }
-                    else
-                    {
-                        <img class="hits_img" src="~/images/Каталог/Маленькие изображения/@product.Address" alt="">
-                    }
+﻿@using Domain;
+@model IEnumerable<Domain.Product>
 
-                    <div class="buttons AdaptiveDisplayCatalog"> <a class="btn btn-hit popup-open" href="/Home/popupFade/@product.Id">УЗНАТЬ ПОДРОБНЕЕ</a> <a class="btn btn-hit popup-buy-open" href="/Home/popupBuy/@product.Id">КУПИТЬ</a> </div>
-                    @if (product.Favourite)
-                    {<div class="hit_word">ХИТ</div>}
-                    @if (product.Sale > 0)
-                    {
-                        <div class="sale">-@product.Sale%</div>
-                    }
+    <head>
+        @*<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+            <script src="https://yandex.st/jquery/2.1.1/jquery.min.js"></script>*@
+    </head>
+    <body>
+        <div class="hits_items">
+            @foreach (var product in Model)
+            {
+                <div class="hits_item">
+                    <div class="hits_pic">
+                        @if (product.Category == "флис")
+                        {
+                            <img class="hits_img" style="max-height:initial !important" src="~/images/Каталог/Маленькие изображения/@product.Address" alt="">
+                        }
+                        else
+                        {
+                            <img class="hits_img" src="~/images/Каталог/Маленькие изображения/@product.Address" alt="">
+                        }
 
-                </div>
-                <div class="hits_title">
-                    <a class=" popup-open" style="text-decoration:none; color: black;" href="/Home/popupFade/@product.Id">@product.Name</a>
-                </div>
-                <div class="priceMain">
-                    <div class="newPrice">@product.Price&#1056</div>
-                    @if (product.Price < product.PriceWithoutSales)
-                    {
-                        <div class="oldPrice">@product.PriceWithoutSales&#1056</div>
-                    }
-                </div>
-            </div>
-        }
-    </div>
-    <script src="~/js/app.js"></script>
+                        <div class="buttons AdaptiveDisplayCatalog"> <a class="btn btn-hit popup-open" href="/Home/popupFade/@product.Id">УЗНАТЬ ПОДРОБНЕЕ</a> <a class="btn btn-hit popup-buy-open" href="/Home/popupBuy/@product.Id">КУПИТЬ</a> </div>
+                        @if (product.Favourite)
+                        {<div class="hit_word">ХИТ</div>}
+                        @if ((((product.Price * 100) / product.PriceWithoutSales) - 100) * (-1) > 2)
+                        {
+                            <div class="sale">-@(Product.RoundFive(((product.Price * 100) / product.PriceWithoutSales) - 100) * (-1))%</div>
+                        }
 
-    <script>
-        $(document).ready(function ($) {
-            $('.popup-open').click(function (e) {
-                e.preventDefault();
-                $.get(this.href, function (data) {
-                    $('#dialogContentpopupFade').html(data);
-                    $('.popup-fade').fadeIn();
+                    </div>
+                    <div class="hits_title">
+                        <a class=" popup-open" style="text-decoration:none; color: black;" href="/Home/popupFade/@product.Id">@product.Name</a>
+                    </div>
+                    <div class="priceMain">
+                        <div class="newPrice">@product.Price&#1056</div>
+                        @if (product.Price < product.PriceWithoutSales)
+                        {
+                            <div class="oldPrice">@product.PriceWithoutSales&#1056</div>
+                        }
+                    </div>
+                </div>
+            }
+        </div>
+        <script src="~/js/app.js"></script>
+
+        <script>
+            $(document).ready(function ($) {
+                $('.popup-open').click(function (e) {
+                    e.preventDefault();
+                    $.get(this.href, function (data) {
+                        $('#dialogContentpopupFade').html(data);
+                        $('.popup-fade').fadeIn();
+                    });
+
+                    return false;
                 });
-
-                return false;
-            });
-            $('.popup-close').click(function () {
-                $(this).parents('.popup-fade').fadeOut();
-                return false;
-            });
-            $(document).keydown(function (e) {
-                if (e.keyCode === 27) {
-                    e.stopPropagation();
-                    $('.popup-fade').fadeOut();
-                }
-            });
-            $('.popup-fade').click(function (e) {
-                if ($(e.target).closest('.popup').length == 0) {
-                    $(this).fadeOut();
-                }
-            });
-        });
-    </script>
-    <script>
-        $(document).ready(function ($) {
-            $('.popup-buy-open').click(function (e) {
-                e.preventDefault();
-                $.get(this.href, function (data) {
-                    $('#dialogContentpopupBuy').html(data);
-                    $('.popup-buy').fadeIn();
+                $('.popup-close').click(function () {
+                    $(this).parents('.popup-fade').fadeOut();
+                    return false;
                 });
+                $(document).keydown(function (e) {
+                    if (e.keyCode === 27) {
+                        e.stopPropagation();
+                        $('.popup-fade').fadeOut();
+                    }
+                });
+                $('.popup-fade').click(function (e) {
+                    if ($(e.target).closest('.popup').length == 0) {
+                        $(this).fadeOut();
+                    }
+                });
+            });
+        </script>
+        <script>
+            $(document).ready(function ($) {
+                $('.popup-buy-open').click(function (e) {
+                    e.preventDefault();
+                    $.get(this.href, function (data) {
+                        $('#dialogContentpopupBuy').html(data);
+                        $('.popup-buy').fadeIn();
+                    });
 
-                return false;
+                    return false;
+                });
+                $('.popup-buy-close').click(function () {
+                    $(this).parents('.popup-buy').fadeOut();
+                    return false;
+                });
+                $(document).keydown(function (e) {
+                    if (e.keyCode === 27) {
+                        e.stopPropagation();
+                        $('.popup-buy').fadeOut();
+                    }
+                });
+                $('.popup-buy').click(function (e) {
+                    if ($(e.target).closest('.buy').length == 0) {
+                        $(this).fadeOut();
+                    }
+                });
             });
-            $('.popup-buy-close').click(function () {
-                $(this).parents('.popup-buy').fadeOut();
-                return false;
-            });
-            $(document).keydown(function (e) {
-                if (e.keyCode === 27) {
-                    e.stopPropagation();
-                    $('.popup-buy').fadeOut();
-                }
-            });
-            $('.popup-buy').click(function (e) {
-                if ($(e.target).closest('.buy').length == 0) {
-                    $(this).fadeOut();
-                }
-            });
-        });
-    </script>
+        </script>
 
-    @*убрать кнопки при наведении на телефоне*@
-    <script type="text/javascript">
-        if (innerWidth < 420) {
-            $(".AdaptiveDisplayCatalog").addClass("displayNone"); //.remove("displayNone"); //.toggleClass("displayNone");
-        }
-    </script>
-</body>
+        @*убрать кнопки при наведении на телефоне*@
+        <script type="text/javascript">
+            if (innerWidth < 420) {
+                $(".AdaptiveDisplayCatalog").addClass("displayNone"); //.remove("displayNone"); //.toggleClass("displayNone");
+            }
+        </script>
+    </body>

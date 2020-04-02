@@ -35,6 +35,14 @@ FormMethod.Post))
         <input type="number" name="generalPrice" style="margin-left: 50%;">
     }
 
+    @using (Html.BeginForm("ChangeCategoryPrice", "Admin",
+FormMethod.Post))
+    {
+        <input type="submit" value="Изменить все цены по категории" id="BTNchange" class="btn btn-primary" style="margin-left: 50%;" />
+        <input type="text" name="category" style="margin-left: 50%;">
+        <input type="number" name="generalPrice" style="margin-left: 50%;">
+    }
+
     @using (Html.BeginForm("PriceAdmin", "Admin",
 FormMethod.Post))
     {
@@ -57,7 +65,7 @@ FormMethod.Post))
                 <tr class="form-group">
                     <th class="text-right"> @Html.EditorFor(m => m[i].Id, "Id")</th>
                     <th class="text-right">
-                        <img class="BigImage" src="~/images/Каталог товаров/@Html.DisplayFor(m => m[i].Address) " width="150" height="150" />
+                        <img class="BigImage" src="~/images/Каталог/Маленькие изображения/@Html.DisplayFor(m => m[i].Address) " width="150" height="150" />
                     </th>
 
                     <th>@Html.EditorFor(m => m[i].Name, new { @class = "with100" })</th>

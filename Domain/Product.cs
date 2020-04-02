@@ -68,5 +68,14 @@ namespace Domain
 
         public int Sale { get; set; }
 
+        public static int RoundFive(double d)
+        {
+            // Округляем с точностью до 5
+            if (d % 5 > 2.5)
+                return (int)(d / 5) * 5 + 5;
+            else
+                return (int)(d / 5) * 5;
+        }
+
     }
 }

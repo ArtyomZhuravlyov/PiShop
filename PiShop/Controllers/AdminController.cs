@@ -125,6 +125,21 @@ namespace PiShop.Controllers
 
         }
 
+
+        [HttpPost]
+        public IActionResult ChangeCategoryPrice(string category,int generalPrice)
+        {
+            var products = db.Products.Where(x => x.Category == category);
+
+            foreach (var product in products)
+            {
+                product.Price = generalPrice;
+            }
+            db.SaveChanges();
+            TempData["message"] = string.Format("Изменения  были сохранены");
+            return Redirect("PriceAdmin");
+        }
+
         [HttpPost]
         public IActionResult ChangeGeneralPrice(int generalPrice)
         {
