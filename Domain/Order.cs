@@ -58,8 +58,11 @@ namespace Domain
         public string Adress { get; set; }
 
 
-        [Display(Name = "Телефон")]
+        [Display(Name = "Телефон получателя")]
         public string Phone { get; set; }
+
+        [Display(Name = "Телефон покупателя")]
+        public string OurPhone { get; set; }
 
 
         [Display(Name = "Электронная почта")]

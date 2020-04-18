@@ -60,12 +60,13 @@ namespace Insert
                     //поиск индекса последнего слеша
                     ind = files[i].LastIndexOf('\\'); //{textStart}
                     string name = files[i].Substring(ind + 1);
-                    string Name = $"'Флис { name.Replace(".jpg", "").Replace(".png", "").Replace("Short", "").ToUpper() }'";
-                    string Address = $"'Флис/{name}'";
-                    string Address2 = $"'Флис/{name}2'";
-                    string category = "'флис'";
-                    int Price = 2690;
-                    int WithOutPrice = 2690;
+                    
+                    string Name = $"'Пижама { name.Replace(".jpg", "").Replace(".png", "").Replace("Short", "").ToUpper() }'";
+                    string Address = $"'Обычный топ/{name}'";
+                    string Address2 = $"'Обычный топ/{name}2'";
+                    string category = "'обычный топ'";
+                    int Price = 1590;
+                    int WithOutPrice = 1590;
                     int Sale = 0;
                     string sqlExpression = $"INSERT INTO Products (Name, Description, Address,Price, Category, ImageData, ImageMimeType, PriceWithoutSales, Weight, Favourite ,Size, Image2Address ,Sale ) VALUES ({Name}, null, {Address}, {Price}, {category}, null, null, {WithOutPrice}, null, 0 ,null, {Address2} , {Sale})";
 

@@ -211,7 +211,7 @@ namespace PiShop.Controllers
                 ModelState.AddModelError("Phone", "Неверный формат номера телефона");
                 return false;
             }
-            phone = phone.Replace(" ", "").Replace("(", "").Replace(")", "");
+            phone = phone.Replace(" ", "").Replace("(", "").Replace(")", "").Replace("-", "");
             return true;
 
         }
@@ -301,8 +301,9 @@ namespace PiShop.Controllers
                 City = shippingDetails.City,
                 MiddleName = shippingDetails.MiddleName,
                 Surname = shippingDetails.Surname,
-                TimeOrder = DateTime.Now.ToUniversalTime(),
+                TimeOrder = DateTime.Now.AddHours(3).ToUniversalTime(),
                 Phone = shippingDetails.Phone,
+                OurPhone = shippingDetails.OurPhone,
                 Comment = shippingDetails.Comment,
                 OrdersAndQuantity = cart.GetXmlLineCollection(),
                 Amount = cart.ComputeTotalValueWithDelivery(),

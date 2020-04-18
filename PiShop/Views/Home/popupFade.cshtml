@@ -98,9 +98,13 @@
                             <div class="info-text">
                                 <div class="info_text_item">
                                     <img class="pointer" src="~/images/point.png" alt="">
-                                    @if (Model.Category != "флис")
+                                    @if (Model.Category != "флис" && Model.Category != "брюки")
                                     {
                                         <div class="info_text_text">Материал: шёлк Армани </div>
+                                    }
+                                    else if (Model.Category == "брюки")
+                                    {
+                                        <div class="info_text_text">Материал: шёлк - 20%, полиэстер - 78%, лайкра - 2%</div>
                                     }
                                     else
                                     {
@@ -140,13 +144,17 @@
                             <div class="info-text">
                                 <div class="info_text_item">
                                     <img class="pointer" src="~/images/point.png" alt="">
-                                    @if (Model.Category != "флис")
+                                    @if (Model.Category != "флис" && Model.Category != "брюки")
                                     {
                                         <div class="info_text_text">Материал: шёлк Армани </div>
                                     }
+                                    else if (Model.Category == "брюки")
+                                    {
+                                        <div class="info_text_text">Материал: шёлк - 20%, полиэстер - 78%, лайкра - 2%</div>
+                                    }
                                     else
                                     {
-                                        <div class="info_text_text">Материал: Флис </div>
+                                        <div class="info_text_text">Материал: флис </div>
                                     }
                                 </div>
                                 <div class="info_text_item">

@@ -29,8 +29,11 @@ namespace Domain
         [Display(Name = "Адрес")]
         public string Adress { get; set; }
 
-        [Required(ErrorMessage = "Укажите телефон")]
-        [Display(Name = "Телефон")]
+        [Required(ErrorMessage = "Укажите Ваш телефон (для уточнения информации)")]
+        [Display(Name = "Ваш телефон")]
+        public string OurPhone { get; set; }
+
+        [Display(Name = "Телефон Получателя")]
         public string Phone { get; set; }
 
 

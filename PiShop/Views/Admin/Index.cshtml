@@ -18,10 +18,11 @@
         <tr>
             <th class="text-right">ID</th>
             <th class="text-right">ДАТА</th>
-            <th>Имя</th>
             <th>Фамилия</th>
+            <th>Имя</th>
+
             <th class="text-right">Город</th>
-            <th class="text-center">Телефон</th>
+            <th class="text-center">Телефон покупателя</th>
             <th class="text-right">Адрес</th>
             <th class="text-center">Сумма</th>
         </tr>
@@ -33,10 +34,10 @@
         <tr>
             <td class="text-right">@Model[i].Id</td>
             <td class="text-right">@Model[i].TimeOrder</td>
-            <td>@Html.ActionLink(Model[i].Name, "OrderView", new { Model[i].Id })</td>
             <td class="text-right">@Model[i].Surname</td>
+            <td>@Html.ActionLink(Model[i].Name, "OrderView", new { Model[i].Id })</td>
             <td class="text-right">@Model[i].City</td>
-            <td class="text-right">@Model[i].Phone</td>
+            <td class="text-right">@Model[i].OurPhone</td>
             <td class="text-right">@Model[i].Adress</td>
             <td class="text-center">@Model[i].Amount.ToString("# руб") </td>
         </tr>
