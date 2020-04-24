@@ -180,15 +180,17 @@ namespace PiShop.Controllers
                 string value = HttpContext.Session.GetString("Cart");
                 Cart cart = JsonConvert.DeserializeObject<Cart>(value);
                     var order = CreateAndFillOrder(shippingDetails, cart); //добавляем в базу заказ
-                    //Sberbank sberbank = new Sberbank((order.Id).ToString() + "test", cart, shippingDetails);
-                    //string url = sberbank.GetResponseSoap();
-                    //if (!string.IsNullOrEmpty(url))
-                    //    return Redirect(url);
-                    //else
-                    //{
-                    //    ModelState.AddModelError("Mail", "Проверьте правильность введённых данных");
-                    //    return View(shippingDetails);
-                    //}
+                                                                           //Sberbank sberbank = new Sberbank((order.Id).ToString() + "test", cart, shippingDetails);
+                                                                           //string url = sberbank.GetResponseSoap();
+                                                                           //if (!string.IsNullOrEmpty(url))
+                                                                           //    return Redirect(url);
+                                                                           //else
+                                                                           //{
+                                                                           //    ModelState.AddModelError("Mail", "Проверьте правильность введённых данных");
+                                                                           //    return View(shippingDetails);
+                                                                           //}
+                                                                           //добавляем в статистику
+                AddOrderPizham(cart);
                      return RedirectToAction("Index", "Home", new { successOrder = true });
 
             }
@@ -258,6 +260,22 @@ namespace PiShop.Controllers
             catch (RegexMatchTimeoutException)
             {
                 return false;
+            }
+        }
+
+        private void AddOrderPizham(Cart cart)
+        {
+            try
+            {
+                foreach(var line in cart.Lines)
+                {
+                    db.OrderPizham.Add(new OrderPizham() { Order = line.productCart.Name });
+                }
+                db.SaveChanges();
+            }
+            catch(Exception exp)
+            {
+
             }
         }
 

@@ -15,6 +15,11 @@ namespace PiShop.Models
 
         public DbSet<User> Users { get; set; }
 
+        /// <summary>
+        /// Для статистики купленных пижам
+        /// </summary>
+        public DbSet<OrderPizham> OrderPizham { get; set; }
+
         //public DbSet<Feedback> Feedback { get; set; }
 
         //public DbSet<WordsSearch> WordsSearch { get; set; }

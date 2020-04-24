@@ -32,7 +32,7 @@
             </div>
         </div>
     </div>
-    <div class="hits" id="hits">
+    @*<div class="hits" id="hits">
         <div class="container">
             <div class="hits_inner addSl">
                 <div class="hits_MainTitle">Виды товаров</div>
@@ -41,7 +41,7 @@
                     {
                         <div class="hits_item">
                             <div class="hits_pic">
-                                <img class="hits_img" src="~/images/Каталог/Маленькие изображения/@product.Address" style="max-height: 275px !important;">
+                                <img class="hits_img" src="~/images/Каталог/Girls/Маленькие изображения/@product.Address"> 
                                 <div class="buttons AdaptiveDisplayCatalog"> <a class="btn btn-hit popup-open" href="/Home/popupFade/@product.Id">УЗНАТЬ ПОДРОБНЕЕ</a> <a class="btn btn-hit popup-buy-open" href="/Home/popupBuy/@product.Id">КУПИТЬ</a> </div>
                                 <div class="hit_word">ХИТ</div>
                                 @if ((((product.Price * 100) / product.PriceWithoutSales) - 100) * (-1) > 2)
@@ -65,7 +65,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>*@
 
 
     <div class="hits" id="catalog">
@@ -78,7 +78,7 @@
                     {
                         <div class="hits_item">
                             <div class="hits_pic">
-                                <img class="hits_img" src="~/images/Каталог/Маленькие изображения/@product.Address" alt="">
+                                <img class="hits_img" src="~/images/Каталог/Girls/Маленькие изображения/@product.Address" alt="">
                                 <div class="buttons AdaptiveDisplayCatalog"> <a class="btn btn-hit popup-open" href="/Home/popupFade/@product.Id">УЗНАТЬ ПОДРОБНЕЕ</a> <a class="btn btn-hit popup-buy-open" href="/Home/popupBuy/@product.Id">КУПИТЬ</a> </div>
                                 @if (product.Favourite)
                                 {<div class="hit_word">ХИТ</div>}
@@ -130,7 +130,7 @@
                     {
                         <div class="hits_item">
                             <div class="hits_pic">
-                                <img class="hits_img" src="~/images/Каталог/Маленькие изображения/@product.Address" alt="">
+                                <img class="hits_img" src="~/images/Каталог/Girls/Маленькие изображения/@product.Address" alt="">
                                 <div class="buttons AdaptiveDisplayCatalog"> <a class="btn btn-hit popup-open" href="/Home/popupFade/@product.Id">УЗНАТЬ ПОДРОБНЕЕ</a> <a class="btn btn-hit popup-buy-open" href="/Home/popupBuy/@product.Id">КУПИТЬ</a> </div>
                                 @if (product.Favourite)
                                 {<div class="hit_word">ХИТ</div>}
@@ -187,11 +187,11 @@
                             <div class="hits_pic">
                                 @if (product.Category == "флис")
                                 {
-                                    <img class="hits_img" style="max-height:initial !important" src="~/images/Каталог/Маленькие изображения/@product.Address" alt="">
+                                    <img class="hits_img" style="max-height:initial !important" src="~/images/Каталог/Girls/Маленькие изображения/@product.Address" alt="">
                                 }
                                 else
                                 {
-                                    <img class="hits_img" src="~/images/Каталог/@product.Address" alt="">
+                                    <img class="hits_img" src="~/images/Каталог/Girls/@product.Address" alt="">
                                 }
                                 <div class="buttons AdaptiveDisplayCatalog"> <a class="btn btn-hit popup-open" href="/Home/popupFade/@product.Id">УЗНАТЬ ПОДРОБНЕЕ</a> <a class="btn btn-hit popup-buy-open" href="/Home/popupBuy/@product.Id">КУПИТЬ</a> </div>
                                 @if (product.Favourite)
@@ -235,14 +235,14 @@
             </script>
 
 
-            <div class="hits_inner">
+            @*<div class="hits_inner">
                 <div class="hits_MainTitle">Короткий Топ</div>
                 <div class="hits_items">
                     @foreach (var product in Model.ShortTop)
                     {
                         <div class="hits_item">
                             <div class="hits_pic">
-                                <img class="hits_img" src="~/images/Каталог/Маленькие изображения/@product.Address" alt="">
+                                <img class="hits_img" src="~/images/Каталог/Girls/Маленькие изображения/@product.Address" alt="">
                                 <div class="buttons AdaptiveDisplayCatalog"> <a class="btn btn-hit popup-open" href="/Home/popupFade/@product.Id">УЗНАТЬ ПОДРОБНЕЕ</a> <a class="btn btn-hit popup-buy-open" href="/Home/popupBuy/@product.Id">КУПИТЬ</a> </div>
                                 @if (product.Favourite)
                                 {<div class="hit_word">ХИТ</div>}
@@ -267,7 +267,7 @@
                 <div id="ContentShow_more_ShortTop"></div>
             </div>
             <div>
-                @*<div id="contentMore"></div>*@
+                <div id="contentMore"></div>
                 <div style="width: 210px; margin: 0 auto; margin: 50px auto;">
                     <input id="show_more_Short" count_show="5" count_add="3" class="btn btn-add " style="width: 210px; margin: 0 auto;" type="button" value="Показать еще" />
                 </div>
@@ -282,7 +282,7 @@
                         });
                     });
                 });
-            </script>
+            </script>*@
 
             <div class="hits_inner">
                 <div class="hits_MainTitle">Брюки</div>
@@ -292,7 +292,7 @@
                     {
                         <div class="hits_item">
                             <div class="hits_pic">
-                                <img class="hits_img" src="~/images/Каталог/Маленькие изображения/@product.Address" alt="">
+                                <img class="hits_img" src="~/images/Каталог/Girls/Маленькие изображения/@product.Address" alt="">
                                 <div class="buttons AdaptiveDisplayCatalog"> <a class="btn btn-hit popup-open" href="/Home/popupFade/@product.Id">УЗНАТЬ ПОДРОБНЕЕ</a> <a class="btn btn-hit popup-buy-open" href="/Home/popupBuy/@product.Id">КУПИТЬ</a> </div>
                                 @if (product.Favourite)
                                 {<div class="hit_word">ХИТ</div>}

@@ -34,30 +34,29 @@
                         <div class="info_title AdaptiveDisplay displayNone">@Model.Name</div>
 
                         <div class="theFirstBlock">
-                            @if (@*!string.IsNullOrEmpty(Model.Image2Address)*@ /**/
-                                                                                                       /**/
-                                                                                                       System.IO.File.Exists($"{Environment.CurrentDirectory}/wwwroot/images/Каталог/{Model.Image2Address}"))
+                            @if (System.IO.File.Exists($"{Environment.CurrentDirectory}/wwwroot/images/Каталог/Girls/{Model.Image2Address}"))
                                         {
                                             @*<div class="First">
-                                        <div class="picture Show"><img class="block" src="~/images/Каталог/@Model.Address" alt=""></div>
-                                        <div class="pictureSecond Show"><img class="blockSecond" src="~/images/Каталог/@Model.Image2Address" alt=""></div>
+                                        <div class="picture Show"><img class="block" src="~/images/Каталог/Girls/@Model.Address" alt=""></div>
+                                        <div class="pictureSecond Show"><img class="blockSecond" src="~/images/Каталог/Girls/@Model.Image2Address" alt=""></div>
                                     </div>
                                     <div class="Second displayNone">
-                                        <div class="picture NotShow "><img class="block" src="~/images/Каталог/@Model.Image2Address" alt=""></div>
-                                        <div class="pictureSecond   NotShow"><img class="blockSecond" src="~/images/Каталог/@Model.Address" alt=""></div>
+                                        <div class="picture NotShow "><img class="block" src="~/images/Каталог/Girls/@Model.Image2Address" alt=""></div>
+                                        <div class="pictureSecond   NotShow"><img class="blockSecond" src="~/images/Каталог/Girls/@Model.Address" alt=""></div>
                                     </div>*@
-                                            <div class="First">
-                                                <div class="picture NotShow "><img class="block" src="~/images/Каталог/@Model.Image2Address" alt=""></div>
-                                                <div class="pictureSecond   NotShow"><img class="blockSecond" src="~/images/Каталог/@Model.Address" alt=""></div>
-                                            </div>
+                            <div class="First">
+                                <div class="picture Show"><img class="block" src="~/images/Каталог/Girls/@Model.Address" alt=""></div>
+                                <div class="pictureSecond Show"><img class="blockSecond" src="~/images/Каталог/Girls/@Model.Image2Address" alt=""></div>
+                            </div>
                                             <div class="Second displayNone">
-                                                <div class="picture Show"><img class="block" src="~/images/Каталог/@Model.Address" alt=""></div>
-                                                <div class="pictureSecond Show"><img class="blockSecond" src="~/images/Каталог/@Model.Image2Address" alt=""></div>
+                                                <div class="picture NotShow "><img class="block" src="~/images/Каталог/Girls/@Model.Image2Address" alt=""></div>
+                                                <div class="pictureSecond   NotShow"><img class="blockSecond" src="~/images/Каталог/Girls/@Model.Address" alt=""></div>
+                                                
                                             </div>
                                         }
                                         else
                                         {
-                                            <div class="picture First Show"><img class="block" src="~/images/Каталог/@Model.Address" style="max-height:initial !important;" alt=""></div>@*большая*@
+                                            <div class="picture First Show"><img class="block" src="~/images/Каталог/Girls/@Model.Address" style="max-height:initial !important;" alt=""></div>@*большая*@
                                         }
                             @*<div class="price" style="width:initial;">2000Р</div>*@
                             <div class="priceMain PriceMainDetail" style="margin-top: 9px !important;">
