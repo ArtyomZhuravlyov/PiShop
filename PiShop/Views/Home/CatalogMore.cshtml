@@ -49,7 +49,11 @@
             $(document).ready(function ($) {
                 $('.popup-open').click(function (e) {
                     e.preventDefault();
-                    $.get(this.href, function (data) {
+                    var str = (this.href).toString();
+
+                    str = str.replace("View/ViewProduct", "Home/PopupFade");
+                    console.log(str);
+                    $.get(str, function (data) {
                         $('#dialogContentpopupFade').html(data);
                         $('.popup-fade').fadeIn();
                     });

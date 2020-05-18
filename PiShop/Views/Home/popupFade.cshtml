@@ -76,9 +76,9 @@
                                 <label>
                                     <input class="radioFade" type="radio" name="size" value="M"><span style="padding:5px 16px !important;">M</span>
                                 </label>
-                                <label>
+                                @*<label>
                                     <input class="radioFade" type="radio" name="size" value="⁣⁣⁣⁣⁣⁣⁣⁣⁣⁣L"><span style="padding:5px 18px !important;">L</span>
-                                </label>
+                                </label>*@
                             </div>
                             <div class="animate">
                                 <button class="btn btn-add addToCart" style="margin-left: 5%; margin-right: 5%; width:90%;" type="submit">ДОБАВИТЬ В КОРЗИНУ</button>
@@ -97,14 +97,14 @@
                             <div class="info-text">
                                 <div class="info_text_item">
                                     <img class="pointer" src="~/images/point.png" alt="">
-                                    @if (Model.Category != "флис" && Model.Category != "брюки")
+                                    @if (Model.Category != "флис" @*&& Model.Category != "брюки"*@)
                                     {
                                         <div class="info_text_text">Материал: шёлк Армани </div>
                                     }
-                                    else if (Model.Category == "брюки")
+                                    @*else if (Model.Category == "брюки")
                                     {
                                         <div class="info_text_text">Материал: шёлк - 20%, полиэстер - 78%, лайкра - 2%</div>
-                                    }
+                                    }*@
                                     else
                                     {
                                         <div class="info_text_text">Материал: флис </div>
@@ -117,7 +117,7 @@
                                 </div>
                                 @if (Model.Category != "флис")
                                 {
-                                    <div class="info_table"><img src="~/images/pazmer.PNG" alt=""></div>
+                                    <div class="info_table"><img src="~/images/pazmer.jpg" alt=""></div>
                                 }
                                 else
                                 {
@@ -132,9 +132,9 @@
                                     <label>
                                         <input class="radioFade" type="radio" name="size" value="M"><span style="padding:5px 16px !important;">M</span>
                                     </label>
-                                    <label>
+                                    @*<label>
                                         <input class="radioFade" type="radio" name="size" value="⁣⁣⁣⁣⁣⁣⁣⁣⁣⁣L"><span style="padding:5px 18px !important;">L</span>
-                                    </label>
+                                    </label>*@
                                 </div>
 
                             </div>
@@ -143,14 +143,14 @@
                             <div class="info-text">
                                 <div class="info_text_item">
                                     <img class="pointer" src="~/images/point.png" alt="">
-                                    @if (Model.Category != "флис" && Model.Category != "брюки")
+                                    @if (Model.Category != "флис" @*&& Model.Category != "брюки"*@)
                                     {
                                         <div class="info_text_text">Материал: шёлк Армани </div>
                                     }
-                                    else if (Model.Category == "брюки")
+                                    @*else if (Model.Category == "брюки")
                                     {
                                         <div class="info_text_text">Материал: шёлк - 20%, полиэстер - 78%, лайкра - 2%</div>
-                                    }
+                                    }*@
                                     else
                                     {
                                         <div class="info_text_text">Материал: флис </div>
@@ -162,11 +162,11 @@
                                 </div>
                                 @if (Model.Category != "флис")
                                 {
-                                    <div class="info_table"><img src="~/images/pazmerPhone.PNG" alt=""></div>
+                                    <div class="info_table"><img src="~/images/pazmerPhone.jpg" alt=""></div>
                                 }
                                 else
                                 {
-                                    <div class="info_table"><img src="~/images/PhlisPazmerPhone.png" alt=""></div>
+                                    <div class="info_table"><img src="~/images/PhlispazmerPhone.jpg" alt=""></div>
                                 }
 
                             </div>

@@ -31,6 +31,7 @@ namespace PiShop.Controllers
                 Phlis = db.Products.Where(x => x.Category == "Флис").Take(3),
                 Pants = db.Products.Where(x => x.Category == "Брюки").Take(3),
                 Complex = db.Products.Where(x => x.Category == "Комплекты").Take(6),
+                Alladins = db.Products.Where(x => x.Category == "алладины").Take(6),
                 SuccessOrder = successOrder
             };
             return View(indexViewModal);
@@ -92,6 +93,12 @@ namespace PiShop.Controllers
             return PartialView(product);
         }
         
+
+        public ActionResult ViewProduct(int Id)
+        {
+            Product product = db.Products.FirstOrDefault(x => x.Id == Id);
+            return View(product);
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

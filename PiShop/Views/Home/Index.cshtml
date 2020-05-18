@@ -5,23 +5,11 @@
 
 <!DOCTYPE html>
 <html lang="ru">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="yandex-verification" content="e37eaf24dedcbc1b" />
-    <link rel="stylesheet" href="~/css/style.css">
-    <link href="https://fonts.googleapis.com/css?family=Merienda|Neucha|Roboto&display=swap" rel="stylesheet">
-    <meta name="viewport" content="width=device-width" , initial-scale=1>
-    @*<link rel="icon" href="https://pizhamka-fox.ru/favicon.ico" type="image/x-icon">*@
-    <link rel="stylesheet" type="text/css" href="~/js/slick-1.8.1/slick/slick.css" />
-    <link rel="stylesheet" type="text/css" href="~/js/slick-1.8.1/slick/slick-theme.css" />
-    <meta name="yandex-verification" content="e37eaf24dedcbc1b" />
-    <title>Пижамка-Фокс - шёлковые пижамы с принтами для вас</title>
-    <meta name="description" content="Пижамка-Фокс - шёлковые пижамы с принтами для девушек. Хиты нашего интернет-магазина шёлковые женские пижамы с принтом Авокадо, Единорогом, Marvel, БЭТМЕН, ЖЕНЩИНА-КОШКА, PORN HUB, ЛИСИЧКА, ЛИС ПАППИ. Комплекты шёлковых женских пижам топ(Маичка) и шорты, топ(Маичка) и брюки. Материал пижамок шёлк Армани. Купить шёлковую пижаму с принтом в интернет-магазине" />
-</head>
-
 <body>
-
+    @*<header>
+        <link rel="stylesheet" type="text/css" href="~/js/slick-1.8.1/slick/slick.css" />
+        <link rel="stylesheet" type="text/css" href="~/js/slick-1.8.1/slick/slick-theme.css" />
+    </header>*@
 
     <div class="intro" id="intro">
         <div class="container">
@@ -33,39 +21,39 @@
         </div>
     </div>
     @*<div class="hits" id="hits">
-        <div class="container">
-            <div class="hits_inner addSl">
-                <div class="hits_MainTitle">Виды товаров</div>
-                <div class="hits_items autoplaySl">
-                    @foreach (var product in Model.HitsProducts)
-                    {
-                        <div class="hits_item">
-                            <div class="hits_pic">
-                                <img class="hits_img" src="~/images/Каталог/Girls/Маленькие изображения/@product.Address"> 
-                                <div class="buttons AdaptiveDisplayCatalog"> <a class="btn btn-hit popup-open" href="/Home/popupFade/@product.Id">УЗНАТЬ ПОДРОБНЕЕ</a> <a class="btn btn-hit popup-buy-open" href="/Home/popupBuy/@product.Id">КУПИТЬ</a> </div>
-                                <div class="hit_word">ХИТ</div>
-                                @if ((((product.Price * 100) / product.PriceWithoutSales) - 100) * (-1) > 2)
-                                {
-                                    <div class="sale">-@(Product.RoundFive(((product.Price * 100) / product.PriceWithoutSales) - 100) * (-1))%</div>
-                                }
-                            </div>
-                            <div class="hits_title">
-                                <a class=" popup-open" style="text-decoration:none; color: black;" href="/Home/popupFade/@product.Id">@product.Name</a>
-                            </div>
-                            <div class="priceMain">
-                                <div class="newPrice">@product.Price&#1056</div>
-                                @if (product.Price < product.PriceWithoutSales)
-                                {
-                                    <div class="oldPrice">@product.PriceWithoutSales&#1056</div>
-                                }
-                            </div>
+            <div class="container">
+                <div class="hits_inner addSl">
+                    <div class="hits_MainTitle">Виды товаров</div>
+                    <div class="hits_items autoplaySl">
+                        @foreach (var product in Model.HitsProducts)
+                        {
+                            <div class="hits_item">
+                                <div class="hits_pic">
+                                    <img class="hits_img" src="~/images/Каталог/Girls/Маленькие изображения/@product.Address">
+                                    <div class="buttons AdaptiveDisplayCatalog"> <a class="btn btn-hit popup-open" href="/Home/popupFade/@product.Id">УЗНАТЬ ПОДРОБНЕЕ</a> <a class="btn btn-hit popup-buy-open" href="/Home/popupBuy/@product.Id">КУПИТЬ</a> </div>
+                                    <div class="hit_word">ХИТ</div>
+                                    @if ((((product.Price * 100) / product.PriceWithoutSales) - 100) * (-1) > 2)
+                                    {
+                                        <div class="sale">-@(Product.RoundFive(((product.Price * 100) / product.PriceWithoutSales) - 100) * (-1))%</div>
+                                    }
+                                </div>
+                                <div class="hits_title">
+                                    <a class=" popup-open" style="text-decoration:none; color: black;" href="/Home/popupFade/@product.Id">@product.Name</a>
+                                </div>
+                                <div class="priceMain">
+                                    <div class="newPrice">@product.Price&#1056</div>
+                                    @if (product.Price < product.PriceWithoutSales)
+                                    {
+                                        <div class="oldPrice">@product.PriceWithoutSales&#1056</div>
+                                    }
+                                </div>
 
-                        </div>
-                    }
+                            </div>
+                        }
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>*@
+        </div>*@
 
 
     <div class="hits" id="catalog">
@@ -88,7 +76,7 @@
                                 }
                             </div>
                             <div class="hits_title">
-                                <a class=" popup-open" style="text-decoration:none; color: black;" href="/Home/popupFade/@product.Id">@product.Name</a>
+                                <a class=" popup-open" style="text-decoration:none; color: black;" href="/View/ViewProduct/@product.Id">@product.Name</a>
                             </div>
                             <div class="priceMain">
                                 <div class="newPrice">@product.Price&#1056</div>
@@ -140,7 +128,7 @@
                                 }
                             </div>
                             <div class="hits_title">
-                                <a class=" popup-open" style="text-decoration:none; color: black;" href="/Home/popupFade/@product.Id">@product.Name</a>
+                                <a class=" popup-open" style="text-decoration:none; color: black;" href="/View/ViewProduct/@product.Id">@product.Name</a>
                             </div>
                             <div class="priceMain">
                                 <div class="newPrice">@product.Price&#1056</div>
@@ -180,7 +168,7 @@
 
             <div class="hits_inner">
                 <div class="hits_MainTitle">Флисовые пижамы</div>
-                <div class="hits_items">
+                <div class="hits_items" style="margin: 20px 10px 40px !important;">
                     @foreach (var product in Model.Phlis)
                     {
                         <div class="hits_item">
@@ -202,7 +190,7 @@
                                 }
                             </div>
                             <div class="hits_title">
-                                <a class=" popup-open" style="text-decoration:none; color: black;" href="/Home/popupFade/@product.Id">@product.Name</a>
+                                <a class=" popup-open" style="text-decoration:none; color: black;" href="/View/ViewProduct/@product.Id">@product.Name</a>
                             </div>
                             <div class="priceMain">
                                 <div class="newPrice">@product.Price&#1056</div>
@@ -214,80 +202,79 @@
                         </div>
                     }
                 </div>
-                <div id="ContentShow_more_Phlis"></div>
-            </div>
-            <div>
-                @*<div id="contentMore"></div>*@
-                <div style="width: 210px; margin: 0 auto; margin: 50px auto;">
-                    <input id="show_more_Phlis" count_show="5" count_add="3" class="btn btn-add " style="width: 210px; margin: 0 auto;" type="button" value="Показать еще" />
-                </div>
-            </div>
 
-            <script>
-                $(document).ready(function ($) {
-                    $('#show_more_Phlis').click(function () {
-                        $(this).addClass('displayNone');
-                        $.get("/Home/CatalogMore?Category=флис", function (data) {
-                            $('#ContentShow_more_Phlis').append(data);
+            </div>
+            @*<div>
+                    <div style="width: 210px; margin: 0 auto; margin: 50px auto;">
+                        <input id="show_more_Phlis" count_show="5" count_add="3" class="btn btn-add " style="width: 210px; margin: 0 auto;" type="button" value="Показать еще" />
+                    </div>
+                </div>
+
+                <script>
+                    $(document).ready(function ($) {
+                        $('#show_more_Phlis').click(function () {
+                            $(this).addClass('displayNone');
+                            $.get("/Home/CatalogMore?Category=флис", function (data) {
+                                $('#ContentShow_more_Phlis').append(data);
+                            });
                         });
                     });
-                });
-            </script>
+                </script>*@
 
 
             @*<div class="hits_inner">
-                <div class="hits_MainTitle">Короткий Топ</div>
-                <div class="hits_items">
-                    @foreach (var product in Model.ShortTop)
-                    {
-                        <div class="hits_item">
-                            <div class="hits_pic">
-                                <img class="hits_img" src="~/images/Каталог/Girls/Маленькие изображения/@product.Address" alt="">
-                                <div class="buttons AdaptiveDisplayCatalog"> <a class="btn btn-hit popup-open" href="/Home/popupFade/@product.Id">УЗНАТЬ ПОДРОБНЕЕ</a> <a class="btn btn-hit popup-buy-open" href="/Home/popupBuy/@product.Id">КУПИТЬ</a> </div>
-                                @if (product.Favourite)
-                                {<div class="hit_word">ХИТ</div>}
-                                @if ((((product.Price * 100) / product.PriceWithoutSales) - 100) * (-1) > 2)
-                                {
-                                    <div class="sale">-@(Product.RoundFive(((product.Price * 100) / product.PriceWithoutSales) - 100) * (-1))%</div>
-                                }
+                    <div class="hits_MainTitle">Короткий Топ</div>
+                    <div class="hits_items">
+                        @foreach (var product in Model.ShortTop)
+                        {
+                            <div class="hits_item">
+                                <div class="hits_pic">
+                                    <img class="hits_img" src="~/images/Каталог/Girls/Маленькие изображения/@product.Address" alt="">
+                                    <div class="buttons AdaptiveDisplayCatalog"> <a class="btn btn-hit popup-open" href="/Home/popupFade/@product.Id">УЗНАТЬ ПОДРОБНЕЕ</a> <a class="btn btn-hit popup-buy-open" href="/Home/popupBuy/@product.Id">КУПИТЬ</a> </div>
+                                    @if (product.Favourite)
+                                    {<div class="hit_word">ХИТ</div>}
+                                    @if ((((product.Price * 100) / product.PriceWithoutSales) - 100) * (-1) > 2)
+                                    {
+                                        <div class="sale">-@(Product.RoundFive(((product.Price * 100) / product.PriceWithoutSales) - 100) * (-1))%</div>
+                                    }
+                                </div>
+                                <div class="hits_title">
+                                    <a class=" popup-open" style="text-decoration:none; color: black;" href="/Home/popupFade/@product.Id">@product.Name</a>
+                                </div>
+                                <div class="priceMain">
+                                    <div class="newPrice">@product.Price&#1056</div>
+                                    @if (product.Price < product.PriceWithoutSales)
+                                    {
+                                        <div class="oldPrice">@product.PriceWithoutSales&#1056</div>
+                                    }
+                                </div>
                             </div>
-                            <div class="hits_title">
-                                <a class=" popup-open" style="text-decoration:none; color: black;" href="/Home/popupFade/@product.Id">@product.Name</a>
-                            </div>
-                            <div class="priceMain">
-                                <div class="newPrice">@product.Price&#1056</div>
-                                @if (product.Price < product.PriceWithoutSales)
-                                {
-                                    <div class="oldPrice">@product.PriceWithoutSales&#1056</div>
-                                }
-                            </div>
-                        </div>
-                    }
+                        }
+                    </div>
+                    <div id="ContentShow_more_ShortTop"></div>
                 </div>
-                <div id="ContentShow_more_ShortTop"></div>
-            </div>
-            <div>
-                <div id="contentMore"></div>
-                <div style="width: 210px; margin: 0 auto; margin: 50px auto;">
-                    <input id="show_more_Short" count_show="5" count_add="3" class="btn btn-add " style="width: 210px; margin: 0 auto;" type="button" value="Показать еще" />
+                <div>
+                    <div id="contentMore"></div>
+                    <div style="width: 210px; margin: 0 auto; margin: 50px auto;">
+                        <input id="show_more_Short" count_show="5" count_add="3" class="btn btn-add " style="width: 210px; margin: 0 auto;" type="button" value="Показать еще" />
+                    </div>
                 </div>
-            </div>
 
-            <script>
-                $(document).ready(function ($) {
-                    $('#show_more_Short').click(function () {
-                        $(this).addClass('displayNone');
-                        $.get("/Home/CatalogMore?Category=короткий топ", function (data) {
-                            $('#ContentShow_more_ShortTop').append(data);
+                <script>
+                    $(document).ready(function ($) {
+                        $('#show_more_Short').click(function () {
+                            $(this).addClass('displayNone');
+                            $.get("/Home/CatalogMore?Category=короткий топ", function (data) {
+                                $('#ContentShow_more_ShortTop').append(data);
+                            });
                         });
                     });
-                });
-            </script>*@
+                </script>*@
 
             <div class="hits_inner">
                 <div class="hits_MainTitle">Брюки</div>
-                <div style="text-align: center; font-size: 20px;">Возможен любой принт, который на шортиках</div>
-                <div class="hits_items">
+                @*<div style="text-align: center; font-size: 20px;">Возможен любой принт, который на шортиках</div>*@
+                <div class="hits_items" style="margin: 20px 10px 40px !important;">
                     @foreach (var product in Model.Pants)
                     {
                         <div class="hits_item">
@@ -302,7 +289,7 @@
                                 }
                             </div>
                             <div class="hits_title">
-                                <a class=" popup-open" style="text-decoration:none; color: black;" href="/Home/popupFade/@product.Id">@product.Name</a>
+                                <a class=" popup-open" style="text-decoration:none; color: black;" href="/View/ViewProduct/@product.Id">@product.Name</a>
                             </div>
                             <div class="priceMain">
                                 <div class="newPrice">@product.Price&#1056</div>
@@ -316,13 +303,11 @@
                 </div>
                 <div id="ContentShow_more_trousers"></div>
             </div>
-            <div>
-                @*<div id="contentMore"></div>*@
+            @*<div>
                 <div style="width: 210px; margin: 0 auto; margin: 50px auto;">
                     <input id="show_more_trousers" count_show="5" count_add="3" class="btn btn-add " style="width: 210px; margin: 0 auto;" type="button" value="Показать еще" />
                 </div>
             </div>
-
             <script>
                 $(document).ready(function ($) {
                     $('#show_more_trousers').click(function () {
@@ -332,7 +317,173 @@
                         });
                     });
                 });
-            </script>
+            </script>*@
+
+
+            <div class="hits_inner">
+                <div class="hits_MainTitle">Алладины</div>
+                <div class="hits_items">
+                    @foreach (var product in Model.Alladins)
+                    {
+                        <div class="hits_item">
+                            <div class="hits_pic">
+                                <img class="hits_img" src="~/images/Каталог/Girls/Маленькие изображения/@product.Address" alt="">
+                                <div class="buttons AdaptiveDisplayCatalog"> <a class="btn btn-hit popup-open" href="/Home/popupFade/@product.Id">УЗНАТЬ ПОДРОБНЕЕ</a> <a class="btn btn-hit popup-buy-open" href="/Home/popupBuy/@product.Id">КУПИТЬ</a> </div>
+                                @if (product.Favourite)
+                                {<div class="hit_word">ХИТ</div>}
+                                @if ((((product.Price * 100) / product.PriceWithoutSales) - 100) * (-1) > 2)
+                                {
+                                    <div class="sale">-@(Product.RoundFive(((product.Price * 100) / product.PriceWithoutSales) - 100) * (-1))%</div>
+                                }
+                            </div>
+                            <div class="hits_title">
+                                <a class=" popup-open" style="text-decoration:none; color: black;" href="/Home/popupFade/@product.Id">@product.Name</a>
+                            </div>
+                            <div class="priceMain">
+                                <div class="newPrice">@product.Price&#1056</div>
+                                @if (product.Price < product.PriceWithoutSales)
+                                {
+                                    <div class="oldPrice">@product.PriceWithoutSales&#1056</div>
+                                }
+                            </div>
+                        </div>
+                    }
+                </div>
+                <div id="ContentShow_more_alladin"></div>
+            </div>
+            @*<div>
+                    <div style="width: 210px; margin: 0 auto; margin: 50px auto;">
+                        <input id="show_more_alladin" count_show="5" count_add="3" class="btn btn-add " style="width: 210px; margin: 0 auto;" type="button" value="Показать еще" />
+                    </div>
+                </div>
+
+                <script>
+                    $(document).ready(function ($) {
+                        $('#show_more_trousers').click(function () {
+                            $(this).addClass('displayNone');
+                            $.get("/Home/CatalogMore?Category=алладины", function (data) {
+                                $('#ContentShow_more_алладины').append(data);
+                            });
+                        });
+                    });
+                </script>*@
+
+        </div>
+    </div>
+
+
+    <div class="delivery" id="delivery">
+        <div class="container">
+            <div class="delivery_inner">
+                <div class="delivery_title">ДОСТАВКА</div>
+                <div class="delivery_items">
+                    <div class="delivery_item">
+                        <div class="delivery_img"><img src="~/images/point.png" alt=""></div>
+                        <div class="delivery_text">250Р при полной предоплате</div>  @*style="color:#1da77f; font-weight: 700;" БЕСПЛАТНО*@
+
+                    </div>
+                    <div class="delivery_item">
+                        <div class="delivery_img"><img src="~/images/point.png" alt=""></div>
+                        <div class="delivery_text">350Р при предоплате только за доставку, а за товар оплата при получении (почта возьмёт ещё 7% коммиссию за денежный перевод за товар с вас)</div>
+                    </div>
+                    <div class="delivery_item">
+                        <div class="delivery_img"><img src="~/images/point.png" alt=""></div>
+                        <div class="delivery_text">440Р при полной предоплате - доставка курьером по <span style="font-weight:600;"> Москве</span></div>
+                    </div>
+                    <div class="delivery_item">
+                        <div class="delivery_img"><img src="~/images/point.png" alt=""></div>
+                        <div class="delivery_text"><span style="font-weight:600;">По Санкт-Петербургу</span> самовывоз по адресу Дунайский проспект 5 и доставка курьером (рассчитывается в зависимости от вашего местоположения) </div>
+                    </div>
+
+
+                    <div class="delivery_item">
+                        <div class="delivery_img "><img src="~/images/point.png" alt=""></div>
+                        <div class="delivery_text ">Доставка осуществляется курьерской службой СДЭК или почтой России</div>
+                    </div>
+                    <div class="delivery_item">
+                        <div class="delivery_img"><img src="~/images/point.png" alt=""></div>
+                        <div class="delivery_text">Срок доставки: 2-5 дней</div>
+                        @*<div class="delivery_text">Срок доставки: 3-7 дней</div>*@
+                    </div>
+                    @*<div class="delivery_item">
+                            <div class="delivery_img "><img src="~/images/point.png" alt=""></div>
+                            <div class="delivery_text ">Срок хранения посылки: 3 дня</div>
+                        </div>*@
+                    @*<div class="delivery_item">
+                            <div class="delivery_img"><img src="~/images/point.png" alt=""></div>
+                            <div class="delivery_text">Доставка курьером 350 руб</div>
+                        </div>*@
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="reviews" id="reviews">
+        <div class="container">
+            <div class="reviews_inner">
+                <div class="reviews_title">ОТЗЫВЫ</div>
+                <div class="reviews_items autoplaySl2">
+                    <div class="reviews_item">
+                        <div class="reviews_pic"><img src="~/images/Отзывы/MesОтзыв1.jpg" alt=""></div>
+                    </div>
+                    <div class="reviews_item">
+                        <div class="reviews_pic"><img src="~/images/Отзывы/MesОтзыв2.jpeg" alt=""></div>
+                    </div>
+                    <div class="reviews_item">
+                        <div class="reviews_pic"><img src="~/images/Отзывы/MesОтзыв3.jpeg" alt=""></div>
+                    </div>
+                    <div class="reviews_item">
+                        <div class="reviews_pic"><img src="~/images/Отзывы/MesОтзыв4.jpeg" alt=""></div>
+                    </div>
+                    <div class="reviews_item">
+                        <div class="reviews_pic"><img src="~/images/Отзывы/MesОтзыв5.jpg" alt=""></div>
+                    </div>
+                    <div class="reviews_item">
+                        <div class="reviews_pic"><img src="~/images/Отзывы/MesОтзыв6.jpg" alt=""></div>
+                    </div>
+                    <div class="reviews_item">
+                        <div class="reviews_pic"><img src="~/images/Отзывы/MesОтзыв7.jpg" alt=""></div>
+                    </div>
+                    <div class="reviews_item">
+                        <div class="reviews_pic"><img src="~/images/Отзывы/MesОтзыв8.jpg" alt=""></div>
+                    </div>
+                    <div class="reviews_item">
+                        <div class="reviews_pic"><img src="~/images/Отзывы/MesОтзыв9.jpg" alt=""></div>
+                    </div>
+                    <div class="reviews_item">
+                        <div class="reviews_pic"><img src="~/images/Отзывы/MesОтзыв10.jpeg" alt=""></div>
+                    </div>
+                    <div class="reviews_item">
+                        <div class="reviews_pic"><img src="~/images/Отзывы/MesОтзыв11.jpg" alt=""></div>
+                    </div>
+                    <div class="reviews_item">
+                        <div class="reviews_pic"><img src="~/images/Отзывы/MesОтзыв12.jpg" alt=""></div>
+                    </div>
+                    @*<div class="reviews_item">
+            <div class="reviews_pic"><img src="~/images/Отзывы/отзыв1.jpg" alt=""></div>
+            <div class="reviews_text">“ Спасибо! Я в восторге от вашей пижамы! Она настолько приятная телу, материал супер, и абсолютно не жарко в ней. Ну и дизайн, естесственно превосходный!!! ”</div>
+        </div>
+        <div class="reviews_item">
+            <div class="reviews_pic"><img src="~/images/Отзывы/отзыв2.jpg" alt=""></div>
+            <div class="reviews_text">“ Пижамка подошла идеально) Качество очень приятное к телу, в шортиках можно ходить на пляж) Ближе к отпуску прикуплю ещё парочку ) Спасибо большое, осталась довольна) ”</div>
+        </div>
+        <div class="reviews_item">
+            <div class="reviews_pic"><img src="~/images/Отзывы/отзыв3.jpg" alt=""></div>
+            <div class="reviews_text"> “ Добрый день! Пижамка отличная, на ощупь очень приятная. Спасибо за такую красоту! ”</div>
+        </div>
+        <div class="reviews_item">
+            <div class="reviews_pic"><img src="~/images/Отзывы/отзыв4.jpg" alt=""></div>
+            <div class="reviews_text">“ Сегодня пришла ваша шёлковая пижама с енотами, очень классное качество, мне очень понравилась, всем советую, спасибо большое! ”</div>
+        </div>
+        <div class="reviews_item">
+            <div class="reviews_pic"><img src="~/images/Отзывы/отзыв5.jpg" alt=""></div>
+            <div class="reviews_text">“Добрый день, пижамы очень классные! Удобные, комфортные и стильные. Спасибо большое! ”</div>
+        </div>
+        <div class="reviews_item">
+            <div class="reviews_pic"><img src="~/images/Отзывы/отзыв6.jpg" alt=""></div>
+            <div class="reviews_text">“Спасибо большое!) пижамка огонь”</div>
+        </div>*@
+                </div>
+            </div>
         </div>
     </div>
 
@@ -372,103 +523,7 @@
             </div>
         </div>
     </div>
-    <div class="delivery" id="delivery">
-        <div class="container">
-            <div class="delivery_inner">
-                <div class="delivery_title">ДОСТАВКА</div>
-                <div class="delivery_items">
-                    <div class="delivery_item">
-                        <div class="delivery_img"><img src="~/images/point.png" alt=""></div>
-                        <div class="delivery_text">250Р при полной предоплате</div>  @*style="color:#1da77f; font-weight: 700;" БЕСПЛАТНО*@
 
-                    </div>
-                    <div class="delivery_item">
-                        <div class="delivery_img"><img src="~/images/point.png" alt=""></div>
-                        <div class="delivery_text">350Р при предоплате только за доставку, а за товар оплата при получении(почта возьмёт ещё 7% коммиссию за денежный перевод за товар с вас)</div>
-                    </div>
-                    <div class="delivery_item">
-                        <div class="delivery_img"><img src="~/images/point.png" alt=""></div>
-                        <div class="delivery_text">440Р при полной предоплате - доставка курьером по Москве и Санкт-Петербургу</div>
-                    </div>
-
-                    <div class="delivery_item">
-                        <div class="delivery_img "><img src="~/images/point.png" alt=""></div>
-                        <div class="delivery_text ">Доставка осуществляется курьерской службой СДЭК или почтой России</div>
-                    </div>
-                    <div class="delivery_item">
-                        <div class="delivery_img"><img src="~/images/point.png" alt=""></div>
-                        <div class="delivery_text">Срок доставки: 2-5 дней</div>
-                        @*<div class="delivery_text">Срок доставки: 3-7 дней</div>*@
-                    </div>
-                    @*<div class="delivery_item">
-                            <div class="delivery_img "><img src="~/images/point.png" alt=""></div>
-                            <div class="delivery_text ">Срок хранения посылки: 3 дня</div>
-                        </div>*@
-                    @*<div class="delivery_item">
-                            <div class="delivery_img"><img src="~/images/point.png" alt=""></div>
-                            <div class="delivery_text">Доставка курьером 350 руб</div>
-                        </div>*@
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="reviews" id="reviews">
-        <div class="container">
-            <div class="reviews_inner">
-                <div class="reviews_title">ОТЗЫВЫ</div>
-                <div class="reviews_items autoplaySl2">
-                    <div class="reviews_item">
-                        <div class="reviews_pic"><img src="~/images/Отзывы/MesОтзыв1.jpg" alt=""></div>
-                    </div>
-                    <div class="reviews_item">
-                        <div class="reviews_pic"><img src="~/images/Отзывы/MesОтзыв2.jpg" alt=""></div>
-                    </div>
-                    <div class="reviews_item">
-                        <div class="reviews_pic"><img src="~/images/Отзывы/MesОтзыв3.jpg" alt=""></div>
-                    </div>
-                    <div class="reviews_item">
-                        <div class="reviews_pic"><img src="~/images/Отзывы/MesОтзыв4.jpg" alt=""></div>
-                    </div>
-                    <div class="reviews_item">
-                        <div class="reviews_pic"><img src="~/images/Отзывы/MesОтзыв5.jpg" alt=""></div>
-                    </div>
-                    <div class="reviews_item">
-                        <div class="reviews_pic"><img src="~/images/Отзывы/MesОтзыв6.jpg" alt=""></div>
-                    </div>
-                    <div class="reviews_item">
-                        <div class="reviews_pic"><img src="~/images/Отзывы/MesОтзыв7.jpg" alt=""></div>
-                    </div>
-                    <div class="reviews_item">
-                        <div class="reviews_pic"><img src="~/images/Отзывы/MesОтзыв8.jpg" alt=""></div>
-                    </div>
-                    @*<div class="reviews_item">
-                            <div class="reviews_pic"><img src="~/images/Отзывы/отзыв1.jpg" alt=""></div>
-                            <div class="reviews_text">“ Спасибо! Я в восторге от вашей пижамы! Она настолько приятная телу, материал супер, и абсолютно не жарко в ней. Ну и дизайн, естесственно превосходный!!! ”</div>
-                        </div>
-                        <div class="reviews_item">
-                            <div class="reviews_pic"><img src="~/images/Отзывы/отзыв2.jpg" alt=""></div>
-                            <div class="reviews_text">“ Пижамка подошла идеально) Качество очень приятное к телу, в шортиках можно ходить на пляж) Ближе к отпуску прикуплю ещё парочку ) Спасибо большое, осталась довольна) ”</div>
-                        </div>
-                        <div class="reviews_item">
-                            <div class="reviews_pic"><img src="~/images/Отзывы/отзыв3.jpg" alt=""></div>
-                            <div class="reviews_text"> “ Добрый день! Пижамка отличная, на ощупь очень приятная. Спасибо за такую красоту! ”</div>
-                        </div>
-                        <div class="reviews_item">
-                            <div class="reviews_pic"><img src="~/images/Отзывы/отзыв4.jpg" alt=""></div>
-                            <div class="reviews_text">“ Сегодня пришла ваша шёлковая пижама с енотами, очень классное качество, мне очень понравилась, всем советую, спасибо большое! ”</div>
-                        </div>
-                        <div class="reviews_item">
-                            <div class="reviews_pic"><img src="~/images/Отзывы/отзыв5.jpg" alt=""></div>
-                            <div class="reviews_text">“Добрый день, пижамы очень классные! Удобные, комфортные и стильные. Спасибо большое! ”</div>
-                        </div>
-                        <div class="reviews_item">
-                            <div class="reviews_pic"><img src="~/images/Отзывы/отзыв6.jpg" alt=""></div>
-                            <div class="reviews_text">“Спасибо большое!) пижамка огонь”</div>
-                        </div>*@
-                </div>
-            </div>
-        </div>
-    </div>
     <div class="contacts" id="contacts">
         <div class="container">
             <div class="contacts_inner">
@@ -588,7 +643,11 @@
         $(document).ready(function ($) {
             $('.popup-open').click(function (e) {
                 e.preventDefault();
-                $.get(this.href, function (data) {
+                var str = (this.href).toString();
+
+                str = str.replace("View/ViewProduct", "Home/PopupFade");
+                console.log(str);
+                $.get(str, function (data) {
                     $('#dialogContentpopupFade').html(data);
                     $('.popup-fade').fadeIn();
                 });
@@ -697,6 +756,7 @@
     @*модальное окно успешной оплаты*@
     @if (Model.SuccessOrder)
     {
+
         <script type="text/javascript">
             $(document).ready(function ($) {
 
