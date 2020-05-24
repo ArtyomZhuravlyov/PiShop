@@ -3,24 +3,22 @@
 @using Microsoft.AspNetCore.Http.Features;
 @model IndexViewModal
 
-<!DOCTYPE html>
-<html lang="ru">
-<body>
-    @*<header>
-        <link rel="stylesheet" type="text/css" href="~/js/slick-1.8.1/slick/slick.css" />
-        <link rel="stylesheet" type="text/css" href="~/js/slick-1.8.1/slick/slick-theme.css" />
-    </header>*@
 
-    <div class="intro" id="intro">
-        <div class="container">
-            <div class="intro_inner">
-                <h1 class="intro_title">ПИЖАМА</h1>
-                <div class="intro_suptitle">Залог отличного настроения и продуктивного дня зависит от первых эмоций после пробуждения. Мы хотим, чтобы на твоём лице с самого утра блистала улыбка - а что как не идеальное отражение в зеркале сможет тебя так порадовать?</div>
-                <div class="intro_suptitle">Наша пижама сделает твоё утро чудесным, а хоум - лук безумно комфортным и женственным. </div> <a class="btn" href="#" data-scroll="#catalog">Посмотреть каталог</a>
+        @*<header>
+            <link rel="stylesheet" type="text/css" href="~/js/slick-1.8.1/slick/slick.css" />
+            <link rel="stylesheet" type="text/css" href="~/js/slick-1.8.1/slick/slick-theme.css" />
+        </header>*@
+
+        <div class="intro" id="intro">
+            <div class="container">
+                <div class="intro_inner">
+                    <h1 class="intro_title">ПИЖАМА</h1>
+                    <div class="intro_suptitle">Залог отличного настроения и продуктивного дня зависит от первых эмоций после пробуждения. Мы хотим, чтобы на твоём лице с самого утра блистала улыбка - а что как не идеальное отражение в зеркале сможет тебя так порадовать?</div>
+                    <div class="intro_suptitle">Наша пижама сделает твоё утро чудесным, а хоум - лук безумно комфортным и женственным. </div> <a class="btn" href="#" data-scroll="#catalog">Посмотреть каталог</a>
+                </div>
             </div>
         </div>
-    </div>
-    @*<div class="hits" id="hits">
+        @*<div class="hits" id="hits">
             <div class="container">
                 <div class="hits_inner addSl">
                     <div class="hits_MainTitle">Виды товаров</div>
@@ -29,7 +27,7 @@
                         {
                             <div class="hits_item">
                                 <div class="hits_pic">
-                                    <img class="hits_img" src="~/images/Каталог/Girls/Маленькие изображения/@product.Address">
+                                    <img class="hits_img" src="~/images/Каталог/Girls/smallimage/@product.Address">
                                     <div class="buttons AdaptiveDisplayCatalog"> <a class="btn btn-hit popup-open" href="/Home/popupFade/@product.Id">УЗНАТЬ ПОДРОБНЕЕ</a> <a class="btn btn-hit popup-buy-open" href="/Home/popupBuy/@product.Id">КУПИТЬ</a> </div>
                                     <div class="hit_word">ХИТ</div>
                                     @if ((((product.Price * 100) / product.PriceWithoutSales) - 100) * (-1) > 2)
@@ -41,10 +39,10 @@
                                     <a class=" popup-open" style="text-decoration:none; color: black;" href="/Home/popupFade/@product.Id">@product.Name</a>
                                 </div>
                                 <div class="priceMain">
-                                    <div class="newPrice">@product.Price&#1056</div>
+                                    <div class="newPrice">@product.Price&#1056;</div>
                                     @if (product.Price < product.PriceWithoutSales)
                                     {
-                                        <div class="oldPrice">@product.PriceWithoutSales&#1056</div>
+                                        <div class="oldPrice">@product.PriceWithoutSales&#1056;</div>
                                     }
                                 </div>
 
@@ -56,157 +54,158 @@
         </div>*@
 
 
-    <div class="hits" id="catalog">
-        <div class="container">
+        <div class="hits" id="catalog">
+            <div class="container">
 
-            <div class="hits_inner">
-                <div class="hits_MainTitle">Классический топ</div>
-                <div class="hits_items">
-                    @foreach (var product in Model.SimpleTop)
-                    {
-                        <div class="hits_item">
-                            <div class="hits_pic">
-                                <img class="hits_img" src="~/images/Каталог/Girls/Маленькие изображения/@product.Address" alt="">
-                                <div class="buttons AdaptiveDisplayCatalog"> <a class="btn btn-hit popup-open" href="/Home/popupFade/@product.Id">УЗНАТЬ ПОДРОБНЕЕ</a> <a class="btn btn-hit popup-buy-open" href="/Home/popupBuy/@product.Id">КУПИТЬ</a> </div>
-                                @if (product.Favourite)
-                                {<div class="hit_word">ХИТ</div>}
-                                @if ((((product.Price * 100) / product.PriceWithoutSales) - 100) * (-1) > 2)
-                                {
-                                    <div class="sale">-@(Product.RoundFive(((product.Price * 100) / product.PriceWithoutSales) - 100) * (-1))%</div>
-                                }
+                <div class="hits_inner">
+                    @*<div class="hits_MainTitle">Классический топ</div>*@
+                    <h1 class="hits_MainTitle">Пижамы с принтом</h1>
+                    <div class="hits_items">
+                        @foreach (var product in Model.SimpleTop)
+                        {
+                            <div class="hits_item">
+                                <div class="hits_pic">
+                                    <img class="hits_img" src="~/images/Каталог/Girls/smallimage/@product.Address" alt="@product.Name">
+                                    <div class="buttons AdaptiveDisplayCatalog"> <a class="btn btn-hit popup-open" href="/Home/popupFade/@product.Id">УЗНАТЬ ПОДРОБНЕЕ</a> <a class="btn btn-hit popup-buy-open" href="/Home/popupBuy/@product.Id">КУПИТЬ</a> </div>
+                                    @if (product.Favourite)
+                                    {<div class="hit_word">ХИТ</div>}
+                                    @if ((((product.Price * 100) / product.PriceWithoutSales) - 100) * (-1) > 2)
+                                    {
+                                        <div class="sale">-@(Product.RoundFive(((product.Price * 100) / product.PriceWithoutSales) - 100) * (-1))%</div>
+                                    }
+                                </div>
+                                <div class="hits_title">
+                                    <a class=" popup-open" style="text-decoration:none; color: black;" href="/view/viewproduct/@product.Id">@product.Name</a>
+                                </div>
+                                <div class="priceMain">
+                                    <div class="newPrice">@product.Price&#1056;</div>
+                                    @if (product.Price < product.PriceWithoutSales)
+                                    {
+                                        <div class="oldPrice">@product.PriceWithoutSales&#1056;</div>
+                                    }
+                                </div>
                             </div>
-                            <div class="hits_title">
-                                <a class=" popup-open" style="text-decoration:none; color: black;" href="/View/ViewProduct/@product.Id">@product.Name</a>
-                            </div>
-                            <div class="priceMain">
-                                <div class="newPrice">@product.Price&#1056</div>
-                                @if (product.Price < product.PriceWithoutSales)
-                                {
-                                    <div class="oldPrice">@product.PriceWithoutSales&#1056</div>
-                                }
-                            </div>
-                        </div>
-                    }
+                        }
+                    </div>
+                    <div id="ContentShow_more_SimpleTop"></div>
                 </div>
-                <div id="ContentShow_more_SimpleTop"></div>
-            </div>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-            <div>
-                @*<div id="contentMore"></div>*@
-                <div style="width: 210px; margin: 0 auto; margin: 50px auto;">
-                    <input id="show_more_Simple" count_show="5" count_add="3" class="btn btn-add " style="width: 210px; margin: 0 auto;" type="button" value="Показать еще" />
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+                <div>
+                    @*<div id="contentMore"></div>*@
+                    <div style="width: 210px; margin: 0 auto; margin: 50px auto;">
+                        <input id="show_more_Simple"  class="btn btn-add " style="width: 210px; margin: 0 auto;" type="button" value="Показать еще" />
+                    </div>
                 </div>
-            </div>
 
-            <script>
-                $(document).ready(function ($) {
-                    $('#show_more_Simple').click(function () {
-                        $(this).addClass('displayNone');
-                        $.get("/Home/CatalogMore?Category=обычный топ", function (data) {
-                            $('#ContentShow_more_SimpleTop').append(data);
+                <script>
+                    $(document).ready(function ($) {
+                        $('#show_more_Simple').click(function () {
+                            $(this).addClass('displayNone');
+                            $.get("/Home/CatalogMore?Category=обычный топ", function (data) {
+                                $('#ContentShow_more_SimpleTop').append(data);
+                            });
                         });
                     });
-                });
-            </script>
+                </script>
 
 
-            <div class="hits_inner">
-                <div class="hits_MainTitle">Комплекты</div>
-                <div class="hits_items" style="margin: 20px 10px 40px !important;">
-                    @foreach (var product in Model.Complex)
-                    {
-                        <div class="hits_item">
-                            <div class="hits_pic">
-                                <img class="hits_img" src="~/images/Каталог/Girls/Маленькие изображения/@product.Address" alt="">
-                                <div class="buttons AdaptiveDisplayCatalog"> <a class="btn btn-hit popup-open" href="/Home/popupFade/@product.Id">УЗНАТЬ ПОДРОБНЕЕ</a> <a class="btn btn-hit popup-buy-open" href="/Home/popupBuy/@product.Id">КУПИТЬ</a> </div>
-                                @if (product.Favourite)
-                                {<div class="hit_word">ХИТ</div>}
-                                @if ((((product.Price * 100) / product.PriceWithoutSales) - 100) * (-1) > 2)
-                                {
-                                    <div class="sale">-@(Product.RoundFive(((product.Price * 100) / product.PriceWithoutSales) - 100) * (-1))%</div>
-                                }
+                <div class="hits_inner">
+                    <div class="hits_MainTitle">Комплекты</div>
+                    <div class="hits_items" style="margin: 20px 10px 40px !important;">
+                        @foreach (var product in Model.Complex)
+                        {
+                            <div class="hits_item">
+                                <div class="hits_pic">
+                                    <img class="hits_img" src="~/images/Каталог/Girls/smallimage/@product.Address" alt="@product.Name">
+                                    <div class="buttons AdaptiveDisplayCatalog"> <a class="btn btn-hit popup-open" href="/Home/popupFade/@product.Id">УЗНАТЬ ПОДРОБНЕЕ</a> <a class="btn btn-hit popup-buy-open" href="/Home/popupBuy/@product.Id">КУПИТЬ</a> </div>
+                                    @if (product.Favourite)
+                                    {<div class="hit_word">ХИТ</div>}
+                                    @if ((((product.Price * 100) / product.PriceWithoutSales) - 100) * (-1) > 2)
+                                    {
+                                        <div class="sale">-@(Product.RoundFive(((product.Price * 100) / product.PriceWithoutSales) - 100) * (-1))%</div>
+                                    }
+                                </div>
+                                <div class="hits_title">
+                                    <a class=" popup-open" style="text-decoration:none; color: black;" href="/view/viewproduct/@product.Id">@product.Name</a>
+                                </div>
+                                <div class="priceMain">
+                                    <div class="newPrice">@product.Price&#1056;</div>
+                                    @if (product.Price < product.PriceWithoutSales)
+                                    {
+                                        <div class="oldPrice">@product.PriceWithoutSales&#1056;</div>
+                                    }
+                                </div>
                             </div>
-                            <div class="hits_title">
-                                <a class=" popup-open" style="text-decoration:none; color: black;" href="/View/ViewProduct/@product.Id">@product.Name</a>
-                            </div>
-                            <div class="priceMain">
-                                <div class="newPrice">@product.Price&#1056</div>
-                                @if (product.Price < product.PriceWithoutSales)
-                                {
-                                    <div class="oldPrice">@product.PriceWithoutSales&#1056</div>
-                                }
-                            </div>
-                        </div>
-                    }
+                        }
+                    </div>
+                    <div id="ContentShow_more_Complex"></div>
                 </div>
-                <div id="ContentShow_more_Complex"></div>
-            </div>
-            @*<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+                @*<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>*@
-            <div>
-                @*<div style="width: 210px; margin: 0 auto; margin: 50px auto;">
-                        <input id="show_more_Simple" count_show="5" count_add="3" class="btn btn-add " style="width: 210px; margin: 0 auto;" type="button" value="Показать еще" />
+                <div>
+                    @*<div style="width: 210px; margin: 0 auto; margin: 50px auto;">
+                        <input id="show_more_Simple"  class="btn btn-add " style="width: 210px; margin: 0 auto;" type="button" value="Показать еще" />
                     </div>*@
-            </div>
+                </div>
 
-            <script>
-                $(document).ready(function ($) {
-                    $('#show_more_Complex').click(function () {
-                        $(this).addClass('displayNone');
-                        $.get("/Home/CatalogMore?Category=комплект", function (data) {
-                            $('#ContentShow_more_Complex').append(data);
+                <script>
+                    $(document).ready(function ($) {
+                        $('#show_more_Complex').click(function () {
+                            $(this).addClass('displayNone');
+                            $.get("/Home/CatalogMore?Category=комплект", function (data) {
+                                $('#ContentShow_more_Complex').append(data);
+                            });
                         });
                     });
-                });
-            </script>
+                </script>
 
 
-            @*<div class="hits" id="catalog">
+                @*<div class="hits" id="catalog">
                 <div class="container">*@
 
 
-            <div class="hits_inner">
-                <div class="hits_MainTitle">Флисовые пижамы</div>
-                <div class="hits_items" style="margin: 20px 10px 40px !important;">
-                    @foreach (var product in Model.Phlis)
-                    {
-                        <div class="hits_item">
-                            <div class="hits_pic">
-                                @if (product.Category == "флис")
-                                {
-                                    <img class="hits_img" style="max-height:initial !important" src="~/images/Каталог/Girls/Маленькие изображения/@product.Address" alt="">
-                                }
-                                else
-                                {
-                                    <img class="hits_img" src="~/images/Каталог/Girls/@product.Address" alt="">
-                                }
-                                <div class="buttons AdaptiveDisplayCatalog"> <a class="btn btn-hit popup-open" href="/Home/popupFade/@product.Id">УЗНАТЬ ПОДРОБНЕЕ</a> <a class="btn btn-hit popup-buy-open" href="/Home/popupBuy/@product.Id">КУПИТЬ</a> </div>
-                                @if (product.Favourite)
-                                {<div class="hit_word">ХИТ</div>}
-                                @if ((((product.Price * 100) / product.PriceWithoutSales) - 100) * (-1) > 2)
-                                {
-                                    <div class="sale">-@(Product.RoundFive(((product.Price * 100) / product.PriceWithoutSales) - 100) * (-1))%</div>
-                                }
+                <div class="hits_inner">
+                    <div class="hits_MainTitle">Флисовые пижамы</div>
+                    <div class="hits_items" style="margin: 20px 10px 40px !important;">
+                        @foreach (var product in Model.Phlis)
+                        {
+                            <div class="hits_item">
+                                <div class="hits_pic">
+                                    @if (product.Category == "флис")
+                                    {
+                                        <img class="hits_img" style="max-height:initial !important" src="~/images/Каталог/Girls/smallimage/@product.Address" alt="">
+                                    }
+                                    else
+                                    {
+                                        <img class="hits_img" src="~/images/Каталог/Girls/@product.Address" alt="@product.Name">
+                                    }
+                                    <div class="buttons AdaptiveDisplayCatalog"> <a class="btn btn-hit popup-open" href="/Home/popupFade/@product.Id">УЗНАТЬ ПОДРОБНЕЕ</a> <a class="btn btn-hit popup-buy-open" href="/Home/popupBuy/@product.Id">КУПИТЬ</a> </div>
+                                    @if (product.Favourite)
+                                    {<div class="hit_word">ХИТ</div>}
+                                    @if ((((product.Price * 100) / product.PriceWithoutSales) - 100) * (-1) > 2)
+                                    {
+                                        <div class="sale">-@(Product.RoundFive(((product.Price * 100) / product.PriceWithoutSales) - 100) * (-1))%</div>
+                                    }
+                                </div>
+                                <div class="hits_title">
+                                    <a class=" popup-open" style="text-decoration:none; color: black;" href="/view/viewproduct/@product.Id">@product.Name</a>
+                                </div>
+                                <div class="priceMain">
+                                    <div class="newPrice">@product.Price&#1056;</div>
+                                    @if (product.Price < product.PriceWithoutSales)
+                                    {
+                                        <div class="oldPrice">@product.PriceWithoutSales&#1056;</div>
+                                    }
+                                </div>
                             </div>
-                            <div class="hits_title">
-                                <a class=" popup-open" style="text-decoration:none; color: black;" href="/View/ViewProduct/@product.Id">@product.Name</a>
-                            </div>
-                            <div class="priceMain">
-                                <div class="newPrice">@product.Price&#1056</div>
-                                @if (product.Price < product.PriceWithoutSales)
-                                {
-                                    <div class="oldPrice">@product.PriceWithoutSales&#1056</div>
-                                }
-                            </div>
-                        </div>
-                    }
-                </div>
+                        }
+                    </div>
 
-            </div>
-            @*<div>
+                </div>
+                @*<div>
                     <div style="width: 210px; margin: 0 auto; margin: 50px auto;">
-                        <input id="show_more_Phlis" count_show="5" count_add="3" class="btn btn-add " style="width: 210px; margin: 0 auto;" type="button" value="Показать еще" />
+                        <input id="show_more_Phlis"  class="btn btn-add " style="width: 210px; margin: 0 auto;" type="button" value="Показать еще" />
                     </div>
                 </div>
 
@@ -222,14 +221,14 @@
                 </script>*@
 
 
-            @*<div class="hits_inner">
+                @*<div class="hits_inner">
                     <div class="hits_MainTitle">Короткий Топ</div>
                     <div class="hits_items">
                         @foreach (var product in Model.ShortTop)
                         {
                             <div class="hits_item">
                                 <div class="hits_pic">
-                                    <img class="hits_img" src="~/images/Каталог/Girls/Маленькие изображения/@product.Address" alt="">
+                                    <img class="hits_img" src="~/images/Каталог/Girls/smallimage/@product.Address" alt="">
                                     <div class="buttons AdaptiveDisplayCatalog"> <a class="btn btn-hit popup-open" href="/Home/popupFade/@product.Id">УЗНАТЬ ПОДРОБНЕЕ</a> <a class="btn btn-hit popup-buy-open" href="/Home/popupBuy/@product.Id">КУПИТЬ</a> </div>
                                     @if (product.Favourite)
                                     {<div class="hit_word">ХИТ</div>}
@@ -242,10 +241,10 @@
                                     <a class=" popup-open" style="text-decoration:none; color: black;" href="/Home/popupFade/@product.Id">@product.Name</a>
                                 </div>
                                 <div class="priceMain">
-                                    <div class="newPrice">@product.Price&#1056</div>
+                                    <div class="newPrice">@product.Price&#1056;</div>
                                     @if (product.Price < product.PriceWithoutSales)
                                     {
-                                        <div class="oldPrice">@product.PriceWithoutSales&#1056</div>
+                                        <div class="oldPrice">@product.PriceWithoutSales&#1056;</div>
                                     }
                                 </div>
                             </div>
@@ -256,7 +255,7 @@
                 <div>
                     <div id="contentMore"></div>
                     <div style="width: 210px; margin: 0 auto; margin: 50px auto;">
-                        <input id="show_more_Short" count_show="5" count_add="3" class="btn btn-add " style="width: 210px; margin: 0 auto;" type="button" value="Показать еще" />
+                        <input id="show_more_Short"  class="btn btn-add " style="width: 210px; margin: 0 auto;" type="button" value="Показать еще" />
                     </div>
                 </div>
 
@@ -271,89 +270,90 @@
                     });
                 </script>*@
 
-            <div class="hits_inner">
-                <div class="hits_MainTitle">Брюки</div>
-                @*<div style="text-align: center; font-size: 20px;">Возможен любой принт, который на шортиках</div>*@
-                <div class="hits_items" style="margin: 20px 10px 40px !important;">
-                    @foreach (var product in Model.Pants)
-                    {
-                        <div class="hits_item">
-                            <div class="hits_pic">
-                                <img class="hits_img" src="~/images/Каталог/Girls/Маленькие изображения/@product.Address" alt="">
-                                <div class="buttons AdaptiveDisplayCatalog"> <a class="btn btn-hit popup-open" href="/Home/popupFade/@product.Id">УЗНАТЬ ПОДРОБНЕЕ</a> <a class="btn btn-hit popup-buy-open" href="/Home/popupBuy/@product.Id">КУПИТЬ</a> </div>
-                                @if (product.Favourite)
-                                {<div class="hit_word">ХИТ</div>}
-                                @if ((((product.Price * 100) / product.PriceWithoutSales) - 100) * (-1) > 2)
-                                {
-                                    <div class="sale">-@(Product.RoundFive(((product.Price * 100) / product.PriceWithoutSales) - 100) * (-1))%</div>
-                                }
+                <div class="hits_inner">
+                    <div class="hits_MainTitle">Брюки</div>
+                    @*<div style="text-align: center; font-size: 20px;">Возможен любой принт, который на шортиках</div>*@
+                    <div class="hits_items" style="margin: 20px 10px 40px !important;">
+                        @foreach (var product in Model.Pants)
+                        {
+                            <div class="hits_item">
+                                <div class="hits_pic">
+                                    <img class="hits_img" src="~/images/Каталог/Girls/smallimage/@product.Address" alt="@product.Name">
+                                    <div class="buttons AdaptiveDisplayCatalog"> <a class="btn btn-hit popup-open" href="/Home/popupFade/@product.Id">УЗНАТЬ ПОДРОБНЕЕ</a> <a class="btn btn-hit popup-buy-open" href="/Home/popupBuy/@product.Id">КУПИТЬ</a> </div>
+                                    @if (product.Favourite)
+                                    {<div class="hit_word">ХИТ</div>}
+                                    @if ((((product.Price * 100) / product.PriceWithoutSales) - 100) * (-1) > 2)
+                                    {
+                                        <div class="sale">-@(Product.RoundFive(((product.Price * 100) / product.PriceWithoutSales) - 100) * (-1))%</div>
+                                    }
+                                </div>
+                                <div class="hits_title">
+                                    <a class=" popup-open" style="text-decoration:none; color: black;" href="/view/viewproduct/@product.Id">@product.Name</a>
+                                </div>
+                                <div class="priceMain">
+                                    <div class="newPrice">@product.Price&#1056;</div>
+                                    @if (product.Price < product.PriceWithoutSales)
+                                    {
+                                        <div class="oldPrice">@product.PriceWithoutSales&#1056;</div>
+                                    }
+                                </div>
                             </div>
-                            <div class="hits_title">
-                                <a class=" popup-open" style="text-decoration:none; color: black;" href="/View/ViewProduct/@product.Id">@product.Name</a>
-                            </div>
-                            <div class="priceMain">
-                                <div class="newPrice">@product.Price&#1056</div>
-                                @if (product.Price < product.PriceWithoutSales)
-                                {
-                                    <div class="oldPrice">@product.PriceWithoutSales&#1056</div>
-                                }
-                            </div>
-                        </div>
-                    }
+                        }
+                    </div>
+                    <div id="ContentShow_more_trousers"></div>
                 </div>
-                <div id="ContentShow_more_trousers"></div>
-            </div>
-            @*<div>
-                <div style="width: 210px; margin: 0 auto; margin: 50px auto;">
-                    <input id="show_more_trousers" count_show="5" count_add="3" class="btn btn-add " style="width: 210px; margin: 0 auto;" type="button" value="Показать еще" />
+                @*<div>
+                    <div style="width: 210px; margin: 0 auto; margin: 50px auto;">
+                        <input id="show_more_trousers"  class="btn btn-add " style="width: 210px; margin: 0 auto;" type="button" value="Показать еще" />
+                    </div>
                 </div>
-            </div>
-            <script>
-                $(document).ready(function ($) {
-                    $('#show_more_trousers').click(function () {
-                        $(this).addClass('displayNone');
-                        $.get("/Home/CatalogMore?Category=брюки", function (data) {
-                            $('#ContentShow_more_trousers').append(data);
+                <script>
+                    $(document).ready(function ($) {
+                        $('#show_more_trousers').click(function () {
+                            $(this).addClass('displayNone');
+                            $.get("/Home/CatalogMore?Category=брюки", function (data) {
+                                $('#ContentShow_more_trousers').append(data);
+                            });
                         });
                     });
-                });
-            </script>*@
+                </script>*@
 
 
-            <div class="hits_inner">
-                <div class="hits_MainTitle">Алладины</div>
-                <div class="hits_items">
-                    @foreach (var product in Model.Alladins)
-                    {
-                        <div class="hits_item">
-                            <div class="hits_pic">
-                                <img class="hits_img" src="~/images/Каталог/Girls/Маленькие изображения/@product.Address" alt="">
-                                <div class="buttons AdaptiveDisplayCatalog"> <a class="btn btn-hit popup-open" href="/Home/popupFade/@product.Id">УЗНАТЬ ПОДРОБНЕЕ</a> <a class="btn btn-hit popup-buy-open" href="/Home/popupBuy/@product.Id">КУПИТЬ</a> </div>
-                                @if (product.Favourite)
-                                {<div class="hit_word">ХИТ</div>}
-                                @if ((((product.Price * 100) / product.PriceWithoutSales) - 100) * (-1) > 2)
-                                {
-                                    <div class="sale">-@(Product.RoundFive(((product.Price * 100) / product.PriceWithoutSales) - 100) * (-1))%</div>
-                                }
+                <div class="hits_inner">
+                    @*<div class="hits_MainTitle">Алладины</div>*@
+                    <h2>Пижама Алладин</h2>
+                    <div class="hits_items">
+                        @foreach (var product in Model.Alladins)
+                        {
+                            <div class="hits_item">
+                                <div class="hits_pic">
+                                    <img class="hits_img" src="~/images/Каталог/Girls/smallimage/@product.Address" alt="@product.Name">
+                                    <div class="buttons AdaptiveDisplayCatalog"> <a class="btn btn-hit popup-open" href="/view/viewproduct/@product.Id">УЗНАТЬ ПОДРОБНЕЕ</a> <a class="btn btn-hit popup-buy-open" href="/Home/popupBuy/@product.Id">КУПИТЬ</a> </div>
+                                    @if (product.Favourite)
+                                    {<div class="hit_word">ХИТ</div>}
+                                    @if ((((product.Price * 100) / product.PriceWithoutSales) - 100) * (-1) > 2)
+                                    {
+                                        <div class="sale">-@(Product.RoundFive(((product.Price * 100) / product.PriceWithoutSales) - 100) * (-1))%</div>
+                                    }
+                                </div>
+                                <div class="hits_title">
+                                    <a class=" popup-open" style="text-decoration:none; color: black;" href="/view/viewproduct/@product.Id">@product.Name</a>
+                                </div>
+                                <div class="priceMain">
+                                    <div class="newPrice">@product.Price&#1056;</div>
+                                    @if (product.Price < product.PriceWithoutSales)
+                                    {
+                                        <div class="oldPrice">@product.PriceWithoutSales&#1056;</div>
+                                    }
+                                </div>
                             </div>
-                            <div class="hits_title">
-                                <a class=" popup-open" style="text-decoration:none; color: black;" href="/Home/popupFade/@product.Id">@product.Name</a>
-                            </div>
-                            <div class="priceMain">
-                                <div class="newPrice">@product.Price&#1056</div>
-                                @if (product.Price < product.PriceWithoutSales)
-                                {
-                                    <div class="oldPrice">@product.PriceWithoutSales&#1056</div>
-                                }
-                            </div>
-                        </div>
-                    }
+                        }
+                    </div>
+                    <div id="ContentShow_more_alladin"></div>
                 </div>
-                <div id="ContentShow_more_alladin"></div>
-            </div>
-            @*<div>
+                @*<div>
                     <div style="width: 210px; margin: 0 auto; margin: 50px auto;">
-                        <input id="show_more_alladin" count_show="5" count_add="3" class="btn btn-add " style="width: 210px; margin: 0 auto;" type="button" value="Показать еще" />
+                        <input id="show_more_alladin"  class="btn btn-add " style="width: 210px; margin: 0 auto;" type="button" value="Показать еще" />
                     </div>
                 </div>
 
@@ -368,422 +368,425 @@
                     });
                 </script>*@
 
+            </div>
         </div>
-    </div>
+
+        <div class="reviews" id="reviews">
+            <div class="container">
+                <div class="reviews_inner">
+                    <div class="reviews_title">ОТЗЫВЫ</div>
+                    <div class="reviews_items autoplaySl2">
+                        <div class="reviews_item">
+                            <div class="reviews_pic"><img src="~/images/Отзывы/MesОтзыв1.jpg" alt="Отзыв покупателей 1"></div>
+                        </div>
+                        <div class="reviews_item">
+                            <div class="reviews_pic"><img src="~/images/Отзывы/MesОтзыв2.jpg" alt="Отзыв покупателей 2"></div>
+                        </div>
+                        <div class="reviews_item">
+                            <div class="reviews_pic"><img src="~/images/Отзывы/MesОтзыв3.jpg" alt="Отзыв покупателей 3"></div>
+                        </div>
+                        <div class="reviews_item">
+                            <div class="reviews_pic"><img src="~/images/Отзывы/MesОтзыв4.jpg" alt="Отзыв покупателей 4"></div>
+                        </div>
+                        <div class="reviews_item">
+                            <div class="reviews_pic"><img src="~/images/Отзывы/MesОтзыв5.jpg" alt="Отзыв покупателей 5"></div>
+                        </div>
+                        <div class="reviews_item">
+                            <div class="reviews_pic"><img src="~/images/Отзывы/MesОтзыв6.jpg" alt="Отзыв покупателей 6"></div>
+                        </div>
+                        <div class="reviews_item">
+                            <div class="reviews_pic"><img src="~/images/Отзывы/MesОтзыв7.jpg" alt="Отзыв покупателей 7"></div>
+                        </div>
+                        <div class="reviews_item">
+                            <div class="reviews_pic"><img src="~/images/Отзывы/MesОтзыв8.jpg" alt="Отзыв покупателей 8"></div>
+                        </div>
+                        <div class="reviews_item">
+                            <div class="reviews_pic"><img src="~/images/Отзывы/MesОтзыв9.jpg" alt="Отзыв покупателей 9"></div>
+                        </div>
+                        <div class="reviews_item">
+                            <div class="reviews_pic"><img src="~/images/Отзывы/MesОтзыв10.jpg" alt="Отзыв покупателей 10"></div>
+                        </div>
+                        <div class="reviews_item">
+                            <div class="reviews_pic"><img src="~/images/Отзывы/MesОтзыв11.jpg" alt="Отзыв покупателей 11"></div>
+                        </div>
+                        <div class="reviews_item">
+                            <div class="reviews_pic"><img src="~/images/Отзывы/MesОтзыв12.jpg" alt="Отзыв покупателей 12"></div>
+                        </div>
+                        @*<div class="reviews_item">
+                            <div class="reviews_pic"><img src="~/images/Отзывы/отзыв1.jpg" alt=""></div>
+                            <div class="reviews_text">“ Спасибо! Я в восторге от вашей пижамы! Она настолько приятная телу, материал супер, и абсолютно не жарко в ней. Ну и дизайн, естесственно превосходный!!! ”</div>
+                        </div>
+                        <div class="reviews_item">
+                            <div class="reviews_pic"><img src="~/images/Отзывы/отзыв2.jpg" alt=""></div>
+                            <div class="reviews_text">“ Пижамка подошла идеально) Качество очень приятное к телу, в шортиках можно ходить на пляж) Ближе к отпуску прикуплю ещё парочку ) Спасибо большое, осталась довольна) ”</div>
+                        </div>
+                        <div class="reviews_item">
+                            <div class="reviews_pic"><img src="~/images/Отзывы/отзыв3.jpg" alt=""></div>
+                            <div class="reviews_text"> “ Добрый день! Пижамка отличная, на ощупь очень приятная. Спасибо за такую красоту! ”</div>
+                        </div>
+                        <div class="reviews_item">
+                            <div class="reviews_pic"><img src="~/images/Отзывы/отзыв4.jpg" alt=""></div>
+                            <div class="reviews_text">“ Сегодня пришла ваша шёлковая пижама с енотами, очень классное качество, мне очень понравилась, всем советую, спасибо большое! ”</div>
+                        </div>
+                        <div class="reviews_item">
+                            <div class="reviews_pic"><img src="~/images/Отзывы/отзыв5.jpg" alt=""></div>
+                            <div class="reviews_text">“Добрый день, пижамы очень классные! Удобные, комфортные и стильные. Спасибо большое! ”</div>
+                        </div>
+                        <div class="reviews_item">
+                            <div class="reviews_pic"><img src="~/images/Отзывы/отзыв6.jpg" alt=""></div>
+                            <div class="reviews_text">“Спасибо большое!) пижамка огонь”</div>
+                        </div>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="delivery" id="delivery">
+            <div class="container">
+                <div class="delivery_inner">
+                    <div class="delivery_title">ДОСТАВКА</div>
+                    <div class="delivery_items">
+                        <div class="delivery_item">
+                            <div class="delivery_img"><img src="~/images/point.png" alt="пункт 1"></div>
+                            <div class="delivery_text">250Р при полной предоплате</div>  @*style="color:#1da77f; font-weight: 700;" БЕСПЛАТНО*@
+
+                        </div>
+                        <div class="delivery_item">
+                            <div class="delivery_img"><img src="~/images/point.png" alt="пункт 2"></div>
+                            <div class="delivery_text">350Р при предоплате только за доставку, а за товар оплата при получении (почта возьмёт ещё 7% коммиссию за денежный перевод за товар с вас)</div>
+                        </div>
+                        <div class="delivery_item">
+                            <div class="delivery_img"><img src="~/images/point.png" alt="пункт 3"></div>
+                            <div class="delivery_text">440Р при полной предоплате - доставка курьером по <span style="font-weight:600;"> Москве</span></div>
+                        </div>
+                        <div class="delivery_item">
+                            <div class="delivery_img"><img src="~/images/point.png" alt="пункт 4"></div>
+                            <div class="delivery_text"><span style="font-weight:600;">По Санкт-Петербургу</span> самовывоз по адресу Дунайский проспект 5 и доставка курьером (рассчитывается в зависимости от вашего местоположения) </div>
+                        </div>
 
 
-    <div class="delivery" id="delivery">
-        <div class="container">
-            <div class="delivery_inner">
-                <div class="delivery_title">ДОСТАВКА</div>
-                <div class="delivery_items">
-                    <div class="delivery_item">
-                        <div class="delivery_img"><img src="~/images/point.png" alt=""></div>
-                        <div class="delivery_text">250Р при полной предоплате</div>  @*style="color:#1da77f; font-weight: 700;" БЕСПЛАТНО*@
-
-                    </div>
-                    <div class="delivery_item">
-                        <div class="delivery_img"><img src="~/images/point.png" alt=""></div>
-                        <div class="delivery_text">350Р при предоплате только за доставку, а за товар оплата при получении (почта возьмёт ещё 7% коммиссию за денежный перевод за товар с вас)</div>
-                    </div>
-                    <div class="delivery_item">
-                        <div class="delivery_img"><img src="~/images/point.png" alt=""></div>
-                        <div class="delivery_text">440Р при полной предоплате - доставка курьером по <span style="font-weight:600;"> Москве</span></div>
-                    </div>
-                    <div class="delivery_item">
-                        <div class="delivery_img"><img src="~/images/point.png" alt=""></div>
-                        <div class="delivery_text"><span style="font-weight:600;">По Санкт-Петербургу</span> самовывоз по адресу Дунайский проспект 5 и доставка курьером (рассчитывается в зависимости от вашего местоположения) </div>
-                    </div>
-
-
-                    <div class="delivery_item">
-                        <div class="delivery_img "><img src="~/images/point.png" alt=""></div>
-                        <div class="delivery_text ">Доставка осуществляется курьерской службой СДЭК или почтой России</div>
-                    </div>
-                    <div class="delivery_item">
-                        <div class="delivery_img"><img src="~/images/point.png" alt=""></div>
-                        <div class="delivery_text">Срок доставки: 2-5 дней</div>
-                        @*<div class="delivery_text">Срок доставки: 3-7 дней</div>*@
-                    </div>
-                    @*<div class="delivery_item">
+                        <div class="delivery_item">
+                            <div class="delivery_img "><img src="~/images/point.png" alt="пункт 5"></div>
+                            <div class="delivery_text ">Доставка осуществляется курьерской службой СДЭК или почтой России</div>
+                        </div>
+                        <div class="delivery_item">
+                            <div class="delivery_img"><img src="~/images/point.png" alt="пункт 6"></div>
+                            <div class="delivery_text">Срок доставки: 2-5 дней</div>
+                            @*<div class="delivery_text">Срок доставки: 3-7 дней</div>*@
+                        </div>
+                        @*<div class="delivery_item">
                             <div class="delivery_img "><img src="~/images/point.png" alt=""></div>
                             <div class="delivery_text ">Срок хранения посылки: 3 дня</div>
                         </div>*@
-                    @*<div class="delivery_item">
+                        @*<div class="delivery_item">
                             <div class="delivery_img"><img src="~/images/point.png" alt=""></div>
                             <div class="delivery_text">Доставка курьером 350 руб</div>
                         </div>*@
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="reviews" id="reviews">
-        <div class="container">
-            <div class="reviews_inner">
-                <div class="reviews_title">ОТЗЫВЫ</div>
-                <div class="reviews_items autoplaySl2">
-                    <div class="reviews_item">
-                        <div class="reviews_pic"><img src="~/images/Отзывы/MesОтзыв1.jpg" alt=""></div>
-                    </div>
-                    <div class="reviews_item">
-                        <div class="reviews_pic"><img src="~/images/Отзывы/MesОтзыв2.jpeg" alt=""></div>
-                    </div>
-                    <div class="reviews_item">
-                        <div class="reviews_pic"><img src="~/images/Отзывы/MesОтзыв3.jpeg" alt=""></div>
-                    </div>
-                    <div class="reviews_item">
-                        <div class="reviews_pic"><img src="~/images/Отзывы/MesОтзыв4.jpeg" alt=""></div>
-                    </div>
-                    <div class="reviews_item">
-                        <div class="reviews_pic"><img src="~/images/Отзывы/MesОтзыв5.jpg" alt=""></div>
-                    </div>
-                    <div class="reviews_item">
-                        <div class="reviews_pic"><img src="~/images/Отзывы/MesОтзыв6.jpg" alt=""></div>
-                    </div>
-                    <div class="reviews_item">
-                        <div class="reviews_pic"><img src="~/images/Отзывы/MesОтзыв7.jpg" alt=""></div>
-                    </div>
-                    <div class="reviews_item">
-                        <div class="reviews_pic"><img src="~/images/Отзывы/MesОтзыв8.jpg" alt=""></div>
-                    </div>
-                    <div class="reviews_item">
-                        <div class="reviews_pic"><img src="~/images/Отзывы/MesОтзыв9.jpg" alt=""></div>
-                    </div>
-                    <div class="reviews_item">
-                        <div class="reviews_pic"><img src="~/images/Отзывы/MesОтзыв10.jpeg" alt=""></div>
-                    </div>
-                    <div class="reviews_item">
-                        <div class="reviews_pic"><img src="~/images/Отзывы/MesОтзыв11.jpg" alt=""></div>
-                    </div>
-                    <div class="reviews_item">
-                        <div class="reviews_pic"><img src="~/images/Отзывы/MesОтзыв12.jpg" alt=""></div>
-                    </div>
-                    @*<div class="reviews_item">
-            <div class="reviews_pic"><img src="~/images/Отзывы/отзыв1.jpg" alt=""></div>
-            <div class="reviews_text">“ Спасибо! Я в восторге от вашей пижамы! Она настолько приятная телу, материал супер, и абсолютно не жарко в ней. Ну и дизайн, естесственно превосходный!!! ”</div>
-        </div>
-        <div class="reviews_item">
-            <div class="reviews_pic"><img src="~/images/Отзывы/отзыв2.jpg" alt=""></div>
-            <div class="reviews_text">“ Пижамка подошла идеально) Качество очень приятное к телу, в шортиках можно ходить на пляж) Ближе к отпуску прикуплю ещё парочку ) Спасибо большое, осталась довольна) ”</div>
-        </div>
-        <div class="reviews_item">
-            <div class="reviews_pic"><img src="~/images/Отзывы/отзыв3.jpg" alt=""></div>
-            <div class="reviews_text"> “ Добрый день! Пижамка отличная, на ощупь очень приятная. Спасибо за такую красоту! ”</div>
-        </div>
-        <div class="reviews_item">
-            <div class="reviews_pic"><img src="~/images/Отзывы/отзыв4.jpg" alt=""></div>
-            <div class="reviews_text">“ Сегодня пришла ваша шёлковая пижама с енотами, очень классное качество, мне очень понравилась, всем советую, спасибо большое! ”</div>
-        </div>
-        <div class="reviews_item">
-            <div class="reviews_pic"><img src="~/images/Отзывы/отзыв5.jpg" alt=""></div>
-            <div class="reviews_text">“Добрый день, пижамы очень классные! Удобные, комфортные и стильные. Спасибо большое! ”</div>
-        </div>
-        <div class="reviews_item">
-            <div class="reviews_pic"><img src="~/images/Отзывы/отзыв6.jpg" alt=""></div>
-            <div class="reviews_text">“Спасибо большое!) пижамка огонь”</div>
-        </div>*@
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="feauters" id="feauters">
-        <div class="container">
-            <div class="feauters_inner">
-                <div class="feauters_title">ПОЧЕМУ МЫ ЛУЧШИЕ</div>
-                <div class="feauters_subtitle">В чем преимущества наших пижам?</div>
-                <div class="feauter_items">
-                    <div class="feauter_item">
-                        <div class="feauter_pic"> <img class="pic" src="~/images/Преимущества/kach.jpg" alt=""> </div>
-                        <div class="feauter_item_title"> КАЧЕСТВЕННЫЕ МАТЕРИАЛЫ </div>
-                    </div>
-                    <div class="feauter_item">
-                        <div class="feauter_pic"> <img class="pic" src="~/images/Преимущества/ned.jpg" alt=""> </div>
-                        <div class="feauter_item_title"> НИЗКИЕ ЦЕНЫ </div>
-                    </div>
-                    <div class="feauter_item">
-                        <div class="feauter_pic"> <img class="pic" src="~/images/Преимущества/komf.jpg" alt=""> </div>
-                        <div class="feauter_item_title"> КОМФОРТ И ЭСТЕТИКА </div>
-                    </div>
-                    <div class="feauter_item">
-                        <div class="feauter_pic"> <img class="pic" src="~/images/Преимущества/dost.jpg" alt=""> </div>
-                        <div class="feauter_item_title">@*<span style="font-weight: 700; color: #1da77f">БЕСПЛАТНАЯ</span>*@ ДОСТАВКА ПО ВСЕЙ РОССИИ </div>
-                    </div>
-                    <div class="feauter_item">
-                        <div class="feauter_pic"> <img class="pic" src="~/images/Преимущества/kons.jpg" alt=""> </div>
-                        <div class="feauter_item_title"> БЕСПЛАТНЫЕ КОНСУЛЬТАЦИИ </div>
-
-
-                    </div>
-                    <div class="feauter_item">
-                        <div class="feauter_pic"> <img class="pic" src="~/images/Преимущества/imgonline-com-ua-Replace-color-uBjDNN85XAm95T9.jpg" alt=""> </div>
-                        <div class="feauter_item_title"> БЕЗОПАСНЫЕ ПЛАТЕЖИ </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="contacts" id="contacts">
-        <div class="container">
-            <div class="contacts_inner">
-                <div class="contacts_title">НАШИ КОНТАКТЫ</div>
-                <div class="contacts_items">
-                    <div class="contacts_item">
-                        <div class="contacts_pic"> <img src="~/images/contacts/adress.jpg" alt=""></div>
-                        <div class="contacts_info">
-                            <div class="contacts_info_title"> АДРЕС </div>
-                            <div class="contacts_info_info">Санкт-Петербург, Дунайский проспект 5 (доставляем по всей России) </div>
+
+        <div class="feauters" id="feauters">
+            <div class="container">
+                <div class="feauters_inner">
+                    <div class="feauters_title">ПОЧЕМУ МЫ ЛУЧШИЕ</div>
+                    <div class="feauters_subtitle">В чем преимущества наших пижам?</div>
+                    <div class="feauter_items">
+                        <div class="feauter_item">
+                            <div class="feauter_pic"> <img class="pic" src="~/images/Преимущества/kach.jpg" alt="Преимущество качество"> </div>
+                            <div class="feauter_item_title"> КАЧЕСТВЕННЫЕ МАТЕРИАЛЫ </div>
+                        </div>
+                        <div class="feauter_item">
+                            <div class="feauter_pic"> <img class="pic" src="~/images/Преимущества/ned.jpg" alt="Преимущество низкие цены"> </div>
+                            <div class="feauter_item_title"> НИЗКИЕ ЦЕНЫ </div>
+                        </div>
+                        <div class="feauter_item">
+                            <div class="feauter_pic"> <img class="pic" src="~/images/Преимущества/komf.jpg" alt="Преимущество комфорт"> </div>
+                            <div class="feauter_item_title"> КОМФОРТ И ЭСТЕТИКА </div>
+                        </div>
+                        <div class="feauter_item">
+                            <div class="feauter_pic"> <img class="pic" src="~/images/Преимущества/dost.jpg" alt="Преимущество доставка"> </div>
+                            <div class="feauter_item_title">@*<span style="font-weight: 700; color: #1da77f">БЕСПЛАТНАЯ</span>*@ ДОСТАВКА ПО ВСЕЙ РОССИИ </div>
+                        </div>
+                        <div class="feauter_item">
+                            <div class="feauter_pic"> <img class="pic" src="~/images/Преимущества/kons.jpg" alt="Преимущество консультации"> </div>
+                            <div class="feauter_item_title"> БЕСПЛАТНЫЕ КОНСУЛЬТАЦИИ </div>
+
+
+                        </div>
+                        <div class="feauter_item">
+                            <div class="feauter_pic"> <img class="pic" src="~/images/Преимущества/imgonline-com-ua-Replace-color-uBjDNN85XAm95T9.jpg" alt="Преимущество платежи"> </div>
+                            <div class="feauter_item_title"> БЕЗОПАСНЫЕ ПЛАТЕЖИ </div>
                         </div>
                     </div>
-                    <div class="contacts_item">
-                        <div class="contacts_pic"> <img src="~/images/contacts/phone.jpg" alt=""></div>
-                        <div class="contacts_info">
-                            <div class="contacts_info_title"> ТЕЛЕФОН </div>
-                            <div class="contacts_info_info">WhatsApp 8(950)425-69-08</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="contacts" id="contacts">
+            <div class="container">
+                <div class="contacts_inner">
+                    <div class="contacts_title">НАШИ КОНТАКТЫ</div>
+                    <div class="contacts_items">
+                        <div class="contacts_item">
+                            <div class="contacts_pic"> <img src="~/images/contacts/adress.jpg" alt="Наши адрес СПБ"></div>
+                            <div class="contacts_info">
+                                <div class="contacts_info_title"> АДРЕС </div>
+                                <div class="contacts_info_info">Санкт-Петербург, Дунайский проспект 5 (доставляем по всей России) </div>
+                            </div>
                         </div>
-                    </div>
-                    @*<div class="contacts_item">
+                        <div class="contacts_item">
+                            <div class="contacts_pic"> <img src="~/images/contacts/phone.jpg" alt="Наш телефон"></div>
+                            <div class="contacts_info">
+                                <div class="contacts_info_title"> ТЕЛЕФОН </div>
+                                <div class="contacts_info_info">WhatsApp 8(950)425-69-08</div>
+                            </div>
+                        </div>
+                        @*<div class="contacts_item">
                             <div class="contacts_pic"> <img src="~/images/contacts/email.jpg" alt=""></div>
                             <div class="contacts_info">
                                 <div class="contacts_info_title"> ПОЧТА </div>
                                 <div class="contacts_info_info"> Pizhamka_fox@mail.ru </div>
                             </div>
                         </div>*@
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="social">
-        <div class="container">
-            <div class="social_inner">
+        <div class="social">
+            <div class="container">
+                <div class="social_inner">
 
-                <div class="social_item">
-                    <a href="https://instagram.com/pizhamkafox?igshid=14cbk9eardt8l" class="socialLink">
-                        <img src="~/images/instagram.jpg" alt="" style="border-radius: 20%">
-                    </a>
-                </div>
-                <div class="social_item">
-                    <a href="https://t.me/AdilyaKM" class="socialLink">
-                        <img src="~/images/telega.png" alt="">
-                    </a>
-                </div>
-                @*<div class="social_item">
+                    <div class="social_item">
+                        <a href="https://instagram.com/pizhamkafox?igshid=14cbk9eardt8l" class="socialLink">
+                            <img src="~/images/instagram.jpg" alt="Мы в инстаграмме" style="border-radius: 20%">
+                        </a>
+                    </div>
+                    <div class="social_item">
+                        <a href="https://t.me/AdilyaKM" class="socialLink">
+                            <img src="~/images/telega.png" alt="Мы в телеграмме">
+                        </a>
+                    </div>
+                    @*<div class="social_item">
                         <a href="#" class="socialLink">
                             <img src="vk.PNG" alt="" style="border-radius: 50%">
                         </a>
                     </div>*@
-                <div class="social_item">
-                    <a href="https://api.whatsapp.com/send?phone=79504256908" class="socialLink">
-                        <img src="~/images/whatsapp.jpg" alt="" style="border-radius: 20%">
-                    </a>
-                </div>
+                    <div class="social_item">
+                        <a href="https://api.whatsapp.com/send?phone=79504256908" class="socialLink">
+                            <img src="~/images/whatsapp.jpg" alt="Написать нам в whatsapp" style="border-radius: 20%">
+                        </a>
+                    </div>
 
+                </div>
             </div>
         </div>
-    </div>
-    <div class="footer">
-        <div class="container">
-            Пижамка-Фокс - шёлковые пижамы с принтами для вас
-        </div>
-        @*<div class="container">
+        <div class="footer">
+            <div class="container">
+                Пижамка-Фокс - шёлковые пижамы с принтом для девушек
+            </div>
+            @*<div class="container">
                 https://pizhamka-fox.ru шёлковые пижамки с шортами авокадо, пандами,
             </div>*@
-    </div>
-    <script type="text/javascript" src="~/js/slick-1.8.1/slick/slick.min.js"></script>
-    <script src="~/js/app.js"></script>
-
-    <script type="text/javascript">
-        if (innerWidth > 508) {
-            $(".autoplaySl").slick({
-                slidesToShow: 3
-                , slidesToScroll: 1
-                , autoplay: true
-                , autoplaySpeed: 2500
-                , variableHeight: true
-                ,
-            });
-        }
-        else {
-            $(".autoplaySl").slick({
-                slidesToShow: 1
-                , slidesToScroll: 1
-                , autoplay: true
-                , autoplaySpeed: 2500
-                , variableHeight: true
-                ,
-            });
-        }
-    </script>
-
-    <script type="text/javascript">
-        if (innerWidth > 508) {
-            $(".autoplaySl2").slick({
-                slidesToShow: 2
-                , slidesToScroll: 1
-                , autoplay: true
-                , autoplaySpeed: 2500
-                , variableHeight: true
-                ,
-            });
-        }
-        else {
-            $(".autoplaySl2").slick({
-                slidesToShow: 1
-                , slidesToScroll: 1
-                , autoplay: true
-                , autoplaySpeed: 2500
-                , variableHeight: true
-                ,
-            });
-        }
-    </script>
-    <script src="https://yandex.st/jquery/2.1.1/jquery.min.js"></script>
-    <script>
-        $(document).ready(function ($) {
-            $('.popup-open').click(function (e) {
-                e.preventDefault();
-                var str = (this.href).toString();
-
-                str = str.replace("View/ViewProduct", "Home/PopupFade");
-                console.log(str);
-                $.get(str, function (data) {
-                    $('#dialogContentpopupFade').html(data);
-                    $('.popup-fade').fadeIn();
-                });
-
-                return false;
-            });
-            $('.popup-close').click(function () {
-                $(this).parents('.popup-fade').fadeOut();
-                return false;
-            });
-            $(document).keydown(function (e) {
-                if (e.keyCode === 27) {
-                    e.stopPropagation();
-                    $('.popup-fade').fadeOut();
-                }
-            });
-            $('.popup-fade').click(function (e) {
-                if ($(e.target).closest('.popup').length == 0) {
-                    $(this).fadeOut();
-                }
-            });
-        });
-    </script>
-    <script>
-        $(document).ready(function ($) {
-            $('.popup-buy-open').click(function (e) {
-                e.preventDefault();
-                $.get(this.href, function (data) {
-                    $('#dialogContentpopupBuy').html(data);
-                    $('.popup-buy').fadeIn();
-                });
-
-                return false;
-            });
-            $('.popup-buy-close').click(function () {
-                $(this).parents('.popup-buy').fadeOut();
-                return false;
-            });
-            $(document).keydown(function (e) {
-                if (e.keyCode === 27) {
-                    e.stopPropagation();
-                    $('.popup-buy').fadeOut();
-                }
-            });
-            $('.popup-buy').click(function (e) {
-                if ($(e.target).closest('.buy').length == 0) {
-                    $(this).fadeOut();
-                }
-            });
-        });
-    </script>
-    <script>
-        $(document).ready(function ($) {
-            $('.popup-cart-open').click(function (e) {
-                e.preventDefault();
-                $.get(this.href, function (data) {
-                    $('#dialogContentpopupCart').html(data);
-                    $('.popup-cart').fadeIn();
-                });
-                //document.body.style.overflow = "hidden";
-                return false;
-            });
-            $('.popup-cart-close').click(function () {
-                $(this).parents('.popup-cart').fadeOut();
-                document.body.style.overflow = "auto";
-                return false;
-            });
-            $(document).keydown(function (e) {
-                if (e.keyCode === 27) {
-                    e.stopPropagation();
-                    $('.popup-cart').fadeOut();
-                }
-            });
-            $('.popup-cart').click(function (e) {
-                if ($(e.target).closest('.cart').length == 0) {
-                    $(this).fadeOut();
-                }
-            });
-        });
-    </script>
-
-    @*убрать кнопки при наведении на телефоне*@
-    <script type="text/javascript">
-        if (innerWidth < 420) {
-            $(".AdaptiveDisplayCatalog").addClass("displayNone"); //.remove("displayNone"); //.toggleClass("displayNone");
-        }
-    </script>
-
-    <!-- Yandex.Metrika counter -->
-    <script type="text/javascript">
-        (function (m, e, t, r, i, k, a) {
-            m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments) };
-            m[i].l = 1 * new Date(); k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
-        })
-            (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-
-        ym(57702916, "init", {
-            clickmap: true,
-            trackLinks: true,
-            accurateTrackBounce: true,
-            webvisor: true
-        });
-    </script>
-    <noscript><div><img src="https://mc.yandex.ru/watch/57702916" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-    <!-- /Yandex.Metrika counter -->
-    @*модальное окно успешной оплаты*@
-    @if (Model.SuccessOrder)
-    {
+        </div>
+        <script type="text/javascript" src="~/js/slick-1.8.1/slick/slick.min.js"></script>
+        <script src="~/js/app.js"></script>
 
         <script type="text/javascript">
-            $(document).ready(function ($) {
-
-                $.get("/Home/SuccessDetail", function (data) {
-                    $('#dialogContentSuccessOrder').html(data);
-                    $('.SuccessOrder').fadeIn();
+            if (innerWidth > 508) {
+                $(".autoplaySl").slick({
+                    slidesToShow: 3
+                    , slidesToScroll: 1
+                    , autoplay: true
+                    , autoplaySpeed: 2500
+                    , variableHeight: true
+                    ,
                 });
-                $('.SuccessOrder-close').click(function () {
-                    $(this).parents('.SuccessOrder').fadeOut();
+            }
+            else {
+                $(".autoplaySl").slick({
+                    slidesToShow: 1
+                    , slidesToScroll: 1
+                    , autoplay: true
+                    , autoplaySpeed: 2500
+                    , variableHeight: true
+                    ,
+                });
+            }
+        </script>
+
+        <script type="text/javascript">
+            if (innerWidth > 508) {
+                $(".autoplaySl2").slick({
+                    slidesToShow: 2
+                    , slidesToScroll: 1
+                    , autoplay: true
+                    , autoplaySpeed: 2500
+                    , variableHeight: true
+                    ,
+                });
+            }
+            else {
+                $(".autoplaySl2").slick({
+                    slidesToShow: 1
+                    , slidesToScroll: 1
+                    , autoplay: true
+                    , autoplaySpeed: 2500
+                    , variableHeight: true
+                    ,
+                });
+            }
+        </script>
+        <script src="https://yandex.st/jquery/2.1.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function ($) {
+                $('.popup-open').click(function (e) {
+                    e.preventDefault();
+                    var str = (this.href).toString();
+
+                    str = str.replace("view/viewproduct", "home/popupfade");
+                    console.log(str);
+                    $.get(str, function (data) {
+                        $('#dialogContentpopupFade').html(data);
+                        $('.popup-fade').fadeIn();
+                    });
+
+                    return false;
+                });
+                $('.popup-close').click(function () {
+                    $(this).parents('.popup-fade').fadeOut();
+                    return false;
+                });
+                $(document).keydown(function (e) {
+                    if (e.keyCode === 27) {
+                        e.stopPropagation();
+                        $('.popup-fade').fadeOut();
+                    }
+                });
+                $('.popup-fade').click(function (e) {
+                    if ($(e.target).closest('.popup').length == 0) {
+                        $(this).fadeOut();
+                    }
+                });
+            });
+        </script>
+        <script>
+            $(document).ready(function ($) {
+                $('.popup-buy-open').click(function (e) {
+                    e.preventDefault();
+                    $.get(this.href, function (data) {
+                        $('#dialogContentpopupBuy').html(data);
+                        $('.popup-buy').fadeIn();
+                    });
+
+                    return false;
+                });
+                $('.popup-buy-close').click(function () {
+                    $(this).parents('.popup-buy').fadeOut();
+                    return false;
+                });
+                $(document).keydown(function (e) {
+                    if (e.keyCode === 27) {
+                        e.stopPropagation();
+                        $('.popup-buy').fadeOut();
+                    }
+                });
+                $('.popup-buy').click(function (e) {
+                    if ($(e.target).closest('.buy').length == 0) {
+                        $(this).fadeOut();
+                    }
+                });
+            });
+        </script>
+        <script>
+            $(document).ready(function ($) {
+                $('.popup-cart-open').click(function (e) {
+                    e.preventDefault();
+                    $.get(this.href, function (data) {
+                        $('#dialogContentpopupCart').html(data);
+                        $('.popup-cart').fadeIn();
+                    });
+                    //document.body.style.overflow = "hidden";
+                    return false;
+                });
+                $('.popup-cart-close').click(function () {
+                    $(this).parents('.popup-cart').fadeOut();
                     document.body.style.overflow = "auto";
                     return false;
                 });
                 $(document).keydown(function (e) {
                     if (e.keyCode === 27) {
                         e.stopPropagation();
-                        $('.SuccessOrder').fadeOut();
+                        $('.popup-cart').fadeOut();
                     }
                 });
-                $('.SuccessOrder').click(function (e) {
-                    if ($(e.target).closest('.Success').length == 0) {
+                $('.popup-cart').click(function (e) {
+                    if ($(e.target).closest('.cart').length == 0) {
                         $(this).fadeOut();
                     }
                 });
             });
         </script>
-    }
 
-</body>
+        @*убрать кнопки при наведении на телефоне*@
+        <script type="text/javascript">
+            if (innerWidth < 420) {
+                $(".AdaptiveDisplayCatalog").addClass("displayNone"); //.remove("displayNone"); //.toggleClass("displayNone");
+            }
+        </script>
 
-</html>
+        <!-- Yandex.Metrika counter -->
+        <script type="text/javascript">
+            if (innerWidth > 420) {
+                (function (m, e, t, r, i, k, a) {
+                    m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments) };
+                    m[i].l = 1 * new Date(); k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+                })
+                    (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+                ym(57702916, "init", {
+                    clickmap: true,
+                    trackLinks: true,
+                    accurateTrackBounce: true,
+                    webvisor: true
+                });
+            }
+        </script>
+        <noscript><div><img src="https://mc.yandex.ru/watch/57702916" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+        <!-- /Yandex.Metrika counter -->
+        @*модальное окно успешной оплаты*@
+        @if (Model.SuccessOrder)
+        {
+
+            <script type="text/javascript">
+                $(document).ready(function ($) {
+
+                    $.get("/Home/SuccessDetail", function (data) {
+                        $('#dialogContentSuccessOrder').html(data);
+                        $('.SuccessOrder').fadeIn();
+                    });
+                    $('.SuccessOrder-close').click(function () {
+                        $(this).parents('.SuccessOrder').fadeOut();
+                        document.body.style.overflow = "auto";
+                        return false;
+                    });
+                    $(document).keydown(function (e) {
+                        if (e.keyCode === 27) {
+                            e.stopPropagation();
+                            $('.SuccessOrder').fadeOut();
+                        }
+                    });
+                    $('.SuccessOrder').click(function (e) {
+                        if ($(e.target).closest('.Success').length == 0) {
+                            $(this).fadeOut();
+                        }
+                    });
+                });
+            </script>
+        }
+
+
+
+

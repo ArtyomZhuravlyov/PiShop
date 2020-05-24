@@ -14,14 +14,14 @@
                     <div class="hits_pic">
                         @if (product.Category == "флис")
                         {
-                            <img class="hits_img" style="max-height:initial !important" src="~/images/Каталог/Girls/Маленькие изображения/@product.Address" alt="">
+                            <img class="hits_img" style="max-height:initial !important" src="~/images/Каталог/Girls/smallimage/@product.Address" alt="">
                         }
                         else
                         {
-                            <img class="hits_img" src="~/images/Каталог/Girls/Маленькие изображения/@product.Address" alt="">
+                            <img class="hits_img" src="~/images/Каталог/Girls/smallimage/@product.Address" alt="@product.Name">
                         }
 
-                        <div class="buttons AdaptiveDisplayCatalog"> <a class="btn btn-hit popup-open" href="/Home/popupFade/@product.Id">УЗНАТЬ ПОДРОБНЕЕ</a> <a class="btn btn-hit popup-buy-open" href="/Home/popupBuy/@product.Id">КУПИТЬ</a> </div>
+                        <div class="buttons AdaptiveDisplayCatalog"> <a class="btn btn-hit popup-open" href="/view/viewproduct/@product.Id">УЗНАТЬ ПОДРОБНЕЕ</a> <a class="btn btn-hit popup-buy-open" href="/Home/popupBuy/@product.Id">КУПИТЬ</a> </div>
                         @if (product.Favourite)
                         {<div class="hit_word">ХИТ</div>}
                         @if ((((product.Price * 100) / product.PriceWithoutSales) - 100) * (-1) > 2)
@@ -31,13 +31,13 @@
 
                     </div>
                     <div class="hits_title">
-                        <a class=" popup-open" style="text-decoration:none; color: black;" href="/Home/popupFade/@product.Id">@product.Name</a>
+                        <a class=" popup-open" style="text-decoration:none; color: black;" href="/view/viewproduct/@product.Id">@product.Name</a>
                     </div>
                     <div class="priceMain">
-                        <div class="newPrice">@product.Price&#1056</div>
+                        <div class="newPrice">@product.Price&#1056;</div>
                         @if (product.Price < product.PriceWithoutSales)
                         {
-                            <div class="oldPrice">@product.PriceWithoutSales&#1056</div>
+                            <div class="oldPrice">@product.PriceWithoutSales&#1056;</div>
                         }
                     </div>
                 </div>
@@ -51,7 +51,7 @@
                     e.preventDefault();
                     var str = (this.href).toString();
 
-                    str = str.replace("View/ViewProduct", "Home/PopupFade");
+                    str = str.replace("view/viewproduct", "home/popupfade");
                     console.log(str);
                     $.get(str, function (data) {
                         $('#dialogContentpopupFade').html(data);

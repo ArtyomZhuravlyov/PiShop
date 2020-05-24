@@ -58,7 +58,7 @@
             @*<div class="overflow2">*@
             <div class="popupReplace">
 
-                <a class="popup-close" style="top: 0px; right: 0px;" href="https://pizhamka-fox.ru/"> <img src="~/images/krestik.jpg" alt=""></a>
+                <a class="popup-close" style="top: 0px; right: 0px;" href="https://pizhamka-fox.ru/"> <img src="~/images/krestik.jpg" alt="закрыть окно"></a>
 
                 <div class="item_pizham">
 
@@ -76,25 +76,25 @@
                                     <div class="pictureSecond   NotShow"><img class="blockSecond" src="~/images/Каталог/Girls/@Model.Address" alt=""></div>
                                 </div>*@
                             <div class="First">
-                                <div class="picture Show"><img class="block" src="~/images/Каталог/Girls/@Model.Address" alt=""></div>
-                                <div class="pictureSecond Show"><img class="blockSecond" src="~/images/Каталог/Girls/@Model.Image2Address" alt=""></div>
+                                <div class="picture Show"><img class="block" src="~/images/Каталог/Girls/@Model.Address" alt="Первое фото пижамы 1"></div>
+                                <div class="pictureSecond Show"><img class="blockSecond" src="~/images/Каталог/Girls/@Model.Image2Address" alt="Второе фото пижамы 1"></div>
                             </div>
                             <div class="Second displayNone">
-                                <div class="picture NotShow "><img class="block" src="~/images/Каталог/Girls/@Model.Image2Address" alt=""></div>
-                                <div class="pictureSecond   NotShow"><img class="blockSecond" src="~/images/Каталог/Girls/@Model.Address" alt=""></div>
+                                <div class="picture NotShow "><img class="block" src="~/images/Каталог/Girls/@Model.Image2Address" alt="Первое фото пижамы 2"></div>
+                                <div class="pictureSecond   NotShow"><img class="blockSecond" src="~/images/Каталог/Girls/@Model.Address" alt="Второе фото пижамы 2"></div>
 
                             </div>
                         }
                         else
                         {
-                            <div class="picture First Show"><img class="block" src="~/images/Каталог/Girls/@Model.Address" style="max-height:initial !important;" alt=""></div>@*большая*@
+                            <div class="picture First Show"><img class="block" src="~/images/Каталог/Girls/@Model.Address" style="max-height:initial !important;" alt="@Model.Name"></div>@*большая*@
                         }
                         @*<div class="price" style="width:initial;">2000Р</div>*@
                         <div class="priceMain PriceMainDetail" style="margin-top: 9px !important;">
-                            <div class="newPrice"> @Model.Price&#1056</div>
+                            <div class="newPrice"> @Model.Price&#1056;</div>
                             @if (Model.Price < Model.PriceWithoutSales)
                             {
-                                <div class="oldPrice">@Model.PriceWithoutSales&#1056</div>
+                                <div class="oldPrice">@Model.PriceWithoutSales&#1056;</div>
                             }
 
                         </div>
@@ -127,7 +127,7 @@
                         <div class="info_title ">@Model.Name</div>
                         <div class="info-text">
                             <div class="info_text_item">
-                                <img class="pointer" src="~/images/point.png" alt="">
+                                <img class="pointer" src="~/images/point.png" alt="Пункт 1">
                                 @if (Model.Category != "флис")
                                 {
                                     <div class="info_text_text">Материал: шёлк Армани </div>
@@ -139,16 +139,16 @@
 
                             </div>
                             <div class="info_text_item">
-                                <img class="pointer" src="~/images/point.png" alt="">
+                                <img class="pointer" src="~/images/point.png" alt="Пункт 2">
                                 <div class="info_text_text">Размерная сетка </div>
                             </div>
                             @if (Model.Category != "флис")
                             {
-                                <div class="info_table"><img src="~/images/pazmer.jpg" alt=""></div>
+                                <div class="info_table"><img src="~/images/pazmer.jpg" alt="Размерная сетка"></div>
                             }
                             else
                             {
-                                <div class="info_table"><img src="~/images/PhlisPazmer2.PNG" alt=""></div>
+                                <div class="info_table"><img src="~/images/PhlisPazmer2.PNG" alt="Размерная сетка2"></div>
                             }
                             <div class="chooseSize">Выберите размер</div>
                             <input type="number" name="Id" value="@Model.Id" style="display:none">
@@ -184,16 +184,16 @@ else
 }
                             </div>
                             <div class="info_text_item">
-                                <img class="pointer" src="~/images/point.png" alt="">
-                                <div class="info_text_text">Размерная сетка </div>
+                                <img class="pointer" src="~/images/point.png" alt="Пункт 1">
+                                <div class="info_text_text">Размерная сетка</div>
                             </div>
                             @if (Model.Category != "флис")
                             {
-                                <div class="info_table"><img src="~/images/pazmerPhone.jpg" alt=""></div>
+                                <div class="info_table"><img src="~/images/pazmerPhone.jpg" alt="Размерная сетка 1"></div>
                             }
                             else
                             {
-                                <div class="info_table"><img src="~/images/PhlispazmerPhone.jpg" alt=""></div>
+                                <div class="info_table"><img src="~/images/PhlispazmerPhone.jpg" alt="Размерная сетка 2"></div>
                             }
 
                         </div>

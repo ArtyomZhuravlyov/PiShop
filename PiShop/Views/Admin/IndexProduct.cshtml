@@ -34,6 +34,7 @@
             <tr>
                 <th class="text-right">ID</th>
                 <th>Название</th>
+                <th>Категория</th>
                 <th class="text-right">Цена</th>
                 <th class="text-center">Действия</th>
             </tr>
@@ -43,20 +44,21 @@
 
                 @foreach (var item in Model)
                 {
-                    <tr>
-                        <td class="text-right">@item.Id</td>
-                        <td>@Html.ActionLink(item.Name, "Edit", new { item.Id })</td>
-                        <td class="text-right">@item.Price.ToString("# руб")</td>
-                        <td class="text-center">
-                            @using (Html.BeginForm("Delete", "Admin"))
-                            {
-                                @Html.Hidden("productId", item.Id)
-                                <input type="submit"
-                                       class="btn btn-default btn-xs"
-                                       value="Удалить" />
-                            }
-                        </td>
-                    </tr>
+            <tr>
+                <td class="text-right">@item.Id</td>
+                <td>@Html.ActionLink(item.Name, "Edit", new { item.Id })</td>
+                <td class="text-center">@item.Category</td>
+                <td class="text-right">@item.Price.ToString("# руб")</td>
+                <td class="text-center">
+                    @using (Html.BeginForm("Delete", "Admin"))
+                    {
+                        @Html.Hidden("productId", item.Id)
+                        <input type="submit"
+                               class="btn btn-default btn-xs"
+                               value="Удалить" />
+                    }
+                </td>
+            </tr>
                 }
             }
             catch (Exception ex)

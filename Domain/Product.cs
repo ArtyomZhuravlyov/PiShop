@@ -68,6 +68,10 @@ namespace Domain
 
         public int Sale { get; set; }
 
+        public string ImgTitle { get; set; }
+
+        public string ImgAlt { get; set; }
+
         public static int RoundFive(double d)
         {
             // Округляем с точностью до 5

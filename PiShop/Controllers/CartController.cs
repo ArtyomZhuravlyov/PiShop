@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Globalization;
 using System.Linq;
+using System.Net;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Domain;
@@ -191,6 +193,8 @@ namespace PiShop.Controllers
                                                                            //}
                                                                            //добавляем в статистику
                 AddOrderPizham(cart);
+                SendPushover(shippingDetails, cart);
+
                      return RedirectToAction("Index", "Home", new { successOrder = true });
 
             }
@@ -216,6 +220,34 @@ namespace PiShop.Controllers
             phone = phone.Replace(" ", "").Replace("(", "").Replace(")", "").Replace("-", "");
             return true;
 
+        }
+
+        private void SendPushover(ShippingDetails shippingDetails, Cart cart)
+        {
+            var parameters = new NameValueCollection {
+             { "token", "avf36ak95s7h5mc31u4chx9a7nzhk3" },
+             { "user", "u9ki332gg4ei1jza8tms2vxpcnsuu6" },
+             //{ "device", "redminote6pro" },
+             { "message",  shippingDetails.Surname  + " "  + shippingDetails.Name +  " "+ shippingDetails.MiddleName + "   "  + shippingDetails.OurPhone + "   " + shippingDetails.City + "   " + shippingDetails.Adress + "   " + shippingDetails.Comment },
+             { "title", cart.ComputeTotalValue().ToString() },
+             {"sound", "echo" },
+             { "priority", "2" },
+             { "retry", "30" },
+             { "expire", "300" },
+
+
+             };
+            try
+            {
+                using (var client = new WebClient())
+                {
+                    client.UploadValues("https://api.pushover.net/1/messages.json", parameters);
+                }
+             
+            }
+            catch(Exception exp)
+            {
+            }
         }
 
         public static bool IsValidEmail(string email)
