@@ -12,7 +12,7 @@
         <div class="intro" id="intro">
             <div class="container">
                 <div class="intro_inner">
-                    <h1 class="intro_title">ПИЖАМА</h1>
+                    <h1 class="intro_title">ПИЖАМА С ПРИНТОМ</h1>
                     <div class="intro_suptitle">Залог отличного настроения и продуктивного дня зависит от первых эмоций после пробуждения. Мы хотим, чтобы на твоём лице с самого утра блистала улыбка - а что как не идеальное отражение в зеркале сможет тебя так порадовать?</div>
                     <div class="intro_suptitle">Наша пижама сделает твоё утро чудесным, а хоум - лук безумно комфортным и женственным. </div> <a class="btn" href="#" data-scroll="#catalog">Посмотреть каталог</a>
                 </div>
@@ -58,8 +58,8 @@
             <div class="container">
 
                 <div class="hits_inner">
-                    @*<div class="hits_MainTitle">Классический топ</div>*@
-                    <h1 class="hits_MainTitle">Пижамы с принтом</h1>
+                    <div class="hits_MainTitle">Классический топ</div>
+                    @*<h1 class="hits_MainTitle">Пижамы с принтом</h1>*@
                     <div class="hits_items">
                         @foreach (var product in Model.SimpleTop)
                         {
@@ -174,7 +174,7 @@
                                 <div class="hits_pic">
                                     @if (product.Category == "флис")
                                     {
-                                        <img class="hits_img" style="max-height:initial !important" src="~/images/Каталог/Girls/smallimage/@product.Address" alt="">
+                                        <img class="hits_img" style="max-height:initial !important" src="~/images/Каталог/Girls/smallimage/@product.Address" alt="флисовая пижама">
                                     }
                                     else
                                     {
@@ -320,8 +320,8 @@
 
 
                 <div class="hits_inner">
-                    @*<div class="hits_MainTitle">Алладины</div>*@
-                    <h2>Пижама Алладин</h2>
+                    <div class="hits_MainTitle">Алладины</div>
+                    @*<h2>Пижама Алладин</h2>*@
                     <div class="hits_items">
                         @foreach (var product in Model.Alladins)
                         {

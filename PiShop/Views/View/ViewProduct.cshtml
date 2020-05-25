@@ -12,32 +12,40 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="~/css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Merienda|Neucha|Roboto&display=swap" rel="stylesheet">
-    <meta name="viewport" content="width=device-width" , initial-scale=1>
+    <meta name="viewport" content="width=device-width" initial-scale=1>
     <meta name="yandex-verification" content="e37eaf24dedcbc1b" /> @*//ssl*@
     <link rel="shortcut icon" href="~/favicon.ico" type="image/x-icon">
-    @switch (Model.Category)
-    {
-        case "брюки":
-            <title>Шёлковые @Model.Name</title>
-            break;
-        case "комплект":
-            <title>Шёлковый @Model.Name </title>
-            break;
-        case "флис":
-            <title>Флисовая @Model.Name </title>
-            break;
-        default:
-            <title>Шёлковая пижама с принтом @Model.Name.Replace("Пижама", "")</title>
-            break;
+    @if (string.IsNullOrEmpty(Model.TitleP))
+     {
+        @switch (Model.Category)
+        {
+            case "брюки":
+                <title>Шёлковые @Model.Name</title>
+                break;
+            case "комплект":
+                <title>Шёлковый @Model.Name </title>
+                break;
+            case "флис":
+                <title>Флисовая @Model.Name </title>
+                break;
+            default:
+                <title>Шёлковая пижама с принтом @Model.Name.Replace("Пижама", "")</title>
+                break;
 
+        }
+     }
+    else
+    {
+        <title>@Model.TitleP</title>
     }
+
     @if (!string.IsNullOrEmpty(Model.Description))
     {
         <meta name="description" content="@Model.Description" />
     }
     else
     {
-        <meta name="description" content="Шёлковые пижамы с принтом, без увелечения слов, удивят и порадют любую девушку. Хороший подарок и необыкновенная мечта любой женщины." />
+        <meta name="description" content="@Model.Name Шёлковые пижамы с принтом, без увелечения слов, удивят и порадют любую девушку. Хороший подарок и необыкновенная мечта любой женщины." />
     }
 </head>
 <body>
@@ -46,7 +54,7 @@
         <div class="container">
             <div class="header_inner">
                 @*<div class="header_logo">FOX</div>*@
-                <a class="popup-cart-open" href="/Cart/Cart"><img class="korzina" src="~/images/Корзина/korzina.jpg" style="display:none" alt=""></a>
+                <a class="popup-cart-open" href="/Cart/Cart"><img class="korzina" src="~/images/Корзина/korzina.jpg" style="display:none" alt="корзина"></a>
                 <div id="dialogContentpopupCart" class="modal-dialog"></div>
             </div>
         </div>
@@ -62,7 +70,7 @@
 
                 <div class="item_pizham">
 
-                    <div class="info_title AdaptiveDisplay displayNone">@Model.Name</div>
+                    <h1 class="info_title AdaptiveDisplay displayNone">@Model.Name</h1>
 
                     <div class="theFirstBlock">
                         @if (System.IO.File.Exists($"{Environment.CurrentDirectory}/wwwroot/images/Каталог/Girls/{Model.Image2Address}"))
@@ -107,15 +115,15 @@
                             <label>
                                 <input class="radioFade" type="radio" name="size" value="M"><span style="padding:5px 16px !important;">M</span>
                             </label>
-                            <label>
+                            @*<label>
                                 <input class="radioFade" type="radio" name="size" value="⁣⁣⁣⁣⁣⁣⁣⁣⁣⁣L"><span style="padding:5px 18px !important;">L</span>
-                            </label>
+                            </label>*@
                         </div>
                         <div class="animate">
                             <button class="btn btn-add addToCart" style="margin-left: 5%; margin-right: 5%; width:90%;" type="submit">ДОБАВИТЬ В КОРЗИНУ</button>
                             <a class="btn btn-add goToCart popup-cart-open" style="margin-left: 5%; margin-right: 5%; width:90%;" href="/Cart/Cart">ПЕРЕЙТИ В КОРЗИНУ</a>
                             @*<a class="btn btn-add addToCart" type="submit">ДОБАВИТЬ В КОРЗИНУ</a>*@
-                            <div class="paket"><img src="~/images/Корзина/paket.png" alt=""></div>
+                            <div class="paket"><img src="~/images/Корзина/paket.png" alt="покупка"></div>
                         </div>
 
                         <header>
@@ -124,7 +132,7 @@
 
                     </div>
                     <div class="info Display">
-                        <div class="info_title ">@Model.Name</div>
+                        <h1 class="info_title ">@Model.Name</h1>
                         <div class="info-text">
                             <div class="info_text_item">
                                 <img class="pointer" src="~/images/point.png" alt="Пункт 1">
@@ -159,9 +167,9 @@
                                 <label>
                                     <input class="radioFade" type="radio" name="size" value="M"><span style="padding:5px 16px !important;">M</span>
                                 </label>
-                                <label>
+                                @*<label>
                                     <input class="radioFade" type="radio" name="size" value="⁣⁣⁣⁣⁣⁣⁣⁣⁣⁣L"><span style="padding:5px 18px !important;">L</span>
-                                </label>
+                                </label>*@
                             </div>
 
                         </div>
@@ -169,7 +177,7 @@
                     <div class="info AdaptiveDisplay displayNone">
                         <div class="info-text">
                             <div class="info_text_item">
-                                <img class="pointer" src="~/images/point.png" alt="">
+                                <img class="pointer" src="~/images/point.png" alt="Пункт">
                                 @if (Model.Category != "флис"@*&& Model.Category != "брюки"*@)
 {
 <div class="info_text_text">Материал: шёлк Армани </div>

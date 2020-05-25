@@ -27,7 +27,8 @@ namespace PiShop.Controllers
 
         public IActionResult IndexProduct()
         {
-            return View(db.Products);
+            var Products = db.Products.OrderBy(x => x.Category);
+            return View(Products);
         }
 
         public ActionResult OrderView(int Id)

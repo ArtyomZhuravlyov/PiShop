@@ -45,18 +45,18 @@
                                         <div class="pictureSecond   NotShow"><img class="blockSecond" src="~/images/Каталог/Girls/@Model.Address" alt=""></div>
                                     </div>*@
                             <div class="First">
-                                <div class="picture Show"><img class="block" src="~/images/Каталог/Girls/@Model.Address" alt=""></div>
-                                <div class="pictureSecond Show"><img class="blockSecond" src="~/images/Каталог/Girls/@Model.Image2Address" alt=""></div>
+                                <div class="picture Show"><img class="block" src="~/images/Каталог/Girls/@Model.Address" alt="первая картинка 1"></div>
+                                <div class="pictureSecond Show"><img class="blockSecond" src="~/images/Каталог/Girls/@Model.Image2Address" alt="Вторая картинка 1"></div>
                             </div>
                                             <div class="Second displayNone">
-                                                <div class="picture NotShow "><img class="block" src="~/images/Каталог/Girls/@Model.Image2Address" alt=""></div>
-                                                <div class="pictureSecond   NotShow"><img class="blockSecond" src="~/images/Каталог/Girls/@Model.Address" alt=""></div>
+                                                <div class="picture NotShow "><img class="block" src="~/images/Каталог/Girls/@Model.Image2Address" alt="первая картинка 2"></div>
+                                                <div class="pictureSecond   NotShow"><img class="blockSecond" src="~/images/Каталог/Girls/@Model.Address" alt="Вторая картинка 2"></div>
                                                 
                                             </div>
                                         }
                                         else
                                         {
-                                            <div class="picture First Show"><img class="block" src="~/images/Каталог/Girls/@Model.Address" style="max-height:initial !important;" alt=""></div>@*большая*@
+                                            <div class="picture First Show"><img class="block" src="~/images/Каталог/Girls/@Model.Address" style="max-height:initial !important;" alt="@Model.Name"></div>@*большая*@
                                         }
                             @*<div class="price" style="width:initial;">2000Р</div>*@
                             <div class="priceMain PriceMainDetail" style="margin-top: 9px !important;">
@@ -84,7 +84,7 @@
                                 <button class="btn btn-add addToCart" style="margin-left: 5%; margin-right: 5%; width:90%;" type="submit">ДОБАВИТЬ В КОРЗИНУ</button>
                                 <a class="btn btn-add goToCart popup-cart-open" style="margin-left: 5%; margin-right: 5%; width:90%;" href="/Cart/Cart">ПЕРЕЙТИ В КОРЗИНУ</a>
                                 @*<a class="btn btn-add addToCart" type="submit">ДОБАВИТЬ В КОРЗИНУ</a>*@
-                                <div class="paket"><img src="~/images/Корзина/paket.png" alt=""></div>
+                                <div class="paket"><img src="~/images/Корзина/paket.png" alt="покупка"></div>
                             </div>
 
                             <header>
@@ -96,7 +96,7 @@
                             <div class="info_title ">@Model.Name</div>
                             <div class="info-text">
                                 <div class="info_text_item">
-                                    <img class="pointer" src="~/images/point.png" alt="">
+                                    <img class="pointer" src="~/images/point.png" alt="Пункт">
                                     @if (Model.Category != "флис" @*&& Model.Category != "брюки"*@)
                                     {
                                         <div class="info_text_text">Материал: шёлк Армани </div>
@@ -112,16 +112,16 @@
 
                                 </div>
                                 <div class="info_text_item">
-                                    <img class="pointer" src="~/images/point.png" alt="">
+                                    <img class="pointer" src="~/images/point.png" alt="Пункт">
                                     <div class="info_text_text">Размерная сетка </div>
                                 </div>
                                 @if (Model.Category != "флис")
                                 {
-                                    <div class="info_table"><img src="~/images/pazmer.jpg" alt=""></div>
+                                    <div class="info_table"><img src="~/images/pazmer.jpg" alt="Размерная сетка 1"></div>
                                 }
                                 else
                                 {
-                                    <div class="info_table"><img src="~/images/PhlisPazmer2.PNG" alt=""></div>
+                                    <div class="info_table"><img src="~/images/PhlisPazmer2.PNG" alt="Размерная сетка 2"></div>
                                 }
                                 <div class="chooseSize">Выберите размер</div>
                                 <input type="number" name="Id" value="@Model.Id" style="display:none">
