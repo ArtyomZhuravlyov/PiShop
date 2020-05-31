@@ -5,6 +5,7 @@ Disallow: /Home/IndexSearch/
 Disallow: /Home/OrderSuccess/
 Disallow: /Home/popupFade/
 Disallow: /Home/popupBuy/
+Disallow: /?successOrder=True
 Disallow: /Cart/
 
 Host: https://pizhamka-fox.ru/

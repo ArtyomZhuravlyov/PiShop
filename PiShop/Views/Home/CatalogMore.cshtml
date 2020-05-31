@@ -14,11 +14,11 @@
                     <div class="hits_pic">
                         @if (product.Category == "флис")
                         {
-                            <img class="hits_img" style="max-height:initial !important" src="~/images/Каталог/Girls/smallimage/@product.Address" alt="">
+                            <img class="hits_img" style="max-height:initial !important" src="~/images/Каталог/Girls/smallimage/@product.Address" alt="@product.Name.Replace("Пижама","")">
                         }
                         else
                         {
-                            <img class="hits_img" src="~/images/Каталог/Girls/smallimage/@product.Address" alt="@product.Name">
+                            <img class="hits_img" src="~/images/Каталог/Girls/smallimage/@product.Address" alt="@product.Name.Replace("Пижама","")">
                         }
 
                         <div class="buttons AdaptiveDisplayCatalog"> <a class="btn btn-hit popup-open" href="/view/viewproduct/@product.Id">УЗНАТЬ ПОДРОБНЕЕ</a> <a class="btn btn-hit popup-buy-open" href="/Home/popupBuy/@product.Id">КУПИТЬ</a> </div>
@@ -31,7 +31,7 @@
 
                     </div>
                     <div class="hits_title">
-                        <a class=" popup-open" style="text-decoration:none; color: black;" href="/view/viewproduct/@product.Id">@product.Name</a>
+                        <a class=" popup-open" style="text-decoration:none; color: black;" href="/view/viewproduct/@product.Id">@product.Name.Replace("Пижама","")</a>
                     </div>
                     <div class="priceMain">
                         <div class="newPrice">@product.Price&#1056;</div>

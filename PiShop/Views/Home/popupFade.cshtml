@@ -157,7 +157,7 @@
                                     }
                                 </div>
                                 <div class="info_text_item">
-                                    <img class="pointer" src="~/images/point.png" alt="">
+                                    <img class="pointer" src="~/images/point.png" alt="Пункт">
                                     <div class="info_text_text">Размерная сетка </div>
                                 </div>
                                 @if (Model.Category != "флис")
@@ -183,18 +183,30 @@
         $(document).ready(function ($) {
 
             $('.popup-close').click(function () {
+                if (innerWidth < 421) {
+                    document.body.style.overflow = "auto";
+                }
                 $(this).parents('.popup-fade').fadeOut();
                 return false;
             });
             $(document).keydown(function (e) {
                 if (e.keyCode === 27) {
                     e.stopPropagation();
+                    if (innerWidth < 421) {
+                        document.body.style.overflow = "auto";
+                    }
                     $('.popup-fade').fadeOut();
+                      
                 }
+     
             });
             $('.popup-fade').click(function (e) {
                 if ($(e.target).closest('.popup').length == 0) {
+                    if (innerWidth < 421) {
+                        document.body.style.overflow = "auto";
+                    }
                     $(this).fadeOut();
+
                 }
             });
         });
