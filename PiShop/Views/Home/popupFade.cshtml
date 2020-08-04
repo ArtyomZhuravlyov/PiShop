@@ -325,19 +325,6 @@
         });
     </script>
 
-    @*@if (!string.IsNullOrEmpty(Model.Image2Address))
-        {
-            <script>
-                //document.addEventListener("DOMContentLoaded", function (event) {
-                $(document).ready(function ($) {
-
-                    $.get("/home/GetPicturesSlick/@Model.Id", function (data) {
-                        $('.PictureSlickDisplay').addClass('displayNone');
-                        $('#SlickInModal').html(data);
-                    });
-                });
-            </script>
-        }*@
 
     @*открытие второй картинки*@
 

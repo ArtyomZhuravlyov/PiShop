@@ -295,6 +295,10 @@ namespace PiShop.Controllers
             }
         }
 
+        /// <summary>
+        /// Собираем статистику , какие пижамы покупают чаще
+        /// </summary>
+        /// <param name="cart"></param>
         private void AddOrderPizham(Cart cart)
         {
             try

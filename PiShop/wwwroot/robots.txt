@@ -8,4 +8,14 @@ Disallow: /Home/popupBuy/
 Disallow: /?successOrder=True
 Disallow: /Cart/
 
+User-agent: GoogleBot
+Disallow: /admin/
+Disallow: /Account/
+Disallow: /Home/IndexSearch/
+Disallow: /Home/OrderSuccess/
+Disallow: /Home/popupFade/
+Disallow: /Home/popupBuy/
+Disallow: /?successOrder=True
+
+Sitemap: https://pizhamka-fox.ru/sitemap.xml
 Host: https://pizhamka-fox.ru/

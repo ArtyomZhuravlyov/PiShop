@@ -1,6 +1,15 @@
 ﻿<!DOCTYPE html>
 <html lang="ru-RU">
 <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-168677740-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'UA-168677740-1');
+        setTimeout(function () { gtag('event', location.pathname, { 'event_category': 'Новый посетитель' }); }, 15000);
+    </script>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="~/css/style.css">
     @*<link href="https://fonts.googleapis.com/css?family=Merienda|Neucha|Roboto&display=swap" rel="stylesheet">*@
@@ -13,8 +22,29 @@
     <meta name="yandex-verification" content="e37eaf24dedcbc1b" /> @*//ssl*@
     <link rel="stylesheet" type="text/css" href="~/js/slick-1.8.1/slick/slick.css" />
     <link rel="stylesheet" type="text/css" href="~/js/slick-1.8.1/slick/slick-theme.css" />
-    <title>Шёлковые пижамы с принтами для девушек - Пижамка-Фокс</title> @*Интернет-магазин одежды и аксессуаров, авторские принты. Изготовление товаров на японском оборудовании с использованием экологичных материалов, используется технология нанесения принтов под воздействием высоких температур на сублимационном плоттере.  Нежнейший хлопок и оригинальная модель подарят вам легкость и комфорт.Пижама, с которой не захочется расставаться идеально подчёркивают фигуру*@
-    <meta name="description" content="Красочный и одновременно легкий принт наших женских пижамок придаст вашему образу некоторую мечтательность, даже когда вы готовитесь ко сну. Хиты нашего интернет-магазина: пижама с Авокадо, ЛИСИЧКА, Единороги, Marvel, PORN HUB, ЛИС ПАППИ. В комплект входит маечка и шорты. Доставка 2-5 дней" />  @*Пижамка-Фокс - шёлковые пижамы с принтами для вас. Хиты нашего магазина пижама с Авокадо, ЛИСИЧКА, Единорогом, Marvel, БЭТМЕН, ЖЕНЩИНА-КОШКА, PORN HUB, ЛИС ПАППИ. В комплект входит маичка и шорты. Пижама Алладин не меньше сможет порадовать тебя.*@
+    <title>Шёлковые пижамы с принтами для девушек купить - Пижамка-Фокс</title> @*Интернет-магазин одежды и аксессуаров, авторские принты. Изготовление товаров на японском оборудовании с использованием экологичных материалов, используется технология нанесения принтов под воздействием высоких температур на сублимационном плоттере.  Нежнейший хлопок и оригинальная модель подарят вам легкость и комфорт.Пижама, с которой не захочется расставаться идеально подчёркивают фигуру*@
+    <meta name="description" content="Красочный принт наших женских пижамок из шёлка Армани придаст вашему образу некоторую мечтательность, даже когда вы готовитесь ко сну. Хиты нашего интернет-магазина: пижама с Авокадо, ЛИСИЧКА, Единороги, Кот Да Винчик, Marvel, PORN HUB, ЛИС ПАППИ. " />  @*Пижамка-Фокс - шёлковые пижамы с принтами для вас. Хиты нашего магазина пижама с Авокадо, ЛИСИЧКА, Единорогом, Marvel, БЭТМЕН, ЖЕНЩИНА-КОШКА, PORN HUB, ЛИС ПАППИ. В комплект входит маичка и шорты. Пижама Алладин не меньше сможет порадовать тебя.*@
+    <!-- Facebook Pixel Code -->
+    <script>
+        !function (f, b, e, v, n, t, s) {
+            if (f.fbq) return; n = f.fbq = function () {
+                n.callMethod ?
+                n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+            };
+            if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+            n.queue = []; t = b.createElement(e); t.async = !0;
+            t.src = v; s = b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t, s)
+        }(window, document, 'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '3103272443061219');
+        fbq('track', 'PageView');
+    </script>
+    <noscript>
+        <img height="1" width="1" style="display:none"
+             src="https://www.facebook.com/tr?id=3103272443061219&ev=PageView&noscript=1" />
+    </noscript>
+    <!-- End Facebook Pixel Code -->
 </head>
 <body>
     <header class="header" id="header">
@@ -22,14 +52,29 @@
         <div class="container">
             <div class="header_inner">
                 <div class="header_logo">FOX</div>
-                <nav class="nav" id="nav"> @*<a class="nav_link" href="#" data-scroll="#hits">ХИТЫ</a>*@ <a class="nav_link" href="#" data-scroll="#feauters">ПРЕИМУЩЕСТВА</a> <a class="nav_link" href="#" data-scroll="#catalog">НАШИ ТОВАРЫ</a> <a class="nav_link" href="#" data-scroll="#delivery">ДОСТАВКА</a>  <a class="nav_link" href="#" data-scroll="#reviews">ОТЗЫВЫ</a> <a class="nav_link" href="#" data-scroll="#contacts">КОНТАКТЫ</a> </nav>
+                @*<div class="containerSoc">*@
+                <div class="social_inner_header">
+                    <div class="social_item">
+                        <a href="https://api.whatsapp.com/send?phone=79504256908" class="socialLink">
+                            <img src="~/images/whatsapp.jpg" alt="Написать нам в whatsapp" class="borderRad20">
+                        </a>
+                    </div>
+                    <div class="social_item">
+                        <a href="https://instagram.com/pizhamkafox?igshid=14cbk9eardt8l" class="socialLink">
+                            <img src="~/images/instagram.jpg" alt="Мы в инстаграмме" class="borderRad20">
+                        </a>
+                    </div>
+
+
+                </div>
+                @*</div>*@
+                    <nav class="nav" id="nav">  <a class="nav_link CallFeedback" href="#" data-scroll="#CallFeedback">ОБРАТНЫЙ ЗВОНОК</a>   <a class="nav_link" href="#" data-scroll="#catalog">НАШИ ТОВАРЫ</a> <a class="nav_link" href="#" data-scroll="#delivery">ДОСТАВКА</a>  <a class="nav_link" href="#" data-scroll="#reviews">ОТЗЫВЫ</a> <a class="nav_link" href="#" data-scroll="#contacts">КОНТАКТЫ</a> </nav>
                 <button class="burger" type="button" id="navToggle"> <span class="burger_item">menu</span> </button>
                 <a class="popup-cart-open" href="/Cart/Cart"><img class="korzina" src="~/images/Корзина/korzina.jpg" alt="Корзина покупок"></a>
                 @*модальные окна*@
                 <div id="dialogContentpopupFade" class="modal-dialog"></div>
                 <div id="dialogContentpopupBuy" class="modal-dialog"></div>
                 <div id="dialogContentpopupCart" class="modal-dialog"></div>
-
                 <div id="dialogContentpopupModalText" class="modal-dialog"></div>
 
                 @*успешная оплата*@

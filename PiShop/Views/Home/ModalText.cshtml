@@ -1,4 +1,5 @@
-﻿<header>
+﻿@model string
+<header>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="~/css/style.css">
     <meta name="viewport" content="width=device-width" , initial-scale=1>
@@ -10,14 +11,29 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>*@
 </header>
 <body>
-    <div class="popup-ModalText">
+    @if (string.IsNullOrEmpty(Model))
+    {
+        <div class="popup-ModalText">
             <div class="ModalText">
                 <a class="ModalText-close" href="#"> <img src="~/images/krestik.jpg" alt=""></a>
                 <div>
-                   Выберите размер
+                    Выберите размер
                 </div>
             </div>
-    </div>
+        </div>
+    }
+    else
+    {
+        <div class="popup-ModalText">
+            <div class="ModalText" style="top: 20% !important;">
+                <a class="ModalText-close" href="#"> <img src="~/images/krestik.jpg" alt=""></a>
+                <div style="margin-top:10px;">
+                    @Model
+                </div>
+                <img style="width: 100%; margin-top: 10px;" src="~/images/CallFeedback.jpg" />
+            </div>
+        </div>
+    }
 
     <script>
         $(document).ready(function ($) {
@@ -39,6 +55,6 @@
             });
         });
     </script>
-  
+
 
 </body>

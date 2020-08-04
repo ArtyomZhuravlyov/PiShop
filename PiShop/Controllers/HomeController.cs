@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Diagnostics;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using Domain;
 using Microsoft.AspNetCore.Http;
@@ -22,12 +24,12 @@ namespace PiShop.Controllers
 
         public IActionResult Index(bool successOrder=false)
         {
-            List<Product> Hits = db.GetFavoutiteProducts();
+            //List<Product> Hits = db.GetFavoutiteProducts();
             IndexViewModal indexViewModal = new IndexViewModal()
             {
-                SimpleTop = db.Products.Where(x=>x.Category=="Обычный топ").Take(6),
-                HitsProducts = Hits,
-                ShortTop = db.Products.Where(x => x.Category == "Короткий топ").Take(6),
+                SimpleTop = db.Products.Where(x=>x.Category=="Обычный топ").Take(12),
+                //HitsProducts = Hits,
+                //ShortTop = db.Products.Where(x => x.Category == "Короткий топ").Take(6),
                 Phlis = db.Products.Where(x => x.Category == "Флис").Take(3),
                 Pants = db.Products.Where(x => x.Category == "Брюки").Take(3),
                 Complex = db.Products.Where(x => x.Category == "Комплекты").Take(6),
@@ -40,10 +42,15 @@ namespace PiShop.Controllers
         public ActionResult CatalogMore(string Category)
         {
             IQueryable Products;
-            if (Category == "брюки" || Category=="флис")
-                Products = db.Products.Where(x => x.Category == Category).Skip(3);
-            else
-                Products = db.Products.Where(x => x.Category == Category).Skip(6);
+            switch(Category)
+            {
+                case "брюки":
+                case "флис" : Products = db.Products.Where(x => x.Category == Category).Skip(3); break;
+                case "обычный топ": Products = db.Products.Where(x => x.Category == Category).Skip(12); break;
+                default: Products = db.Products.Where(x => x.Category == Category).Skip(6); break;
+
+            }
+
             return View(Products);
         }
 
@@ -75,10 +82,42 @@ namespace PiShop.Controllers
             return PartialView(product);
         }
 
-        public PartialViewResult ModalText()
+        public PartialViewResult ModalText(string text = null)
         {
-            return PartialView();
+                return PartialView("ModalText", text);
         }
+
+        [HttpPost]
+        public void sendPhone(string Name, string Phone1)
+        {
+            var parameters = new NameValueCollection {
+             { "token", "avf36ak95s7h5mc31u4chx9a7nzhk3" },
+             { "user", "u9ki332gg4ei1jza8tms2vxpcnsuu6" },
+             //{ "device", "redminote6pro" },
+             { "message",      Phone1 +  " "+ Name },
+             { "title", "Заявка на обратный звонок" },
+             {"sound", "climb" },
+             { "priority", "2" },
+             { "retry", "30" },
+             { "expire", "300" },
+
+
+             };
+            try
+            {
+                using (var client = new WebClient())
+                {
+                    client.UploadValues("https://api.pushover.net/1/messages.json", parameters);
+                }
+
+            }
+            catch (Exception exp)
+            {
+            }
+
+        }
+
+        
 
         public PartialViewResult GetPicturesSlick(int Id)
         {

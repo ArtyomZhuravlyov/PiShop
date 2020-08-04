@@ -14,11 +14,12 @@
                     <div class="hits_pic">
                         @if (product.Category == "флис")
                         {
-                            <img class="hits_img" style="max-height:initial !important" src="~/images/Каталог/Girls/smallimage/@product.Address" alt="@product.Name.Replace("Пижама","")">
+
+                            <a class="CursorInishial" href="/view/viewproduct/@product.Id">   <img class="hits_img" style="max-height:initial !important" src="~/images/Каталог/Girls/smallimage/@product.Address" alt="@product.Name.Replace("Пижама","")"></a>
                         }
                         else
                         {
-                            <img class="hits_img" src="~/images/Каталог/Girls/smallimage/@product.Address" alt="@product.Name.Replace("Пижама","")">
+                            <a class="CursorInishial" href="/view/viewproduct/@product.Id">   <img class="hits_img" src="~/images/Каталог/Girls/smallimage/@product.Address" alt="@product.Name.Replace("Пижама","")"></a>
                         }
 
                         <div class="buttons AdaptiveDisplayCatalog"> <a class="btn btn-hit popup-open" href="/view/viewproduct/@product.Id">УЗНАТЬ ПОДРОБНЕЕ</a> <a class="btn btn-hit popup-buy-open" href="/Home/popupBuy/@product.Id">КУПИТЬ</a> </div>
@@ -31,7 +32,7 @@
 
                     </div>
                     <div class="hits_title">
-                        <a class=" popup-open" style="text-decoration:none; color: black;" href="/view/viewproduct/@product.Id">@product.Name.Replace("Пижама","")</a>
+                        <a class=" popup-open" style="text-decoration:none; color: black;" href="/view/viewproduct/@product.Id">@product.Name.Replace("Пижама", "")</a>
                     </div>
                     <div class="priceMain">
                         <div class="newPrice">@product.Price&#1056;</div>
@@ -48,33 +49,36 @@
         <script>
             $(document).ready(function ($) {
                 $('.popup-open').click(function (e) {
-                    e.preventDefault();
-                    var str = (this.href).toString();
+                    if (innerWidth > 710) {
+                        e.preventDefault();
+                        var str = (this.href).toString();
 
-                    str = str.replace("view/viewproduct", "home/popupfade");
-                    console.log(str);
-                    $.get(str, function (data) {
-                        $('#dialogContentpopupFade').html(data);
-                        $('.popup-fade').fadeIn();
-                    });
+                        str = str.replace("view/viewproduct", "home/popupfade");
+                        console.log(str);
+                        $.get(str, function (data) {
+                            $('#dialogContentpopupFade').html(data);
+                            $('.popup-fade').fadeIn();
+                        });
 
-                    return false;
-                });
-                $('.popup-close').click(function () {
-                    $(this).parents('.popup-fade').fadeOut();
-                    return false;
-                });
-                $(document).keydown(function (e) {
-                    if (e.keyCode === 27) {
-                        e.stopPropagation();
-                        $('.popup-fade').fadeOut();
+                        return false;
                     }
+
                 });
-                $('.popup-fade').click(function (e) {
-                    if ($(e.target).closest('.popup').length == 0) {
-                        $(this).fadeOut();
-                    }
-                });
+                //$('.popup-close').click(function () {
+                //    $(this).parents('.popup-fade').fadeOut();
+                //    return false;
+                //});
+                //$(document).keydown(function (e) {
+                //    if (e.keyCode === 27) {
+                //        e.stopPropagation();
+                //        $('.popup-fade').fadeOut();
+                //    }
+                //});
+                //$('.popup-fade').click(function (e) {
+                //    if ($(e.target).closest('.popup').length == 0) {
+                //        $(this).fadeOut();
+                //    }
+                //});
             });
         </script>
         <script>
@@ -88,23 +92,41 @@
 
                     return false;
                 });
-                $('.popup-buy-close').click(function () {
-                    $(this).parents('.popup-buy').fadeOut();
-                    return false;
-                });
-                $(document).keydown(function (e) {
-                    if (e.keyCode === 27) {
-                        e.stopPropagation();
-                        $('.popup-buy').fadeOut();
-                    }
-                });
-                $('.popup-buy').click(function (e) {
-                    if ($(e.target).closest('.buy').length == 0) {
-                        $(this).fadeOut();
-                    }
-                });
             });
         </script>
+
+
+        @*///////////////////////Открытие PopupFade в мобильной версии по картинке/////////////////////////////////  *@
+        @*<script>
+            $(document).ready(function ($) {
+                if (innerWidth <= 421) {
+                    $('.hits_img').click(function () {
+                        var $this = $(this);
+                        var varHref = ($this).closest("div").next().children("a").attr('href').toString();
+                        varHref = varHref.replace("view/viewproduct", "home/popupfade");
+                        console.log(varHref);
+                        $.get(varHref, function (data) {
+                            $('#dialogContentpopupFade').html(data);
+                            $('.popup-fade').fadeIn();
+                        });
+                        document.body.style.overflowY = "hidden";
+                    });
+                }
+            });
+        </script>*@
+        @*////////////////////////////////////////////////////////////////////  *@
+
+        @*///////////////////////отключение перехода по картинке для деск топ/////////////////////////////////  *@
+        <script>
+            $(document).ready(function ($) {
+                if (innerWidth >= 421) {
+                    $('.hits_img').click(function (e) {
+                        e.preventDefault();
+                    });
+                }
+            });
+        </script>
+        @*////////////////////////////////////////////////////////////////////  *@
 
         @*убрать кнопки при наведении на телефоне*@
         <script type="text/javascript">
