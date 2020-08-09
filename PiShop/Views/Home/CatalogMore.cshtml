@@ -1,137 +1,140 @@
 ﻿@using Domain;
 @model IEnumerable<Domain.Product>
+@*
+            <head>
+               <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+                    <script src="https://yandex.st/jquery/2.1.1/jquery.min.js"></script>
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 
-    <head>
-        @*<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-            <script src="https://yandex.st/jquery/2.1.1/jquery.min.js"></script>*@
-    </head>
+        </head>
+
     <body>
-        <div class="hits_items">
-            @foreach (var product in Model)
-            {
-                <div class="hits_item">
-                    <div class="hits_pic">
-                        @if (product.Category == "флис")
-                        {
+*@
+<div class="hits_items">
+    @foreach (var product in Model)
+    {
+        <div class="hits_item">
+            <div class="hits_pic">
+                @if (product.Category == "флис")
+                {
 
-                            <a class="CursorInishial" href="/view/viewproduct/@product.Id">   <img class="hits_img" style="max-height:initial !important" src="~/images/Каталог/Girls/smallimage/@product.Address" alt="@product.Name.Replace("Пижама","")"></a>
-                        }
-                        else
-                        {
-                            <a class="CursorInishial" href="/view/viewproduct/@product.Id">   <img class="hits_img" src="~/images/Каталог/Girls/smallimage/@product.Address" alt="@product.Name.Replace("Пижама","")"></a>
-                        }
+                    <a class="CursorInishial" href="/view/viewproduct/@product.Id">   <img class="hits_img" style="max-height:initial !important" src="~/images/Каталог/Girls/smallimage/@product.Address" alt="@product.Name.Replace("Пижама","")"></a>
+                }
+                else
+                {
+                    <a class="CursorInishial" href="/view/viewproduct/@product.Id">   <img class="hits_img" src="~/images/Каталог/Girls/smallimage/@product.Address" alt="@product.Name.Replace("Пижама","")"></a>
+                }
 
-                        <div class="buttons AdaptiveDisplayCatalog"> <a class="btn btn-hit popup-open" href="/view/viewproduct/@product.Id">УЗНАТЬ ПОДРОБНЕЕ</a> <a class="btn btn-hit popup-buy-open" href="/Home/popupBuy/@product.Id">КУПИТЬ</a> </div>
-                        @if (product.Favourite)
-                        {<div class="hit_word">ХИТ</div>}
-                        @if ((((product.Price * 100) / product.PriceWithoutSales) - 100) * (-1) > 2)
-                        {
-                            <div class="sale">-@(Product.RoundFive(((product.Price * 100) / product.PriceWithoutSales) - 100) * (-1))%</div>
-                        }
+                <div class="buttons AdaptiveDisplayCatalog"> <a class="btn btn-hit popup-open" href="/view/viewproduct/@product.Id">УЗНАТЬ ПОДРОБНЕЕ</a> <a class="btn btn-hit popup-buy-open" href="/Home/popupBuy/@product.Id">КУПИТЬ</a> </div>
+                @if (product.Favourite)
+                {<div class="hit_word">ХИТ</div>}
+                @if ((((product.Price * 100) / product.PriceWithoutSales) - 100) * (-1) > 2)
+                {
+                    <div class="sale">-@(Product.RoundFive(((product.Price * 100) / product.PriceWithoutSales) - 100) * (-1))%</div>
+                }
 
-                    </div>
-                    <div class="hits_title">
-                        <a class=" popup-open" style="text-decoration:none; color: black;" href="/view/viewproduct/@product.Id">@product.Name.Replace("Пижама", "")</a>
-                    </div>
-                    <div class="priceMain">
-                        <div class="newPrice">@product.Price&#1056;</div>
-                        @if (product.Price < product.PriceWithoutSales)
-                        {
-                            <div class="oldPrice">@product.PriceWithoutSales&#1056;</div>
-                        }
-                    </div>
-                </div>
-            }
+            </div>
+            <div class="hits_title">
+                <a class=" popup-open" style="text-decoration:none; color: black;" href="/view/viewproduct/@product.Id">@product.Name.Replace("Пижама", "")</a>
+            </div>
+            <div class="priceMain">
+                <div class="newPrice">@product.Price&#1056;</div>
+                @if (product.Price < product.PriceWithoutSales)
+                {
+                    <div class="oldPrice">@product.PriceWithoutSales&#1056;</div>
+                }
+            </div>
         </div>
-        <script src="~/js/app.js"></script>
+    }
+</div>
+@*<script src="~/js/app.js"></script>*@
 
-        <script>
-            $(document).ready(function ($) {
-                $('.popup-open').click(function (e) {
-                    if (innerWidth > 710) {
-                        e.preventDefault();
-                        var str = (this.href).toString();
+<script>
+    $(document).ready(function ($) {
+        $('.popup-open').click(function (e) {
+            if (innerWidth > 710) {
+                e.preventDefault();
+                var str = (this.href).toString();
 
-                        str = str.replace("view/viewproduct", "home/popupfade");
-                        console.log(str);
-                        $.get(str, function (data) {
-                            $('#dialogContentpopupFade').html(data);
-                            $('.popup-fade').fadeIn();
-                        });
-
-                        return false;
-                    }
-
+                str = str.replace("view/viewproduct", "home/popupfade");
+                console.log(str);
+                $.get(str, function (data) {
+                    $('#dialogContentpopupFade').html(data);
+                    $('.popup-fade').fadeIn();
                 });
-                //$('.popup-close').click(function () {
-                //    $(this).parents('.popup-fade').fadeOut();
-                //    return false;
-                //});
-                //$(document).keydown(function (e) {
-                //    if (e.keyCode === 27) {
-                //        e.stopPropagation();
-                //        $('.popup-fade').fadeOut();
-                //    }
-                //});
-                //$('.popup-fade').click(function (e) {
-                //    if ($(e.target).closest('.popup').length == 0) {
-                //        $(this).fadeOut();
-                //    }
-                //});
-            });
-        </script>
-        <script>
-            $(document).ready(function ($) {
-                $('.popup-buy-open').click(function (e) {
-                    e.preventDefault();
-                    $.get(this.href, function (data) {
-                        $('#dialogContentpopupBuy').html(data);
-                        $('.popup-buy').fadeIn();
-                    });
 
-                    return false;
-                });
-            });
-        </script>
-
-
-        @*///////////////////////Открытие PopupFade в мобильной версии по картинке/////////////////////////////////  *@
-        @*<script>
-            $(document).ready(function ($) {
-                if (innerWidth <= 421) {
-                    $('.hits_img').click(function () {
-                        var $this = $(this);
-                        var varHref = ($this).closest("div").next().children("a").attr('href').toString();
-                        varHref = varHref.replace("view/viewproduct", "home/popupfade");
-                        console.log(varHref);
-                        $.get(varHref, function (data) {
-                            $('#dialogContentpopupFade').html(data);
-                            $('.popup-fade').fadeIn();
-                        });
-                        document.body.style.overflowY = "hidden";
-                    });
-                }
-            });
-        </script>*@
-        @*////////////////////////////////////////////////////////////////////  *@
-
-        @*///////////////////////отключение перехода по картинке для деск топ/////////////////////////////////  *@
-        <script>
-            $(document).ready(function ($) {
-                if (innerWidth >= 421) {
-                    $('.hits_img').click(function (e) {
-                        e.preventDefault();
-                    });
-                }
-            });
-        </script>
-        @*////////////////////////////////////////////////////////////////////  *@
-
-        @*убрать кнопки при наведении на телефоне*@
-        <script type="text/javascript">
-            if (innerWidth < 420) {
-                $(".AdaptiveDisplayCatalog").addClass("displayNone"); //.remove("displayNone"); //.toggleClass("displayNone");
+                return false;
             }
-        </script>
-    </body>
+
+        });
+        //$('.popup-close').click(function () {
+        //    $(this).parents('.popup-fade').fadeOut();
+        //    return false;
+        //});
+        //$(document).keydown(function (e) {
+        //    if (e.keyCode === 27) {
+        //        e.stopPropagation();
+        //        $('.popup-fade').fadeOut();
+        //    }
+        //});
+        //$('.popup-fade').click(function (e) {
+        //    if ($(e.target).closest('.popup').length == 0) {
+        //        $(this).fadeOut();
+        //    }
+        //});
+    });
+</script>
+<script>
+    $(document).ready(function ($) {
+        $('.popup-buy-open').click(function (e) {
+            e.preventDefault();
+            $.get(this.href, function (data) {
+                $('#dialogContentpopupBuy').html(data);
+                $('.popup-buy').fadeIn();
+            });
+
+            return false;
+        });
+    });
+</script>
+
+
+@*///////////////////////Открытие PopupFade в мобильной версии по картинке/////////////////////////////////  *@
+@*<script>
+        $(document).ready(function ($) {
+            if (innerWidth <= 421) {
+                $('.hits_img').click(function () {
+                    var $this = $(this);
+                    var varHref = ($this).closest("div").next().children("a").attr('href').toString();
+                    varHref = varHref.replace("view/viewproduct", "home/popupfade");
+                    console.log(varHref);
+                    $.get(varHref, function (data) {
+                        $('#dialogContentpopupFade').html(data);
+                        $('.popup-fade').fadeIn();
+                    });
+                    document.body.style.overflowY = "hidden";
+                });
+            }
+        });
+    </script>*@
+@*////////////////////////////////////////////////////////////////////  *@
+
+@*///////////////////////отключение перехода по картинке для деск топ/////////////////////////////////  *@
+<script>
+    $(document).ready(function ($) {
+        if (innerWidth >= 421) {
+            $('.hits_img').click(function (e) {
+                e.preventDefault();
+            });
+        }
+    });
+</script>
+@*////////////////////////////////////////////////////////////////////  *@
+
+@*убрать кнопки при наведении на телефоне*@
+<script type="text/javascript">
+    if (innerWidth < 420) {
+        $(".AdaptiveDisplayCatalog").addClass("displayNone"); //.remove("displayNone"); //.toggleClass("displayNone");
+    }
+</script>
+@*</body>*@
