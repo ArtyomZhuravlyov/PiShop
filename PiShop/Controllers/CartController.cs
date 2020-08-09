@@ -35,7 +35,7 @@ namespace PiShop.Controllers
             return GetCart().Lines.Sum(x => x.Quantity);
         }
 
-        public void/*ActionResult*/ AddToCart(int id , string size )
+        public void/*ActionResult*/ AddToCart(int id , string size = null )
         {
             // Product product = (Product)db.Products.FirstOrDefault(x => x.Id == id);
             //if (id > 0)

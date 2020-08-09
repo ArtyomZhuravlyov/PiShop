@@ -70,6 +70,10 @@ namespace Domain
 
         public string TitleP { get; set; }
 
+        public string Info { get; set; }
+
+        public string Info2 { get; set; }
+
         //public string ImgAlt { get; set; }
 
         public static int RoundFive(double d)

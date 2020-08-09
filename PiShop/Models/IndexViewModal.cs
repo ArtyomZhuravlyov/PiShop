@@ -29,9 +29,15 @@ namespace PiShop.Models
         public IEnumerable<Product> Pants;
 
         /// <summary>
-        /// Шорты
+        /// Алладины
         /// </summary>
         public IEnumerable<Product> Alladins;
+
+        /// <summary>
+        /// Подарочные упаковки
+        /// </summary>
+        public IEnumerable<Product> Gift;
+
 
         /// <summary>
         /// Флаг для окна об успешной оплате

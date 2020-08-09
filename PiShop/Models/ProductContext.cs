@@ -65,6 +65,8 @@ namespace PiShop.Models
                     dbEntry.Image2Address = product.Image2Address;
                     //dbEntry.ImgAlt = product.ImgAlt;
                     dbEntry.TitleP = product.TitleP;
+                    dbEntry.Info = product.Info;
+                    dbEntry.Info2 = product.Info2;
                 }
                 #endregion
 

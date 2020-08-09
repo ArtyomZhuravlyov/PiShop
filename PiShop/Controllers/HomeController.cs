@@ -34,6 +34,7 @@ namespace PiShop.Controllers
                 Pants = db.Products.Where(x => x.Category == "Брюки").Take(3),
                 Complex = db.Products.Where(x => x.Category == "Комплекты").Take(6),
                 Alladins = db.Products.Where(x => x.Category == "алладины").Take(6),
+                Gift = db.Products.Where(x => x.Category == "gift").Take(3),
                 SuccessOrder = successOrder
             };
             return View(indexViewModal);
@@ -47,6 +48,7 @@ namespace PiShop.Controllers
                 case "брюки":
                 case "флис" : Products = db.Products.Where(x => x.Category == Category).Skip(3); break;
                 case "обычный топ": Products = db.Products.Where(x => x.Category == Category).Skip(12); break;
+                case "gift": Products = db.Products.Where(x => x.Category == Category).Skip(3); break;
                 default: Products = db.Products.Where(x => x.Category == Category).Skip(6); break;
 
             }

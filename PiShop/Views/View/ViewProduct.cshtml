@@ -32,7 +32,6 @@
             default:
                 <title>Шёлковая пижама с принтом @Model.Name.Replace("Пижама", "")</title>
                 break;
-
         }
     }
     else
@@ -61,12 +60,12 @@
             s.parentNode.insertBefore(t, s)
         }(window, document, 'script',
             'https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '3103272443061219');
+        fbq('init', '760272324774923');
         fbq('track', 'PageView');
     </script>
     <noscript>
         <img height="1" width="1" style="display:none"
-             src="https://www.facebook.com/tr?id=3103272443061219&ev=PageView&noscript=1" />
+             src="https://www.facebook.com/tr?id=760272324774923&ev=PageView&noscript=1" />
     </noscript>
     <!-- End Facebook Pixel Code -->
 </head>
@@ -98,13 +97,13 @@
                         @if (System.IO.File.Exists($"{Environment.CurrentDirectory}/wwwroot/images/Каталог/Girls/{Model.Image2Address}"))
                         {
                             @*<div class="First">
-                                    <div class="picture Show"><img class="block" src="~/images/Каталог/Girls/@Model.Address" alt=""></div>
-                                    <div class="pictureSecond Show"><img class="blockSecond" src="~/images/Каталог/Girls/@Model.Image2Address" alt=""></div>
-                                </div>
-                                <div class="Second displayNone">
-                                    <div class="picture NotShow "><img class="block" src="~/images/Каталог/Girls/@Model.Image2Address" alt=""></div>
-                                    <div class="pictureSecond   NotShow"><img class="blockSecond" src="~/images/Каталог/Girls/@Model.Address" alt=""></div>
-                                </div>*@
+                <div class="picture Show"><img class="block" src="~/images/Каталог/Girls/@Model.Address" alt=""></div>
+                <div class="pictureSecond Show"><img class="blockSecond" src="~/images/Каталог/Girls/@Model.Image2Address" alt=""></div>
+            </div>
+            <div class="Second displayNone">
+                <div class="picture NotShow "><img class="block" src="~/images/Каталог/Girls/@Model.Image2Address" alt=""></div>
+                <div class="pictureSecond   NotShow"><img class="blockSecond" src="~/images/Каталог/Girls/@Model.Address" alt=""></div>
+            </div>*@
                             <div class="First">
                                 <div class="picture Show"><img class="block" src="~/images/Каталог/Girls/@Model.Address" alt="Первое фото пижамы 1"></div>
                                 <div class="pictureSecond Show"><img class="blockSecond" src="~/images/Каталог/Girls/@Model.Image2Address" alt="Второе фото пижамы 1"></div>
@@ -128,23 +127,26 @@
                             }
 
                         </div>
-                        <div class="chooseSize AdaptiveDisplay displayNone">Выберите размер</div>
                         <input type="number" name="Id" value="@Model.Id" style="display:none">
-                        <div class="radio AdaptiveDisplay displayNone">
-                            <label>
-                                <input class="radioFade" type="radio" name="size" value="XS-S"> <span>XS-S</span>
-                            </label>
-                            <label>
-                                <input class="radioFade" type="radio" name="size" value="M"><span style="padding:5px 16px !important;">M</span>
-                            </label>
-                            @*<label>
-                                    <input class="radioFade" type="radio" name="size" value="⁣⁣⁣⁣⁣⁣⁣⁣⁣⁣L"><span style="padding:5px 18px !important;">L</span>
-                                </label>*@
-                        </div>
+                        @if (Model.Category != "gift")
+                        {
+                            <div class="chooseSize AdaptiveDisplay displayNone">Выберите размер</div>
+
+                            <div class="radio AdaptiveDisplay displayNone">
+                                <label>
+                                    <input class="radioFade" type="radio" name="size" value="XS-S"> <span>XS-S</span>
+                                </label>
+                                <label>
+                                    <input class="radioFade" type="radio" name="size" value="M"><span style="padding:5px 16px !important;">M</span>
+                                </label>
+                                @*<label>
+                    <input class="radioFade" type="radio" name="size" value="⁣⁣⁣⁣⁣⁣⁣⁣⁣⁣L"><span style="padding:5px 18px !important;">L</span>
+                </label>*@
+                            </div>
+                        }
                         <div class="animate">
                             <button class="btn btn-add addToCart" style="margin-left: 5%; margin-right: 5%; width:90%;" type="submit">ДОБАВИТЬ В КОРЗИНУ</button>
                             <a class="btn btn-add goToCart popup-cart-open" style="margin-left: 5%; margin-right: 5%; width:90%;" href="/Cart/Cart">ПЕРЕЙТИ В КОРЗИНУ</a>
-                            @*<a class="btn btn-add addToCart" type="submit">ДОБАВИТЬ В КОРЗИНУ</a>*@
                             <div class="paket"><img src="~/images/Корзина/paket.png" alt="покупка"></div>
                         </div>
 
@@ -157,73 +159,82 @@
                         <h1 class="info_title ">@Model.Name</h1>
                         <div class="info-text">
                             <div class="info_text_item">
-                                <img class="pointer" src="~/images/point.png" alt="Пункт 1">
-                                @if (Model.Category != "флис")
+                                @switch (Model.Category)
                                 {
-                                    <div class="info_text_text">Материал: шёлк Армани </div>
-                                }
-                                else
-                                {
-                                    <div class="info_text_text">Материал: флис </div>
-                                }
+                                    case "флис":<img class="pointer" src="~/images/point.png" alt="Пункт"><div class="info_text_text">Материал: флис </div> break;
+                                    case "gift": <ul class="delivery_ul" style="margin-left: 12px; "> <li class="delivery_line"><scan style="font-weight:600;">Добавь</scan> подарочную упаковку в свой заказ! Тогда сюрприз порадует её ещё больше!</li> <li class="delivery_line">Подарочная упаковка отлично @Html.Raw(Model.Info)</li> @*<li class="delivery_line">Добавь подарочную упаковку в свой заказ! Тогда сюрприз порадует её ещё больше!</li>*@</ul>break;
+                                default: <img class="pointer" src="~/images/point.png" alt="Пункт"> <div class="info_text_text">Материал: шёлк Армани </div>break;
+                            }
 
                             </div>
-                            <div class="info_text_item">
-                                <img class="pointer" src="~/images/point.png" alt="Пункт 2">
-                                <div class="info_text_text">Размерная сетка </div>
-                            </div>
-                            @if (Model.Category != "флис")
+
+                            @switch (Model.Category)
                             {
-                                <div class="info_table"><img src="~/images/pazmer.jpg" alt="Размерная сетка"></div>
+                                case "флис":
+                                    <div class="info_text_item">
+                                        <img class="pointer" src="~/images/point.png" alt="Пункт 2">
+                                        <div class="info_text_text">Размерная сетка </div>
+                                    </div>
+                                    <div class="info_table"><img src="~/images/PhlisPazmer2.PNG" alt="Размерная сетка2"></div> break;
+                                case "gift":
+                                    <div class="info_text_item">
+                                        <ul class="delivery_ul" style="margin-left: 12px; ">  <li class="delivery_line">Размер: @Model.Info2</li> @*<li class="delivery_line">Добавь подарочную упаковку в свой заказ! Тогда сюрприз порадует её ещё больше!</li>*@</ul>
+                                    </div>
+                                    break;
+                                default:
+                                    <div class="info_text_item">
+                                        <img class="pointer" src="~/images/point.png" alt="Пункт 2">
+                                        <div class="info_text_text">Размерная сетка </div>
+                                    </div>
+                                    <div class="info_table"><img src="~/images/pazmer.jpg" alt="Размерная сетка"></div>break;
                             }
-                            else
-                            {
-                                <div class="info_table"><img src="~/images/PhlisPazmer2.PNG" alt="Размерная сетка2"></div>
-                            }
-                            <div class="chooseSize">Выберите размер</div>
                             <input type="number" name="Id" value="@Model.Id" style="display:none">
-                            <div class="radio">
-                                <label>
-                                    <input class="radioFade" type="radio" name="size" value="XS-S"> <span>XS-S</span>
-                                </label>
-                                <label>
-                                    <input class="radioFade" type="radio" name="size" value="M"><span style="padding:5px 16px !important;">M</span>
-                                </label>
-                                @*<label>
-                                        <input class="radioFade" type="radio" name="size" value="⁣⁣⁣⁣⁣⁣⁣⁣⁣⁣L"><span style="padding:5px 18px !important;">L</span>
-                                    </label>*@
-                            </div>
+                            @if (Model.Category != "gift")
+                            {
+                                <div class="chooseSize">Выберите размер</div>
 
+                                <div class="radio">
+                                    <label>
+                                        <input class="radioFade" type="radio" name="size" value="XS-S"> <span>XS-S</span>
+                                    </label>
+                                    <label>
+                                        <input class="radioFade" type="radio" name="size" value="M"><span style="padding:5px 16px !important;">M</span>
+                                    </label>
+                                    @*<label> <input class ="radioFade" type="radio" name="size" value="⁣⁣⁣⁣⁣⁣⁣⁣⁣⁣L"><span style="padding:5px 18px !important;">L</span></label>*@
+                                </div>
+                            }
                         </div>
                     </div>
                     <div class="info AdaptiveDisplay displayNone">
                         <div class="info-text">
                             <div class="info_text_item">
-                                <img class="pointer" src="~/images/point.png" alt="Пункт">
-                                @if (Model.Category != "флис"@*&& Model.Category != "брюки"*@)
-{
-<div class="info_text_text">Материал: шёлк Армани </div>
-}
-@*else if (Model.Category == "брюки")
-    {
-        <div class="info_text_text">Материал: шёлк - 20%, полиэстер - 78%, лайкра - 2%</div>
-    }*@
-else
-{
-    <div class="info_text_text">Материал: флис </div>
-}
-                            </div>
-                            <div class="info_text_item">
-                                <img class="pointer" src="~/images/point.png" alt="Пункт 1">
-                                <div class="info_text_text">Размерная сетка</div>
-                            </div>
-                            @if (Model.Category != "флис")
-                            {
-                                <div class="info_table"><img src="~/images/pazmerPhone.jpg" alt="Размерная сетка 1"></div>
+
+                                @switch (Model.Category)
+                                {
+                                    case "флис":<img class="pointer" src="~/images/point.png" alt="Пункт"><div class="info_text_text">Материал: флис </div> break;
+                                    case "gift": <ul class="delivery_ul" style="margin-left: 12px; "> <li class="delivery_line"><scan style="font-weight:600;">Добавь</scan> подарочную упаковку в свой заказ! Тогда сюрприз порадует её ещё больше!</li> <li class="delivery_line">Подарочная упаковка отлично @Html.Raw(Model.Info)</li> @*<li class="delivery_line">Добавь подарочную упаковку в свой заказ! Тогда сюрприз порадует её ещё больше!</li>*@</ul>break;
+                                default: <img class="pointer" src="~/images/point.png" alt="Пункт"> <div class="info_text_text">Материал: шёлк Армани </div>break;
                             }
-                            else
+                            </div>
+                            @switch (Model.Category)
                             {
-                                <div class="info_table"><img src="~/images/PhlispazmerPhone.jpg" alt="Размерная сетка 2"></div>
+                                case "флис":
+                                    <div class="info_text_item">
+                                        <img class="pointer" src="~/images/point.png" alt="Пункт 2">
+                                        <div class="info_text_text">Размерная сетка </div>
+                                    </div>
+                                    <div class="info_table"><img src="~/images/PhlisPazmerPhone.png" alt="Размерная сетка2"></div> break;
+                                case "gift":
+                                    <div class="info_text_item">
+                                        <ul class="delivery_ul" style="margin-left: 12px; ">  <li class="delivery_line">Размер: @Model.Info2</li> @*<li class="delivery_line">Добавь подарочную упаковку в свой заказ! Тогда сюрприз порадует её ещё больше!</li>*@</ul>
+                                    </div>
+                                    break;
+                                default:
+                                    <div class="info_text_item">
+                                        <img class="pointer" src="~/images/point.png" alt="Пункт 2">
+                                        <div class="info_text_text">Размерная сетка </div>
+                                    </div>
+                                    <div class="info_table"><img src="~/images/pazmerPhone.jpg" alt="Размерная сетка"></div>break;
                             }
 
                         </div>
@@ -237,53 +248,92 @@ else
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://yandex.st/jquery/2.1.1/jquery.min.js"></script>
 
-    <script>
-        $("#popupFadeForm").submit(function (e) {
-            e.preventDefault();
+    @if (Model.Category != "gift")
+    {
+        <script>
+            $("#popupFadeForm").submit(function (e) {
+                e.preventDefault();
+                flag = 0;
+                $('input[type=radio]').each(function () {
+                    if ($(this).prop('checked') && $(this).hasClass("radioFade")) {
+                        flag = 1;
+                    }
+                });
+                if (flag == 1) {
+                    var url = "/Cart/AddToCart/";
 
-            flag = 0;
-            $('input[type=radio]').each(function () {
-                if ($(this).prop('checked') && $(this).hasClass("radioFade")) {
-                    flag = 1;
+                    $.ajax({
+                        type: "GET",
+                        url: url,
+                        data: $("#popupFadeForm").serialize(),
+                    });
+
+                    var that = $(".btn-add").closest('.animate').find('img');
+                    var bascket = $(".korzina");
+                    var w = that.width();
+                    that.clone().css({
+                        'width': w
+                        , 'position': 'absolute'
+                        , 'z-index': '9999'
+                        , top: that.offset().top
+                        , left: that.offset().left
+                    }).appendTo("body").animate({
+                        opacity: 0.1
+                        , left: bascket.offset()['left']
+                        , top: bascket.offset()['top']
+                        , width: 20
+                    }, 1500, function () {
+                        $(this).remove();
+                    });
+                }//if
+                else {
+                    //$(".chooseSize").addClass("textRed");
+                    $.get("/home/modaltext/", function (data) {
+                        $('#dialogContentpopupModalText').html(data);
+                        $('.popup-ModalText').fadeIn();
+                    });
                 }
             });
-            if (flag == 1) {
-                var url = "/Cart/AddToCart/";
 
-                $.ajax({
-                    type: "GET",
-                    url: url,
-                    data: $("#popupFadeForm").serialize(),
-                });
+        </script>
+    }
+    else
+    {
+        <script>
+            $("#popupFadeForm").submit(function (e) {
+                e.preventDefault();
 
-                var that = $(".btn-add").closest('.animate').find('img');
-                var bascket = $(".korzina");
-                var w = that.width();
-                that.clone().css({
-                    'width': w
-                    , 'position': 'absolute'
-                    , 'z-index': '9999'
-                    , top: that.offset().top
-                    , left: that.offset().left
-                }).appendTo("body").animate({
-                    opacity: 0.1
-                    , left: bascket.offset()['left']
-                    , top: bascket.offset()['top']
-                    , width: 20
-                }, 1500, function () {
-                    $(this).remove();
-                });
-            }//if
-            else {
-                //$(".chooseSize").addClass("textRed");
-                $.get("/home/modaltext/", function (data) {
-                    $('#dialogContentpopupModalText').html(data);
-                    $('.popup-ModalText').fadeIn();
-                });
-            }
-        });
+                    var url = "/Cart/AddToCart/";
 
-    </script>
+                    $.ajax({
+                        type: "GET",
+                        url: url,
+                        data: $("#popupFadeForm").serialize(),
+                    });
+
+                    var that = $(".btn-add").closest('.animate').find('img');
+                    var bascket = $(".korzina");
+                    var w = that.width();
+                    that.clone().css({
+                        'width': w
+                        , 'position': 'absolute'
+                        , 'z-index': '9999'
+                        , top: that.offset().top
+                        , left: that.offset().left
+                    }).appendTo("body").animate({
+                        opacity: 0.1
+                        , left: bascket.offset()['left']
+                        , top: bascket.offset()['top']
+                        , width: 20
+                    }, 1500, function () {
+                        $(this).remove();
+                    });
+
+            });
+
+        </script>
+    }
+
 
 
     <script>
@@ -323,7 +373,6 @@ else
         if (innerWidth < 420) {
             $(".Display").toggleClass("displayNone"); //addClass("displayNone"); // .toggleClass("displayNone");
             $(".GoCatalog").toggleClass("displayNone");
-            console.log(4);
             $(".AdaptiveDisplay").toggleClass("displayNone"); //.remove("displayNone"); //.toggleClass("displayNone");
 
             // $(".popup").toggleClass("overflow2");
