@@ -46,25 +46,43 @@
         <div class="container">
             <div class="header_inner">
                 <div class="header_logo">FOX</div>
-                @*<div class="containerSoc">*@
-                <div class="social_inner_header">
-                    <div class="social_item">
-                        <a href="https://api.whatsapp.com/send?phone=79504256908" class="socialLink">
-                            <img src="~/images/whatsapp.jpg" alt="Написать нам в whatsapp" class="borderRad20">
-                        </a>
-                    </div>
-                    <div class="social_item">
-                        <a href="https://instagram.com/pizhamkafox?igshid=14cbk9eardt8l" class="socialLink">
-                            <img src="~/images/instagram.jpg" alt="Мы в инстаграмме" class="borderRad20">
-                        </a>
-                    </div>
-
-
+                <div class="header_info">
+                    Интернет-магазин пижам с принтами
+                    из Армани шёлка
                 </div>
+                @*<div class="social_inner_header">
+            <div class="social_item">
+                <a href="https://api.whatsapp.com/send?phone=79504256908" class="socialLink">
+                    <img src="~/images/whatsapp.jpg" alt="Написать нам в whatsapp" class="borderRad20">
+                </a>
+            </div>
+            <div class="social_item">
+                <a href="https://instagram.com/pizhamkafox?igshid=14cbk9eardt8l" class="socialLink">
+                    <img src="~/images/instagram.jpg" alt="Мы в инстаграмме" class="borderRad20">
+                </a>
+            </div>
+        </div>*@
                 @*</div>*@
-                    <nav class="nav" id="nav">  <a class="nav_link CallFeedback" href="#" data-scroll="#CallFeedback">ОБРАТНЫЙ ЗВОНОК</a>   <a class="nav_link" href="#" data-scroll="#catalog">НАШИ ТОВАРЫ</a> <a class="nav_link" href="#" data-scroll="#delivery">ДОСТАВКА</a>  <a class="nav_link" href="#" data-scroll="#reviews">ОТЗЫВЫ</a> <a class="nav_link" href="#" data-scroll="#contacts">КОНТАКТЫ</a> </nav>
+                <nav class="nav" id="nav">  @*<a class="nav_link CallFeedback" href="#" data-scroll="#CallFeedback">ОБРАТНЫЙ ЗВОНОК</a>*@   <a class="nav_link" href="#" data-scroll="#catalog">КАТАЛОГ</a> <a class="nav_link" href="#" data-scroll="#delivery">ДОСТАВКА</a>  <a class="nav_link" href="#" data-scroll="#reviews">ОТЗЫВЫ</a> <a class="nav_link" href="#" data-scroll="#contacts">КОНТАКТЫ</a> </nav>
                 <button class="burger" type="button" id="navToggle"> <span class="burger_item">menu</span> </button>
-                <a class="popup-cart-open" href="/Cart/Cart"><img class="korzina" src="~/images/Корзина/korzina.jpg" alt="Корзина покупок"></a>
+                <a class="popup-cart-open" href="/Cart/Cart"><img class="korzina" src="~/images/Корзина/shopping-basket-solid.svg" alt="Корзина покупок"></a>
+                <div class="contactsNew">
+                    <div class="bigicon">
+                        <div class="icon">
+                            <a href="https://instagram.com/pizhamkafox?igshid=14cbk9eardt8l" class="socialLink">
+                                <img class="iconimg" src="~/images/instagram-brands.svg" alt="Мы в инстаграмме">
+                            </a>
+                        </div>
+                        <div class="icon">
+                            <a href="https://api.whatsapp.com/send?phone=79504256908" class="socialLink">
+                                <img class="iconimg" src="~/images/whatsapp-brands.svg" alt="Написать нам в whatsapp">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="number">+7(950)425-69-08</div>
+                </div>
+
+
                 @*модальные окна*@
                 <div id="dialogContentpopupFade" class="modal-dialog"></div>
                 <div id="dialogContentpopupBuy" class="modal-dialog"></div>

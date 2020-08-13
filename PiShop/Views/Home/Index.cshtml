@@ -3,7 +3,7 @@
 @using Microsoft.AspNetCore.Http.Features;
 @model IndexViewModal
 
-<div class="intro" id="intro">
+@*<div class="intro" id="intro">
     <div class="container">
         <div class="intro_inner">
             <h1 class="intro_title">ШЁЛКОВАЯ ПИЖАМА С ПРИНТОМ</h1>
@@ -11,7 +11,24 @@
             <div class="intro_suptitle">Наша пижама из Армани шёлка сделает твоё утро чудесным, а хоум - лук безумно комфортным и женственным. </div> <a class="btn" href="#" data-scroll="#catalog">Посмотреть каталог</a>
         </div>
     </div>
+</div>*@
+
+<div class="intro" id="intro">
+
+    <div class="container">
+        <div class="intro_inner">
+            <div class="intro_photo">
+                <img class="intro_model" src="~/images/modellast (1).png" alt="пижама Лиса">
+            </div>
+            <div class="intro_info">
+                <h1 class="intro_info_h">ШЁЛКОВЫЕ ПИЖАМЫ С ПРИНТОМ</h1>
+                <div class="intro_info2">Снимай свою старую пижаму и выбирай <span class="salespan">две новые со скидкой 10% </span></div>
+                <div class="choose"> <a class="btn btn-choose" href="#" data-scroll="#catalog">Выбрать пижаму</a> </div>
+            </div>
+        </div>
+    </div>
 </div>
+
 @*<div class="hits" id="hits">
         <div class="container">
             <div class="hits_inner addSl">
@@ -60,7 +77,7 @@
                     <div class="hits_item">
                         <div class="hits_pic">
                             <a class="CursorInishial DescTop" href="/view/viewproduct/@product.Id"> <img class="hits_img" src="~/images/Каталог/Girls/@product.Address" alt="@product.Name.Replace("Пижама","")"></a>
-                            <a class="CursorInishial Phone" href="/view/viewproduct/@product.Id"> <img class="hits_img" src="~/images/Каталог/Girls/smallimage/@product.Address" alt="@product.Name.Replace("Пижама","")"></a>
+                            @*<a class="CursorInishial Phone" href="/view/viewproduct/@product.Id"> <img class="hits_img" src="~/images/Каталог/Girls/smallimage/@product.Address" alt="@product.Name.Replace("Пижама","")"></a>*@
                             <div class="buttons AdaptiveDisplayCatalog"> <a class="btn btn-hit popup-open" href="/Home/popupFade/@product.Id">УЗНАТЬ ПОДРОБНЕЕ</a> <a class="btn btn-hit popup-buy-open" href="/Home/popupBuy/@product.Id">КУПИТЬ</a> </div>
                             @if (product.Favourite)
                             {<div class="hit_word">ХИТ</div>}
@@ -114,7 +131,7 @@
                     <div class="hits_item">
                         <div class="hits_pic"> 
                             <a class="CursorInishial DescTop" href="/view/viewproduct/@product.Id">   <img class="hits_img" src="~/images/Каталог/Girls/@product.Address" alt="@product.Name.Replace("Пижама","")"></a>
-                            <a class="CursorInishial Phone" href="/view/viewproduct/@product.Id">   <img class="hits_img" src="~/images/Каталог/Girls/smallimage/@product.Address" alt="@product.Name.Replace("Пижама","")"></a>
+                            @*<a class="CursorInishial Phone" href="/view/viewproduct/@product.Id">   <img class="hits_img" src="~/images/Каталог/Girls/smallimage/@product.Address" alt="@product.Name.Replace("Пижама","")"></a>*@
                             <div class="buttons AdaptiveDisplayCatalog"> <a class="btn btn-hit popup-open" href="/view/viewproduct/@product.Id">УЗНАТЬ ПОДРОБНЕЕ</a> <a class="btn btn-hit popup-buy-open" href="/Home/popupBuy/@product.Id">КУПИТЬ</a> </div>
                             @if (product.Favourite)
                             {<div class="hit_word">ХИТ</div>}
@@ -163,7 +180,7 @@
                     <div class="hits_item">
                         <div class="hits_pic">
                             <a class="CursorInishial DescTop" href="/view/viewproduct/@product.Id">  <img class="hits_img" src="~/images/Каталог/Girls/@product.Address" alt="@product.Name.Replace("Пижама","")"> </a>
-                            <a class="CursorInishial Phone" href="/view/viewproduct/@product.Id">  <img class="hits_img" src="~/images/Каталог/Girls/smallimage/@product.Address" alt="@product.Name.Replace("Пижама","")"> </a>
+                            @*<a class="CursorInishial Phone" href="/view/viewproduct/@product.Id">  <img class="hits_img" src="~/images/Каталог/Girls/smallimage/@product.Address" alt="@product.Name.Replace("Пижама","")"> </a>*@
                             <div class="buttons AdaptiveDisplayCatalog"> <a class="btn btn-hit popup-open" href="/Home/popupFade/@product.Id">УЗНАТЬ ПОДРОБНЕЕ</a> <a class="btn btn-hit popup-buy-open" href="/Home/popupBuy/@product.Id">КУПИТЬ</a> </div>
                             @if (product.Favourite)
                             {<div class="hit_word">ХИТ</div>}
@@ -273,7 +290,7 @@
                     <div class="hits_item">
                         <div class="hits_pic">
                             <a class="CursorInishial DescTop" href="/view/viewproduct/@product.Id"> <img class="hits_img" src="~/images/Каталог/Girls/@product.Address" alt="@product.Name.Replace("Пижама","")"> </a>
-                            <a class="CursorInishial Phone" href="/view/viewproduct/@product.Id"> <img class="hits_img" src="~/images/Каталог/Girls/smallimage/@product.Address" alt="@product.Name.Replace("Пижама","")"> </a>
+                            @*<a class="CursorInishial Phone" href="/view/viewproduct/@product.Id"> <img class="hits_img" src="~/images/Каталог/Girls/smallimage/@product.Address" alt="@product.Name.Replace("Пижама","")"> </a>*@
                             <div class="buttons AdaptiveDisplayCatalog"> <a class="btn btn-hit popup-open" href="/Home/popupFade/@product.Id">УЗНАТЬ ПОДРОБНЕЕ</a> <a class="btn btn-hit popup-buy-open" href="/Home/popupBuy/@product.Id">КУПИТЬ</a> </div>
                             @if (product.Favourite)
                             {<div class="hit_word">ХИТ</div>}
@@ -416,7 +433,7 @@
             <div class="hits_MainTitle">Как пижамка будет смотреться на тебе</div>
             <div class="video">
                 <div class="click-for-video youtubeDiv">
-                    <img class="video" src="~/images/video.jpg">
+                    <img class="video" src="~/images/poslednyaya_dlya_video.jpg">
                 </div>
                 <div class="youtube youtubeDiv">
                     <iframe class="youtube" allowfullscreen></iframe>
@@ -582,7 +599,7 @@
 
 
 @*///////////////////////наши преимущества/////////////////////////////////  *@
-<div class="feauters" id="feauters">
+@*<div class="feauters" id="feauters">
     <div class="container">
         <div class="feauters_inner">
             <div class="feauters_title">ПОЧЕМУ МЫ ЛУЧШИЕ</div>
@@ -602,7 +619,7 @@
                 </div>
                 <div class="feauter_item">
                     <div class="feauter_pic"> <img class="pic" src="~/images/Преимущества/dost.jpg" alt="Преимущество доставка"> </div>
-                    <div class="feauter_item_title">@*<span style="font-weight: 700; color: #1da77f">БЕСПЛАТНАЯ</span>*@ ДОСТАВКА ПО ВСЕЙ РОССИИ </div>
+                    <div class="feauter_item_title"> ДОСТАВКА ПО ВСЕЙ РОССИИ </div>
                 </div>
                 <div class="feauter_item">
                     <div class="feauter_pic"> <img class="pic" src="~/images/Преимущества/kons.jpg" alt="Преимущество консультации"> </div>
@@ -617,7 +634,7 @@
             </div>
         </div>
     </div>
-</div>
+</div>*@
 @*/////////////////////////////////////////////////////////////////////////////////  *@
 @*///////////////////////наши контакты/////////////////////////////////  *@
 <div class="contacts" id="contacts">
@@ -626,14 +643,14 @@
             <div class="contacts_title">НАШИ КОНТАКТЫ</div>
             <div class="contacts_items">
                 <div class="contacts_item">
-                    <div class="contacts_pic"> <img src="~/images/contacts/adress.jpg" alt="Наши адрес СПБ"></div>
+                    <div class="contacts_pic"> <img src="~/images/contacts/adress.png" alt="Наши адрес СПБ"></div>
                     <div class="contacts_info">
                         <div class="contacts_info_title"> АДРЕС </div>
                         <div class="contacts_info_info">Санкт-Петербург, Дунайский проспект 5 (доставляем по всей России) </div>
                     </div>
                 </div>
                 <div class="contacts_item">
-                    <div class="contacts_pic"> <img src="~/images/contacts/phone.jpg" alt="Наш телефон"></div>
+                    <div class="contacts_pic"> <img src="~/images/contacts/phone.png" alt="Наш телефон"></div>
                     <div class="contacts_info">
                         <div class="contacts_info_title"> ТЕЛЕФОН </div>
                         <div class="contacts_info_info">WhatsApp 8(950)425-69-08</div>
@@ -645,7 +662,7 @@
 </div>
 @*/////////////////////////////////////////////////////////////////////////////////  *@
 @*///////////////////////иконки инстаграм и вотсап/////////////////////////////////  *@
-<div class="social">
+@*<div class="social">
     <div class="container">
         <div class="social_inner">
 
@@ -667,7 +684,7 @@
 
         </div>
     </div>
-</div>
+</div>*@
 @*////////////////////////////////////////////////////////////////////  *@
 <div class="footer">
     <div class="container">

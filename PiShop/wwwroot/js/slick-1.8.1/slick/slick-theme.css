@@ -63,20 +63,17 @@
     opacity: .25;
 }
 
-.slick-prev:before,
-.slick-next:before
-{
-    font-family: 'slick';
-    font-size: 22px;
-    line-height: 1;
-
-    opacity: .75;
-   /* color: white;*/
-    color: #5b2d5e;
-
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
+    .slick-prev:before,
+    .slick-next:before {
+        font-family: 'slick';
+        font-size: 22px;
+        line-height: 1;
+        opacity: .75;
+        /* color: white;*/
+        color: #075559;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
 
 .slick-prev
 {
