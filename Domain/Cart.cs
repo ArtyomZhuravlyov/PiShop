@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -27,12 +28,16 @@ namespace Domain
         /// <summary>
         /// Изначальная Цена доставки
         /// </summary>
-        public const int DELIVERY_PRICE = 350;//000;
+        public const int DELIVERY_PRICE = 0;//000;
 
         /// <summary>
         /// Минимальная сумма для покупки
         /// </summary>
         public const int LIMIT_AMOUNT = 3;//000;
+
+        public float sale = 10;
+
+
 
         /// <summary>
         /// Стоимость доствкпи (зависит от общей стоимости)
@@ -101,6 +106,52 @@ namespace Domain
         public decimal ComputeTotalValue()
         {
             return lineCollection.Sum(e => e.productCart.Price * e.Quantity);
+
+        }
+
+        /// <summary>
+        /// Проверяет есть ли скидка у клиента и отправляет его скидку
+        /// </summary>
+        public bool CheckSale()
+        {
+            var products = Lines.Where(x => x.productCart.Category != "gift" && x.productCart.Category != "брюки");
+            if (products.Sum(e=>e.Quantity)> 1/*products.Count() > 1 || products.First()?.Quantity > 1*/)
+                return true;
+            else
+                return false;
+            //if (products.Count() > 1 || products.First()?.Quantity>1)
+            //{
+            //    int totalPrice = products.Sum(e => e.productCart.Price * e.Quantity); //Общая сумма товаров на которую будет действовать скидка
+            //    int salePrice = totalPrice - Convert.ToInt32(totalPrice * (100 - sale) / 100);
+            //    Sale = salePrice;
+
+            //    return salePrice;
+            //}
+            //else
+            //    return 0;
+
+
+        }
+
+        /// <summary>
+        /// Считает и отправляет его скидку
+        /// </summary>
+        public int CalcSale()
+        {
+            if (CheckSale())
+            {
+                return Convert.ToInt32(lineCollection.Sum(e => e.productCart.Price * e.Quantity) * (sale / 100)) ;
+            }
+            else
+                return 0;
+        }
+
+        public int ComputeTotalValueWithSale()
+        {
+            if (CheckSale())
+                return Convert.ToInt32(lineCollection.Sum(e => e.productCart.Price * e.Quantity) * ((100 - sale) / 100));
+            else
+                return lineCollection.Sum(e => e.productCart.Price * e.Quantity);
 
         }
 

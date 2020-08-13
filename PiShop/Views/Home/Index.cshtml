@@ -59,7 +59,8 @@
                 {
                     <div class="hits_item">
                         <div class="hits_pic">
-                            <a class="CursorInishial" href="/view/viewproduct/@product.Id"> <img class="hits_img" src="~/images/Каталог/Girls/smallimage/@product.Address" alt="@product.Name.Replace("Пижама","")"></a>
+                            <a class="CursorInishial DescTop" href="/view/viewproduct/@product.Id"> <img class="hits_img" src="~/images/Каталог/Girls/@product.Address" alt="@product.Name.Replace("Пижама","")"></a>
+                            <a class="CursorInishial Phone" href="/view/viewproduct/@product.Id"> <img class="hits_img" src="~/images/Каталог/Girls/smallimage/@product.Address" alt="@product.Name.Replace("Пижама","")"></a>
                             <div class="buttons AdaptiveDisplayCatalog"> <a class="btn btn-hit popup-open" href="/Home/popupFade/@product.Id">УЗНАТЬ ПОДРОБНЕЕ</a> <a class="btn btn-hit popup-buy-open" href="/Home/popupBuy/@product.Id">КУПИТЬ</a> </div>
                             @if (product.Favourite)
                             {<div class="hit_word">ХИТ</div>}
@@ -111,8 +112,9 @@
                 @foreach (var product in Model.Alladins)
                 {
                     <div class="hits_item">
-                        <div class="hits_pic">
-                            <a class="CursorInishial" href="/view/viewproduct/@product.Id">   <img class="hits_img" src="~/images/Каталог/Girls/smallimage/@product.Address" alt="@product.Name.Replace("Пижама","")"></a>
+                        <div class="hits_pic"> 
+                            <a class="CursorInishial DescTop" href="/view/viewproduct/@product.Id">   <img class="hits_img" src="~/images/Каталог/Girls/@product.Address" alt="@product.Name.Replace("Пижама","")"></a>
+                            <a class="CursorInishial Phone" href="/view/viewproduct/@product.Id">   <img class="hits_img" src="~/images/Каталог/Girls/smallimage/@product.Address" alt="@product.Name.Replace("Пижама","")"></a>
                             <div class="buttons AdaptiveDisplayCatalog"> <a class="btn btn-hit popup-open" href="/view/viewproduct/@product.Id">УЗНАТЬ ПОДРОБНЕЕ</a> <a class="btn btn-hit popup-buy-open" href="/Home/popupBuy/@product.Id">КУПИТЬ</a> </div>
                             @if (product.Favourite)
                             {<div class="hit_word">ХИТ</div>}
@@ -160,7 +162,8 @@
                 {
                     <div class="hits_item">
                         <div class="hits_pic">
-                            <a class="CursorInishial" href="/view/viewproduct/@product.Id">  <img class="hits_img" src="~/images/Каталог/Girls/smallimage/@product.Address" alt="@product.Name.Replace("Пижама","")"> </a>
+                            <a class="CursorInishial DescTop" href="/view/viewproduct/@product.Id">  <img class="hits_img" src="~/images/Каталог/Girls/@product.Address" alt="@product.Name.Replace("Пижама","")"> </a>
+                            <a class="CursorInishial Phone" href="/view/viewproduct/@product.Id">  <img class="hits_img" src="~/images/Каталог/Girls/smallimage/@product.Address" alt="@product.Name.Replace("Пижама","")"> </a>
                             <div class="buttons AdaptiveDisplayCatalog"> <a class="btn btn-hit popup-open" href="/Home/popupFade/@product.Id">УЗНАТЬ ПОДРОБНЕЕ</a> <a class="btn btn-hit popup-buy-open" href="/Home/popupBuy/@product.Id">КУПИТЬ</a> </div>
                             @if (product.Favourite)
                             {<div class="hit_word">ХИТ</div>}
@@ -185,28 +188,28 @@
             <div id="ContentShow_more_Complex"></div>
         </div>
         @*<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>*@
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>*@
         <div>
             @*<div style="width: 210px; margin: 0 auto; margin: 50px auto;">
-                <input id="show_more_Simple"  class="btn btn-add " style="width: 210px; margin: 0 auto;" type="button" value="Показать еще" />
-            </div>*@
+                    <input id="show_more_Simple"  class="btn btn-add " style="width: 210px; margin: 0 auto;" type="button" value="Показать еще" />
+                </div>*@
         </div>
 
         @*<script>
-            $(document).ready(function ($) {
-                $('#show_more_Complex').click(function () {
-                    $(this).addClass('displayNone');
-                    $.get("/Home/CatalogMore?Category=комплект", function (data) {
-                        $('#ContentShow_more_Complex').append(data);
+                $(document).ready(function ($) {
+                    $('#show_more_Complex').click(function () {
+                        $(this).addClass('displayNone');
+                        $.get("/Home/CatalogMore?Category=комплект", function (data) {
+                            $('#ContentShow_more_Complex').append(data);
+                        });
                     });
                 });
-            });
-        </script>*@
+            </script>*@
 
 
 
         @*<div class="hits" id="catalog">
-        <div class="container">*@
+            <div class="container">*@
 
 
 
@@ -214,53 +217,53 @@
 
 
         @*<div class="hits_inner">
-            <div class="hits_MainTitle">Короткий Топ</div>
-            <div class="hits_items">
-                @foreach (var product in Model.ShortTop)
-                {
-                    <div class="hits_item">
-                        <div class="hits_pic">
-                            <img class="hits_img" src="~/images/Каталог/Girls/smallimage/@product.Address" alt="">
-                            <div class="buttons AdaptiveDisplayCatalog"> <a class="btn btn-hit popup-open" href="/Home/popupFade/@product.Id">УЗНАТЬ ПОДРОБНЕЕ</a> <a class="btn btn-hit popup-buy-open" href="/Home/popupBuy/@product.Id">КУПИТЬ</a> </div>
-                            @if (product.Favourite)
-                            {<div class="hit_word">ХИТ</div>}
-                            @if ((((product.Price * 100) / product.PriceWithoutSales) - 100) * (-1) > 2)
-                            {
-                                <div class="sale">-@(Product.RoundFive(((product.Price * 100) / product.PriceWithoutSales) - 100) * (-1))%</div>
-                            }
+                <div class="hits_MainTitle">Короткий Топ</div>
+                <div class="hits_items">
+                    @foreach (var product in Model.ShortTop)
+                    {
+                        <div class="hits_item">
+                            <div class="hits_pic">
+                                <img class="hits_img" src="~/images/Каталог/Girls/smallimage/@product.Address" alt="">
+                                <div class="buttons AdaptiveDisplayCatalog"> <a class="btn btn-hit popup-open" href="/Home/popupFade/@product.Id">УЗНАТЬ ПОДРОБНЕЕ</a> <a class="btn btn-hit popup-buy-open" href="/Home/popupBuy/@product.Id">КУПИТЬ</a> </div>
+                                @if (product.Favourite)
+                                {<div class="hit_word">ХИТ</div>}
+                                @if ((((product.Price * 100) / product.PriceWithoutSales) - 100) * (-1) > 2)
+                                {
+                                    <div class="sale">-@(Product.RoundFive(((product.Price * 100) / product.PriceWithoutSales) - 100) * (-1))%</div>
+                                }
+                            </div>
+                            <div class="hits_title">
+                                <a class=" popup-open" style="text-decoration:none; color: black;" href="/Home/popupFade/@product.Id">@product.Name</a>
+                            </div>
+                            <div class="priceMain">
+                                <div class="newPrice">@product.Price&#1056;</div>
+                                @if (product.Price < product.PriceWithoutSales)
+                                {
+                                    <div class="oldPrice">@product.PriceWithoutSales&#1056;</div>
+                                }
+                            </div>
                         </div>
-                        <div class="hits_title">
-                            <a class=" popup-open" style="text-decoration:none; color: black;" href="/Home/popupFade/@product.Id">@product.Name</a>
-                        </div>
-                        <div class="priceMain">
-                            <div class="newPrice">@product.Price&#1056;</div>
-                            @if (product.Price < product.PriceWithoutSales)
-                            {
-                                <div class="oldPrice">@product.PriceWithoutSales&#1056;</div>
-                            }
-                        </div>
-                    </div>
-                }
+                    }
+                </div>
+                <div id="ContentShow_more_ShortTop"></div>
             </div>
-            <div id="ContentShow_more_ShortTop"></div>
-        </div>
-        <div>
-            <div id="contentMore"></div>
-            <div style="width: 210px; margin: 0 auto; margin: 50px auto;">
-                <input id="show_more_Short"  class="btn btn-add " style="width: 210px; margin: 0 auto;" type="button" value="Показать еще" />
+            <div>
+                <div id="contentMore"></div>
+                <div style="width: 210px; margin: 0 auto; margin: 50px auto;">
+                    <input id="show_more_Short"  class="btn btn-add " style="width: 210px; margin: 0 auto;" type="button" value="Показать еще" />
+                </div>
             </div>
-        </div>
 
-        <script>
-            $(document).ready(function ($) {
-                $('#show_more_Short').click(function () {
-                    $(this).addClass('displayNone');
-                    $.get("/Home/CatalogMore?Category=короткий топ", function (data) {
-                        $('#ContentShow_more_ShortTop').append(data);
+            <script>
+                $(document).ready(function ($) {
+                    $('#show_more_Short').click(function () {
+                        $(this).addClass('displayNone');
+                        $.get("/Home/CatalogMore?Category=короткий топ", function (data) {
+                            $('#ContentShow_more_ShortTop').append(data);
+                        });
                     });
                 });
-            });
-        </script>*@
+            </script>*@
 
         <div class="hits_inner">
             <div class="hits_MainTitle">Брюки</div>
@@ -269,7 +272,8 @@
                 {
                     <div class="hits_item">
                         <div class="hits_pic">
-                            <a class="CursorInishial" href="/view/viewproduct/@product.Id"> <img class="hits_img" src="~/images/Каталог/Girls/smallimage/@product.Address" alt="@product.Name.Replace("Пижама","")"> </a>
+                            <a class="CursorInishial DescTop" href="/view/viewproduct/@product.Id"> <img class="hits_img" src="~/images/Каталог/Girls/@product.Address" alt="@product.Name.Replace("Пижама","")"> </a>
+                            <a class="CursorInishial Phone" href="/view/viewproduct/@product.Id"> <img class="hits_img" src="~/images/Каталог/Girls/smallimage/@product.Address" alt="@product.Name.Replace("Пижама","")"> </a>
                             <div class="buttons AdaptiveDisplayCatalog"> <a class="btn btn-hit popup-open" href="/Home/popupFade/@product.Id">УЗНАТЬ ПОДРОБНЕЕ</a> <a class="btn btn-hit popup-buy-open" href="/Home/popupBuy/@product.Id">КУПИТЬ</a> </div>
                             @if (product.Favourite)
                             {<div class="hit_word">ХИТ</div>}
@@ -294,60 +298,60 @@
             <div id="ContentShow_more_trousers"></div>
         </div>
         @*<div>
-            <div style="width: 210px; margin: 0 auto; margin: 50px auto;">
-                <input id="show_more_trousers"  class="btn btn-add " style="width: 210px; margin: 0 auto;" type="button" value="Показать еще" />
+                <div style="width: 210px; margin: 0 auto; margin: 50px auto;">
+                    <input id="show_more_trousers"  class="btn btn-add " style="width: 210px; margin: 0 auto;" type="button" value="Показать еще" />
+                </div>
             </div>
-        </div>
-        <script>
-            $(document).ready(function ($) {
-                $('#show_more_trousers').click(function () {
-                    $(this).addClass('displayNone');
-                    $.get("/Home/CatalogMore?Category=брюки", function (data) {
-                        $('#ContentShow_more_trousers').append(data);
+            <script>
+                $(document).ready(function ($) {
+                    $('#show_more_trousers').click(function () {
+                        $(this).addClass('displayNone');
+                        $.get("/Home/CatalogMore?Category=брюки", function (data) {
+                            $('#ContentShow_more_trousers').append(data);
+                        });
                     });
                 });
-            });
-        </script>*@
+            </script>*@
 
 
-        <div class="hits_inner">
-            <div class="hits_MainTitle">Флисовые пижамы</div>
-            <div class="hits_items shiftItems">
-                @foreach (var product in Model.Phlis)
-                {
-                    <div class="hits_item">
-                        <div class="hits_pic">
-                            @if (product.Category == "флис")
-                            {
-                                <a class="CursorInishial" href="/view/viewproduct/@product.Id"> <img class="hits_img maxHeightInit" src="~/images/Каталог/Girls/smallimage/@product.Address" alt="флисовая пижама"> </a>
-                            }
-                            else
-                            {
-                                <a class="CursorInishial" href="/view/viewproduct/@product.Id">  <img class="hits_img" src="~/images/Каталог/Girls/@product.Address" alt="@product.Name.Replace("Пижама","")"> </a>
-                            }
-                            <div class="buttons AdaptiveDisplayCatalog"> <a class="btn btn-hit popup-open" href="/Home/popupFade/@product.Id">УЗНАТЬ ПОДРОБНЕЕ</a> <a class="btn btn-hit popup-buy-open" href="/Home/popupBuy/@product.Id">КУПИТЬ</a> </div>
-                            @if (product.Favourite)
-                            {<div class="hit_word">ХИТ</div>}
-                            @if ((((product.Price * 100) / product.PriceWithoutSales) - 100) * (-1) > 2)
-                            {
-                                <div class="sale">-@(Product.RoundFive(((product.Price * 100) / product.PriceWithoutSales) - 100) * (-1))%</div>
-                            }
+        @*<div class="hits_inner">
+                <div class="hits_MainTitle">Флисовые пижамы</div>
+                <div class="hits_items shiftItems">
+                    @foreach (var product in Model.Phlis)
+                    {
+                        <div class="hits_item">
+                            <div class="hits_pic">
+                                @if (product.Category == "флис")
+                                {
+                                    <a class="CursorInishial" href="/view/viewproduct/@product.Id"> <img class="hits_img maxHeightInit" src="~/images/Каталог/Girls/smallimage/@product.Address" alt="флисовая пижама"> </a>
+                                }
+                                else
+                                {
+                                    <a class="CursorInishial" href="/view/viewproduct/@product.Id">  <img class="hits_img" src="~/images/Каталог/Girls/@product.Address" alt="@product.Name.Replace("Пижама","")"> </a>
+                                }
+                                <div class="buttons AdaptiveDisplayCatalog"> <a class="btn btn-hit popup-open" href="/Home/popupFade/@product.Id">УЗНАТЬ ПОДРОБНЕЕ</a> <a class="btn btn-hit popup-buy-open" href="/Home/popupBuy/@product.Id">КУПИТЬ</a> </div>
+                                @if (product.Favourite)
+                                {<div class="hit_word">ХИТ</div>}
+                                @if ((((product.Price * 100) / product.PriceWithoutSales) - 100) * (-1) > 2)
+                                {
+                                    <div class="sale">-@(Product.RoundFive(((product.Price * 100) / product.PriceWithoutSales) - 100) * (-1))%</div>
+                                }
+                            </div>
+                            <div class="hits_title">
+                                <a class=" popup-open textDecorNone" href="/view/viewproduct/@product.Id">@product.Name.Replace("Пижама", "")</a>
+                            </div>
+                            <div class="priceMain">
+                                <div class="newPrice">@product.Price&#1056;</div>
+                                @if (product.Price < product.PriceWithoutSales)
+                                {
+                                    <div class="oldPrice">@product.PriceWithoutSales&#1056;</div>
+                                }
+                            </div>
                         </div>
-                        <div class="hits_title">
-                            <a class=" popup-open textDecorNone" href="/view/viewproduct/@product.Id">@product.Name.Replace("Пижама", "")</a>
-                        </div>
-                        <div class="priceMain">
-                            <div class="newPrice">@product.Price&#1056;</div>
-                            @if (product.Price < product.PriceWithoutSales)
-                            {
-                                <div class="oldPrice">@product.PriceWithoutSales&#1056;</div>
-                            }
-                        </div>
-                    </div>
-                }
-            </div>
+                    }
+                </div>
 
-        </div>
+            </div>*@
 
         <div class="hits_inner">
             <div class="hits_MainTitle">Подарочные упаковки</div>
@@ -429,7 +433,8 @@
     $('.click-for-video').click(function () {
         this.style.display = 'none';
         $('div.youtube').css('display', 'block');
-        $('iframe.youtube').prop('src', 'https://www.youtube.com/embed/cpNLDHj-GCE?;autoplay=1&;controls=1&;showinfo=0');
+        //  $('iframe.youtube').prop('src', 'https://www.youtube.com/embed/cpNLDHj-GCE?;autoplay=1&;controls=1&;showinfo=0');
+        $('iframe.youtube').prop('src', 'https://www.youtube.com/embed/OVPAPItceyM?;autoplay=1&;controls=1&;showinfo=0');
     });
 </script>
 

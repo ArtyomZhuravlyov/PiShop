@@ -393,7 +393,20 @@ h6 {
     margin-top: -5px !important;
 }
 
+.Phone {
+    display: none;
+}
+
 @media(max-width:768px) {
+
+    .DescTop{
+        display: none;
+    }
+
+    .Phone {
+        display: initial;
+    }
+
     .form-left-decoration, .form-right-decoration {
         display: none;
     }

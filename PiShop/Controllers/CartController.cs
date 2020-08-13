@@ -53,22 +53,6 @@ namespace PiShop.Controllers
 
         }
 
-        //[HttpPost]
-        //public void/*ActionResult*/ AddToCart(int id = 1, string size = "sl")
-        //{
-        //    // Product product = (Product)db.Products.FirstOrDefault(x => x.Id == id);
-        //    //if (id > 0)
-        //    //{
-        //    Product product = db.Products
-        //     .FirstOrDefault(g => g.Id == id);
-        //    product.Size = size;
-        //    Cart cart = GetCart();
-        //    cart.AddItem(product, 1);
-        //    HttpContext.Session.SetString("Cart", JsonConvert.SerializeObject(cart));
-        //    //cart = GetCart();
-
-
-        //}
 
 
         /// <summary>
@@ -88,7 +72,7 @@ namespace PiShop.Controllers
             Cart cart = GetCart();
             cart.RemoveItem(product, 1);
             HttpContext.Session.SetString("Cart", JsonConvert.SerializeObject(cart));
-            cart = GetCart();
+            //cart = GetCart();
         }
 
         /// <summary>
@@ -106,7 +90,7 @@ namespace PiShop.Controllers
             Cart cart = GetCart();
             cart.RemoveLine(product);
             HttpContext.Session.SetString("Cart", JsonConvert.SerializeObject(cart));
-            cart = GetCart();
+            //cart = GetCart();
 
             //  return Redirect($"/Cart/Summary/{returnUrl}/");
            // return RedirectToAction("Summary", "Cart");
@@ -125,6 +109,38 @@ namespace PiShop.Controllers
             }
             return RedirectToAction("Index", new { returnUrl });
         }
+
+        /// <summary>
+        /// Проверяет есть ли скидка у клиента 
+        /// </summary>
+        public bool CheckSale()
+        {
+            string value = HttpContext.Session.GetString("Cart");
+            Cart cart = JsonConvert.DeserializeObject<Cart>(value);
+            bool Sale = cart.CheckSale();
+            return Sale;
+        }
+
+
+        /// <summary>
+        /// Считает и отправляет его скидку
+        /// </summary>
+        //public int CalcSale()
+        //{
+        //    if(CheckSale())
+        //    {
+        //        return 1;
+        //    }
+        //    else
+        //        return 0;
+        //}
+
+        //public int ComputeTotalValueWithSale(int TotalWithSale)
+        //{
+        //    //string value = HttpContext.Session.GetString("Cart");
+        //    //Cart cart = JsonConvert.DeserializeObject<Cart>(value);
+        //    return TotalWithSale - Domain.Cart.Sale;
+        //}
 
         public Cart GetCart()
         {
@@ -323,11 +339,17 @@ namespace PiShop.Controllers
             {
                 Cart cart = JsonConvert.DeserializeObject<Cart>(value);
                 if(cart?.Lines?.Count()>0)
+                {
+                    //CheckSale(cart);
                     return PartialView(new CartIndexViewModel { Cart = cart });
+                }
                 else return PartialView(null);
             }
             else return PartialView(null);
         }
+
+
+
 
         public PartialViewResult Summary()
         {

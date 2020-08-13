@@ -64,6 +64,8 @@ new { id = cartLine.productCart.Id, size = cartLine.productCart.Size }, new { @c
                             <div class="box">
 
                                 <div class="ContainerTotal-total-price"> Итого к оплате: <a class="total-total-price">@Model.Cart.ComputeTotalValueWithDelivery() руб</a> </div>
+                                <div class="ContainerTotal-Sale"> Скидка: <a class="total-Sale">@Model.Cart.CalcSale() руб</a> </div>
+                                <div class="ContainerTotal-total-price-withSale"> Итого со скидкой: <a class="total-priceWithSale">@Model.Cart.ComputeTotalValueWithSale() руб</a> </div>
                                 <div class="bottons">  <a class="btn buttonOrder OrderID" href="/Cart/Checkout/">Оформить заказ</a> </div>
                             </div>
                             <div class="cond ">
@@ -141,31 +143,57 @@ new { id = cartLine.productCart.Id, size = cartLine.productCart.Size }, new { @c
             var value = parseInt($input.val());
             if (value > 0) {
                 value = value - 1;
-                $.get(this.href, function (data) {
-                    //  $('#Cart').html(data);
-                    $.get("/Cart/GetQuantity", function (data) {
+                $.get(this.href, function () {
+
+                    $.get("/Cart/GetQuantity/", function (data) {
                         $('.countDigit').text(data);
-                    })
+                    });
+
+                    $.get("/Cart/CheckSale/", function (data) {
+                        $input.val(value);
+                        value = parseInt(($this.closest('div').next().children('.priceCart')).text()) * value;
+                        ($this.closest('div').next().next().children('.total-price')).text(value + " руб"); //общий счёт для одного товара
+
+                        value = 0;
+                        $(".total-price").each(function () {
+
+                            value += parseInt($(this).text());
+                        });
+
+                        $('.total-total-price').text(value + " руб");
+
+                        let sale = parseInt(value * 0.1);
+
+                        if (data) {
+
+                            $('.ContainerTotal-Sale').text(" Скидка: " + sale + " руб");
+
+                        }
+                        else {
+                            $('.ContainerTotal-Sale').text(" Скидка: 0 руб");
+                            sale = 0;
+                        }
+                        var priceWithSale = value - sale;
+                        $('.ContainerTotal-total-price-withSale').text(" Итого со скидкой: " + priceWithSale + " руб");
+
+                        
+
+
+
+                        //var hhref = "/Cart/ComputeTotalValueWithSale/TotalWithSale?=" + value;
+                        //$.get(hhref, function (data) {
+                        //    $('.ContainerTotal-total-price-withSale').text(" Итого со скидкой: " + data + " руб");
+                        //});
+
+                    });
+
                 });
 
             }
             else {
                 value = 0;
             }
-
-            $input.val(value);
-            value = parseInt(($this.closest('div').next().children('.priceCart')).text()) * value;
-            ($this.closest('div').next().next().children('.total-price')).text(value + " руб"); //общий счёт для одного товара
-
-
-            //value =
-            value = 0;
-            $(".total-price").each(function () {
-
-                value += parseInt($(this).text());
-                console.log(value);
-            });
-            $('.total-total-price').text(value + " руб");
+           
         });
     </script>
 
@@ -177,31 +205,56 @@ new { id = cartLine.productCart.Id, size = cartLine.productCart.Size }, new { @c
             var value = parseInt($input.val());
             if (value < 100) {
                 value = value + 1;
-                $.get(this.href, function (data) {
-                    //  $('#Cart').html(data);
+                $.get(this.href, function () {
+
                     $.get("/Cart/GetQuantity/", function (data) {
-                        console.log("cart");
                         $('.countDigit').text(data);
-                    })
+                    });
+
+                    $.get("/Cart/CheckSale/", function (data) {
+                        $input.val(value);
+                        value = parseInt(($this.closest('div').next().children('.priceCart')).text()) * value;
+                        ($this.closest('div').next().next().children('.total-price')).text(value + " руб"); //общий счёт для одного товара
+
+                        value = 0;
+                        $(".total-price").each(function () {
+
+                            value += parseInt($(this).text());
+                        });
+
+                        $('.total-total-price').text(value + " руб");
+
+                        let sale = parseInt(value * 0.1);
+
+                        if (data) {
+                            
+                            $('.ContainerTotal-Sale').text(" Скидка: " + sale + " руб");
+                        }
+                        else {
+                            $('.ContainerTotal-Sale').text(" Скидка: 0 руб");
+                            sale = 0;
+                        }
+
+                        var priceWithSale = value - sale;
+                        $('.ContainerTotal-total-price-withSale').text(" Итого со скидкой: " + priceWithSale + " руб");
+
+                    });
+
                 });
             }
             else {
                 value = 100;
             }
-            $input.val(value);
-            value = parseInt(($this.closest('div').next().children('.priceCart')).text()) * value;
-            ($this.closest('div').next().next().children('.total-price')).text(value + " руб"); //общий счёт для одного товара
 
 
-            //value =
-            value = 0;
-            $(".total-price").each(function () {
 
-                value += parseInt($(this).text());
-                console.log(value);
-            });
+            
 
-            $('.total-total-price').text(value + " руб");
+
+
+
+            
+
         });
     </script>
 
@@ -209,14 +262,54 @@ new { id = cartLine.productCart.Id, size = cartLine.productCart.Size }, new { @c
         $('.delete-btn').on('click', function (e) {
             e.preventDefault();
             var $this = $(this);
-            var $item = $this.closest('div').closest('.item').addClass("displayNone");
-            $.get(this.href);
+            $this.closest('div').closest('.item').addClass("displayNone");
+            let Sale;
+            $.get(this.href, function () {
+                $.get("/Cart/CheckSale/", function (data) {
 
-            //$this.closest('div').next().next(). - это карт мобаил   //children('.size').next(). - это сайз суммы
-            var value = parseInt(($this.closest('div').next().next().children('.size').next().children('.total-price').text())); //5
-            var MainPrice = parseInt($('.total-total-price').text());
-            var nextMainPrice = MainPrice - value;
-            $('.total-total-price').text(nextMainPrice + " руб");
+                    //$this.closest('div').next().next(). - это карт мобаил   //children('.size').next(). - это сайз суммы
+                    var value = parseInt(($this.closest('div').next().next().children('.size').next().children('.total-price').text())); //5
+                    var MainPrice = parseInt($('.total-total-price').text());
+                    var nextMainPrice = MainPrice - value;
+                    $('.total-total-price').text(nextMainPrice + " руб");
+
+                    let sale = parseInt(nextMainPrice * 0.1);
+
+                    if (data) {
+
+                        $('.ContainerTotal-Sale').text(" Скидка: " + sale + " руб");
+                    }
+                    else {
+                        $('.ContainerTotal-Sale').text(" Скидка: 0 руб");
+                        sale = 0;
+                    }
+
+                    var priceWithSale = nextMainPrice - sale;
+                    $('.ContainerTotal-total-price-withSale').text(" Итого со скидкой: " + priceWithSale + " руб");
+
+                    //Sale = data;
+                    //$('.ContainerTotal-Sale').text(" Скидка: " + data + " руб");
+
+
+                    ////$this.closest('div').next().next(). - это карт мобаил   //children('.size').next(). - это сайз суммы
+                    //var value = parseInt(($this.closest('div').next().next().children('.size').next().children('.total-price').text())); //5
+                    //var MainPrice = parseInt($('.total-total-price').text());
+                    //var nextMainPrice = MainPrice - value;
+                    //$('.total-total-price').text(nextMainPrice + " руб");
+
+                    //var hhref = "/Cart/ComputeTotalValueWithSale/TotalWithSale?=" + nextMainPrice;
+                    //$.get(hhref, function (data) {
+                    //    $('.ContainerTotal-total-price-withSale').text(" Итого со скидкой: " + data + " руб");
+                    //});
+
+                });
+                
+                
+            });
+            
+
+
+
         });
     </script>
 
