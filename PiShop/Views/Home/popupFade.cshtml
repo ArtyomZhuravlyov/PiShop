@@ -37,13 +37,13 @@
                             @if (System.IO.File.Exists($"{Environment.CurrentDirectory}/wwwroot/images/Каталог/Girls/{Model.Image2Address}"))
                             {
                                 @*<div class="First">
-                                        <div class="picture Show"><img class="block" src="~/images/Каталог/Girls/@Model.Address" alt=""></div>
-                                        <div class="pictureSecond Show"><img class="blockSecond" src="~/images/Каталог/Girls/@Model.Image2Address" alt=""></div>
-                                    </div>
-                                    <div class="Second displayNone">
-                                        <div class="picture NotShow "><img class="block" src="~/images/Каталог/Girls/@Model.Image2Address" alt=""></div>
-                                        <div class="pictureSecond   NotShow"><img class="blockSecond" src="~/images/Каталог/Girls/@Model.Address" alt=""></div>
-                                    </div>*@
+                    <div class="picture Show"><img class="block" src="~/images/Каталог/Girls/@Model.Address" alt=""></div>
+                    <div class="pictureSecond Show"><img class="blockSecond" src="~/images/Каталог/Girls/@Model.Image2Address" alt=""></div>
+                </div>
+                <div class="Second displayNone">
+                    <div class="picture NotShow "><img class="block" src="~/images/Каталог/Girls/@Model.Image2Address" alt=""></div>
+                    <div class="pictureSecond   NotShow"><img class="blockSecond" src="~/images/Каталог/Girls/@Model.Address" alt=""></div>
+                </div>*@
                                 <div class="First">
                                     <div class="picture Show"><img class="block" src="~/images/Каталог/Girls/@Model.Address" alt="первая картинка 1"></div>
                                     <div class="pictureSecond Show"><img class="blockSecond" src="~/images/Каталог/Girls/@Model.Image2Address" alt="Вторая картинка 1"></div>
@@ -59,8 +59,8 @@
                                 <div class="picture First Show"><img class="block" src="~/images/Каталог/Girls/@Model.Address" style="max-height:initial !important;" alt="@Model.Name"></div>@*большая*@
                             }
                             @*<div class="price" style="width:initial;">2000Р</div>*@
-                            <div class="priceMain PriceMainDetail" style="margin-top: 9px !important;">
-                                <div class="newPrice"> @Model.Price&#1056;</div>
+                            <div class="priceMain PriceMainDetail" style="margin-top: 35px !important;">
+                                <div class="newPricePopup"> @Model.Price&#1056;</div>
                                 @if (Model.Price < Model.PriceWithoutSales)
                                 {
                                     <div class="oldPrice">@Model.PriceWithoutSales&#1056;</div>
@@ -76,13 +76,13 @@
                                 <label>
                                     <input class="radioFade" type="radio" name="size" value="M"><span style="padding:5px 16px !important;">M</span>
                                 </label>
-                                @*<label>
-                                        <input class="radioFade" type="radio" name="size" value="⁣⁣⁣⁣⁣⁣⁣⁣⁣⁣L"><span style="padding:5px 18px !important;">L</span>
-                                    </label>*@
+                                <label>
+                                    <input class="radioFade" type="radio" name="size" value="L"><span style="padding:5px 16px !important;">L</span>
+                                </label>
                             </div>
                             <div class="animate">
-                                <button class="btn btn-add addToCart" style="margin-left: 5%; margin-right: 5%; width:90%;" type="submit">ДОБАВИТЬ В КОРЗИНУ</button>
-                                <a class="btn btn-add goToCart popup-cart-open" style="margin-left: 5%; margin-right: 5%; width:90%;" href="/Cart/Cart">ПЕРЕЙТИ В КОРЗИНУ</a>
+                                <button class="btn btn-add addToCart AddPopup" type="submit">ДОБАВИТЬ В КОРЗИНУ</button>
+                                <a class="btn btn-add goToCart popup-cart-open AddPopup" href="/Cart/Cart">ПЕРЕЙТИ В КОРЗИНУ</a>
                                 @*<a class="btn btn-add addToCart" type="submit">ДОБАВИТЬ В КОРЗИНУ</a>*@
                                 <div class="paket"><img src="~/images/Корзина/paket.png" alt="покупка"></div>
                             </div>
@@ -104,6 +104,7 @@
                                 }
 
                                 </div>
+
                                 @switch (Model.Category)
                                 {
                                     case "флис":
@@ -118,6 +119,7 @@
                                         </div>
                                         break;
                                     default:
+                                        <a class="PopupPazmer">Размерная сетка </a>
                                         <div class="info_text_item">
                                             <img class="pointer" src="~/images/point.png" alt="Пункт 2">
                                             <div class="info_text_text">Размерная сетка </div>
@@ -136,46 +138,63 @@
                                         <label>
                                             <input class="radioFade" type="radio" name="size" value="M"><span style="padding:5px 16px !important;">M</span>
                                         </label>
-                                        @*<label> <input class ="radioFade" type="radio" name="size" value="⁣⁣⁣⁣⁣⁣⁣⁣⁣⁣L"><span style="padding:5px 18px !important;">L</span></label>*@
+                                        <label>
+                                            <input class="radioFade" type="radio" name="size" value="L"><span style="padding:5px 16px !important;">L</span>
+                                        </label>
                                     </div>
                                 }
                             </div>
                         </div>
-                        <div class="info AdaptiveDisplay displayNone">
-                            <div class="info-text">
-                                <div class="info_text_item">
-                                    @switch (Model.Category)
-                                    {
-                                        case "флис":
-                                            <div class="info_text_item">
-                                                <img class="pointer" src="~/images/point.png" alt="Пункт 2">
-                                                <div class="info_text_text">Размерная сетка </div>
-                                            </div>
-                                            <div class="info_table"><img src="~/images/PhlisPazmerPhone.jpg" alt="Размерная сетка2"></div> break;
-                                        case "gift":
-                                            <div class="info_text_item">
-                                                <ul class="delivery_ul" style="margin-left: 12px; ">  <li class="delivery_line">Размер: @Model.Info2</li> @*<li class="delivery_line">Добавь подарочную упаковку в свой заказ! Тогда сюрприз порадует её ещё больше!</li>*@</ul>
-                                            </div>
-                                            break;
-                                        default:
-                                            <div class="info_text_item">
-                                                <img class="pointer" src="~/images/point.png" alt="Пункт 2">
-                                                <div class="info_text_text">Размерная сетка </div>
-                                            </div>
-                                            <div class="info_table"><img src="~/images/pazmerPhone.jpg" alt="Размерная сетка"></div>break;
-                                    }
-     
+                        <div class="info-text">@Model.DescriptionPopup</div>
+                            <div class="info AdaptiveDisplay displayNone">
+                                <div class="info-text">
+                                    <div class="info_text_item">
+                                        @switch (Model.Category)
+                                        {
+                                            case "флис":
+                                                <div class="info_text_item">
+                                                    <img class="pointer" src="~/images/point.png" alt="Пункт 2">
+                                                    <div class="info_text_text">Размерная сетка </div>
+                                                </div>
+                                                <div class="info_table"><img src="~/images/PhlisPazmerPhone.jpg" alt="Размерная сетка2"></div> break;
+                                            case "gift":
+                                                <div class="info_text_item">
+                                                    <ul class="delivery_ul" style="margin-left: 12px; ">  <li class="delivery_line">Размер: @Model.Info2</li> @*<li class="delivery_line">Добавь подарочную упаковку в свой заказ! Тогда сюрприз порадует её ещё больше!</li>*@</ul>
+                                                </div>
+                                                break;
+                                            default:
+                                                <a class="PopupPazmer">Размерная сетка </a>
+                                                <div class="info_text_item">
+                                                    <img class="pointer" src="~/images/point.png" alt="Пункт 2">
+                                                    <div class="info_text_text">Размерная сетка </div>
+                                                </div>
+                                                <div class="info_table"><img src="~/images/pazmerPhone.jpg" alt="Размерная сетка"></div>break;
+                                        }
+
                                     </div>
                                 </div>
+                            </div>
                         </div>
                     </div>
-                </div>
             </div>
             @*</div>*@
         </form>
     </div>
-    @*<script src="https://yandex.st/jquery/2.1.1/jquery.min.js"></script>*@
-    @*<script type="text/javascript" src="~/js/slick-1.8.1/slick/slick.min.js"></script>*@
+
+
+    <script type="text/javascript">
+        $(".PopupPazmer").click(function (e) {
+            e.preventDefault();
+            //var url = "/Cart/AddToCart/";  свяжется с вами в течение      3 минут
+            $.get("/home/ModalText?text=размерная сетка&id=размерная сетка", function (data) {
+                $('#dialogContentpopupModalText').html(data);
+                $('.popup-ModalText').fadeIn();
+            });
+
+            //return true;
+        });
+    </script>
+
     <script>
         $(document).ready(function ($) {
 

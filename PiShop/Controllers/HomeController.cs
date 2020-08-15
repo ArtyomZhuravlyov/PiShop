@@ -84,9 +84,9 @@ namespace PiShop.Controllers
             return PartialView(product);
         }
 
-        public PartialViewResult ModalText(string text = null)
+        public PartialViewResult ModalText(string text = null, string id = null)
         {
-                return PartialView("ModalText", text);
+                return PartialView("ModalText", new ModalTextModel() { Text = text, Id = id });
         }
 
         [HttpPost]

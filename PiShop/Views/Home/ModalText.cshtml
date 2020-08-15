@@ -1,4 +1,4 @@
-﻿@model string
+﻿@model ModalTextModel
 <header>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="~/css/style.css">
@@ -11,7 +11,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>*@
 </header>
 <body>
-    @if (string.IsNullOrEmpty(Model))
+    @if (string.IsNullOrEmpty(Model.Text))
     {
         <div class="popup-ModalText">
             <div class="ModalText">
@@ -22,15 +22,27 @@
             </div>
         </div>
     }
-    else
+    else if (Model.Id == "обратный звонок")
     {
         <div class="popup-ModalText">
             <div class="ModalText" style="top: 20% !important;">
                 <a class="ModalText-close" href="#"> <img src="~/images/krestik.jpg" alt=""></a>
                 <div style="margin-top:10px;">
-                    @Model
+                    @Model.Text
                 </div>
                 <img style="width: 100%; margin-top: 10px;" src="~/images/CallFeedback.jpg" />
+            </div>
+        </div>
+    }
+    else if (Model.Id == "размерная сетка")
+    {
+        <div class="popup-ModalText">
+            <div class="ModalText" style="top: 20% !important;">
+                <a class="ModalText-close" href="#"> <img src="~/images/krestik.jpg" alt="крестик"></a>
+                <div style="margin-top:10px;">
+                    Размерная сетка
+                </div>
+                <img style="width: 100%; margin-top: 10px;" src="~/images/newRazmer.jpg"  alt="Размерная сетка" />
             </div>
         </div>
     }

@@ -5,36 +5,7 @@
     Layout = "~/Views/Shared/_CheckLayout.cshtml";
 }
 
-<head>
-    <link rel="stylesheet" href="~/css/FormContactDate.css" />
-    <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
-    <link href="~/css/ErrorStyles.css" rel="stylesheet" />
-    <link rel="stylesheet" href="~/css/shopping-cart.css" />
-    <link rel="stylesheet" href="~/css/FormContactDate.css" />
-
-    <!-- Facebook Pixel Code -->
-    <script>
-        !function (f, b, e, v, n, t, s) {
-            if (f.fbq) return; n = f.fbq = function () {
-                n.callMethod ?
-                n.callMethod.apply(n, arguments) : n.queue.push(arguments)
-            };
-            if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
-            n.queue = []; t = b.createElement(e); t.async = !0;
-            t.src = v; s = b.getElementsByTagName(e)[0];
-            s.parentNode.insertBefore(t, s)
-        }(window, document, 'script',
-            'https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '760272324774923');
-        fbq('track', 'PageView');
-    </script>
-    <noscript>
-        <img height="1" width="1" style="display:none"
-             src="https://www.facebook.com/tr?id=760272324774923&ev=PageView&noscript=1" />
-    </noscript>
-    <!-- End Facebook Pixel Code -->
-</head>
-<body>
+<div>
 
     @using (Html.BeginForm())
     {
@@ -65,8 +36,8 @@
                             <input class="form-control MyForm-control" type="tel" data-val="true" data-val-required="телефон Получателя" id="Phone" name="Phone" value="+7(___)___-__-__" >
                             break;
                         case "Электронная почта":
-                            <label>@(property.DisplayName ?? property.PropertyName)</label>
-                            @Html.TextBox(property.PropertyName, null, new { @class = "form-control MyForm-control" })
+                            @*<label>@(property.DisplayName ?? property.PropertyName)</label>
+                            @Html.TextBox(property.PropertyName, null, new { @class = "form-control MyForm-control" })*@
                             break;
                         default:
                             <label><span style="color:red">*</span> @(property.DisplayName ?? property.PropertyName)</label>
@@ -93,7 +64,7 @@
             </div>
 
             <div class="text-center">
-                <input class="btn buttonOrder outline" type="submit" value="Обработать заказ" />
+                <input class="btn buttonOrder" type="submit" value="Обработать заказ" />
             </div>
 
         </div>
@@ -126,4 +97,4 @@
     </script>
     <noscript><div><img src="https://mc.yandex.ru/watch/57702916" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
     <!-- /Yandex.Metrika counter -->
-</body>
+</div>

@@ -171,9 +171,7 @@
 
 
 
-.buttonOrder {
-   
-    
+/*.buttonOrder {
     background-color: #5b2d5e;
     border-color: #5b2d5e;
     
@@ -191,6 +189,43 @@
         background-color: #FF7400;
     }
     .buttonStyleCart {
+    background-color: #ecdeec;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    padding: 4px 8px;
+}
+*/
+
+.buttonOrder {
+    margin-top: 20px;
+    letter-spacing: 2px;
+    width: 70%;
+    background-color: #01898ccf;
+    border: 0;
+    border-bottom: 3px solid #0e5f63;
+    border-radius: 10px;
+    height: 40px;
+    align-items: center;
+    text-align: center;
+    width: 190px;
+    font-size: 14px;
+    color: white;
+    border: 0;
+    border-bottom: 3px solid #0e5f63;
+}
+
+    .buttonOrder:focus {
+        outline: none;
+    }
+
+    .buttonOrder:hover {
+        background-color: #01898cb0;
+        color: #fff;
+        border-bottom-color: #0e5f63d9;
+    }
+
+.buttonStyleCart {
     background-color: #ecdeec;
     border-radius: 6px;
     border: none;

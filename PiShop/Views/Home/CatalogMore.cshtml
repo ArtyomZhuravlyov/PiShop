@@ -22,27 +22,31 @@
                 }
                 else
                 {
-                    <a class="CursorInishial DescTop" href="/view/viewproduct/@product.Id">   <img class="hits_img" src="~/images/Каталог/Girls/@product.Address" alt="@product.Name.Replace("Пижама","")"></a>
-                    <a class="CursorInishial Phone" href="/view/viewproduct/@product.Id">   <img class="hits_img" src="~/images/Каталог/Girls/smallimage/@product.Address" alt="@product.Name.Replace("Пижама","")"></a>
+                    @*<a class="CursorInishial DescTop" href="/view/viewproduct/@product.Id">   <img class="hits_img" src="~/images/Каталог/Girls/@product.Address" alt="@product.Name.Replace("Пижама","")"></a>*@
+                    <a class="CursorInishial " href="/view/viewproduct/@product.Id">   <img class="hits_img" src="~/images/Каталог/Girls/smallimage/@product.Address" alt="@product.Name.Replace("Пижама","")"></a>
                 }
 
-                <div class="buttons AdaptiveDisplayCatalog"> <a class="btn btn-hit popup-open" href="/view/viewproduct/@product.Id">УЗНАТЬ ПОДРОБНЕЕ</a> <a class="btn btn-hit popup-buy-open" href="/Home/popupBuy/@product.Id">КУПИТЬ</a> </div>
+                <div class="buttons AdaptiveDisplayCatalog"> <a class="btn btn-hit popup-open" href="/view/viewproduct/@product.Id">УЗНАТЬ ПОДРОБНЕЕ</a> @*<a class="btn btn-hit popup-buy-open" href="/Home/popupBuy/@product.Id">КУПИТЬ</a>*@ </div>
                 @if (product.Favourite)
                 {<div class="hit_word">ХИТ</div>}
-                @if ((((product.Price * 100) / product.PriceWithoutSales) - 100) * (-1) > 2)
+                @*@if ((((product.Price * 100) / product.PriceWithoutSales) - 100) * (-1) > 2)
                 {
                     <div class="sale">-@(Product.RoundFive(((product.Price * 100) / product.PriceWithoutSales) - 100) * (-1))%</div>
-                }
+                }*@
 
             </div>
             <div class="hits_title">
                 <a class=" popup-open" style="text-decoration:none; color: black;" href="/view/viewproduct/@product.Id">@product.Name.Replace("Пижама", "")</a>
             </div>
             <div class="priceMain">
-                <div class="newPrice">@product.Price&#1056;</div>
                 @if (product.Price < product.PriceWithoutSales)
                 {
+                    <div class="newPrice">@product.Price&#1056;</div>
                     <div class="oldPrice">@product.PriceWithoutSales&#1056;</div>
+                }
+                else
+                {
+                    <div class="newPriceWithoutSale">@product.Price&#1056;</div>
                 }
             </div>
         </div>

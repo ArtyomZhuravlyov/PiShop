@@ -51,6 +51,12 @@ namespace Domain
         /// </summary>
         public string Address { get; set; }
 
+        /// <summary>
+        /// Описание в popupFade
+        /// </summary>
+        public string DescriptionPopup { get; set; }
+        
+
         ///// <summary>
         ///// Отображается ли в ТОП
         ///// </summary>

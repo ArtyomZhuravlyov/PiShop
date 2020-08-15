@@ -5,11 +5,14 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-168677740-1"></script>
 
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="~/css/style.css">
+    <link type="text/css" href="https://fonts.googleapis.com/css2?family=Manrope:wght@200&display=swap" rel="stylesheet">
     @*<link href="https://fonts.googleapis.com/css?family=Merienda|Neucha|Roboto&display=swap" rel="stylesheet">*@
     <link href="https://fonts.googleapis.com/css?family=Merienda" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Neucha" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    @*<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC&display=swap" rel="stylesheet">*@
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="~/css/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="canonical" href="https://pizhamka-fox.ru/" />
     <link rel="shortcut icon" href="~/favicon.ico" type="image/x-icon">
@@ -23,7 +26,7 @@
         !function (f, b, e, v, n, t, s) {
             if (f.fbq) return; n = f.fbq = function () {
                 n.callMethod ?
-                n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
             };
             if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
             n.queue = []; t = b.createElement(e); t.async = !0;
@@ -63,9 +66,10 @@
             </div>
         </div>*@
                 @*</div>*@
+                <a class="popup-cart-open Phone" href="/Cart/Cart"><img class="korzina" src="~/images/Корзина/shopping-basket-solid.svg" alt="Корзина покупок"></a>
                 <nav class="nav" id="nav">  @*<a class="nav_link CallFeedback" href="#" data-scroll="#CallFeedback">ОБРАТНЫЙ ЗВОНОК</a>*@   <a class="nav_link" href="#" data-scroll="#catalog">КАТАЛОГ</a> <a class="nav_link" href="#" data-scroll="#delivery">ДОСТАВКА</a>  <a class="nav_link" href="#" data-scroll="#reviews">ОТЗЫВЫ</a> <a class="nav_link" href="#" data-scroll="#contacts">КОНТАКТЫ</a> </nav>
                 <button class="burger" type="button" id="navToggle"> <span class="burger_item">menu</span> </button>
-                <a class="popup-cart-open" href="/Cart/Cart"><img class="korzina" src="~/images/Корзина/shopping-basket-solid.svg" alt="Корзина покупок"></a>
+                <a class="popup-cart-open DescTop" href="/Cart/Cart"><img class="korzina" src="~/images/Корзина/shopping-basket-solid.svg" alt="Корзина покупок"></a>
                 <div class="contactsNew">
                     <div class="bigicon">
                         <div class="icon">

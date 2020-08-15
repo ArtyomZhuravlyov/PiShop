@@ -16,9 +16,17 @@ $(function () {
     function checkScroll(scrollPos, introH) {
         if (scrollPos > introH) {
             header.addClass("fixed");
+            if (innerWidth < 420) {
+                $(".contactsNew").addClass("displayNone");
+            }
+            
         }
         else {
             header.removeClass("fixed");
+            if (innerWidth < 420) {
+                $(".contactsNew").removeClass("displayNone");
+            }
+           
         }
     }
     $("[data-scroll]").on("click", function (event) {

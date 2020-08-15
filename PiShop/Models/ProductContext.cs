@@ -67,6 +67,7 @@ namespace PiShop.Models
                     dbEntry.TitleP = product.TitleP;
                     dbEntry.Info = product.Info;
                     dbEntry.Info2 = product.Info2;
+                    dbEntry.DescriptionPopup = product.DescriptionPopup;
                 }
                 #endregion
 

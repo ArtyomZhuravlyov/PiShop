@@ -2,24 +2,25 @@
 @using Microsoft.AspNetCore.Http;
 @using Microsoft.AspNetCore.Http.Features;
 @model IndexViewModal
-
 @*<div class="intro" id="intro">
-    <div class="container">
-        <div class="intro_inner">
-            <h1 class="intro_title">ШЁЛКОВАЯ ПИЖАМА С ПРИНТОМ</h1>
-            <div class="intro_suptitle">Залог отличного настроения и продуктивного дня зависит от первых эмоций после пробуждения. Мы хотим, чтобы на твоём лице с самого утра блистала улыбка - а что как не идеальное отражение в зеркале сможет тебя так порадовать?</div>
-            <div class="intro_suptitle">Наша пижама из Армани шёлка сделает твоё утро чудесным, а хоум - лук безумно комфортным и женственным. </div> <a class="btn" href="#" data-scroll="#catalog">Посмотреть каталог</a>
+        <div class="container">
+            <div class="intro_inner">
+                <h1 class="intro_title">ШЁЛКОВАЯ ПИЖАМА С ПРИНТОМ</h1>
+                <div class="intro_suptitle">Залог отличного настроения и продуктивного дня зависит от первых эмоций после пробуждения. Мы хотим, чтобы на твоём лице с самого утра блистала улыбка - а что как не идеальное отражение в зеркале сможет тебя так порадовать?</div>
+                <div class="intro_suptitle">Наша пижама из Армани шёлка сделает твоё утро чудесным, а хоум - лук безумно комфортным и женственным. </div> <a class="btn" href="#" data-scroll="#catalog">Посмотреть каталог</a>
+            </div>
         </div>
-    </div>
-</div>*@
+    </div>*@
+
 
 <div class="intro" id="intro">
 
     <div class="container">
         <div class="intro_inner">
             <div class="intro_photo">
-                <img class="intro_model" src="~/images/modellast (1).png" alt="пижама Лиса">
+                <img class="intro_model" id="myImage" src="~/images/modellast (1).png" alt="пижама Лиса">
             </div>
+
             <div class="intro_info">
                 <h1 class="intro_info_h">ШЁЛКОВЫЕ ПИЖАМЫ С ПРИНТОМ</h1>
                 <div class="intro_info2">Снимай свою старую пижаму и выбирай <span class="salespan">две новые со скидкой 10% </span></div>
@@ -28,6 +29,17 @@
         </div>
     </div>
 </div>
+
+
+
+@*<script>
+    $(document).ready(function ($) {
+        var parent = getElementById('id1');
+        var child = document.getElementById('imagex');
+        parent.removeChild(child);
+    });
+
+</script>*@
 
 @*<div class="hits" id="hits">
         <div class="container">
@@ -69,31 +81,36 @@
     <div class="container">
 
         <div class="hits_inner">
-            <div class="hits_MainTitle">ТОП + ШОРТЫ</div>
+            <div class="hits_MainTitle hits_withoutAfter">ТОП + ШОРТЫ</div>
+            <div class="shorti_subtitle">Выбирай 2 пижамы и они будут по цене 1690!</div>
             @*<h1 class="hits_MainTitle">Пижамы с принтом</h1>*@
             <div class="hits_items">
                 @foreach (var product in Model.SimpleTop)
                 {
                     <div class="hits_item">
                         <div class="hits_pic">
-                            <a class="CursorInishial DescTop" href="/view/viewproduct/@product.Id"> <img class="hits_img" src="~/images/Каталог/Girls/@product.Address" alt="@product.Name.Replace("Пижама","")"></a>
-                            @*<a class="CursorInishial Phone" href="/view/viewproduct/@product.Id"> <img class="hits_img" src="~/images/Каталог/Girls/smallimage/@product.Address" alt="@product.Name.Replace("Пижама","")"></a>*@
-                            <div class="buttons AdaptiveDisplayCatalog"> <a class="btn btn-hit popup-open" href="/Home/popupFade/@product.Id">УЗНАТЬ ПОДРОБНЕЕ</a> <a class="btn btn-hit popup-buy-open" href="/Home/popupBuy/@product.Id">КУПИТЬ</a> </div>
+                            @*<a class="CursorInishial DescTop" href="/view/viewproduct/@product.Id"> <img class="hits_img" src="~/images/Каталог/Girls/@product.Address" alt="@product.Name.Replace("Пижама","")"></a>*@
+                            <a class="CursorInishial" href="/view/viewproduct/@product.Id"> <img class="hits_img" src="~/images/Каталог/Girls/smallimage/@product.Address" alt="@product.Name.Replace("Пижама","")"></a>
+                            <div class="buttons AdaptiveDisplayCatalog"> <a class="btn btn-hit popup-open" href="/Home/popupFade/@product.Id">УЗНАТЬ ПОДРОБНЕЕ</a> </div>
                             @if (product.Favourite)
                             {<div class="hit_word">ХИТ</div>}
-                            @if ((((product.Price * 100) / product.PriceWithoutSales) - 100) * (-1) > 2)
-                            {
-                                <div class="sale">-@(Product.RoundFive(((product.Price * 100) / product.PriceWithoutSales) - 100) * (-1))%</div>
-                            }
+                            @*@if ((((product.Price * 100) / product.PriceWithoutSales) - 100) * (-1) > 2)
+                        {
+                            <div class="sale">-@(Product.RoundFive(((product.Price * 100) / product.PriceWithoutSales) - 100) * (-1))%</div>
+                        }*@
                         </div>
                         <div class="hits_title">
                             <a class="popup-open textDecorNone" href="/view/viewproduct/@product.Id">@product.Name.Replace("Пижама", "")</a>
                         </div>
                         <div class="priceMain">
-                            <div class="newPrice">@product.Price&#1056;</div>
                             @if (product.Price < product.PriceWithoutSales)
                             {
+                                <div class="newPrice">@product.Price&#1056;</div>
                                 <div class="oldPrice">@product.PriceWithoutSales&#1056;</div>
+                            }
+                            else
+                            {
+                                <div class="newPriceWithoutSale">@product.Price&#1056;</div>
                             }
                         </div>
                     </div>
@@ -129,25 +146,29 @@
                 @foreach (var product in Model.Alladins)
                 {
                     <div class="hits_item">
-                        <div class="hits_pic"> 
-                            <a class="CursorInishial DescTop" href="/view/viewproduct/@product.Id">   <img class="hits_img" src="~/images/Каталог/Girls/@product.Address" alt="@product.Name.Replace("Пижама","")"></a>
-                            @*<a class="CursorInishial Phone" href="/view/viewproduct/@product.Id">   <img class="hits_img" src="~/images/Каталог/Girls/smallimage/@product.Address" alt="@product.Name.Replace("Пижама","")"></a>*@
-                            <div class="buttons AdaptiveDisplayCatalog"> <a class="btn btn-hit popup-open" href="/view/viewproduct/@product.Id">УЗНАТЬ ПОДРОБНЕЕ</a> <a class="btn btn-hit popup-buy-open" href="/Home/popupBuy/@product.Id">КУПИТЬ</a> </div>
+                        <div class="hits_pic">
+                            @*  <a class="CursorInishial DescTop" href="/view/viewproduct/@product.Id">   <img class="hits_img" src="~/images/Каталог/Girls/@product.Address" alt="@product.Name.Replace("Пижама","")"></a>*@
+                            <a class="CursorInishial" href="/view/viewproduct/@product.Id">   <img class="hits_img" src="~/images/Каталог/Girls/smallimage/@product.Address" alt="@product.Name.Replace("Пижама","")"></a>
+                            <div class="buttons AdaptiveDisplayCatalog"> <a class="btn btn-hit popup-open" href="/view/viewproduct/@product.Id">УЗНАТЬ ПОДРОБНЕЕ</a> @*<a class="btn btn-hit popup-buy-open" href="/Home/popupBuy/@product.Id">КУПИТЬ</a>*@ </div>
                             @if (product.Favourite)
                             {<div class="hit_word">ХИТ</div>}
-                            @if ((((product.Price * 100) / product.PriceWithoutSales) - 100) * (-1) > 2)
+                            @*@if ((((product.Price * 100) / product.PriceWithoutSales) - 100) * (-1) > 2)
                             {
                                 <div class="sale">-@(Product.RoundFive(((product.Price * 100) / product.PriceWithoutSales) - 100) * (-1))%</div>
-                            }
+                            }*@
                         </div>
                         <div class="hits_title">
                             <a class=" popup-open textDecorNone" href="/view/viewproduct/@product.Id">@product.Name</a>
                         </div>
                         <div class="priceMain">
-                            <div class="newPrice">@product.Price&#1056;</div>
                             @if (product.Price < product.PriceWithoutSales)
                             {
+                                <div class="newPrice">@product.Price&#1056;</div>
                                 <div class="oldPrice">@product.PriceWithoutSales&#1056;</div>
+                            }
+                            else
+                            {
+                                <div class="newPriceWithoutSale">@product.Price&#1056;</div>
                             }
                         </div>
                     </div>
@@ -179,24 +200,28 @@
                 {
                     <div class="hits_item">
                         <div class="hits_pic">
-                            <a class="CursorInishial DescTop" href="/view/viewproduct/@product.Id">  <img class="hits_img" src="~/images/Каталог/Girls/@product.Address" alt="@product.Name.Replace("Пижама","")"> </a>
-                            @*<a class="CursorInishial Phone" href="/view/viewproduct/@product.Id">  <img class="hits_img" src="~/images/Каталог/Girls/smallimage/@product.Address" alt="@product.Name.Replace("Пижама","")"> </a>*@
-                            <div class="buttons AdaptiveDisplayCatalog"> <a class="btn btn-hit popup-open" href="/Home/popupFade/@product.Id">УЗНАТЬ ПОДРОБНЕЕ</a> <a class="btn btn-hit popup-buy-open" href="/Home/popupBuy/@product.Id">КУПИТЬ</a> </div>
+                            @*<a class="CursorInishial DescTop" href="/view/viewproduct/@product.Id">  <img class="hits_img" src="~/images/Каталог/Girls/@product.Address" alt="@product.Name.Replace("Пижама","")"> </a>*@
+                            <a class="CursorInishial" href="/view/viewproduct/@product.Id">  <img class="hits_img" src="~/images/Каталог/Girls/smallimage/@product.Address" alt="@product.Name.Replace("Пижама","")"> </a>
+                            <div class="buttons AdaptiveDisplayCatalog"> <a class="btn btn-hit popup-open" href="/Home/popupFade/@product.Id">УЗНАТЬ ПОДРОБНЕЕ</a> @*<a class="btn btn-hit popup-buy-open" href="/Home/popupBuy/@product.Id">КУПИТЬ</a>*@ </div>
                             @if (product.Favourite)
                             {<div class="hit_word">ХИТ</div>}
-                            @if ((((product.Price * 100) / product.PriceWithoutSales) - 100) * (-1) > 2)
+                            @*@if ((((product.Price * 100) / product.PriceWithoutSales) - 100) * (-1) > 2)
                             {
                                 <div class="sale">-@(Product.RoundFive(((product.Price * 100) / product.PriceWithoutSales) - 100) * (-1))%</div>
-                            }
+                            }*@
                         </div>
                         <div class="hits_title">
                             <a class=" popup-open textDecorNone" href="/view/viewproduct/@product.Id">@product.Name.Replace("Пижама", "")</a>
                         </div>
                         <div class="priceMain">
-                            <div class="newPrice">@product.Price&#1056;</div>
                             @if (product.Price < product.PriceWithoutSales)
                             {
+                                <div class="newPrice">@product.Price&#1056;</div>
                                 <div class="oldPrice">@product.PriceWithoutSales&#1056;</div>
+                            }
+                            else
+                            {
+                                <div class="newPriceWithoutSale">@product.Price&#1056;</div>
                             }
                         </div>
                     </div>
@@ -289,24 +314,28 @@
                 {
                     <div class="hits_item">
                         <div class="hits_pic">
-                            <a class="CursorInishial DescTop" href="/view/viewproduct/@product.Id"> <img class="hits_img" src="~/images/Каталог/Girls/@product.Address" alt="@product.Name.Replace("Пижама","")"> </a>
-                            @*<a class="CursorInishial Phone" href="/view/viewproduct/@product.Id"> <img class="hits_img" src="~/images/Каталог/Girls/smallimage/@product.Address" alt="@product.Name.Replace("Пижама","")"> </a>*@
-                            <div class="buttons AdaptiveDisplayCatalog"> <a class="btn btn-hit popup-open" href="/Home/popupFade/@product.Id">УЗНАТЬ ПОДРОБНЕЕ</a> <a class="btn btn-hit popup-buy-open" href="/Home/popupBuy/@product.Id">КУПИТЬ</a> </div>
+                            @*Phone <a class="CursorInishial DescTop" href="/view/viewproduct/@product.Id"> <img class="hits_img" src="~/images/Каталог/Girls/@product.Address" alt="@product.Name.Replace("Пижама","")"> </a>*@
+                            <a class="CursorInishial " href="/view/viewproduct/@product.Id"> <img class="hits_img" src="~/images/Каталог/Girls/smallimage/@product.Address" alt="@product.Name.Replace("Пижама","")"> </a>
+                            <div class="buttons AdaptiveDisplayCatalog"> <a class="btn btn-hit popup-open" href="/Home/popupFade/@product.Id">УЗНАТЬ ПОДРОБНЕЕ</a> @*<a class="btn btn-hit popup-buy-open" href="/Home/popupBuy/@product.Id">КУПИТЬ</a>*@ </div>
                             @if (product.Favourite)
                             {<div class="hit_word">ХИТ</div>}
-                            @if ((((product.Price * 100) / product.PriceWithoutSales) - 100) * (-1) > 2)
+                            @*@if ((((product.Price * 100) / product.PriceWithoutSales) - 100) * (-1) > 2)
                             {
                                 <div class="sale">-@(Product.RoundFive(((product.Price * 100) / product.PriceWithoutSales) - 100) * (-1))%</div>
-                            }
+                            }*@
                         </div>
                         <div class="hits_title">
                             <a class=" popup-open textDecorNone" href="/view/viewproduct/@product.Id">@product.Name</a>
                         </div>
                         <div class="priceMain">
-                            <div class="newPrice">@product.Price&#1056;</div>
                             @if (product.Price < product.PriceWithoutSales)
                             {
+                                <div class="newPrice">@product.Price&#1056;</div>
                                 <div class="oldPrice">@product.PriceWithoutSales&#1056;</div>
+                            }
+                            else
+                            {
+                                <div class="newPriceWithoutSale">@product.Price&#1056;</div>
                             }
                         </div>
                     </div>
@@ -382,19 +411,23 @@
                             <div class="buttons AdaptiveDisplayCatalog"> <a class="btn btn-hit popup-open" href="/view/viewproduct/@product.Id">УЗНАТЬ ПОДРОБНЕЕ</a> </div>
                             @if (product.Favourite)
                             {<div class="hit_word">ХИТ</div>}
-                            @if ((((product.Price * 100) / product.PriceWithoutSales) - 100) * (-1) > 2)
+                            @*@if ((((product.Price * 100) / product.PriceWithoutSales) - 100) * (-1) > 2)
                             {
                                 <div class="sale">-@(Product.RoundFive(((product.Price * 100) / product.PriceWithoutSales) - 100) * (-1))%</div>
-                            }
+                            }*@
                         </div>
                         <div class="hits_title">
                             <a class=" popup-open textDecorNone" href="/view/viewproduct/@product.Id">@product.Name</a>
                         </div>
                         <div class="priceMain">
-                            <div class="newPrice">@product.Price&#1056;</div>
                             @if (product.Price < product.PriceWithoutSales)
                             {
+                                <div class="newPrice">@product.Price&#1056;</div>
                                 <div class="oldPrice">@product.PriceWithoutSales&#1056;</div>
+                            }
+                            else
+                            {
+                                <div class="newPriceWithoutSale">@product.Price&#1056;</div>
                             }
                         </div>
                     </div>
@@ -466,12 +499,12 @@
                 <div class="reviews_item">
                     <div class="reviews_pic"><img src="~/images/Отзывы/MesОтзыв2.jpg" alt="Отзыв покупателей 2"></div>
                 </div>
-                <div class="reviews_item">
-                    <div class="reviews_pic"><img src="~/images/Отзывы/MesОтзыв3.jpg" alt="Отзыв покупателей 3"></div>
-                </div>
-                <div class="reviews_item">
-                    <div class="reviews_pic"><img src="~/images/Отзывы/MesОтзыв4.jpg" alt="Отзыв покупателей 4"></div>
-                </div>
+                @*<div class="reviews_item">
+                        <div class="reviews_pic"><img src="~/images/Отзывы/MesОтзыв3.jpg" alt="Отзыв покупателей 3"></div>
+                    </div>*@
+                @*<div class="reviews_item">
+                        <div class="reviews_pic"><img src="~/images/Отзывы/MesОтзыв4.jpg" alt="Отзыв покупателей 4"></div>
+                    </div>*@
                 <div class="reviews_item">
                     <div class="reviews_pic"><img src="~/images/Отзывы/MesОтзыв5.jpg" alt="Отзыв покупателей 5"></div>
                 </div>
@@ -490,12 +523,12 @@
                 @*<div class="reviews_item">
                         <div class="reviews_pic"><img src="~/images/Отзывы/MesОтзыв10.jpg" alt="Отзыв покупателей 10"></div>
                     </div>*@
-                <div class="reviews_item">
-                    <div class="reviews_pic"><img src="~/images/Отзывы/MesОтзыв11.jpg" alt="Отзыв покупателей 11"></div>
-                </div>
-                <div class="reviews_item">
-                    <div class="reviews_pic"><img src="~/images/Отзывы/MesОтзыв12.jpg" alt="Отзыв покупателей 12"></div>
-                </div>
+                @*<div class="reviews_item">
+                        <div class="reviews_pic"><img src="~/images/Отзывы/MesОтзыв11.jpg" alt="Отзыв покупателей 11"></div>
+                    </div>
+                    <div class="reviews_item">
+                        <div class="reviews_pic"><img src="~/images/Отзывы/MesОтзыв12.jpg" alt="Отзыв покупателей 12"></div>
+                    </div>*@
             </div>
         </div>
     </div>
@@ -549,7 +582,19 @@
     </div>
 </div>
 
-
+<div class="instagram">
+    <div class="container">
+        <div class="instagram_inner">
+            <div class="instagram_photo"><img class="instagram_photo_img" src="~/images/phoneMain.png" alt=""></div>
+            <div class="instagram_info">
+                <div class="instagram_text">Больше отзывов, фото и видео, а также актуальные акции ты найдёшь в нашем Instagram аккаунте</div>
+                <div class="instagram_text2">Подпишись, чтобы не потерять нас :)</div>
+                <div class="toinst"> <a class="btn btn-choose" href="https://instagram.com/pizhamkafox">ПЕРЕЙТИ В ИНСТАГРАМ</a> </div>
+            </div>
+            <div class="toinst2"> <a class="btn btn-choose" href="https://instagram.com/pizhamkafox">ПЕРЕЙТИ В ИНСТАГРАМ</a> </div>
+        </div>
+    </div>
+</div>
 
 
 
@@ -583,7 +628,7 @@
     $(".decor").submit(function (e) {
         e.preventDefault();
         //var url = "/Cart/AddToCart/";  свяжется с вами в течение      3 минут
-        $.get("/home/ModalText?text=Наш менеджер уже трепетно набирает Ваш номер телефона!", function (data) {
+        $.get("/home/ModalText?text=Наш менеджер уже трепетно набирает Ваш номер телефона!?id=обратный звонок", function (data) {
             $('#dialogContentpopupModalText').html(data);
             $('.popup-ModalText').fadeIn();
         });
@@ -600,41 +645,41 @@
 
 @*///////////////////////наши преимущества/////////////////////////////////  *@
 @*<div class="feauters" id="feauters">
-    <div class="container">
-        <div class="feauters_inner">
-            <div class="feauters_title">ПОЧЕМУ МЫ ЛУЧШИЕ</div>
-            <div class="feauters_subtitle">В чем преимущества наших пижам?</div>
-            <div class="feauter_items">
-                <div class="feauter_item">
-                    <div class="feauter_pic"> <img class="pic" src="~/images/Преимущества/kach.jpg" alt="Преимущество качество"> </div>
-                    <div class="feauter_item_title"> КАЧЕСТВЕННЫЕ МАТЕРИАЛЫ </div>
-                </div>
-                <div class="feauter_item">
-                    <div class="feauter_pic"> <img class="pic" src="~/images/Преимущества/ned.jpg" alt="Преимущество низкие цены"> </div>
-                    <div class="feauter_item_title"> НИЗКИЕ ЦЕНЫ </div>
-                </div>
-                <div class="feauter_item">
-                    <div class="feauter_pic"> <img class="pic" src="~/images/Преимущества/komf.jpg" alt="Преимущество комфорт"> </div>
-                    <div class="feauter_item_title"> КОМФОРТ И ЭСТЕТИКА </div>
-                </div>
-                <div class="feauter_item">
-                    <div class="feauter_pic"> <img class="pic" src="~/images/Преимущества/dost.jpg" alt="Преимущество доставка"> </div>
-                    <div class="feauter_item_title"> ДОСТАВКА ПО ВСЕЙ РОССИИ </div>
-                </div>
-                <div class="feauter_item">
-                    <div class="feauter_pic"> <img class="pic" src="~/images/Преимущества/kons.jpg" alt="Преимущество консультации"> </div>
-                    <div class="feauter_item_title"> БЕСПЛАТНЫЕ КОНСУЛЬТАЦИИ </div>
+        <div class="container">
+            <div class="feauters_inner">
+                <div class="feauters_title">ПОЧЕМУ МЫ ЛУЧШИЕ</div>
+                <div class="feauters_subtitle">В чем преимущества наших пижам?</div>
+                <div class="feauter_items">
+                    <div class="feauter_item">
+                        <div class="feauter_pic"> <img class="pic" src="~/images/Преимущества/kach.jpg" alt="Преимущество качество"> </div>
+                        <div class="feauter_item_title"> КАЧЕСТВЕННЫЕ МАТЕРИАЛЫ </div>
+                    </div>
+                    <div class="feauter_item">
+                        <div class="feauter_pic"> <img class="pic" src="~/images/Преимущества/ned.jpg" alt="Преимущество низкие цены"> </div>
+                        <div class="feauter_item_title"> НИЗКИЕ ЦЕНЫ </div>
+                    </div>
+                    <div class="feauter_item">
+                        <div class="feauter_pic"> <img class="pic" src="~/images/Преимущества/komf.jpg" alt="Преимущество комфорт"> </div>
+                        <div class="feauter_item_title"> КОМФОРТ И ЭСТЕТИКА </div>
+                    </div>
+                    <div class="feauter_item">
+                        <div class="feauter_pic"> <img class="pic" src="~/images/Преимущества/dost.jpg" alt="Преимущество доставка"> </div>
+                        <div class="feauter_item_title"> ДОСТАВКА ПО ВСЕЙ РОССИИ </div>
+                    </div>
+                    <div class="feauter_item">
+                        <div class="feauter_pic"> <img class="pic" src="~/images/Преимущества/kons.jpg" alt="Преимущество консультации"> </div>
+                        <div class="feauter_item_title"> БЕСПЛАТНЫЕ КОНСУЛЬТАЦИИ </div>
 
 
-                </div>
-                <div class="feauter_item">
-                    <div class="feauter_pic"> <img class="pic" src="~/images/Преимущества/imgonline-com-ua-Replace-color-uBjDNN85XAm95T9.jpg" alt="Преимущество платежи"> </div>
-                    <div class="feauter_item_title"> БЕЗОПАСНЫЕ ПЛАТЕЖИ </div>
+                    </div>
+                    <div class="feauter_item">
+                        <div class="feauter_pic"> <img class="pic" src="~/images/Преимущества/imgonline-com-ua-Replace-color-uBjDNN85XAm95T9.jpg" alt="Преимущество платежи"> </div>
+                        <div class="feauter_item_title"> БЕЗОПАСНЫЕ ПЛАТЕЖИ </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>*@
+    </div>*@
 @*/////////////////////////////////////////////////////////////////////////////////  *@
 @*///////////////////////наши контакты/////////////////////////////////  *@
 <div class="contacts" id="contacts">
@@ -663,31 +708,31 @@
 @*/////////////////////////////////////////////////////////////////////////////////  *@
 @*///////////////////////иконки инстаграм и вотсап/////////////////////////////////  *@
 @*<div class="social">
-    <div class="container">
-        <div class="social_inner">
+        <div class="container">
+            <div class="social_inner">
 
-            <div class="social_item">
-                <a href="https://instagram.com/pizhamkafox?igshid=14cbk9eardt8l" class="socialLink">
-                    <img src="~/images/instagram.jpg" alt="Мы в инстаграмме" class="borderRad20">
-                </a>
-            </div>
-            <div class="social_item">
-                <a href="https://t.me/AdilyaKM" class="socialLink">
-                    <img src="~/images/telega.png" alt="Мы в телеграмме">
-                </a>
-            </div>
-            <div class="social_item">
-                <a href="https://api.whatsapp.com/send?phone=79504256908" class="socialLink">
-                    <img src="~/images/whatsapp.jpg" alt="Написать нам в whatsapp" class="borderRad20">
-                </a>
-            </div>
+                <div class="social_item">
+                    <a href="https://instagram.com/pizhamkafox?igshid=14cbk9eardt8l" class="socialLink">
+                        <img src="~/images/instagram.jpg" alt="Мы в инстаграмме" class="borderRad20">
+                    </a>
+                </div>
+                <div class="social_item">
+                    <a href="https://t.me/AdilyaKM" class="socialLink">
+                        <img src="~/images/telega.png" alt="Мы в телеграмме">
+                    </a>
+                </div>
+                <div class="social_item">
+                    <a href="https://api.whatsapp.com/send?phone=79504256908" class="socialLink">
+                        <img src="~/images/whatsapp.jpg" alt="Написать нам в whatsapp" class="borderRad20">
+                    </a>
+                </div>
 
+            </div>
         </div>
-    </div>
-</div>*@
+    </div>*@
 @*////////////////////////////////////////////////////////////////////  *@
 <div class="footer">
-    <div class="container">
+    <div class="container TextFooter">
         Пижамка-Фокс - шёлковые пижамы с принтом для девушек
     </div>
 </div>
