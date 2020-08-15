@@ -84,7 +84,7 @@
                                 <button class="btn btn-add addToCart AddPopup" type="submit">ДОБАВИТЬ В КОРЗИНУ</button>
                                 <a class="btn btn-add goToCart popup-cart-open AddPopup" href="/Cart/Cart">ПЕРЕЙТИ В КОРЗИНУ</a>
                                 @*<a class="btn btn-add addToCart" type="submit">ДОБАВИТЬ В КОРЗИНУ</a>*@
-                                <div class="paket"><img src="~/images/Корзина/paket.png" alt="покупка"></div>
+                                <div class="paket"><img src="~/images/Корзина/trash.png" alt="покупка"></div>
                             </div>
 
                             <header>
@@ -321,6 +321,9 @@
                     $('.popup-cart').fadeIn();
                     $('.popup-fade').fadeOut();
                 });
+                if (innerWidth < 421) {
+                    document.body.style.overflowY = "hidden";
+                }
                 //document.body.style.overflow = "hidden";
                 return false;
             });
@@ -334,11 +337,13 @@
                     e.stopPropagation();
                     $('.popup-cart').fadeOut();
                 }
+                document.body.style.overflow = "auto";
             });
             $('.popup-cart').click(function (e) {
                 if ($(e.target).closest('.cart').length == 0) {
                     $(this).fadeOut();
                 }
+                document.body.style.overflow = "auto";
             });
         });
     </script>

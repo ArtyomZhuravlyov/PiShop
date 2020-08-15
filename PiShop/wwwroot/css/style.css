@@ -118,15 +118,6 @@ h6 {
     z-index: 9999;
 }
 
-.cart {
-    position: relative;
-    padding: 20px;
-    width: 80%;
-    height: auto;
-    margin: 80px auto;
-    background: #fff;
-    border-radius: 4px;
-}
 
 .popup-cart-close {
     position: absolute;
@@ -135,6 +126,7 @@ h6 {
 }
 
     .popup-cart-close img {
+        outline: none;
         display: block;
         width: 30px;
         height: auto;
@@ -1195,6 +1187,8 @@ h6 {
     width: 100%;
 }
 
+
+
 .goToCart {
     background-color: #319fa200;
     color: #319fa2;
@@ -1548,16 +1542,17 @@ h6 {
 
     /*БУРГЕР МЕНЮ*/
 
-    .burger {
-        display: none;
-        background: none;
-        border: 0;
-        cursor: pointer;
-        /*padding: 9px 2px;*/
-    }
+.burger {
+    display: none;
+    background: none;
+    border: 0;
+    cursor: pointer;
+    outline: none;
+    /*padding: 9px 2px;*/
+}
 
 burger:focus {
-    outline: 0
+    outline: none;
 }
 
 
@@ -2085,10 +2080,7 @@ burger:focus {
             margin: 0 auto;
         }
 
-        .cart {
-            padding: 0px;
-            width: 100%;
-        }
+
 
         .hits_pic:hover .hits_img {
             opacity: initial;

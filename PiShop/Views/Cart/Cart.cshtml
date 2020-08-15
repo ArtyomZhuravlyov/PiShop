@@ -8,6 +8,7 @@
     @*<script src='https://cdnjs.cloudflare.com//ajax/libs/jquery/3.1.0/jquery.min.js'></script>*@
     <meta charset="UTF-8">
     <script src="https://yandex.st/jquery/2.1.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="popup-cart">
@@ -15,8 +16,8 @@
         @if (Model?.Cart != null && Model.Cart?.Lines?.Count() != 0)
         {<!-- Title -->
             <div class="overflow2">
-                <div class="cart">
-                    <a class="popup-cart-close" href="#"> <img src="~/images/krestik.jpg" alt=""></a>
+                <div class="cart ">
+                    <a class="popup-cart-close closeCartInCart" href="#"> <img src="~/images/krestik.jpg" alt=""></a>
                     <div class="shopping-cart">
 
                         <div class="cart_title">Ваша корзина</div>
@@ -40,8 +41,9 @@ new { id = cartLine.productCart.Id, size = cartLine.productCart.Size }, new { @c
                             <div class="CartMobile">
                                 <div class="description">
                                     <span>
-                                        <a class="compItem ColourChangeModal colorGrey">@cartLine.productCart.Name   @cartLine.productCart.Size</a>
+                                        <a class="compItem ColourChangeModal">@cartLine.productCart.Name</a>
                                     </span>
+                                    <div class="SizeCart">Размер @cartLine.productCart.Size</div>
                                 </div>
                                 <div class="quantity">
                                     <a class="minus-btn buttonStyleCart  button" href="/Cart/RemoveOneProductToCart?id=@cartLine.productCart.Id&size=@cartLine.productCart.Size"><img src="~/images/Корзина/minus.svg" /></a>
@@ -49,24 +51,29 @@ new { id = cartLine.productCart.Id, size = cartLine.productCart.Size }, new { @c
                                     <a class="plus-btn buttonStyleCart  button" href="/Cart/AddToCart?id=@cartLine.productCart.Id&size=@cartLine.productCart.Size"><img src="~/images/Корзина/plus.svg" /></a>
                                 </div>
                                 <div class="size AdaptiveMobile">
-                                    <div class="PriceW AdaptiveMobile">Цена</div>
-                                    <div class="priceCart AdaptiveMobile">@cartLine.productCart.Price руб</div>
+                                    <div class="PriceW ">Цена</div>
+                                    <div class="priceCart">@cartLine.productCart.Price руб</div>
                                 </div>
                                 <div class="size">
                                     <div class="total-priceW">Итого</div>
                                     <div class="total-price">@(cartLine.productCart.Price * cartLine.Quantity)  руб</div>
                                 </div>
                             </div>
-                          
+                            @*<div class="buttonsCart">
+                                <a class="delete-btn" href="/Cart/RemoveLine?id=@cartLine.productCart.Id&size=@cartLine.productCart.Size"> </a>
+                              
+                            </div>*@
+
+
                         </div>
                         }
                         <div class="Total">
                             <div class="box">
-
-                                <div class="ContainerTotal-total-price"> Итого к оплате: <a class="total-total-price">@Model.Cart.ComputeTotalValueWithDelivery() руб</a> </div>
-                                <div class="ContainerTotal-Sale"> Скидка: <a class="total-Sale">@Model.Cart.CalcSale() руб</a> </div>
-                                <div class="ContainerTotal-total-price-withSale"> Итого со скидкой: <a class="total-priceWithSale">@Model.Cart.ComputeTotalValueWithSale() руб</a> </div>
-                                <div class="bottons">  <a class="buttonOrder" href="/Cart/Checkout/">Оформить заказ</a> </div>
+                                <div class="boxTotal">ОБЩАЯ СТОИМОСТЬ</div>
+                                <div class="ContainerTotal-total-price"> Итого <a class="total-total-price">@Model.Cart.ComputeTotalValueWithDelivery() руб</a> </div>
+                                <div class="ContainerTotal-Sale"> Скидка <div class="min">-<a class="total-Sale"> @Model.Cart.CalcSale() руб</a></div> </div>
+                                <div class="ContainerTotal-total-price-withSale"> Итого к оплате <a class="total-priceWithSale">@Model.Cart.ComputeTotalValueWithSale() руб</a> </div>
+                                <div class="bottons">  <a class="buttonOrder" href="/Cart/Checkout/">ОФОРМИТЬ ЗАКАЗ</a> </div>
                             </div>
                             <div class="cond ">
                                 @*<div class="cond_title"> ВОЗМОЖНЫЕ ВАРИАНТЫ ОПЛАТЫ </div>
@@ -100,8 +107,8 @@ new { id = cartLine.productCart.Id, size = cartLine.productCart.Size }, new { @c
         else
         {
             <div class="overflow2">
-                <div class="cart">
-                    <a class="popup-cart-close" href="#"> <img src="~/images/krestik.jpg" alt=""></a>
+                <div class="cart emptyCart">
+                    <a class="popup-cart-close closeCartInCart" href="#"> <img src="~/images/krestik.jpg" alt=""></a>
                     <div class="shopping-cart">
 
                         <div class="titleEmptyCart">
@@ -166,15 +173,15 @@ new { id = cartLine.productCart.Id, size = cartLine.productCart.Size }, new { @c
 
                         if (data) {
 
-                            $('.ContainerTotal-Sale').text(" Скидка: " + sale + " руб");
+                            $('.total-Sale').text(sale + " руб");
 
                         }
                         else {
-                            $('.ContainerTotal-Sale').text(" Скидка: 0 руб");
+                            $('.total-Sale').text("0 руб");
                             sale = 0;
                         }
                         var priceWithSale = value - sale;
-                        $('.ContainerTotal-total-price-withSale').text(" Итого со скидкой: " + priceWithSale + " руб");
+                        $('.total-priceWithSale').text(priceWithSale + " руб");
 
                         
 
@@ -227,16 +234,16 @@ new { id = cartLine.productCart.Id, size = cartLine.productCart.Size }, new { @c
                         let sale = parseInt(value * 0.1);
 
                         if (data) {
-                            
-                            $('.ContainerTotal-Sale').text(" Скидка: " + sale + " руб");
+
+                            $('.total-Sale').text(sale + " руб");
+
                         }
                         else {
-                            $('.ContainerTotal-Sale').text(" Скидка: 0 руб");
+                            $('.total-Sale').text("0 руб");
                             sale = 0;
                         }
-
                         var priceWithSale = value - sale;
-                        $('.ContainerTotal-total-price-withSale').text(" Итого со скидкой: " + priceWithSale + " руб");
+                        $('.total-priceWithSale').text(priceWithSale + " руб");
 
                     });
 
@@ -268,23 +275,26 @@ new { id = cartLine.productCart.Id, size = cartLine.productCart.Size }, new { @c
 
                     //$this.closest('div').next().next(). - это карт мобаил   //children('.size').next(). - это сайз суммы
                     var value = parseInt(($this.closest('div').next().next().children('.size').next().children('.total-price').text())); //5
+                    console.log(value);
                     var MainPrice = parseInt($('.total-total-price').text());
+                    console.log(MainPrice);
                     var nextMainPrice = MainPrice - value;
+                    console.log(nextMainPrice);
                     $('.total-total-price').text(nextMainPrice + " руб");
 
                     let sale = parseInt(nextMainPrice * 0.1);
 
                     if (data) {
 
-                        $('.ContainerTotal-Sale').text(" Скидка: " + sale + " руб");
+                        $('.total-Sale').text(sale + " руб");
+
                     }
                     else {
-                        $('.ContainerTotal-Sale').text(" Скидка: 0 руб");
+                        $('.total-Sale').text("0 руб");
                         sale = 0;
                     }
-
                     var priceWithSale = nextMainPrice - sale;
-                    $('.ContainerTotal-total-price-withSale').text(" Итого со скидкой: " + priceWithSale + " руб");
+                    $('.total-priceWithSale').text(priceWithSale + " руб");
 
                     //Sale = data;
                     //$('.ContainerTotal-Sale').text(" Скидка: " + data + " руб");
