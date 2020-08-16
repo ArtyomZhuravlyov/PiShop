@@ -145,7 +145,7 @@
                                 }
                             </div>
                         </div>
-                        <div class="info-text">@Model.DescriptionPopup</div>
+                        <div class="info-text">@Html.Raw(Model.DescriptionPopup)</div>
                             <div class="info AdaptiveDisplay displayNone">
                                 <div class="info-text">
                                     <div class="info_text_item">
@@ -248,7 +248,7 @@
                     });
 
                     var that = $(".btn-add").closest('.animate').find('img');
-                    var bascket = $(".korzina");
+                    var bascket = $(".korzinaToPacket");
                     var w = that.width();
                     that.clone().css({
                         'width': w
@@ -291,7 +291,7 @@
                 });
 
                 var that = $(".btn-add").closest('.animate').find('img');
-                var bascket = $(".korzina");
+                var bascket = $(".korzinaToPacket");
                 var w = that.width();
                 that.clone().css({
                     'width': w

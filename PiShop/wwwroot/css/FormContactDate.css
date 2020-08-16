@@ -1,13 +1,13 @@
 ﻿.containerFormContactDate {
     max-width: 750px;
-    margin: 30px auto;
+   
     background: #FFFFFF;
     box-shadow: 1px 2px 3px 0px rgba(0,0,0,0.10);
     border-radius: 35px;
     display: flex;
     flex-direction: column;
     padding: 20px;
-    padding-right: 45px;
+    
 }
 
 body::before {
@@ -25,7 +25,8 @@ body::before {
 }
 
 .MyForm-control {
-    height: 24px;
+    padding: 0;
+    height: 34px;
     font-size: 18px;
 }
 

@@ -47,7 +47,7 @@ new { id = cartLine.productCart.Id, size = cartLine.productCart.Size }, new { @c
                                 </div>
                                 <div class="quantity">
                                     <a class="minus-btn buttonStyleCart  button" href="/Cart/RemoveOneProductToCart?id=@cartLine.productCart.Id&size=@cartLine.productCart.Size"><img src="~/images/Корзина/minus.svg" /></a>
-                                    <input type="text" name="name" value="@cartLine.Quantity">
+                                    <input readonly type="text" name="name" value="@cartLine.Quantity">
                                     <a class="plus-btn buttonStyleCart  button" href="/Cart/AddToCart?id=@cartLine.productCart.Id&size=@cartLine.productCart.Size"><img src="~/images/Корзина/plus.svg" /></a>
                                 </div>
                                 <div class="size AdaptiveMobile">

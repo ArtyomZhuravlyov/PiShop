@@ -197,7 +197,7 @@
 }
 */
 
-.buttonOrder {
+/*.buttonOrder {
     margin-top: 20px;
     letter-spacing: 2px;
     width: 70%;
@@ -223,7 +223,7 @@
         background-color: #01898cb0;
         color: #fff;
         border-bottom-color: #0e5f63d9;
-    }
+    }*/
 
 .cart {
     position: relative;
@@ -439,6 +439,9 @@ input:focus {
     }
 
     .buttonOrder {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 14px;
+        text-decoration: none;
         letter-spacing: initial;
         border-radius: initial;
         font-weight: 600;
@@ -456,9 +459,9 @@ input:focus {
     }
 
         .buttonOrder:hover {
-            background-color: initial;
+            /*background-color: initial;
             color: initial;
-            border-bottom-color: initial;
+            border-bottom-color: initial;*/
         }
 
     .quantity {

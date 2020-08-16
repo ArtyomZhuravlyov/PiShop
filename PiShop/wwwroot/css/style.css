@@ -23,6 +23,19 @@ h6 {
     font-weight: normal;*/
 }
 
+a {
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+}
+    a:focus {
+        outline: none;
+    }
+
+
+.korzina:focus {
+    outline: none;
+}
+
 .container {
     width: 100%;
     max-width: 1100px;
@@ -1244,7 +1257,7 @@ h6 {
 
 
 
-.buttonOrder {
+/*.buttonOrder {
     margin-top: 20px;
     letter-spacing: 2px;
     width: 70%;
@@ -1271,7 +1284,7 @@ h6 {
         background-color: #01898cb0;
         color: #fff;
         border-bottom-color: #0e5f63d9;
-    }
+    }*/
 
 .buttonStyleCart {
     background-color: #ecdeec;
@@ -1336,6 +1349,7 @@ h6 {
         .radio label {
             margin: 12px 5px;
             cursor: pointer;
+            -webkit-tap-highlight-color: transparent;
         }
 
 
@@ -1927,7 +1941,7 @@ burger:focus {
             margin-right: 7px;
             color: #e32526;
             /* font-weight: 600; */
-            font-size: 22px;
+            font-size: 21px;
         }
 
         .chooseSize {
