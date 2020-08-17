@@ -493,22 +493,21 @@ a {
             z-index: 9999;
         }
 
-    .popup {
-        /*position: fixed;*/
-        position: relative;
-        top: 20px;
-        /*left: 0;
-    right: 0;*/
-        padding: 20px;
-        width: 80%;
-        height: auto;
-        margin: 0 auto;
-        background: #fff;
-        border: 1px solid #333333;
-        border-radius: 4px;
-        z-index: 99999;
-        opacity: 1;
-    }
+.popup {
+    /*position: fixed;*/
+    position: relative;
+    /*top: 20px;*/
+    width: 95%;
+    max-width: 1100px;
+    padding: 20px;
+    height: auto;
+    margin: 0 auto;
+    background: #fff;
+    border: 1px solid #333333;
+    border-radius: 4px;
+    z-index: 99999;
+    opacity: 1;
+}
 
     .popup-close {
         position: absolute;
@@ -890,11 +889,19 @@ a {
     justify-content: left;
 }
 
-    .PriceMainDetail {
-        font-size: 17px;
-        margin-top: 4px;
-        margin-bottom: 9px;
-    }
+.PriceMainDetail {
+    font-size: 17px;
+    margin-top: 4px;
+    margin-bottom: 9px;
+}
+
+.newPricePopup {
+    font-family: 'Noto Sans SC', sans-serif;
+    margin-right: 7px;
+    color: #cc2223;
+    font-size: 24px;
+    line-height: normal;
+}
 
 .newPriceWithoutSale {
     font-family: 'Noto Sans SC', sans-serif;
@@ -913,11 +920,13 @@ a {
 }
 
 .oldPrice {
-    font-size: 12px;
+    font-size: 18px;
     color: #3e3e3e;
     text-decoration: line-through;
     display: flex;
     align-items: center;
+    margin-left: 3px;
+    margin-top: 3px;
 }
 
     .hits {
@@ -1087,37 +1096,37 @@ a {
     }
     /*СОДЕРЖИМОЕ МОДАЛЬНОГО ОКНА - УЗНАТЬ ПОДРОБНЕЕ*/
 
-    .overflow2 {
-        position: fixed;
-        opacity: 1;
-        z-index: 10000;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        overflow-y: auto;
-        /*right: 17px;*/
-        /*padding-right: 17px;*/
-    }
+.overflow2 {
+    position: fixed;
+    opacity: 1;
+    z-index: 10000;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow-y: auto;
+    display: flex;
+    align-items: center;
+}
 
     .item_pizham {
         display: flex;
     }
 
-    .theFirstBlock {
-        width: 30%;
-        /*width: 40%;*/
-    }
+.theFirstBlock {
+    width: 55%;
+}
 
-    .picture {
-        /*width: 100%;*/
-        cursor: zoom-in;
-        /*position: relative;
-    overflow: hidden;*/
-        width: 100%;
-        /*height: 270px;*/
-        /*height: 370px;*/
-    }
+.First {
+    width: 100%;
+    display: flex;
+}
+
+
+.picture {
+    cursor: zoom-in;
+    width: 80%;
+}
 
         .picture img {
             display: block;
@@ -1144,11 +1153,10 @@ a {
     }
 
 
-    .pictureSecond {
-        height: 50px;
-        width: 15%;
-        margin-top: 5px;
-    }
+.pictureSecond {
+    width: 20%;
+    margin-right: 6px;
+}
 
     .blockSecond {
         cursor: pointer;
@@ -1195,12 +1203,36 @@ a {
     }
 
 .AddPopup {
-    margin-left: 5%;
-    margin-right: 5%;
-    width: 100%;
+    width: 80%;
+    /*position: relative;*/
+    /*z-index:100;*/
 }
 
+.PopupPazmer {
+    font-size: 14px;
+    text-decoration: underline;
+}
 
+.defin{
+    font-size:15px;
+    margin-top: 25px;
+    color: #6e6e6e;
+
+}
+
+.defin_title {
+    font-size: 17px;
+    margin-bottom: 10px;
+    color: black;
+}
+
+.defin_suptitle {
+    margin-bottom: 10px;
+}
+
+.defin_items {
+    margin-bottom: 18px;
+}
 
 .goToCart {
     background-color: #319fa200;
@@ -1230,9 +1262,9 @@ a {
     letter-spacing: 1px;
 }
 
-    .animate {
+    /*.animate {
         position: relative;
-    }
+    }*/
 
 .paket {
     top: -300px;
@@ -1291,22 +1323,18 @@ a {
     border-radius: 6px;
     border: none;
     cursor: pointer;
-    /*margin-top: 22px;*/
     padding: 4px 8px;
 }
 
-    .info {
-        /*width: 70%;*/
-        width: 70%;
-        padding-left: 20px;
-    }
+.info {
+    width: 45%;
+    padding-left: 20px;
+}
 
-    .info_title {
-        font-weight: 700;
-        padding-bottom: 10px;
-        text-align: center;
-        font-size: 19px;
-    }
+.info_title {
+    padding-bottom: 5px;
+    font-size: 22px;
+}
 
     .info_text_item {
         position: relative;
@@ -1337,7 +1365,8 @@ a {
 
     .radio {
         display: flex;
-        justify-content: center;
+        margin-left: -6px;
+
     }
 
         .radio input[type='radio'] {
@@ -1374,12 +1403,11 @@ a {
         display: initial;
     }
 
-    .chooseSize {
-        text-align: center;
-        color: #5b2d5e;
-        font-weight: 600;
-        font-size: 20px;
-    }
+.chooseSize {
+    color: #000000;
+    font-weight: 600;
+    font-size: 18px;
+}
 
     .textRed {
         color: red;
@@ -1937,10 +1965,9 @@ burger:focus {
         }
 
         .newPricePopup {
-            font-family: 'Noto Sans SC', sans-serif;
+            /*font-family: 'Noto Sans SC', sans-serif;
             margin-right: 7px;
-            color: #e32526;
-            /* font-weight: 600; */
+            color: #cc2223;*/
             font-size: 21px;
         }
 
@@ -1960,7 +1987,7 @@ burger:focus {
         .animate {
             display: flex;
             flex-wrap: wrap;
-            position: relative;
+            /*position: relative;*/
             justify-content: center;
         }
 
@@ -2075,9 +2102,9 @@ burger:focus {
             padding: 0 30px;
         }
 
-        /*.paket {
+        .paket {
             top: -300px;
-        }*/
+        }
 
         .hits_item {
             width: 50%;
@@ -2139,32 +2166,25 @@ burger:focus {
 
 
 
-    /*@media (max-width: 1367px) {
-    top: 5px;
-}*/
 
-    @media (min-width: 1500px) {
+    /*@media (min-width: 1500px) {
 
         .info {
             width: 70%;
-            /*width: 60%;*/
         }
 
         .theFirstBlock {
             width: 30%;
-            /*width: 40%;*/
         }
 
         .pictureSecond {
             height: 68px;
-            /*width: 15%;
-        margin-top: 5px;*/
         }
 
         .popup {
             top: 10%;
         }
-    }
+    }*/
 
 
 @media(min-height: 770px) {

@@ -85,7 +85,6 @@
     <div class="pop">
         <form asp-controller="Cart" asp-action="AddToCart" id="popupFadeForm" method="get">
             @*<div class="overflow2">*@
-            @*<div class="overflow2">*@
             <div class="popupReplace">
 
                 <a class="popup-close" style="top: 0px; right: 0px;" href="https://pizhamka-fox.ru/"> <img src="~/images/krestik.jpg" alt="закрыть окно"></a>
@@ -372,29 +371,37 @@
     <script>
         $(document).ready(function ($) {
             $('.popup-cart-open').click(function (e) {
-                e.preventDefault();
-                $.get(this.href, function (data) {
-                    $('#dialogContentpopupCart').html(data);
-                    $('.popup-cart').fadeIn();
-                    $('.popup-fade').fadeOut();
-                });
-                //document.body.style.overflow = "hidden";
-                return false;
+                if (innerWidth > 440) { //в мобильной версии открывает в новом окне, а в десктоп в модальном
+                    e.preventDefault();
+                    $.get(this.href, function (data) {
+                        $('#dialogContentpopupCart').html(data);
+                        $('.popup-cart').fadeIn();
+                        $('.popup-fade').fadeOut();
+                    });
+                    //document.body.style.overflow = "hidden";
+                    return false;
+                }
             });
             $('.popup-cart-close').click(function () {
-                $(this).parents('.popup-cart').fadeOut();
-                document.body.style.overflow = "auto";
-                return false;
+                if (innerWidth > 440) { //в мобильной версии открывает в новом окне, а в десктоп в модальном
+                    $(this).parents('.popup-cart').fadeOut();
+                    document.body.style.overflow = "auto";
+                    return false;
+                }
             });
             $(document).keydown(function (e) {
-                if (e.keyCode === 27) {
-                    e.stopPropagation();
-                    $('.popup-cart').fadeOut();
+                if (innerWidth > 440) { //в мобильной версии открывает в новом окне, а в десктоп в модальном
+                    if (e.keyCode === 27) {
+                        e.stopPropagation();
+                        $('.popup-cart').fadeOut();
+                    }
                 }
             });
             $('.popup-cart').click(function (e) {
-                if ($(e.target).closest('.cart').length == 0) {
-                    $(this).fadeOut();
+                if (innerWidth > 440) { //в мобильной версии открывает в новом окне, а в десктоп в модальном
+                    if ($(e.target).closest('.cart').length == 0) {
+                        $(this).fadeOut();
+                    }
                 }
             });
         });

@@ -17,55 +17,47 @@
         {<!-- Title -->
             <div class="overflow2">
                 <div class="cart ">
-                    <a class="popup-cart-close closeCartInCart" href="#"> <img src="~/images/krestik.jpg" alt=""></a>
+                    <a class="DescTop popup-cart-close closeCartInCart" href="#"> <img src="~/images/krestik.jpg" alt=""></a>
                     <div class="shopping-cart">
 
                         <div class="cart_title">Ваша корзина</div>
-                        <div class="title">
-                            <div class="column">
-                                <div class="textColumn textColumnName"> Наименование </div>
-                                <div class="textColumn textColumnQuantity"> Количество </div>
-                                <div class="textColumn textColumnPrice"> Цена </div>
-                                <div class="textColumn textColumnAmount"> Сумма </div>
-                            </div>
-                        </div>
                         @foreach (CartLine cartLine in Model.Cart.Lines)
                         {
-                        <div class="item">
-                            <div class="buttonsCart">
-                                @Html.ActionLink("", "RemoveLine", "Cart",
-new { id = cartLine.productCart.Id, size = cartLine.productCart.Size }, new { @class = "delete-btn" } )
+                            <div class="item">
+                                <div class="buttonsCart">
+                                    @Html.ActionLink("", "RemoveLine", "Cart",
+    new { id = cartLine.productCart.Id, size = cartLine.productCart.Size }, new { @class = "delete-btn" } )
+                                </div>
+                                <div class="image"> <img src="~/images/Каталог/Girls/@cartLine.productCart.Address" class="imageShoping-cart" height="110" alt="" /> </div>
+
+                                <div class="CartMobile">
+                                    <div class="description">
+                                        <span>
+                                            <a class="compItem ColourChangeModal">@cartLine.productCart.Name</a>
+                                        </span>
+                                        <div class="SizeCart">Размер @cartLine.productCart.Size</div>
+                                    </div>
+                                    <div class="quantity">
+                                        <a class="minus-btn buttonStyleCart  button" href="/Cart/RemoveOneProductToCart?id=@cartLine.productCart.Id&size=@cartLine.productCart.Size"><img src="~/images/Корзина/minus.svg" /></a>
+                                        <input readonly type="text" name="name" value="@cartLine.Quantity">
+                                        <a class="plus-btn buttonStyleCart  button" href="/Cart/AddToCart?id=@cartLine.productCart.Id&size=@cartLine.productCart.Size"><img src="~/images/Корзина/plus.svg" /></a>
+                                    </div>
+                                    <div class="size AdaptiveMobile">
+                                        <div class="PriceW ">Цена:</div>
+                                        <div class="priceCart">@cartLine.productCart.Price руб</div>
+                                    </div>
+                                    <div class="size">
+                                        <div class="total-priceW">Итого:</div>
+                                        <div class="total-price">@(cartLine.productCart.Price * cartLine.Quantity)  руб</div>
+                                    </div>
+                                </div>
+                                @*<div class="buttonsCart">
+                    <a class="delete-btn" href="/Cart/RemoveLine?id=@cartLine.productCart.Id&size=@cartLine.productCart.Size"> </a>
+
+                </div>*@
+
+
                             </div>
-                            <div class="image"> <img src="~/images/Каталог/Girls/@cartLine.productCart.Address" class="imageShoping-cart" height="110" alt="" /> </div>
-
-                            <div class="CartMobile">
-                                <div class="description">
-                                    <span>
-                                        <a class="compItem ColourChangeModal">@cartLine.productCart.Name</a>
-                                    </span>
-                                    <div class="SizeCart">Размер @cartLine.productCart.Size</div>
-                                </div>
-                                <div class="quantity">
-                                    <a class="minus-btn buttonStyleCart  button" href="/Cart/RemoveOneProductToCart?id=@cartLine.productCart.Id&size=@cartLine.productCart.Size"><img src="~/images/Корзина/minus.svg" /></a>
-                                    <input readonly type="text" name="name" value="@cartLine.Quantity">
-                                    <a class="plus-btn buttonStyleCart  button" href="/Cart/AddToCart?id=@cartLine.productCart.Id&size=@cartLine.productCart.Size"><img src="~/images/Корзина/plus.svg" /></a>
-                                </div>
-                                <div class="size AdaptiveMobile">
-                                    <div class="PriceW ">Цена</div>
-                                    <div class="priceCart">@cartLine.productCart.Price руб</div>
-                                </div>
-                                <div class="size">
-                                    <div class="total-priceW">Итого</div>
-                                    <div class="total-price">@(cartLine.productCart.Price * cartLine.Quantity)  руб</div>
-                                </div>
-                            </div>
-                            @*<div class="buttonsCart">
-                                <a class="delete-btn" href="/Cart/RemoveLine?id=@cartLine.productCart.Id&size=@cartLine.productCart.Size"> </a>
-                              
-                            </div>*@
-
-
-                        </div>
                         }
                         <div class="Total">
                             <div class="box">
@@ -75,29 +67,14 @@ new { id = cartLine.productCart.Id, size = cartLine.productCart.Size }, new { @c
                                 <div class="ContainerTotal-total-price-withSale"> Итого к оплате <a class="total-priceWithSale">@Model.Cart.ComputeTotalValueWithSale() руб</a> </div>
                                 <div class="bottons">  <a class="buttonOrder" href="/Cart/Checkout/">ОФОРМИТЬ ЗАКАЗ</a> </div>
                             </div>
-                            <div class="cond ">
-                                @*<div class="cond_title"> ВОЗМОЖНЫЕ ВАРИАНТЫ ОПЛАТЫ </div>
-                                <div class="cond_text">
-                                    <div class="deliveryСontraction"> Оплата банковской картой </div>
+                            <div class="cond">
+                                <div style="font-size: 13px;margin-bottom: 7px;">ДОПОЛНИТЕЛЬНАЯ ИНФОРМАЦИЯ</div>
+                                <div style="margin-bottom: 2px;">
+                                    1. Доставка: оптимальный вариант доставки Вам поможет подобрать наш менеджер.
                                 </div>
-                                <div class="cond_text">
-                                    <div class="deliveryСontraction">
-                                        <img height="27" width="200" src="~/images/Корзина/cards.jpg">
-                                    </div>
-                                </div>*@
-                                @*<div class="cond_text">
-                                    <div class="delivery_item">
-                                        <div class="delivery_img"><img src="~/images/point.png" alt=""></div>
-                                        <div class="delivery_text">260Р при полной предоплате</div> 
-                                    </div>
-
-                                    <div class="delivery_item">
-                                        <div class="delivery_img "><img src="~/images/point.png" alt=""></div>
-                                        <div class="delivery_text">390Р при предоплате только за доставку, а за товар оплата при получении(почта возьмёт ещё 7% коммиссию за денежный перевод за товар с вас)</div>
-
-                                    </div>*@
-                                    @*<div class="deliveryСontraction"> Оплата при получении </div>*@
-                                @*</div>*@
+                                <div>
+                                    2. Скидка: добавь ещё одну пижаму и получи скидку 10% на весь заказ :)
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -120,6 +97,32 @@ new { id = cartLine.productCart.Id, size = cartLine.productCart.Size }, new { @c
             </div>
         }
     </div>
+
+
+    @*<div class="cond_title"> ВОЗМОЖНЫЕ ВАРИАНТЫ ОПЛАТЫ </div>
+        <div class="cond_text">
+            <div class="deliveryСontraction"> Оплата банковской картой </div>
+        </div>
+        <div class="cond_text">
+            <div class="deliveryСontraction">
+                <img height="27" width="200" src="~/images/Корзина/cards.jpg">
+            </div>
+        </div>*@
+    @*<div class="cond_text">
+        <div class="delivery_item">
+            <div class="delivery_img"><img src="~/images/point.png" alt=""></div>
+            <div class="delivery_text">260Р при полной предоплате</div>
+        </div>
+
+        <div class="delivery_item">
+            <div class="delivery_img "><img src="~/images/point.png" alt=""></div>
+            <div class="delivery_text">390Р при предоплате только за доставку, а за товар оплата при получении(почта возьмёт ещё 7% коммиссию за денежный перевод за товар с вас)</div>
+
+        </div>*@
+    @*<div class="deliveryСontraction"> Оплата при получении </div>*@
+    @*</div>*@
+
+
     <script>
         $(document).ready(function ($) {
             $('.popup-cart-close').click(function () {
@@ -183,7 +186,7 @@ new { id = cartLine.productCart.Id, size = cartLine.productCart.Size }, new { @c
                         var priceWithSale = value - sale;
                         $('.total-priceWithSale').text(priceWithSale + " руб");
 
-                        
+
 
 
 
@@ -200,7 +203,7 @@ new { id = cartLine.productCart.Id, size = cartLine.productCart.Size }, new { @c
             else {
                 value = 0;
             }
-           
+
         });
     </script>
 
@@ -255,12 +258,12 @@ new { id = cartLine.productCart.Id, size = cartLine.productCart.Size }, new { @c
 
 
 
-            
 
 
 
 
-            
+
+
 
         });
     </script>
@@ -312,10 +315,10 @@ new { id = cartLine.productCart.Id, size = cartLine.productCart.Size }, new { @c
                     //});
 
                 });
-                
-                
+
+
             });
-            
+
 
 
 
@@ -331,6 +334,6 @@ new { id = cartLine.productCart.Id, size = cartLine.productCart.Size }, new { @c
         });
     </script>
 
-    
+
 
 </body>
