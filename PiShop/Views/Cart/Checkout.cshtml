@@ -11,7 +11,7 @@
     {
         <div class="containerFormContactDate">
             @Html.ValidationSummary()
-            <h3>Пожалуйста, введите ваши контактные данные</h3>
+            <h3 style="font-size: 20px;margin-bottom: 20px;margin-top: 0;">Пожалуйста, введите Ваши контактные данные</h3>
             @foreach (var property in ViewData.ModelMetadata.Properties)
             {
 
@@ -31,13 +31,13 @@
                             <label><span style="color:red">*</span> @(property.DisplayName ?? property.PropertyName)</label>
                             <input class="form-control MyForm-control" type="tel" data-val="true" data-val-required="Ваш телефон" id="OurPhone" name="OurPhone"  value="+7(___)___-__-__" >
                             break;
-                        case "Телефон Получателя":
+                        case "Телефон получателя":
                             <label> @(property.DisplayName ?? property.PropertyName)</label>
-                            <input class="form-control MyForm-control" type="tel" data-val="true" data-val-required="телефон получателя" id="Phone" name="Phone" value="+7(___)___-__-__" >
+                            <input class="form-control MyForm-control" type="tel" data-val="true" data-val-required="Телефон получателя" id="Phone" name="Phone" value="+7(___)___-__-__" >
                             break;
                         case "Электронная почта":
-                            @*<label>@(property.DisplayName ?? property.PropertyName)</label>
-                            @Html.TextBox(property.PropertyName, null, new { @class = "form-control MyForm-control" })*@
+                            <label>@(property.DisplayName ?? property.PropertyName)</label>
+                            @Html.TextBox(property.PropertyName, null, new { @class = "form-control MyForm-control" })
                             break;
                         default:
                             <label><span style="color:red">*</span> @(property.DisplayName ?? property.PropertyName)</label>
@@ -64,7 +64,7 @@
             </div>
 
             <div class="text-center">
-                <input class="btn buttonOrder" type="submit" value="ОБРАБОТАТЬ ЗАКАЗ" />
+                <input class="buttonOrder" type="submit" value="ОБРАБОТАТЬ ЗАКАЗ" />
             </div>
 
         </div>

@@ -1,8 +1,12 @@
-.shopping-cart {
-    background: #FFFFFF;
-    border-radius: 6px;
+.buttonsCart {
+    line-height: initial;
+    position: absolute;
+    width: 40px;
+    height: 30px;
+    right: 0;
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    margin-top: -3px;
 }
 
 .CartMobile {
@@ -62,8 +66,9 @@
     font-size: 18px;
     font-weight: 400;
     color: #5E6977;
-    margin: 0 30px;
+    margin: 30px;
     margin-bottom: 10px;
+    padding-top: 20px;
 }
 
 
@@ -91,6 +96,7 @@
     /* height: 110px; */
     right: 49px;
     position: absolute;
+    z-index:100;
 }
 
 .delete-btn,
@@ -195,7 +201,17 @@
     border: 3px solid #efefef;
     margin-top: 10px;
 }
-/*.buttonOrder {
+
+
+
+element.style {
+}
+
+.buttonOrder:hover {
+    border-color: #e6e6e6;
+    background-color: #e6e6e6;
+}
+    /*.buttonOrder {
     background-color: #5b2d5e;
     border-color: #5b2d5e;
     
@@ -220,7 +236,7 @@
     padding: 4px 8px;
 }
 */
-/*.buttonOrder {
+    /*.buttonOrder {
     margin-top: 20px;
     letter-spacing: 2px;
     width: 70%;
@@ -247,12 +263,12 @@
         color: #fff;
         border-bottom-color: #0e5f63d9;
     }*/
-.cart {
+    .cart {
     position: relative;
     padding: 20px;
     width: 80%;
     height: auto;
-    margin: 80px auto;
+    margin: 30px auto;
     background: #fff;
     border-radius: 4px;
     max-width: 800px;
@@ -341,10 +357,11 @@ input:focus {
 
 .cond {
     font-size: 14px;
-    margin-bottom: 25px;
+    padding-bottom: 25px;
+    /*margin-bottom: 25px;*/
     margin-top: 15px;
     margin-left: 35px;
-    margin-right: 35px; 
+    margin-right: 35px;
 }
 
 .boxTotal {
@@ -574,7 +591,7 @@ input:focus {
 
 
 
-    .item {
+    .item { min-height:170px;
         height: auto;
         padding: 10px;
         margin: 0;
@@ -651,7 +668,7 @@ input:focus {
     }
 
     .quantity input {
-        width: 20px;
+        width: 25px;
     }
 
     .size {
@@ -687,8 +704,6 @@ input:focus {
         margin-left: initial;
         font-size: 15px;
        
-
-        
     }
 
     .cart {
@@ -707,7 +722,8 @@ input:focus {
 
 
     .cart_title {
-        padding-top: 30px;
+        padding-top: 15px;
+        margin-top:0;
     }
 
         .closeCartInCart {
@@ -721,8 +737,7 @@ input:focus {
         position: absolute;
         width: 10%;
         right: 0;
-        margin-top: 6px;
-        height: 10%;
+        margin-top: 3px;
     }
 
 

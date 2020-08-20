@@ -8,6 +8,7 @@
     @*<script src='https://cdnjs.cloudflare.com//ajax/libs/jquery/3.1.0/jquery.min.js'></script>*@
     <meta charset="UTF-8">
     <script src="https://yandex.st/jquery/2.1.1/jquery.min.js"></script>
+    <link type="text/css" href="https://fonts.googleapis.com/css2?family=Manrope:wght@200&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -16,10 +17,23 @@
         @if (Model?.Cart != null && Model.Cart?.Lines?.Count() != 0)
         {<!-- Title -->
             <div class="overflow2">
-                <div class="cart ">
+                <div class="cart " style="padding: 0; ">
                     <a class="DescTop popup-cart-close closeCartInCart" href="#"> <img src="~/images/krestik.jpg" alt=""></a>
                     <div class="shopping-cart">
-
+                        <header class="header fixed Phone" style="position: initial;" id="header">
+                            <div class="container">
+                                <div class="header_inner header_inner_background" >
+                                    <div class="header_logo">FOX</div>
+                                    <div class="header_info">
+                                        Интернет-магазин пижам с принтами
+                                        из Армани шёлка
+                                    </div>
+                                </div>
+                            </div>
+                        </header>
+                        @*<div class="containerGoCatalog">
+                            <a class="btn btn-add addToCart GoCatalog" href="/home/index"><span class="spanArrow">←</span> продолжить покупки</a>
+                        </div>*@
                         <div class="cart_title">Ваша корзина</div>
                         @foreach (CartLine cartLine in Model.Cart.Lines)
                         {
@@ -35,7 +49,10 @@
                                         <span>
                                             <a class="compItem ColourChangeModal">@cartLine.productCart.Name</a>
                                         </span>
-                                        <div class="SizeCart">Размер @cartLine.productCart.Size</div>
+                                        @if (cartLine.productCart.Category != "gift")
+                                        {
+                                            <div class="SizeCart">Размер @cartLine.productCart.Size</div>
+                                        }
                                     </div>
                                     <div class="quantity">
                                         <a class="minus-btn buttonStyleCart  button" href="/Cart/RemoveOneProductToCart?id=@cartLine.productCart.Id&size=@cartLine.productCart.Size"><img src="~/images/Корзина/minus.svg" /></a>
@@ -70,10 +87,10 @@
                             <div class="cond">
                                 <div style="font-size: 13px;margin-bottom: 7px;">ДОПОЛНИТЕЛЬНАЯ ИНФОРМАЦИЯ</div>
                                 <div style="margin-bottom: 2px;">
-                                    1. Доставка: оптимальный вариант доставки Вам поможет подобрать наш менеджер.
+                                    1. Скидка: добавь ещё одну пижаму и получи скидку 10% на весь заказ :)
                                 </div>
                                 <div>
-                                    2. Скидка: добавь ещё одну пижаму и получи скидку 10% на весь заказ :)
+                                    2. Доставка: оптимальный вариант доставки Вам поможет подобрать наш менеджер.
                                 </div>
                             </div>
                         </div>
@@ -83,7 +100,7 @@
         }
         else
         {
-            <div class="overflow2">
+            <div class="overflow2 DescTop">
                 <div class="cart emptyCart">
                     <a class="popup-cart-close closeCartInCart" href="#"> <img src="~/images/krestik.jpg" alt=""></a>
                     <div class="shopping-cart">
@@ -92,6 +109,54 @@
                             Ваша корзина пуста
                         </div>
 
+                    </div>
+                </div>
+            </div>
+
+            <div class="Phone">
+                <header class="header fixed" style="position: initial;" id="header">
+                    <div class="container">
+                        <div class="header_inner">
+                            <div class="header_logo">FOX</div>
+                            <div class="header_info">
+                                Интернет-магазин пижам с принтами
+                                из Армани шёлка
+                            </div>
+                        </div>
+                    </div>
+                </header>
+                <div class="containerGoCatalog">
+                    <a class="btn btn-add addToCart GoCatalog" style="width:150px;" href="/home/index"><span class="spanArrow">←</span>НАЧАТЬ ПОКУПКИ</a>
+                </div>
+                <div class="basketEmpty" style="margin-bottom: 0;">Ваша корзина пуста</div>
+                @*<div class="basketEmpty" style="margin-bottom: 45px;margin-top: 0;font-size: 18px;color: #e32526;">Начать покупки</div>*@
+                <div class="recomends" style="position: absolute;bottom: 20px;">
+                    <div class="basket_title">РЕКОМЕНДОВАННЫЕ ТОВАРЫ</div><div class="hits_items" style="margin-top: 10px;">
+                        <div class="hits_item">
+                            <div class="hits_pic">
+                                <a class="CursorInishial" href="/view/viewproduct/13"> <img class="hits_img" src="/images/Каталог/Girls/smallimage/ОбычныйТоп/Лисы_2.jpg" alt=" ЛИСЫ"></a>
+                                <div class="hit_word">ХИТ</div>
+                            </div>
+                            <div class="hits_title">
+                                <a class="popup-open textDecorNone" href="/view/viewproduct/13"> ЛИСЫ</a>
+                            </div>
+                            <div class="priceMain">
+                                <div class="newPrice">1890Р</div>
+                                <div class="oldPriceCatalog">2390Р</div>
+                            </div>
+                        </div><div class="hits_item">
+                            <div class="hits_pic">
+                                <a class="CursorInishial" href="/view/viewproduct/11"> <img class="hits_img" src="/images/Каталог/Girls/smallimage/ОбычныйТоп/foxSerd.jpg" alt=" ЛИС ПАППИ"></a>
+                                <div class="hit_word">ХИТ</div>
+                            </div>
+                            <div class="hits_title">
+                                <a class="popup-open textDecorNone" href="/view/viewproduct/11"> ЛИС ПАППИ</a>
+                            </div>
+                            <div class="priceMain">
+                                <div class="newPrice">1890Р</div>
+                                <div class="oldPriceCatalog">2390Р</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -126,21 +191,27 @@
     <script>
         $(document).ready(function ($) {
             $('.popup-cart-close').click(function () {
-                $(this).parents('.popup-cart').fadeOut();
-                document.body.style.overflow = "auto";
-                return false;
+                if (innerWidth > 440) {
+                    $(this).parents('.popup-cart').fadeOut();
+                    document.body.style.overflow = "auto";
+                    return false;
+                }
+                
             });
             $(document).keydown(function (e) {
-                if (e.keyCode === 27) {
-                    e.stopPropagation();
-                    $('.popup-cart').fadeOut();
+                if (innerWidth > 440) {
+                    if (e.keyCode === 27) {
+                        e.stopPropagation();
+                        $('.popup-cart').fadeOut();
+                    }
                 }
             });
             $('.popup-cart').click(function (e) {
-                if ($(e.target).closest('.cart').length == 0) {
-                    $(this).fadeOut();
+                if (innerWidth > 440) {
+                    if ($(e.target).closest('.cart').length == 0) {
+                        $(this).fadeOut();
+                    }
                 }
-
             });
 
         });

@@ -33,7 +33,7 @@ namespace Domain
         [Display(Name = "Ваш телефон")]
         public string OurPhone { get; set; }
 
-        [Display(Name = "Телефон Получателя")]
+        [Display(Name = "Телефон получателя")]
         public string Phone { get; set; }
 
 

@@ -1,0 +1,31 @@
+﻿
+
+.theFirstBlockDop{
+    width:50%;
+}
+
+.infoDop {
+    width: 50%;
+}
+
+.pictureDop {
+    width: 100%;
+}
+
+
+@media (max-width: 440px) {
+    .theFirstBlockDop {
+        width: 100%;
+    }
+
+    .infoDop {
+        width: 100%;
+    }
+
+    .pictureDop {
+        width: 100%;
+    }
+
+  
+
+}

@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="~/css/style.css">
     <meta name="viewport" content="width=device-width" , initial-scale=1>
-   
+        <link rel="stylesheet" href="~/css/DopStyle.css">
 
     @*<link rel="stylesheet" type="text/css" href="~/js/slick-1.8.1/slick/slick.css" />
-    <link rel="stylesheet" type="text/css" href="~/js/slick-1.8.1/slick/slick-theme.css" />*@
+        <link rel="stylesheet" type="text/css" href="~/js/slick-1.8.1/slick/slick-theme.css" />*@
 
     @*<link href="https://fonts.googleapis.com/css?family=Merienda|Neucha|Roboto&display=swap" rel="stylesheet">
 
@@ -30,107 +30,197 @@
                     <a class="popup-close" href="#"> <img src="~/images/krestik.jpg" alt=""></a>
 
                     <div class="item_pizham">
+                        @if (Model.Category == "алладины")
+                        {
+                            <div class="info_title AdaptiveDisplay displayNone">Пижама Аладдин @Model.Name</div>
+                        }
+                        else
+                        {
+                            <div class="info_title AdaptiveDisplay displayNone">@Model.Name</div>
+                        }
 
-                        <div class="info_title AdaptiveDisplay displayNone">@Model.Name</div>
-
-                        <div class="theFirstBlock">
-                            @if (System.IO.File.Exists($"{Environment.CurrentDirectory}/wwwroot/images/Каталог/Girls/{Model.Image2Address}"))
-                            {
-                                @*<div class="First">
-                    <div class="picture Show"><img class="block" src="~/images/Каталог/Girls/@Model.Address" alt=""></div>
-                    <div class="pictureSecond Show"><img class="blockSecond" src="~/images/Каталог/Girls/@Model.Image2Address" alt=""></div>
-                </div>
-                <div class="Second displayNone">
-                    <div class="picture NotShow "><img class="block" src="~/images/Каталог/Girls/@Model.Image2Address" alt=""></div>
-                    <div class="pictureSecond   NotShow"><img class="blockSecond" src="~/images/Каталог/Girls/@Model.Address" alt=""></div>
-                </div>*@
-                            <div class="First">
-                                <div class="pictureSecond Show"><img class="blockSecond" src="~/images/Каталог/Girls/@Model.Image2Address" alt="Вторая картинка 1"></div>
-                                <div class="picture Show"><img class="block" src="~/images/Каталог/Girls/@Model.Address" alt="первая картинка 1"></div>
+                        @if (System.IO.File.Exists($"{Environment.CurrentDirectory}/wwwroot/images/Каталог/Girls/{Model.Image2Address}"))
+                        {
+                            <div class="theFirstBlock">
+                                <div class="First">
+                                    <div class="pictureSecond Show"><img class="blockSecond" src="~/images/Каталог/Girls/@Model.Image2Address" alt="Вторая картинка 1"></div>
+                                    <div class="picture Show"><img class="block" src="~/images/Каталог/Girls/@Model.Address" alt="первая картинка 1"></div>
+                                </div>
+                                <div class="Second displayNone">
+                                    <div class="pictureSecond   NotShow">
+                                        <img class="blockSecond" src="~/images/Каталог/Girls/@Model.Address" alt="Вторая картинка 2">
+                                    </div>
+                                    <div class="picture NotShow ">
+                                        <img class="block" src="~/images/Каталог/Girls/@Model.Image2Address" alt="первая картинка 2">
+                                    </div>
+                                </div>
                             </div>
-                                @*<div class="Second displayNone">
-                                    <div class="picture NotShow "><img class="block" src="~/images/Каталог/Girls/@Model.Image2Address" alt="первая картинка 2"></div>
-                                    <div class="pictureSecond   NotShow"><img class="blockSecond" src="~/images/Каталог/Girls/@Model.Address" alt="Вторая картинка 2"></div>
-                                </div>*@
-                            }
-                            else
-                            {
-                                <div class="picture First Show"><img class="block" src="~/images/Каталог/Girls/@Model.Address" style="max-height:initial !important;" alt="@Model.Name"></div>@*большая*@
-                            }
-                            @*<div class="price" style="width:initial;">2000Р</div>*@
+                            <div class="info  Display">
+                                @if (Model.Category == "алладины")
+                                {
+                                    <div class="info_title DescTop ">Пижама Аладдин @Model.Name</div>
+                                }
+                                else
+                                {
+                                    <div class="info_title DescTop">@Model.Name</div>
+                                }
+                                <div class="info-text">
+                                    <div class="priceMain PriceMainDetail">
+                                        @if (Model.Price < Model.PriceWithoutSales)
+                                        {
+                                            <div class="newPricePopup"> @Model.Price&#1056;</div>
+                                            <div class="oldPrice">@Model.PriceWithoutSales&#1056;</div>
+                                        }
+                                        else
+                                        {
+                                            <div class="newPriceWithoutSalePopup"> @Model.Price&#1056;</div>
+                                        }
 
-                            <header>
-                                <div id="dialogContentpopupModalText" class="modal-dialog"></div>
-                            </header>
-
-                        </div>
-                        <div class="info Display">
-                            <div class="info_title ">@Model.Name</div>
-                            <div class="info-text">
-                                <div class="priceMain PriceMainDetail" >
-                                    <div class="newPricePopup"> @Model.Price&#1056;</div>
-                                    @if (Model.Price < Model.PriceWithoutSales)
+                                    </div>
+                                    <input type="number" name="Id" value="@Model.Id" style="display:none">
+                                    @if (Model.Category != "gift")
                                     {
-                                        <div class="oldPrice">@Model.PriceWithoutSales&#1056;</div>
+                                        <div class="chooseSize">Выберите размер</div>
+
+                                        <div class="radio">
+                                            <label>
+                                                <input class="radioFade" type="radio" name="size" value="XS-S"> <span>XS-S</span>
+                                            </label>
+                                            <label>
+                                                <input class="radioFade" type="radio" name="size" value="M"><span style="padding:5px 16px !important;">M</span>
+                                            </label>
+                                            @*<label>
+                                                <input class="radioFade" type="radio" name="size" value="L"><span style="padding:5px 16px !important;">L</span>
+                                            </label>*@
+                                        </div>
                                     }
 
+
+                                    @switch (Model.Category)
+                                    {
+                                        case "флис":
+                                            @*<div class="info_text_item">
+                                <img class="pointer" src="~/images/point.png" alt="Пункт 2">
+                                <div class="info_text_text">Размерная сетка </div>
+                            </div>
+                            <div class="info_table"><img src="~/images/PhlisPazmer2.PNG" alt="Размерная сетка2"></div>*@ break;
+                                        case "gift":
+                                            @*<div class="info_text_item">
+                                <ul class="delivery_ul" style="margin-left: 12px; ">  <li class="delivery_line">Размер: @Model.Info2</li></ul>
+                            </div>*@
+                                            break;
+                                        default:
+                                            <a class="PopupPazmer">Размерная сетка </a>
+
+                                            @*<div class="info_text_item">
+                                <img class="pointer" src="~/images/point.png" alt="Пункт 2">
+                                <div class="info_text_text">Размерная сетка </div>
+                            </div>
+                            <div class="info_table"><img src="~/images/pazmer.jpg" alt="Размерная сетка"></div>*@break;
+                                    }
+                                    @*<input type="number" name="Id" value="@Model.Id" style="display:none">*@
+
                                 </div>
-                                <input type="number" name="Id" value="@Model.Id" style="display:none">
-                                @if (Model.Category != "gift")
-                                {
-                                    <div class="chooseSize">Выберите размер</div>
-
-                                    <div class="radio">
-                                        <label>
-                                            <input class="radioFade" type="radio" name="size" value="XS-S"> <span>XS-S</span>
-                                        </label>
-                                        <label>
-                                            <input class="radioFade" type="radio" name="size" value="M"><span style="padding:5px 16px !important;">M</span>
-                                        </label>
-                                        <label>
-                                            <input class="radioFade" type="radio" name="size" value="L"><span style="padding:5px 16px !important;">L</span>
-                                        </label>
+                                <div class="animate">
+                                    <div style="width:100%">
+                                        <div class="paket">
+                                            <img src="/images/Корзина/trash.png" alt="покупка">
+                                        </div>
+                                        <button class="btn btn-add addToCart AddPopup" id="GoKorzina" type="submit">ДОБАВИТЬ В КОРЗИНУ</button>
                                     </div>
-                                }
-                             
-
-                                @switch (Model.Category)
+                                    <a class="btn btn-add goToCart popup-cart-open AddPopup" href="/Cart/Cart">ПЕРЕЙТИ В КОРЗИНУ</a>
+                                </div>
+                                <div class="info-text">@Html.Raw(Model.DescriptionPopup)</div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="theFirstBlock theFirstBlockDop">
+                                <div class="picture pictureDop First Show"><img class="block" src="~/images/Каталог/Girls/@Model.Address" style="max-height:initial !important;" alt="@Model.Name"></div>@*большая*@
+                                @*<div class="price" style="width:initial;">2000Р</div>*@
+                            </div>
+                            <div class="info infoDop Display">
+                                @if (Model.Category == "алладины")
                                 {
-                                    case "флис":
-                                        @*<div class="info_text_item">
-                        <img class="pointer" src="~/images/point.png" alt="Пункт 2">
-                        <div class="info_text_text">Размерная сетка </div>
-                    </div>
-                    <div class="info_table"><img src="~/images/PhlisPazmer2.PNG" alt="Размерная сетка2"></div>*@ break;
-                                    case "gift":
-                                        @*<div class="info_text_item">
-                        <ul class="delivery_ul" style="margin-left: 12px; ">  <li class="delivery_line">Размер: @Model.Info2</li></ul>
-                    </div>*@
-                                        break;
-                                    default:
-                                        <a class="PopupPazmer">Размерная сетка </a>
-
-                                        @*<div class="info_text_item">
-                        <img class="pointer" src="~/images/point.png" alt="Пункт 2">
-                        <div class="info_text_text">Размерная сетка </div>
-                    </div>
-                    <div class="info_table"><img src="~/images/pazmer.jpg" alt="Размерная сетка"></div>*@break;
+                                    <div class="info_title DescTop ">Пижама Аладдин @Model.Name</div>
                                 }
-                                @*<input type="number" name="Id" value="@Model.Id" style="display:none">*@
+                                else
+                                {
+                                    <div class="info_title DescTop">@Model.Name</div>
+                                }
+                                <div class="info-text">
+                                    <div class="priceMain PriceMainDetail">
+                                        @if (Model.Price < Model.PriceWithoutSales)
+                                        {
+                                            <div class="newPricePopup"> @Model.Price&#1056;</div>
+                                            <div class="oldPrice">@Model.PriceWithoutSales&#1056;</div>
+                                        }
+                                        else
+                                        {
+                                            <div class="newPriceWithoutSalePopup"> @Model.Price&#1056;</div>
+                                        }
 
+                                    </div>
+                                    <input type="number" name="Id" value="@Model.Id" style="display:none">
+                                    @if (Model.Category != "gift")
+                                    {
+                                        <div class="chooseSize">Выберите размер</div>
+
+                                        <div class="radio">
+                                            <label>
+                                                <input class="radioFade" type="radio" name="size" value="XS-S"> <span>XS-S</span>
+                                            </label>
+                                            <label>
+                                                <input class="radioFade" type="radio" name="size" value="M"><span style="padding:5px 16px !important;">M</span>
+                                            </label>
+                                            @*<label>
+                                                <input class="radioFade" type="radio" name="size" value="L"><span style="padding:5px 16px !important;">L</span>
+                                            </label>*@
+                                        </div>
+                                    }
+
+
+                                    @switch (Model.Category)
+                                    {
+                                        case "флис":
+                                            @*<div class="info_text_item">
+                                <img class="pointer" src="~/images/point.png" alt="Пункт 2">
+                                <div class="info_text_text">Размерная сетка </div>
                             </div>
-                            <div class="animate">
-                                <button class="btn btn-add addToCart AddPopup" type="submit">ДОБАВИТЬ В КОРЗИНУ</button>
-                                <a class="btn btn-add goToCart popup-cart-open AddPopup" href="/Cart/Cart">ПЕРЕЙТИ В КОРЗИНУ</a>
-                                @*<a class="btn btn-add addToCart" type="submit">ДОБАВИТЬ В КОРЗИНУ</a>*@
-                                <div class="paket"><img src="~/images/Корзина/trash.png" alt="покупка"></div>
+                            <div class="info_table"><img src="~/images/PhlisPazmer2.PNG" alt="Размерная сетка2"></div>*@ break;
+                                        case "gift":
+                                            @*<div class="info_text_item">
+                                <ul class="delivery_ul" style="margin-left: 12px; ">  <li class="delivery_line">Размер: @Model.Info2</li></ul>
+                            </div>*@
+                                            break;
+                                        default:
+                                            <a class="PopupPazmer">Размерная сетка </a>
+
+                                            @*<div class="info_text_item">
+                                <img class="pointer" src="~/images/point.png" alt="Пункт 2">
+                                <div class="info_text_text">Размерная сетка </div>
                             </div>
-                            <div class="info-text">@Html.Raw(Model.DescriptionPopup)</div>
-                        </div>
-                       
-                            
-                        </div>
+                            <div class="info_table"><img src="~/images/pazmer.jpg" alt="Размерная сетка"></div>*@break;
+                                    }
+                                    @*<input type="number" name="Id" value="@Model.Id" style="display:none">*@
+
+                                </div>
+                                <div class="animate">
+                                    <div style="width:100%">
+                                        <div class="paket">
+                                            <img src="/images/Корзина/trash.png" alt="покупка">
+                                        </div>
+                                        <button class="btn btn-add addToCart AddPopup" id="GoKorzina" type="submit">ДОБАВИТЬ В КОРЗИНУ</button>
+                                    </div>
+                                    <a class="btn btn-add goToCart popup-cart-open AddPopup" href="/Cart/Cart">ПЕРЕЙТИ В КОРЗИНУ</a>
+                                </div>
+                                <div class="info-text">@Html.Raw(Model.DescriptionPopup)</div>
+                            </div>
+                        }
+
+
                     </div>
+                </div>
             </div>
             @*</div>*@
         </form>
@@ -205,12 +295,16 @@
                     var that = $(".btn-add").closest('.animate').find('img');
                     var bascket = $(".korzinaToPacket");
                     var w = that.width();
+                    //var butPos = $('#GoKorzina').position();
                     that.clone().css({
                         'width': w
+                        , 'height': 40
                         , 'position': 'absolute'
                         , 'z-index': '9999'
                         , top: that.offset().top
                         , left: that.offset().left
+                        //, 'top':  butPos.top + '2px'
+                        //, 'left': butPos.left + '2px'
                     }).appendTo("body").animate({
                         opacity: 0.1
                         , left: bascket.offset()['left']
@@ -249,6 +343,7 @@
                 var w = that.width();
                 that.clone().css({
                     'width': w
+                    , 'height': 40
                     , 'position': 'absolute'
                     , 'z-index': '9999'
                     , top: that.offset().top
