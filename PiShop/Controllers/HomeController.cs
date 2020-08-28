@@ -53,7 +53,7 @@ namespace PiShop.Controllers
 
             }
 
-            return View(Products);
+            return PartialView(Products);
         }
 
         public ActionResult Details(int id, string returnUrl = null)

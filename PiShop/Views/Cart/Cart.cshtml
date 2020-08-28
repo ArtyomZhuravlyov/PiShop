@@ -22,8 +22,9 @@
                     <div class="shopping-cart">
                         <header class="header fixed Phone" style="position: initial;" id="header">
                             <div class="container">
-                                <div class="header_inner header_inner_background" >
-                                    <div class="header_logo">FOX</div>
+                                <div class="header_inner header_inner_background">
+                                    <a class="arrowNew Phone" href="/home/index/"><img class="arrowPic" src="~/images/1904658-arrow-arrow-left-change-direction-left-next-undo_122508.png" /></a>
+                                    <a href="/home/index/" class="header_logo">FOX</a>
                                     <div class="header_info">
                                         Интернет-магазин пижам с принтами
                                         из Армани шёлка
@@ -32,8 +33,8 @@
                             </div>
                         </header>
                         @*<div class="containerGoCatalog">
-                            <a class="btn btn-add addToCart GoCatalog" href="/home/index"><span class="spanArrow">←</span> продолжить покупки</a>
-                        </div>*@
+                                <a class="btn btn-add addToCart GoCatalog" href="/home/index"><span class="spanArrow">←</span> продолжить покупки</a>
+                            </div>*@
                         <div class="cart_title">Ваша корзина</div>
                         @foreach (CartLine cartLine in Model.Cart.Lines)
                         {
@@ -69,9 +70,9 @@
                                     </div>
                                 </div>
                                 @*<div class="buttonsCart">
-                    <a class="delete-btn" href="/Cart/RemoveLine?id=@cartLine.productCart.Id&size=@cartLine.productCart.Size"> </a>
+                                        <a class="delete-btn" href="/Cart/RemoveLine?id=@cartLine.productCart.Id&size=@cartLine.productCart.Size"> </a>
 
-                </div>*@
+                                    </div>*@
 
 
                             </div>
@@ -117,7 +118,8 @@
                 <header class="header fixed" style="position: initial;" id="header">
                     <div class="container">
                         <div class="header_inner">
-                            <div class="header_logo">FOX</div>
+                            @*<a class="arrowNew" href="/home/index/"><img class="arrowPic" src="~/images/1904658-arrow-arrow-left-change-direction-left-next-undo_122508.png" /></a>*@
+                            <a href="/home/index/" class="header_logo">FOX</a>
                             <div class="header_info">
                                 Интернет-магазин пижам с принтами
                                 из Армани шёлка
@@ -196,7 +198,7 @@
                     document.body.style.overflow = "auto";
                     return false;
                 }
-                
+
             });
             $(document).keydown(function (e) {
                 if (innerWidth > 440) {
@@ -327,15 +329,6 @@
                 value = 100;
             }
 
-
-
-
-
-
-
-
-
-
         });
     </script>
 
@@ -349,6 +342,7 @@
 
                     //$this.closest('div').next().next(). - это карт мобаил   //children('.size').next(). - это сайз суммы
                     var value = parseInt(($this.closest('div').next().next().children('.size').next().children('.total-price').text())); //5
+                    $this.closest('div').next().next().children('.size').next().children('.total-price').text(0);
                     console.log(value);
                     var MainPrice = parseInt($('.total-total-price').text());
                     console.log(MainPrice);
@@ -401,6 +395,18 @@
             var MainPrice = parseInt($('.total-total-price').text());
             if (MainPrice == 0) {
                 e.preventDefault();
+            }
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(".arrowNew").click(function (e) {
+            console.log(document.referrer);
+            let substr = '/home/index';
+            if (document.referrer.includes(substr)) {
+                e.preventDefault();
+                console.log(document.referrer);
+                history.back();
             }
         });
     </script>

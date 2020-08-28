@@ -140,6 +140,7 @@ body::before {
     color: black;
     font-size: 30px;
     width: 20%;
+    text-decoration: none;
 }
 
 .header_info {
@@ -164,6 +165,13 @@ body::before {
         border-radius: initial;
         margin-top: initial;
         margin-bottom: initial;
+    }
+
+}
+
+@media (max-width: 425px) {
+    .header_info {
+        font-size: 13px;
     }
 
 }

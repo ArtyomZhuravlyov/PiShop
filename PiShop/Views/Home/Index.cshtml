@@ -18,7 +18,7 @@
     <div class="container">
         <div class="intro_inner">
             <div class="intro_photo">
-                <img class="intro_model" id="myImage" src="~/images/modellast (1).png" alt="пижама Лиса">
+                <img class="intro_model" id="myImage" src="~/images/modellast-_1_-_1.png" alt="пижама Лиса">
             </div>
 
             <div class="intro_info">
@@ -33,21 +33,7 @@
     </div>
 </div>
 
-<script>
-        // First we get the viewport height and we multiple it by 1% to get a value for a vh unit
-        let vh = window.innerHeight * 0.01;
-        // Then we set the value in the --vh custom property to the root of the document
-        document.documentElement.style.setProperty('--vh', `${vh}px`);
-</script>
 
-@*<script>
-    $(document).ready(function ($) {
-        var parent = getElementById('id1');
-        var child = document.getElementById('imagex');
-        parent.removeChild(child);
-    });
-
-</script>*@
 
 @*<div class="hits" id="hits">
         <div class="container">
@@ -103,9 +89,9 @@
                             @if (product.Favourite)
                             {<div class="hit_word">ХИТ</div>}
                             @*@if ((((product.Price * 100) / product.PriceWithoutSales) - 100) * (-1) > 2)
-                        {
-                            <div class="sale">-@(Product.RoundFive(((product.Price * 100) / product.PriceWithoutSales) - 100) * (-1))%</div>
-                        }*@
+                                {
+                                    <div class="sale">-@(Product.RoundFive(((product.Price * 100) / product.PriceWithoutSales) - 100) * (-1))%</div>
+                                }*@
                         </div>
                         <div class="hits_title">
                             <a class="popup-open textDecorNone" href="/view/viewproduct/@product.Id">@product.Name.Replace("Пижама", "")</a>
@@ -130,7 +116,7 @@
         <div>
 
             <div class="divBtnShowAdd">
-                <input id="show_more_Simple" class="btn btn-add btnShowAdd "  value="Показать еще" />
+                <input id="show_more_Simple" class="btn btn-add btnShowAdd " type="button" value="Показать еще" />
             </div>
         </div>
 
@@ -160,9 +146,9 @@
                             @if (product.Favourite)
                             {<div class="hit_word">ХИТ</div>}
                             @*@if ((((product.Price * 100) / product.PriceWithoutSales) - 100) * (-1) > 2)
-                            {
-                                <div class="sale">-@(Product.RoundFive(((product.Price * 100) / product.PriceWithoutSales) - 100) * (-1))%</div>
-                            }*@
+                                {
+                                    <div class="sale">-@(Product.RoundFive(((product.Price * 100) / product.PriceWithoutSales) - 100) * (-1))%</div>
+                                }*@
                         </div>
                         <div class="hits_title">
                             <a class=" popup-open textDecorNone" href="/view/viewproduct/@product.Id">@product.Name</a>
@@ -202,37 +188,37 @@
         </script>
 
         @*<div class="hits_inner">
-            <div class="hits_MainTitle">Комплекты</div>
-            <div class="hits_items shiftItems">
-                @foreach (var product in Model.Complex)
-                {
-                    <div class="hits_item">
-                        <div class="hits_pic">
-                          
-                            <a class="CursorInishial" href="/view/viewproduct/@product.Id">  <img class="hits_img" src="~/images/Каталог/Girls/smallimage/@product.Address" alt="@product.Name.Replace("Пижама","")"> </a>
-                            <div class="buttons AdaptiveDisplayCatalog"> <a class="btn btn-hit popup-open" href="/Home/popupFade/@product.Id">УЗНАТЬ ПОДРОБНЕЕ</a>  </div>
-                            @if (product.Favourite)
-                            {<div class="hit_word">ХИТ</div>}
+                <div class="hits_MainTitle">Комплекты</div>
+                <div class="hits_items shiftItems">
+                    @foreach (var product in Model.Complex)
+                    {
+                        <div class="hits_item">
+                            <div class="hits_pic">
+
+                                <a class="CursorInishial" href="/view/viewproduct/@product.Id">  <img class="hits_img" src="~/images/Каталог/Girls/smallimage/@product.Address" alt="@product.Name.Replace("Пижама","")"> </a>
+                                <div class="buttons AdaptiveDisplayCatalog"> <a class="btn btn-hit popup-open" href="/Home/popupFade/@product.Id">УЗНАТЬ ПОДРОБНЕЕ</a>  </div>
+                                @if (product.Favourite)
+                                {<div class="hit_word">ХИТ</div>}
+                            </div>
+                            <div class="hits_title">
+                                <a class=" popup-open textDecorNone" href="/view/viewproduct/@product.Id">@product.Name.Replace("Пижама", "")</a>
+                            </div>
+                            <div class="priceMain">
+                                @if (product.Price < product.PriceWithoutSales)
+                                {
+                                    <div class="newPrice">@product.Price&#1056;</div>
+                                    <div class="oldPriceCatalog">@product.PriceWithoutSales&#1056;</div>
+                                }
+                                else
+                                {
+                                    <div class="newPriceWithoutSale">@product.Price&#1056;</div>
+                                }
+                            </div>
                         </div>
-                        <div class="hits_title">
-                            <a class=" popup-open textDecorNone" href="/view/viewproduct/@product.Id">@product.Name.Replace("Пижама", "")</a>
-                        </div>
-                        <div class="priceMain">
-                            @if (product.Price < product.PriceWithoutSales)
-                            {
-                                <div class="newPrice">@product.Price&#1056;</div>
-                                <div class="oldPriceCatalog">@product.PriceWithoutSales&#1056;</div>
-                            }
-                            else
-                            {
-                                <div class="newPriceWithoutSale">@product.Price&#1056;</div>
-                            }
-                        </div>
-                    </div>
-                }
-            </div>
-            <div id="ContentShow_more_Complex"></div>
-        </div>*@
+                    }
+                </div>
+                <div id="ContentShow_more_Complex"></div>
+            </div>*@
         <div>
 
         </div>
@@ -320,9 +306,9 @@
                             @if (product.Favourite)
                             {<div class="hit_word">ХИТ</div>}
                             @*@if ((((product.Price * 100) / product.PriceWithoutSales) - 100) * (-1) > 2)
-                            {
-                                <div class="sale">-@(Product.RoundFive(((product.Price * 100) / product.PriceWithoutSales) - 100) * (-1))%</div>
-                            }*@
+                                {
+                                    <div class="sale">-@(Product.RoundFive(((product.Price * 100) / product.PriceWithoutSales) - 100) * (-1))%</div>
+                                }*@
                         </div>
                         <div class="hits_title">
                             <a class=" popup-open textDecorNone" href="/view/viewproduct/@product.Id">@product.Name</a>
@@ -412,9 +398,9 @@
                             @if (product.Favourite)
                             {<div class="hit_word">ХИТ</div>}
                             @*@if ((((product.Price * 100) / product.PriceWithoutSales) - 100) * (-1) > 2)
-                            {
-                                <div class="sale">-@(Product.RoundFive(((product.Price * 100) / product.PriceWithoutSales) - 100) * (-1))%</div>
-                            }*@
+                                {
+                                    <div class="sale">-@(Product.RoundFive(((product.Price * 100) / product.PriceWithoutSales) - 100) * (-1))%</div>
+                                }*@
                         </div>
                         <div class="hits_title">
                             <a class=" popup-open textDecorNone" href="/view/viewproduct/@product.Id">@product.Name</a>
@@ -437,7 +423,7 @@
         </div>
         <div>
             <div class="divBtnShowAdd">
-                <input id="show_more_gift" class="btn btn-add btnShowAdd"  type="button" value="Показать еще">
+                <input id="show_more_gift" class="btn btn-add btnShowAdd" type="button" value="Показать еще">
             </div>
         </div>
 
@@ -628,17 +614,16 @@
 <script type="text/javascript">
     $(".decor").submit(function (e) {
         e.preventDefault();
-        //var url = "/Cart/AddToCart/";  свяжется с вами в течение      3 минут
-        $.get("/home/ModalText?text=Наш менеджер уже трепетно набирает Ваш номер телефона!&id=обратный звонок", function (data) {
-            $('#dialogContentpopupModalText').html(data);
-            $('.popup-ModalText').fadeIn();
-        });
+
+        //$.get("/home/ModalText?text=Наш менеджер уже трепетно набирает Ваш номер телефона!&id=обратный звонок", function (data) {
+        //    $('#dialogContentpopupModalText').html(data);
+        //    $('.popup-ModalText').fadeIn();
+        //});
         $.ajax({
             type: "POST",
             url: "/home/sendPhone/",
             data: $(".decor").serialize(),
         });
-        //return true;
     });
 </script>
 
@@ -699,7 +684,7 @@
                     <div class="contacts_pic"> <img src="~/images/contacts/phone.png" alt="Наш телефон"></div>
                     <div class="contacts_info">
                         <div class="contacts_info_title"> ТЕЛЕФОН </div>
-                        <a  href="tel:+7(950)425-69-08" class="number contacts_info_info ">+7(950)425-69-08</a>
+                        <a href="tel:+7(950)425-69-08" class="number contacts_info_info ">+7(950)425-69-08</a>
                     </div>
                 </div>
             </div>
@@ -829,33 +814,33 @@
 
 
 
-    $(document).ready(function ($) {
-        $('.popup-buy-open').click(function (e) {
-            e.preventDefault();
-            $.get(this.href, function (data) {
-                $('#dialogContentpopupBuy').html(data);
-                $('.popup-buy').fadeIn();
-            });
+        $(document).ready(function ($) {
+            $('.popup-buy-open').click(function (e) {
+                e.preventDefault();
+                $.get(this.href, function (data) {
+                    $('#dialogContentpopupBuy').html(data);
+                    $('.popup-buy').fadeIn();
+                });
 
-            return false;
+                return false;
+            });
+            $('.popup-buy-close').click(function () {
+                $(this).parents('.popup-buy').fadeOut();
+                return false;
+            });
+            $(document).keydown(function (e) {
+                if (e.keyCode === 27) {
+                    e.stopPropagation();
+                    $('.popup-buy').fadeOut();
+                }
+            });
+            $('.popup-buy').click(function (e) {
+                if ($(e.target).closest('.buy').length == 0) {
+                    $(this).fadeOut();
+                }
+            });
         });
-        $('.popup-buy-close').click(function () {
-            $(this).parents('.popup-buy').fadeOut();
-            return false;
-        });
-        $(document).keydown(function (e) {
-            if (e.keyCode === 27) {
-                e.stopPropagation();
-                $('.popup-buy').fadeOut();
-            }
-        });
-        $('.popup-buy').click(function (e) {
-            if ($(e.target).closest('.buy').length == 0) {
-                $(this).fadeOut();
-            }
-        });
-    });
-</script>*@
+    </script>*@
 <script>
     $(document).ready(function ($) {
         $('.popup-cart-open').click(function (e) {
@@ -870,7 +855,7 @@
                 }
                 return false;
             }
-            
+
         });
         $('.popup-cart-close').click(function () {
             if (innerWidth > 440) {
@@ -978,6 +963,8 @@
         });
     </script>
 }
+
+    
 
 
 

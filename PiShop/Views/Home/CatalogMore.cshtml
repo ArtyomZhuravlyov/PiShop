@@ -11,6 +11,8 @@
     <body>
 *@
 <div class="hits_items">
+
+
     @foreach (var product in Model)
     {
         <div class="hits_item">
@@ -22,17 +24,14 @@
                 }
                 else
                 {
-                    @*<a class="CursorInishial DescTop" href="/view/viewproduct/@product.Id">   <img class="hits_img" src="~/images/Каталог/Girls/@product.Address" alt="@product.Name.Replace("Пижама","")"></a>*@
+
                     <a class="CursorInishial " href="/view/viewproduct/@product.Id">   <img class="hits_img" src="~/images/Каталог/Girls/smallimage/@product.Address" alt="@product.Name.Replace("Пижама","")"></a>
                 }
 
-                <div class="buttons AdaptiveDisplayCatalog"> <a class="btn btn-hit popup-open" href="/view/viewproduct/@product.Id">УЗНАТЬ ПОДРОБНЕЕ</a> @*<a class="btn btn-hit popup-buy-open" href="/Home/popupBuy/@product.Id">КУПИТЬ</a>*@ </div>
+                <div class="buttons DescTop"> <a class="btn btn-hit popup-open" href="/view/viewproduct/@product.Id">УЗНАТЬ ПОДРОБНЕЕ</a> </div>
                 @if (product.Favourite)
                 {<div class="hit_word">ХИТ</div>}
-                @*@if ((((product.Price * 100) / product.PriceWithoutSales) - 100) * (-1) > 2)
-                {
-                    <div class="sale">-@(Product.RoundFive(((product.Price * 100) / product.PriceWithoutSales) - 100) * (-1))%</div>
-                }*@
+
 
             </div>
             <div class="hits_title">
@@ -52,6 +51,11 @@
         </div>
     }
 </div>
+
+
+@*<script type="text/javascript">
+        if (screen.width > 480) { document.write('< script type = "text/javascript" src = "~/js/app.js" ></sc' + 'ript >'); }
+    </script>*@
 @*<script src="~/js/app.js"></script>*@
 
 <script>
@@ -72,21 +76,7 @@
             }
 
         });
-        //$('.popup-close').click(function () {
-        //    $(this).parents('.popup-fade').fadeOut();
-        //    return false;
-        //});
-        //$(document).keydown(function (e) {
-        //    if (e.keyCode === 27) {
-        //        e.stopPropagation();
-        //        $('.popup-fade').fadeOut();
-        //    }
-        //});
-        //$('.popup-fade').click(function (e) {
-        //    if ($(e.target).closest('.popup').length == 0) {
-        //        $(this).fadeOut();
-        //    }
-        //});
+
     });
 </script>
 <script>
@@ -100,6 +90,17 @@
 
             return false;
         });
+    });
+</script>
+
+@*///////////////////////отключение перехода по картинке для деск топ/////////////////////////////////  *@
+<script>
+    $(document).ready(function ($) {
+        if (innerWidth >= 421) {
+            $('.hits_img').click(function (e) {
+                e.preventDefault();
+            });
+        }
     });
 </script>
 
@@ -124,22 +125,27 @@
     </script>*@
 @*////////////////////////////////////////////////////////////////////  *@
 
-@*///////////////////////отключение перехода по картинке для деск топ/////////////////////////////////  *@
-<script>
-    $(document).ready(function ($) {
-        if (innerWidth >= 421) {
-            $('.hits_img').click(function (e) {
-                e.preventDefault();
-            });
-        }
-    });
-</script>
-@*////////////////////////////////////////////////////////////////////  *@
 
-@*убрать кнопки при наведении на телефоне*@
-<script type="text/javascript">
-    if (innerWidth < 420) {
-        $(".AdaptiveDisplayCatalog").addClass("displayNone"); //.remove("displayNone"); //.toggleClass("displayNone");
-    }
-</script>
-@*</body>*@
+@*////////////////////////////////////////////////////////////////////  *@
+        @*//$('.popup-close').click(function () {
+        //    $(this).parents('.popup-fade').fadeOut();
+        //    return false;
+        //});
+        //$(document).keydown(function (e) {
+        //    if (e.keyCode === 27) {
+        //        e.stopPropagation();
+        //        $('.popup-fade').fadeOut();
+        //    }
+        //});
+        //$('.popup-fade').click(function (e) {
+        //    if ($(e.target).closest('.popup').length == 0) {
+        //        $(this).fadeOut();
+        //    }
+        //});*@
+
+
+
+@*@if ((((product.Price * 100) / product.PriceWithoutSales) - 100) * (-1) > 2)
+    {
+        <div class="sale">-@(Product.RoundFive(((product.Price * 100) / product.PriceWithoutSales) - 100) * (-1))%</div>
+    }*@

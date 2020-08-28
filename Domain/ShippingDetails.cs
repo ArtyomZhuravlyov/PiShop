@@ -9,13 +9,15 @@ namespace Domain
     public class ShippingDetails
     {
 
-        [Required(ErrorMessage = "Укажите как вас зовут")]
-        [Display(Name = "Имя")]
-        public string Name { get; set; }
+        
 
         [Required(ErrorMessage = "Укажите вашу фамилию")]
         [Display(Name = "Фамилия")]
         public string Surname { get; set; }
+
+        [Required(ErrorMessage = "Укажите как вас зовут")]
+        [Display(Name = "Имя")]
+        public string Name { get; set; }
 
         [Required(ErrorMessage = "Укажите ваше отчество")]
         [Display(Name = "Отчество")]

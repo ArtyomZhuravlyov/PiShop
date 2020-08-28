@@ -92,8 +92,10 @@
     <header class="header fixed" style="position: initial;" id="header">
         <div class="container">
             <div class="header_inner">
+
                 <div id="dialogContentpopupCart" class="modal-dialog"></div>
-                <div class="header_logo">FOX</div>
+                <a class="arrowNew" href="/home/index/"><img class="arrowPic" src="~/images/1904658-arrow-arrow-left-change-direction-left-next-undo_122508.png" /></a>
+                <a href="/home/index/" class="header_logo">FOX</a>
                 <div class="header_info">
                     Интернет-магазин пижам с принтами
                     из Армани шёлка
@@ -174,8 +176,8 @@
                                                 <input class="radioFade" type="radio" name="size" value="M"><span style="padding:5px 16px !important;">M</span>
                                             </label>
                                             @*<label>
-                                                <input class="radioFade" type="radio" name="size" value="L"><span style="padding:5px 16px !important;">L</span>
-                                            </label>*@
+                                                    <input class="radioFade" type="radio" name="size" value="L"><span style="padding:5px 16px !important;">L</span>
+                                                </label>*@
                                         </div>
                                     }
 
@@ -184,23 +186,23 @@
                                     {
                                         case "флис":
                                             @*<div class="info_text_item">
-                                <img class="pointer" src="~/images/point.png" alt="Пункт 2">
-                                <div class="info_text_text">Размерная сетка </div>
-                            </div>
-                            <div class="info_table"><img src="~/images/PhlisPazmer2.PNG" alt="Размерная сетка2"></div>*@ break;
+                                                    <img class="pointer" src="~/images/point.png" alt="Пункт 2">
+                                                    <div class="info_text_text">Размерная сетка </div>
+                                                </div>
+                                                <div class="info_table"><img src="~/images/PhlisPazmer2.PNG" alt="Размерная сетка2"></div>*@ break;
                                         case "gift":
                                             @*<div class="info_text_item">
-                                <ul class="delivery_ul" style="margin-left: 12px; ">  <li class="delivery_line">Размер: @Model.Info2</li></ul>
-                            </div>*@
+                                                    <ul class="delivery_ul" style="margin-left: 12px; ">  <li class="delivery_line">Размер: @Model.Info2</li></ul>
+                                                </div>*@
                                             break;
                                         default:
                                             <a class="PopupPazmer">Размерная сетка </a>
 
                                             @*<div class="info_text_item">
-                                <img class="pointer" src="~/images/point.png" alt="Пункт 2">
-                                <div class="info_text_text">Размерная сетка </div>
-                            </div>
-                            <div class="info_table"><img src="~/images/pazmer.jpg" alt="Размерная сетка"></div>*@break;
+                                                    <img class="pointer" src="~/images/point.png" alt="Пункт 2">
+                                                    <div class="info_text_text">Размерная сетка </div>
+                                                </div>
+                                                <div class="info_table"><img src="~/images/pazmer.jpg" alt="Размерная сетка"></div>*@break;
                                     }
                                     @*<input type="number" name="Id" value="@Model.Id" style="display:none">*@
 
@@ -258,8 +260,8 @@
                                                 <input class="radioFade" type="radio" name="size" value="M"><span style="padding:5px 16px !important;">M</span>
                                             </label>
                                             @*<label>
-                                                <input class="radioFade" type="radio" name="size" value="L"><span style="padding:5px 16px !important;">L</span>
-                                            </label>*@
+                                                    <input class="radioFade" type="radio" name="size" value="L"><span style="padding:5px 16px !important;">L</span>
+                                                </label>*@
                                         </div>
                                     }
 
@@ -268,23 +270,23 @@
                                     {
                                         case "флис":
                                             @*<div class="info_text_item">
-                                <img class="pointer" src="~/images/point.png" alt="Пункт 2">
-                                <div class="info_text_text">Размерная сетка </div>
-                            </div>
-                            <div class="info_table"><img src="~/images/PhlisPazmer2.PNG" alt="Размерная сетка2"></div>*@ break;
+                                                    <img class="pointer" src="~/images/point.png" alt="Пункт 2">
+                                                    <div class="info_text_text">Размерная сетка </div>
+                                                </div>
+                                                <div class="info_table"><img src="~/images/PhlisPazmer2.PNG" alt="Размерная сетка2"></div>*@ break;
                                         case "gift":
                                             @*<div class="info_text_item">
-                                <ul class="delivery_ul" style="margin-left: 12px; ">  <li class="delivery_line">Размер: @Model.Info2</li></ul>
-                            </div>*@
+                                                    <ul class="delivery_ul" style="margin-left: 12px; ">  <li class="delivery_line">Размер: @Model.Info2</li></ul>
+                                                </div>*@
                                             break;
                                         default:
                                             <a class="PopupPazmer">Размерная сетка </a>
 
                                             @*<div class="info_text_item">
-                                <img class="pointer" src="~/images/point.png" alt="Пункт 2">
-                                <div class="info_text_text">Размерная сетка </div>
-                            </div>
-                            <div class="info_table"><img src="~/images/pazmer.jpg" alt="Размерная сетка"></div>*@break;
+                                                    <img class="pointer" src="~/images/point.png" alt="Пункт 2">
+                                                    <div class="info_text_text">Размерная сетка </div>
+                                                </div>
+                                                <div class="info_table"><img src="~/images/pazmer.jpg" alt="Размерная сетка"></div>*@break;
                                     }
                                     @*<input type="number" name="Id" value="@Model.Id" style="display:none">*@
 
@@ -523,31 +525,31 @@
         });
     </script>
 
-    @*<script type="text/javascript">
-        $(".GoCatalog").click(function (e) {
-            console.log(document.referrer);
-            let substr = '/home/index';
-            if (document.referrer.includes(substr)) {
-                e.preventDefault();
+    <script type="text/javascript">
+            $(".arrowNew").click(function (e) {
                 console.log(document.referrer);
-                history.back();
-            }
-        });
-    </script>*@
+                let substr = '/home/index';
+                if (document.referrer.includes(substr)) {
+                    e.preventDefault();
+                    console.log(document.referrer);
+                    history.back();
+                }
+            });
+        </script>
 
     @*кнопка браузера назад*@
     @*<script>
-        $(document).ready(function ($) {
-            $(".GoCatalog").click(function (e) {
-                e.preventDefault();
-                console.log(document.referrer);
-                //history.back();
-                //if (document.referrer != "") {
-                //    console.log(document.referrer);
-                //    history.back();
-                //}
-            });
-    </script>*@
+            $(document).ready(function ($) {
+                $(".arrowNew").click(function (e) {
+                    e.preventDefault();
+                    //console.log(document.referrer);
+                    //history.back();
+                    if (document.referrer != "") {
+                        console.log(document.referrer);
+                        history.back();
+                    }
+                });
+        </script>*@
 
 
     <!-- Yandex.Metrika counter -->
