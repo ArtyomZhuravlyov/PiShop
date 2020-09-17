@@ -24,6 +24,12 @@ namespace Domain
         [Display(Name = "Итоговая сумма с доставкой")]
         public int Amount { get; set; }
 
+        /// <summary>
+        /// Итоговая скидка
+        /// </summary>
+        [Display(Name = "Скидка")]
+        public int Sale { get; set; }
+
 
         [Display(Name = "Оплачено")]
         public bool Paid { get; set; }

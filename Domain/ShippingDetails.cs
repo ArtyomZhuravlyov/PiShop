@@ -11,19 +11,20 @@ namespace Domain
 
         
 
-        [Required(ErrorMessage = "Укажите вашу фамилию")]
+        //[Required(ErrorMessage = "Укажите вашу фамилию")]
         [Display(Name = "Фамилия")]
         public string Surname { get; set; }
 
-        [Required(ErrorMessage = "Укажите как вас зовут")]
-        [Display(Name = "Имя")]
+        //[Required(ErrorMessage = "Укажите как вас зовут")]
+        [Required(ErrorMessage = "Укажите Ваше ФИО")]
+        [Display(Name = "ФИО")]
         public string Name { get; set; }
 
-        [Required(ErrorMessage = "Укажите ваше отчество")]
+        //[Required(ErrorMessage = "Укажите ваше отчество")]
         [Display(Name = "Отчество")]
         public string MiddleName { get; set; }
 
-        [Required(ErrorMessage = "Укажите город")]
+        //[Required(ErrorMessage = "Укажите город")]
         [Display(Name = "Город")]
         public string City { get; set; }
 

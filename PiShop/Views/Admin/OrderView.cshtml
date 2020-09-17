@@ -65,6 +65,11 @@
                 <div>
                     <div class="PriceW">Цена</div>
                     <div class="price"> @cartLine.Price руб</div>
+                    @if (Model.order.Sale > 0)
+                    {
+                        <div class="newPricePopup"> @(cartLine.Price*0.9) руб</div>
+                    }
+
                 </div>
 
                 <div>
@@ -78,6 +83,10 @@
                 <div class="ContainerTotal-total-price">
                     Итого к оплате:
                     <a class="total-total-price">@Model.order.Amount руб</a>
+                    @if (Model.order.Sale > 0)
+                    {
+                    <a class="total-total-price">@(Model.order.Amount*0.9) руб</a>
+                    }
                 </div>
 
             </div>
@@ -91,14 +100,15 @@
             <tr>
                 <th class="text-right">ID</th>
                 <th class="text-center">Дата</th>
-                <th>Фамилия</th>
+                @*<th>Фамилия</th>*@
                 <th>Имя</th>
-                <th>Отчество</th>
-                <th class="text-right">Город</th>
+                @*<th>Отчество</th>
+        <th class="text-right">Город</th>*@
                 <th class="text-center">Телефон покупателя</th>
                 <th class="text-center">Телефон получателя</th>
                 <th class="text-right">Адрес</th>
                 <th class="text-center">Сумма</th>
+                <th class="text-center">Скидка</th>
                 <th class="text-center">Коментарий</th>
                 <th class="text-center">Почта</th>
             </tr>
@@ -109,14 +119,15 @@
             <tr>
                 <td class="text-right">@Model.order.Id</td>
                 <td class="text-right">@Model.order.TimeOrder.ToString()</td>
-                <td class="text-right">@Model.order.Surname</td>
+                @*<td class="text-right">@Model.order.Surname</td>*@
                 <td class="text-right">@Model.order.Name</td>
-                <td class="text-right">@Model.order.MiddleName</td>
-                <td class="text-right">@Model.order.City</td>
+                @*<td class="text-right">@Model.order.MiddleName</td>
+        <td class="text-right">@Model.order.City</td>*@
                 <td class="text-right">@Model.order.OurPhone</td>
                 <td class="text-right">@Model.order.Phone</td>
                 <td class="text-right">@Model.order.Adress</td>
                 <td class="text-center">@Model.order.Amount.ToString("# руб") </td>
+                <td class="text-center">@Model.order.Sale </td>
                 <td class="text-center">@Model.order.Comment </td>
                 <td class="text-center">@Model.order.Mail</td>
             </tr>

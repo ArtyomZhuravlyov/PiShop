@@ -608,6 +608,13 @@
         <input type="text" placeholder="Ваше имя" name="Name">
         <input type="tel" id="Phone1" name="Phone1" value="+7(___)___-__-__" placeholder="+7(___)___-__-__" />
         <input type="submit" value="ОТПРАВИТЬ">
+        <div class="checkbox" style="padding: 0 21px;">
+            <label>
+                @*@Html.EditorFor(x => x.UserAccess)*@
+                <input checked="checked" class="check-box" style="width: initial; margin: 7px 0 0 -20px !important;position: absolute;cursor: pointer; appearance:checkbox !important" data-val="true" data-val-required="Примите пользовательское соглашение" id="UserAccess" name="UserAccess" type="checkbox" value="true">
+                <a class="OrangeColorText" target="_blank" href="~/images/Соглашение3.pdf">Я согласен с Политикой конфиденциальности</a>
+            </label>
+        </div>
     </div>
 </form>
 
@@ -615,10 +622,10 @@
     $(".decor").submit(function (e) {
         e.preventDefault();
 
-        //$.get("/home/ModalText?text=Наш менеджер уже трепетно набирает Ваш номер телефона!&id=обратный звонок", function (data) {
-        //    $('#dialogContentpopupModalText').html(data);
-        //    $('.popup-ModalText').fadeIn();
-        //});
+        $.get("/home/ModalText?text=Наш менеджер уже трепетно набирает Ваш номер телефона!&id=обратный звонок", function (data) {
+            $('#dialogContentpopupModalText').html(data);
+            $('.popup-ModalText').fadeIn();
+        });
         $.ajax({
             type: "POST",
             url: "/home/sendPhone/",
@@ -962,9 +969,26 @@
             });
         });
     </script>
+
+    <!-- Global site tag (gtag.js) - Google Ads: 695407520 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-695407520"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'AW-695407520');
+    </script>
+    <!-- Event snippet for Покупка conversion page
+    <!-- Event snippet for Покупка conversion page -->
+    <script>
+        gtag('event', 'conversion', {
+            'send_to': 'AW-695407520/enAOCIXOlt0BEKCnzMsC',
+            'transaction_id': ''
+        });
+    </script>
 }
 
-    
+
 
 
 

@@ -110,7 +110,7 @@ namespace Domain
         }
 
         /// <summary>
-        /// Проверяет есть ли скидка у клиента и отправляет его скидку
+        /// Проверяет есть ли скидка у клиента 
         /// </summary>
         public bool CheckSale()
         {
@@ -146,6 +146,9 @@ namespace Domain
                 return 0;
         }
 
+        /// <summary>
+        /// Сумма Клиента со скидкой (пролверяет есть она или нет)
+        /// </summary>
         public int ComputeTotalValueWithSale()
         {
             if (CheckSale())

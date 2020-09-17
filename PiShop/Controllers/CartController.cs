@@ -240,12 +240,19 @@ namespace PiShop.Controllers
 
         private void SendPushover(ShippingDetails shippingDetails, Cart cart)
         {
+            string Products ="";
+
+            foreach(var Line in cart.Lines)
+            {
+                Products += (Line.productCart.Name +" Размер " + Line.productCart.Size + "\r\n");
+            }
+            
             var parameters = new NameValueCollection {
              { "token", "avf36ak95s7h5mc31u4chx9a7nzhk3" },
              { "user", "u9ki332gg4ei1jza8tms2vxpcnsuu6" },
              //{ "device", "redminote6pro" },
-             { "message",  shippingDetails.Surname  + " "  + shippingDetails.Name +  " "+ shippingDetails.MiddleName + "   "  + shippingDetails.OurPhone + "   " + shippingDetails.City + "   " + shippingDetails.Adress + "   " + shippingDetails.Comment },
-             { "title", cart.ComputeTotalValue().ToString() },
+             { "message",   shippingDetails.Name +  "\r\n" + shippingDetails.OurPhone + "\r\n"  + shippingDetails.Adress + "\r\n" + shippingDetails.Comment + "\r\n" + Products }, //shippingDetails.Surname  + "\r\n "  + + shippingDetails.MiddleName + "\r\n" + shippingDetails.City + "   "
+             { "title", cart.ComputeTotalValueWithSale().ToString() }, //ComputeTotalValue()
              {"sound", "echo" },
              { "priority", "2" },
              { "retry", "30" },
@@ -382,7 +389,8 @@ namespace PiShop.Controllers
                 OurPhone = shippingDetails.OurPhone,
                 Comment = shippingDetails.Comment,
                 OrdersAndQuantity = cart.GetXmlLineCollection(),
-                Amount = cart.ComputeTotalValueWithDelivery(),
+                Amount = cart.ComputeTotalValueWithSale(),//cart.ComputeTotalValueWithDelivery(),
+                Sale = cart.CalcSale(),
                 TypePay = "При получении"
                 //to do
             };

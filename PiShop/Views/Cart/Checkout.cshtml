@@ -6,12 +6,12 @@
 }
 
 <div>
-
+   
     @using (Html.BeginForm())
     {
         <div class="containerFormContactDate">
             @Html.ValidationSummary()
-            <h3 style="font-size: 20px;margin-bottom: 20px;margin-top: 0;">Пожалуйста, введите Ваши контактные данные</h3>
+            <h3 style="font-size: 21px;margin-bottom: 20px;margin-top: 0;">Ваши контактные данные</h3>
             @foreach (var property in ViewData.ModelMetadata.Properties)
             {
 
@@ -22,6 +22,10 @@
                             <label>@(property.DisplayName ?? property.PropertyName)</label>
                             @Html.TextArea(property.PropertyName, null, new { @class = "form-control MyForm-control", rows = 2 })
                             break;
+                        case "Город":
+                        case "Электронная почта":
+                        case "Фамилия":
+                        case "Отчество":
                         case "Доставка":
                         case "UserAccess":
                         case "TypePay":
@@ -29,16 +33,16 @@
                             continue;
                         case "Ваш телефон":
                             <label><span style="color:red">*</span> @(property.DisplayName ?? property.PropertyName)</label>
-                            <input class="form-control MyForm-control" type="tel" data-val="true" data-val-required="Ваш телефон" id="OurPhone" name="OurPhone"  value="+7(___)___-__-__" >
+                            <input class="form-control MyForm-control" type="tel" data-val="true" data-val-required="Ваш телефон" id="OurPhone" name="OurPhone" value="+7(___)___-__-__">
                             break;
                         case "Телефон получателя":
                             <label> @(property.DisplayName ?? property.PropertyName)</label>
-                            <input class="form-control MyForm-control" type="tel" data-val="true" data-val-required="Телефон получателя" id="Phone" name="Phone" value="+7(___)___-__-__" >
+                            <input class="form-control MyForm-control" type="tel" data-val="true" data-val-required="Телефон получателя" id="Phone" name="Phone" value="+7(___)___-__-__">
                             break;
-                        case "Электронная почта":
+                        @*case "Электронная почта":
                             <label>@(property.DisplayName ?? property.PropertyName)</label>
                             @Html.TextBox(property.PropertyName, null, new { @class = "form-control MyForm-control" })
-                            break;
+                            break;*@
                         default:
                             <label><span style="color:red">*</span> @(property.DisplayName ?? property.PropertyName)</label>
                             @Html.TextBox(property.PropertyName, null, new { @class = "form-control MyForm-control" })
@@ -47,24 +51,43 @@
                 </div>
 
             }
-            <div class="form-group">
+            @*<div>
+                <div>Удобный способ связи</div>
+                <div class="form_radio">
+                    <input id="radio-1" type="radio" name="radio" value="1" checked>
+                    <label for="radio-1">Сообщение в WhatsApp</label>
+                </div>
+
+                <div class="form_radio">
+                    <input id="radio-2" type="radio" name="radio" value="2">
+                    <label for="radio-2">Звонок</label>
+                </div>
+            </div>*@
+            @*<div class="form-group">
                 <div class="checkbox">
                     <label>
                         @Html.EditorFor(x => x.UserAccess)
-                        <a class="OrangeColorText" target="_blank" href="~/images/Соглашение.pdf">Подтверждаю согласие на обработку своих персональных данных</a>  @*<embed src="ссылка файла pdf" width="ширина в пикселях" height="высота в пикселях" />*@
+                        <a class="OrangeColorText" target="_blank" href="~/images/Соглашение3.pdf">Подтверждаю согласие на обработку своих персональных данных</a>
                     </label>
-                </div>
-                @*<div class="checkbox">
-                        <label>
-                            @Html.EditorFor(x => x.TypePay)
-                            <a class="OrangeColorText">Доставка курьером по Москве или СПБ +350 руб</a>
-                        </label>
-                    </div>*@
+                </div>*@
+            @*<div class="checkbox">
+                    <label>
+                        @Html.EditorFor(x => x.TypePay)
+                        <a class="OrangeColorText">Доставка курьером по Москве или СПБ +350 руб</a>
+                    </label>
+                </div>*@
 
-            </div>
-
+            @*</div>*@
+            <div style="line-height: 1.5; font-weight: 700; color: #2f2f2f;">После обработки заявки с Вами свяжется менеджер, чтобы уточнить данные и выбрать оптимальный вид доставки.</div>
             <div class="text-center">
                 <input class="buttonOrder" type="submit" value="ОБРАБОТАТЬ ЗАКАЗ" />
+            </div>
+            <div class="checkbox">
+                <label>
+                    @*@Html.EditorFor(x => x.UserAccess)*@
+                    <input checked="checked" class="check-box" style="margin: 7px 0 0 -20px !important;cursor: pointer;" data-val="true" data-val-required="Примите пользовательское соглашение" id="UserAccess" name="UserAccess" type="checkbox" value="true">
+                    <a class="OrangeColorText" target="_blank" href="~/images/Соглашение3.pdf">Я согласен с Политикой конфиденциальности</a>
+                </label>
             </div>
 
         </div>
